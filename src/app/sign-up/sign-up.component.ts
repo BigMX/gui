@@ -6,19 +6,35 @@ import { Account } from '../class/account';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
+
 export class SignUpComponent implements OnInit {
 
-  account: Account;
-  constructor() { }
+alert: string;
+account: Account;
+constructor() { }
 
-  ngOnInit() {
-    this.account = {
-      lastName : '',
-      firstName : '',
-      email: '',
-      phone: null,
-      password: ''
-    };
+ngOnInit() {
+  this.account = {
+    lastName: '',
+    firstName: '',
+    email: '',
+    phone: null,
+    password: ''
+  };
+  this.alert = 'not right';
+}
+
+onSearchChange(searchValue: string ) {
+  if(validateEmail(searchValue)) {
+    this.alert='ok';
+  } else {
+    this.alert='not right';
   }
+  console.log(validateEmail(searchValue));
+}
 
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
