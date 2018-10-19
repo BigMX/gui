@@ -26,15 +26,16 @@ ngOnInit() {
 }
 
 onSearchChange(searchValue: string ) {
-  if(validateEmail(searchValue)) {
-    this.alert='ok';
-  } else {
-    this.alert='not right';
-  }
-  console.log(validateEmail(searchValue));
+  // if(validateEmail(searchValue)) {
+  //   this.alert='ok';
+  // } else {
+  //   this.alert='not right';
+  // }
+  // console.log(validateEmail(searchValue));
 }
 
-function validateEmail(email) {
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+// function validateEmail(email) {
+//   var re = "mp/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
+//   return re.test(String(email).toLowerCase());
+// }
 }

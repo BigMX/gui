@@ -1,0 +1,20 @@
+#navIcon{
+  width: 1.8em;
+  margin-right:.5em;
+}
+
+#userIcon{
+  width: 1.5em;
+}
+
+#dropdownMenuButton {
+  background-color: #DCDCDC;
+}
+
+h4 {
+  margin: 1em;
+}
+
+.nav-item {
+  text-decoration: underline;
+}
