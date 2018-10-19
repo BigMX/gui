@@ -12,6 +12,8 @@ export class SignUpComponent implements OnInit {
 
 alert: string;
 account: Account;
+color: string;
+state: number;
 constructor() { }
 
 ngOnInit() {
@@ -23,13 +25,18 @@ ngOnInit() {
     password: ''
   };
   this.alert = 'Not a valid email';
+  
+  this.color: 'green';
+  this.state: 1;
 }
 
 onSearchChange(searchValue: string ) {
   if(validateEmail(searchValue)) {
     this.alert='valid email!!';
+    this.state=3;
   } else {
     this.alert='Not a valid email';
+    this.state=2;
   }
   console.log(validateEmail(searchValue));
 }
