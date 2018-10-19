@@ -22,14 +22,14 @@ ngOnInit() {
     phone: null,
     password: ''
   };
-  this.alert = 'not right';
+  this.alert = 'Not a valid email';
 }
 
 onSearchChange(searchValue: string ) {
   if(validateEmail(searchValue)) {
-    this.alert='ok';
+    this.alert='valid email!!';
   } else {
-    this.alert='not right';
+    this.alert='Not a valid email';
   }
   console.log(validateEmail(searchValue));
 }
