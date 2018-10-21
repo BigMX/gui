@@ -25,7 +25,6 @@ ngOnInit() {
     password: ''
   };
   this.alert = 'Not a valid email';
-
   this.color: 'green';
   this.state: 1;
 }
