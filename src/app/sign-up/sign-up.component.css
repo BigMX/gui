@@ -26,8 +26,8 @@ h3{
 }
 
 .card {
-  /* border:none; */
-  /* background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee) !important; */
+   border:none;
+   background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee) !important;
 }
 
 alert {

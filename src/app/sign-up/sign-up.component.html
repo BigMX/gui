@@ -1,36 +1,37 @@
 <div class="container">
-  <div class="sheet">
-    <div class="row">
-      <div class="col-md-6 align-self-center">
-        <img src="https://media.giphy.com/media/U4teIjRowtTSU/giphy.gif" alt="gifttt">
-      </div>
+    <div class="sheet">
+      <div class="row">
+        <div class="col-md-6 align-self-center container" style="padding-right:1.5em;">
+          <h2 id="maintitle" class="alert back-color" style="color:black;">Gift Registry</h2>
+          <img src="https://media.giphy.com/media/U4teIjRowtTSU/giphy.gif" alt="gifttt">
+        </div>
 
 
       <div class="col-md-6">
-
-        <h1 class="text-center">Sign Up</h1>
-        <div class="card">
-          <div class="card-header">
-            Account Information
-          </div>
+          <br>
+          <h3 class="text-center">Sign Up</h3>
+          <div class="card text-white bg-info mb-3" >
+            <div class="card-header bg-dark text-center">
+              Account Information
+            </div>
           <div class="card-body">
             <div class="form-group">
               <label for="account_lname">
                 LastName:
               </label>
-              <input type="text" id="account_lname" class="form-control" [(ngModel)]="account.lastName" />
+              <input type="text" id="account_lname"  placeholder="Last Name" class="form-control" [(ngModel)]="account.lastName" required/>
             </div>
             <div class="form-group">
               <label for="account_fname">
                 FirstName:
               </label>
-              <input type="text" id="account_fname" class="form-control" [(ngModel)]="account.firstName" />
+              <input type="text" id="account_fname" placeholder="First Name" class="form-control" [(ngModel)]="account.firstName" required/>
             </div>
             <div class="form-group">
               <label for="account_email">
                 Email:
               </label>
-              <input type="email" (input)="onSearchChange($event.target.value)" id="account_email"  class="form-control" [(ngModel)]="account.email"
+              <input type="email" (input)="onSearchChange($event.target.value)" id="account_email" placeholder="Email"  class="form-control" [(ngModel)]="account.email"
               />
               <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Success</span>
 <span class="badge badge-danger" [ngStyle]="{'display':state==2 ? 'inline' : 'none' }">Danger</span>
@@ -40,16 +41,15 @@
               <label for="account_phone">
                 PhoneNumber:
               </label>
-              <input type="text" id="account_phone" class="form-control" [(ngModel)]="account.phone" />
+              <input type="text" id="account_phone" class="form-control" placeholder="Phone Number" [(ngModel)]="account.phone" required/>
             </div>
             <div class="form-group">
               <label for="account_password">
                 Password:
               </label>
-              <input ng-hide="showpassword" type="password" ng-model="password" id="account_password" class="form-control" [(ngModel)]="account.password"
-              />
+              <input ng-hide="showpassword" type="password" ng-model="password" placeholder="Password" id="account_password" class="form-control" [(ngModel)]="account.password"
+               required/>
             </div>
-            <br />
           </div>
         </div>
         <br />
