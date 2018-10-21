@@ -31,11 +31,12 @@
               <label for="account_email">
                 Email:
               </label>
-              <input type="email" (input)="onSearchChange($event.target.value)" placeholder="Email" id="account_email" class="form-control" [(ngModel)]="account.email"
-               required/>
-              <div>
-                {{alert}}
-              </div>
+              <input type="email" (input)="onSearchChange($event.target.value)" id="account_email" placeholder="Email"  class="form-control" [(ngModel)]="account.email"
+              />
+              <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Success</span>
+<span class="badge badge-danger" [ngStyle]="{'display':state==2 ? 'inline' : 'none' }">Danger</span>
+<span class="badge badge-warning" [ngStyle]="{'display':state==1 ? 'inline' : 'none' }">Warning</span>
+
 
             </div>
             <div class="form-group">
