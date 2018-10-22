@@ -21,15 +21,28 @@ h3{
   text-align: center;
 }
 
-.card-body, .back-color {
-  background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+.card-body {
+  background: -webkit-linear-gradient(left, #a7c1e0a2, #eed4df);
 }
 
+.back-color {
+  background: -webkit-linear-gradient(left, #e5d4ee, #a7c1e0a2);
+}
+
+
 .card {
-  /* border:none; */
-  /* background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee) !important; */
+   border:none;
+   background: -webkit-linear-gradient(left, #a7c1e0a2, #eed4df);
 }
 
 alert {
   text-color:black;
+}
+
+#signup-btn, #cancel-btn {
+  margin-left: 12em;
+  margin-right: 12em;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .3em;
+  font-size: 100%;
 }
