@@ -39,10 +39,24 @@ alert {
   text-color:black;
 }
 
-#signup-btn, #cancel-btn {
-  margin-left: 12em;
-  margin-right: 12em;
+#login-button {
+  margin-left: 10em;
+  margin-right: 10em;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .3em;
-  font-size: 100%;
+  font-size: 120%;
+}
+
+#no-account {
+  text-align: center;
+  font-family: Helvetica;
+  color: black;
+}
+
+#links, a:link {
+  color: purple;
+}
+
+a:hover {
+  text-decoration: underline;
 }
