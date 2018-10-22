@@ -32,7 +32,7 @@
               </label>
               <input type="email" (input)="onSearchChange($event.target.value)" id="account_email" placeholder="Email"  class="form-control" [(ngModel)]="account.email"
               />
-              <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Valid Email!!!</span>
+              <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Valid Email!</span>
               <span class="badge badge-danger" [ngStyle]="{'display':state==2 ? 'inline' : 'none' }">Not a valid email</span>
               <span class="badge badge-warning" [ngStyle]="{'display':state==1 ? 'inline' : 'none' }">Warning</span>
 
