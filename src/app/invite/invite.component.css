@@ -40,3 +40,8 @@ h2{
   font-size: .8em;
   margin: .7em;
 }
+
+#archiveButton{
+  width: 95%;
+  margin: 1em;
+}
