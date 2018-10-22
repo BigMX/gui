@@ -1,0 +1,47 @@
+#navIcon{
+  width: 1.8em;
+  margin-right:.5em;
+}
+
+#userIcon{
+  width: 1.5em;
+}
+
+#dropdownMenuButton {
+  background-color: #DCDCDC;
+}
+
+h4 {
+  margin: 1em;
+}
+
+h2{
+  margin-left: 1em;
+}
+
+.nav-item {
+  text-decoration: underline;
+}
+
+.dash {
+  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+  margin: 1em;
+}
+
+.modal-header {
+  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+}
+
+* {
+  color: black;
+}
+
+.joinMessage {
+  font-size: .8em;
+  margin: .7em;
+}
+
+#archiveButton{
+  width: 95%;
+  margin: 1em;
+}
