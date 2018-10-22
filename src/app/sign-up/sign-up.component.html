@@ -17,13 +17,13 @@
           <div class="card-body">
             <div class="form-group">
               <label for="account_lname">
-                LastName:
+                Last Name:
               </label>
               <input type="text" id="account_lname"  placeholder="Last Name" class="form-control" [(ngModel)]="account.lastName" required/>
             </div>
             <div class="form-group">
               <label for="account_fname">
-                FirstName:
+                First Name:
               </label>
               <input type="text" id="account_fname" placeholder="First Name" class="form-control" [(ngModel)]="account.firstName" required/>
             </div>
@@ -33,15 +33,14 @@
               </label>
               <input type="email" (input)="onSearchChange($event.target.value)" id="account_email" placeholder="Email"  class="form-control" [(ngModel)]="account.email"
               />
-              <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Success</span>
-<span class="badge badge-danger" [ngStyle]="{'display':state==2 ? 'inline' : 'none' }">Danger</span>
-<span class="badge badge-warning" [ngStyle]="{'display':state==1 ? 'inline' : 'none' }">Warning</span>
-
+              <span class="badge badge-success" [ngStyle]="{'display':state==3 ? 'inline' : 'none' }">Valid Email!!!</span>
+              <span class="badge badge-danger" [ngStyle]="{'display':state==2 ? 'inline' : 'none' }">Not a valid email</span>
+              <span class="badge badge-warning" [ngStyle]="{'display':state==1 ? 'inline' : 'none' }">Warning</span>
 
             </div>
             <div class="form-group">
               <label for="account_phone">
-                PhoneNumber:
+                Phone Number:
               </label>
               <input type="text" id="account_phone" class="form-control" placeholder="Phone Number" [(ngModel)]="account.phone" required/>
             </div>
