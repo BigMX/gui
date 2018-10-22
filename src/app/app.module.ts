@@ -21,7 +21,7 @@ const defaultRoute = 'login';
     SignUpComponent,
     DashboardComponent,
     ArchiveComponent,
-    InviteComponent
+    InviteComponent,
     LogInComponent
   ],
   imports: [
