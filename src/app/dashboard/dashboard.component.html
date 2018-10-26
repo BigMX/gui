@@ -11,7 +11,7 @@
                 </a>
                 <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create" aria-selected="false">
                     <button type="button" class="btn" data-toggle="modal" data-target="#createModal">
-                        <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
+                        <img id="create-img" src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
                     </button>
                 </a>
                 <a [routerLink]="['/invite']"class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-invite" aria-selected="false">
@@ -93,7 +93,6 @@
         </div>
     </div>
 </div>
-<div class="createModal">
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -120,4 +119,4 @@
             </div>
         </div>
     </div>
-</div>
+
