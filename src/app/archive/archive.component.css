@@ -37,11 +37,32 @@ h2{
 }
 
 .joinMessage {
-  font-size: .8em;
-  margin: .7em;
+  font-size: .9em;
+  margin: 1em;
 }
 
 #archiveButton{
   width: 95%;
   margin: 1em;
+}
+
+.active2 {
+  background-color: #a7c1e0a2;
+}
+
+.activebtn, .activebtn2 {
+  margin-left: -1em;
+  background-color: #e5d4ee;
+  width:10em;
+  text-align:left;
+}
+
+.nav-pills > .active {
+  background: #a7c1e0a2;
+}
+
+#menutitle {
+  margin-left: 0.6em;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .3em;
 }

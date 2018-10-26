@@ -41,29 +41,7 @@ h2{
   margin: 1em;
 }
 
-#archiveButton, #inviteButton {
+#archiveButton{
   width: 95%;
   margin: 1em;
-}
-
-
-.active2 {
-  background-color: #a7c1e0a2;
-}
-
-.activebtn, .activebtn2 {
-  margin-left: -1em;
-  background-color: #e5d4ee;
-  width:10em;
-  text-align:left;
-}
-
-.nav-pills > .active {
-  background: #a7c1e0a2;
-}
-
-#menutitle {
-  margin-left: 0.6em;
-  font-family: 'Palatino', sans-serif;
-  letter-spacing: .3em;
 }

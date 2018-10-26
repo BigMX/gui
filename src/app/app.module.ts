@@ -10,6 +10,8 @@ import { LogInComponent } from './log-in/log-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { InviteComponent } from './invite/invite.component';
+import { RegistryComponent } from './registry/registry.component';
+import { CartComponent } from './cart/cart.component';
 
 const defaultRoute = 'login';
 
@@ -21,17 +23,21 @@ const defaultRoute = 'login';
     DashboardComponent,
     ArchiveComponent,
     InviteComponent,
-    LogInComponent
+    LogInComponent,
+    RegistryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'invite', component: InviteComponent},
-      {path: 'archive', component: ArchiveComponent},
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'invite', component: InviteComponent },
+      { path: 'archive', component: ArchiveComponent },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'registry', component: RegistryComponent },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
       { path: '**', redirectTo: defaultRoute, pathMatch: 'full' }
     ])
