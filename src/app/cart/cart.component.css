@@ -85,6 +85,11 @@ tr:nth-child(even) {
   background-color: #a7c1e0a2;
 }
 
+
+thead {
+  background-color: #cdb4db;
+}
+
 th {
   font-family: 'Palatino', sans-serif;
   text-transform: none;
