@@ -54,6 +54,11 @@ h2{
   text-align:left;
 }
 
+button:active{
+  background:#a7c1e0a2;
+  box-shadow: 10px 10px 5px  rgb(98, 135, 190);
+}
+
 .nav-pills > .active {
   background: #a7c1e0a2;
 }

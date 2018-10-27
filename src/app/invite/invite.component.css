@@ -8,7 +8,7 @@
 }
 
 #dropdownMenuButton {
-  background-color: #DCDCDC;
+  background-color: #e5d4ee;
 }
 
 h4 {
@@ -24,8 +24,10 @@ h2{
 }
 
 .dash {
+  padding-top: 1em;
   background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  margin: 1em;
+  border: none;
+  padding-bottom: 0.4em;
 }
 
 .modal-header {
@@ -42,10 +44,10 @@ h2{
 }
 
 #archiveButton, #inviteButton {
-  width: 95%;
-  margin: 1em;
+  width: 15%;
+  margin-left: 16em;
+  text-align: center;
 }
-
 
 .active2 {
   background-color: #a7c1e0a2;
@@ -58,6 +60,11 @@ h2{
   text-align:left;
 }
 
+button:active{
+  background:#a7c1e0a2;
+  box-shadow: 10px 10px 5px  rgb(98, 135, 190);
+}
+
 .nav-pills > .active {
   background: #a7c1e0a2;
 }
@@ -66,4 +73,23 @@ h2{
   margin-left: 0.6em;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .3em;
+}
+
+#dashboard {
+  text-size: 90%;
+  text-transform: uppercase;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+}
+
+.cartbtn {
+  background-color: #a7c1e0a2;
+  width: 8.7em;
+}
+
+#email, #selectreg {
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
