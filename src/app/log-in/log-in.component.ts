@@ -12,17 +12,16 @@ import { Account } from '../class/account';
 })
 export class LogInComponent implements OnInit {
 
-  account: Account;
+  email: string;
+  password: string;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.account = {
-      email: '',
-      password: ''
-    };
+    this.email = '';
+    this.password = '';
   }
-
 }
