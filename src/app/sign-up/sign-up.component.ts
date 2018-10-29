@@ -24,20 +24,19 @@ ngOnInit() {
     phone: null,
     password: ''
   };
-  this.alert = 'Not a valid email';
-  // this.color: 'green';
-  // this.state: 1;
+}
+onSearchChange(searchValue: string ) {
+   if(validateEmail(searchValue)) {
+      this.alert='valid email!!';
+      this.state=3;
+    } else {
+     this.alert='Not a valid email';
+    this.state=2;
+   }
+   console.log(validateEmail(searchValue));
 }
 
-onSearchChange(searchValue: string ) {
-  // if(validateEmail(searchValue)) {
-  //   this.alert='valid email!!';
-  //   this.state=3;
-  // } else {
-  //   this.alert='Not a valid email';
-  //   this.state=2;
-  // }
-  // console.log(validateEmail(searchValue));
-  return 0;
-}
+function validateEmail(email) {
+   var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   return re.test(String(email).toLowerCase());
 }

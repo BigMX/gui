@@ -25,3 +25,4 @@ export class DashboardComponent implements OnInit {
     this.newRegistry=new Registry;
   }
 }
+

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-2">
-      <!--first two colomn spaces used for the menu of options for the registry-->
+      <!--first 2 colomn spaces will be used to hold the menu of options for the registry-->
       <h2 id="menutitle">Menu</h2>
       <div class="myNav">
           <div class="nav flex-column nav-pills" style="background-color: #e5d4ee;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -14,7 +14,7 @@
                       <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
                   </button>
               </a>
-              <a [routerLink]="['/invite']" class="nav-link active" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-invite" aria-selected="false">
+              <a [routerLink]="['/invite']" class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-invite" aria-selected="false">
                   <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon"><span>Invite</span>
               </a>
               <a [routerLink]="['/archive']" class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-archive" aria-selected="false">
@@ -29,30 +29,47 @@
       </div>
     </div> <!--end div class col 2-->
 
-    <!--next 8 colomn spaces used for the invite form group and the button to invite someone to the users registry-->
+    <!--next 8 colomn spaces will be used to hold the table of items in a registry and a button to add more items to the registry-->
     <div class="col-8">
       <div class="dash">
-          <h2 id="dashboard">Invite</h2>
+          <h2 id="dashboard">Registry 1</h2>
       </div>
         <br>
-        <div id="email" class="form-group">
-          <label for="exampleFormControlInput1">Email Address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Add</th>
+                <th>Name of Item</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="form-check"><input type="checkbox" class="form-check-input" id="checkAdd"></th>
+                <th>Dog</th>
+                <th>$1</th>
+                <th>Petsmart</th>
+                <th>Need</th>
+              </tr>
+              <tr>
+                  <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
+                  <th>Cat</th>
+                  <th>$3</th>
+                  <th>Petsmart</th>
+                  <th>Need</th>
+                </tr>
+            </tbody>
+          </table>
         </div>
-        <div id="selectreg" class="form-group">
-          <label for="exampleFormControlSelect1">Select Registry</label>
-          <select class="form-control" id="selectRegistry">
-            <option value="0"></option>
-            <option value="1">Registry 1</option>
-            <option value="2">Registry 2</option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton">
-          Invite
+        <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton">
+            Add Item(s)
         </button>
-    </div> <!--end div class col 8-->
+    </div><!--end div class col 8-->
 
-    <!--last two colomn spaces used for the cart button and username dropdown-->
+    <!--last two colomns spaces will be used to hold the cart button and the username dropdown-->
     <div class="col-2">
       <button [routerLink]="['/cart']" npmtype="button" class="btn cartbtn">
         <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
@@ -68,10 +85,10 @@
               <a class="dropdown-item" href="#">Logout</a>
           </div>
       </div>
-    </div> <!--end div class col 2-->
+      </div> <!--end div class col 2-->
 
-  </div> <!--end div for the row class-->
-</div> <!--end div for the container class-->
+  </div> <!--end div class row-->
+</div> <!--end div class container-->
 
 <!--modals for the join and create buttons-->
 <div class="joinModal">
