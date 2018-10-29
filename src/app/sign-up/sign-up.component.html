@@ -52,11 +52,11 @@
             </div>
           </div>
           <br>
-          <button id="signup-btn" class="btn btn-sm btn-success" type="button">
+          <button id="signup-btn" class="btn btn-sm btn-success" type="button" ng-click="signUp()">
               <strong>Sign Up</strong>
             </button>
             <p></p>
-            <button id="cancel-btn" class="btn  btn-sm btn-dark" type="button">
+            <button id="cancel-btn" class="btn  btn-sm btn-dark" type="button" [routerLink]="['/login']">
               <strong>Cancel</strong>
             </button>
             <p></p>
