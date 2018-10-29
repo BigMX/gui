@@ -2,10 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { LogInComponent } from './log-in/log-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArchiveComponent } from './archive/archive.component';
@@ -14,7 +13,6 @@ import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 
 const defaultRoute = 'login';
-
 
 @NgModule({
   declarations: [
@@ -28,8 +26,10 @@ const defaultRoute = 'login';
     CartComponent
   ],
   imports: [
+    ModalModule,
     BrowserModule,
     FormsModule,
+    ModalDialogModule.forRoot(),
     RouterModule.forRoot([
       { path: 'dashboard', component: DashboardComponent },
       { path: 'invite', component: InviteComponent },
@@ -43,7 +43,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

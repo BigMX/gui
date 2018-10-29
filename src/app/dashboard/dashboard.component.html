@@ -100,8 +100,15 @@
                     <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" onclick="">Join</button>
                 </div>
             </div>
+          </form>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="">Join</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="createModal">
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
@@ -128,7 +135,18 @@
                     <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" onclick="">Join</button>
                 </div>
             </div>
+          </form>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="newRegistry={}">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addRegistry()">Join</button>
+        </div>
+      </div>
     </div>
+  </div>
+  <div>
+  <pre>{{registry|json}}</pre>
+  <pre>{{newRegistry|json}}</pre>
+  </div>
 </div>
 <!--end modals-->
