@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "userId": 1,
+      "firstName": "Arely",
+      "lastName": "Alcantara",
+      "email": "aalcantara@smu.edu",
+      "phoneNumber": "214-777-7777",
+      "password": "12345"
+    },
+    {
+      "userId": 2,
+      "firstName": "Travis",
+      "lastName": "Mei",
+      "email": "smei@smu.edu",
+      "phoneNumber": "214-555-5555",
+      "password": "abcde"
+    },
+    {
+      "userId": 3,
+      "firstName": "Emily",
+      "lastName": "Fashenpour",
+      "email": "efashenpoura@smu.edu",
+      "phoneNumber": "214-999-9999",
+      "password": "12345"
+    }
+  ],
+  "registries": [
+    {
+      "userId": 2,
+      "registryId": 10,
+      "title": "Test Registry",
+      "description": "Does this work? I wonder"
+    },
+    {
+      "userId": 2,
+      "registryId": 11,
+      "title": "Another Registry",
+      "description": "I guess this works"
+    }
+  ]
+}

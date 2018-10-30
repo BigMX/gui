@@ -7,7 +7,7 @@ import { Account } from '../class/account';
 @Injectable()
 export class User {
 
-  protected endPoint = 'http://localhost:8080/api/users';
+  protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
     headers: new HttpHeaders({
