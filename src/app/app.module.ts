@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { LogInComponent } from './log-in/log-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArchiveComponent } from './archive/archive.component';
@@ -15,7 +15,6 @@ import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 
 const defaultRoute = 'login';
-
 
 @NgModule({
   declarations: [
@@ -29,6 +28,7 @@ const defaultRoute = 'login';
     CartComponent
   ],
   imports: [
+    ModalModule,
     BrowserModule,
     HttpModule,
     FormsModule,
@@ -45,7 +45,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
