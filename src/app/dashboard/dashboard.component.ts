@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
+import { Registries } from '../class/registries.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,17 @@ export class DashboardComponent implements OnInit {
 
   registry: Registry[];
   newRegistry: Registry;
+  userId = 2;
 
-  constructor() { }
+  constructor(
+    private registries: Registries
+  ) { }
 
   ngOnInit() {
     this.newRegistry = new Registry;
-    this.registry = [];
+    this.registries.getRegistries(this.userId).subscribe((registry) => {
+      this.registry = registry;
+    });
   }
 
   addRegistry() {
