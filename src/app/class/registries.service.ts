@@ -20,9 +20,9 @@ export class Registries {
     protected httpClient: HttpClient
   ) { }
 
-  add(registries: Registry, userId:number): Observable<Registry> {
+  add(registries: Registry): Observable<Registry> {
     return this.httpClient
-      .post<Registry>(`${this.endPoint}/${userId}`, registries, this.httpOptions)
+      .post<Registry>(`${this.endPoint}`, registries, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 

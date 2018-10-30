@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "userId": 1,
+      "id": 1,
       "firstName": "Arely",
       "lastName": "Alcantara",
       "email": "aalcantara@smu.edu",
@@ -9,7 +9,7 @@
       "password": "12345"
     },
     {
-      "userId": 2,
+      "id": 2,
       "firstName": "Travis",
       "lastName": "Mei",
       "email": "smei@smu.edu",
@@ -17,7 +17,7 @@
       "password": "abcde"
     },
     {
-      "userId": 3,
+      "id": 3,
       "firstName": "Emily",
       "lastName": "Fashenpour",
       "email": "efashenpoura@smu.edu",
@@ -27,16 +27,40 @@
   ],
   "registries": [
     {
+      "id": 1,
       "userId": 2,
-      "registryId": 10,
       "name": "Test Registry",
       "description": "Does this work? I wonder"
     },
     {
+      "id": 2,
       "userId": 2,
-      "registryId": 11,
       "name": "Another Registry",
       "description": "I guess this works"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi"
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "name": "A Registry",
+      "description": "testing testing"
+    },
+    {
+      "userId": 3,
+      "name": "look it's another registry",
+      "description": "some other registry - nothing new",
+      "id": 5
+    },
+    {
+      "name": "A Random Registry",
+      "description": "Adding through the modal !!!",
+      "userId": 2,
+      "id": 6
     }
   ]
 }
