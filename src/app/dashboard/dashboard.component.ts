@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
-import { Registry} from '../class/registry';
+import { Registry } from '../class/registry';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,16 +12,16 @@ export class DashboardComponent implements OnInit {
   registry: Registry[];
   newRegistry: Registry;
 
-  constructor() {}
-
+  constructor() { }
 
   ngOnInit() {
-    this.newRegistry=new Registry;
-    this.registry=[];
+    this.newRegistry = new Registry;
+    this.registry = [];
   }
+
   addRegistry() {
     this.registry.push(this.newRegistry);
-    this.newRegistry=new Registry;
+    this.newRegistry = new Registry;
   }
 }
 
