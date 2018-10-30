@@ -25,7 +25,7 @@ ngOnInit() {
     password: ''
   };
 }
-onSearchChange(searchValue: string ) {
+ /*onSearchChange(searchValue: string ) {
    if(validateEmail(searchValue)) {
       this.alert='valid email!!';
       this.state=3;
@@ -36,7 +36,9 @@ onSearchChange(searchValue: string ) {
    console.log(validateEmail(searchValue));
 }
 
-function validateEmail(email) {
-   var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+ function validateEmail(email) {
+   const re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
    return re.test(String(email).toLowerCase());
+ } */
+
 }
