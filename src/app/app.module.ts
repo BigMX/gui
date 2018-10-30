@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { ModalModule, BsModalRef } from 'ngx-bootstrap';
 import { LogInComponent } from './log-in/log-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ArchiveComponent } from './archive/archive.component';
@@ -28,9 +27,7 @@ const defaultRoute = 'login';
     CartComponent
   ],
   imports: [
-    ModalModule,
     BrowserModule,
-    HttpModule,
     FormsModule,
     RouterModule.forRoot([
       { path: 'dashboard', component: DashboardComponent },
@@ -45,7 +42,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [BsModalRef],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

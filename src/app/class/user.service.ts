@@ -32,7 +32,7 @@ export class User {
   }
 
   protected handleException(exception: any) {
-    var message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
+    const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);
     return Observable.throw(exception);
   }
