@@ -4,5 +4,5 @@ export class Registry {
   items?: Item[];
   name?: string;
   description?: string;
-  id?: number;
+  userId?: number;
 }

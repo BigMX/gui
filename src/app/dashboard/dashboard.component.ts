@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   registry: Registry[];
   newRegistry: Registry;
-  userId = 2;
+  id = 2;
 
   constructor(
     private registries: Registries
@@ -20,14 +20,18 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.newRegistry = new Registry;
-    this.registries.getRegistries(this.userId).subscribe((registry) => {
+    this.registries.getRegistries(this.id).subscribe((registry) => {
       this.registry = registry;
     });
   }
 
   addRegistry() {
-    this.registry.push(this.newRegistry);
-    this.newRegistry = new Registry;
+    this.newRegistry.userId = this.id;
+    this.registries.add(this.newRegistry).subscribe((registry) => {
+    });
+    this.registries.getRegistries(this.id).subscribe((registry) => {
+      this.registry = registry;
+    });
   }
 }
 
