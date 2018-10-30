@@ -29,13 +29,13 @@
     {
       "userId": 2,
       "registryId": 10,
-      "title": "Test Registry",
+      "name": "Test Registry",
       "description": "Does this work? I wonder"
     },
     {
       "userId": 2,
       "registryId": 11,
-      "title": "Another Registry",
+      "name": "Another Registry",
       "description": "I guess this works"
     }
   ]
