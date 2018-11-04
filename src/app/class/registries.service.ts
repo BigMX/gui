@@ -28,8 +28,26 @@ export class Registries {
 
   getRegistries(userId: number): Observable<Registry[]> {
     return this.httpClient
-      .get<Registry[]>(`${this.endPoint}/?userId=${userId}`, this.httpOptions)
+      .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=active`, this.httpOptions)
       .pipe(catchError(this.handleException));
+  }
+
+  getArchivedRegs(userId: number): Observable<Registry[]> {
+    return this.httpClient
+      .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=archived`, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  deleteReg(regId: number): Observable<Registry> {
+    return this.httpClient
+    .delete<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  getRegById(regId: number): Observable<Registry> {
+    return this.httpClient
+    .get<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
   }
 
   protected handleException(exception: any) {

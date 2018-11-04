@@ -27,11 +27,13 @@ export class DashboardComponent implements OnInit {
 
   addRegistry() {
     this.newRegistry.userId = this.id;
+    this.newRegistry.status = 'active';
     this.registries.add(this.newRegistry).subscribe((registry) => {
     });
     this.registries.getRegistries(this.id).subscribe((registry) => {
       this.registry = registry;
     });
+    this.newRegistry = {};
   }
 }
 

@@ -42,9 +42,8 @@
         <div id="selectreg" class="form-group">
           <label for="exampleFormControlSelect1">Select Registry</label>
           <select class="form-control" id="selectRegistry">
-            <option value="0"></option>
-            <option value="1">Registry 1</option>
-            <option value="2">Registry 2</option>
+            <option value="" selected></option>
+            <option *ngFor="let r of registry" value="r">{{ r.name }}</option>
           </select>
         </div>
         <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton">

@@ -27,40 +27,60 @@
   ],
   "registries": [
     {
-      "id": 1,
-      "userId": 2,
-      "name": "Test Registry",
-      "description": "Does this work? I wonder"
-    },
-    {
       "id": 2,
       "userId": 2,
       "name": "Another Registry",
-      "description": "I guess this works"
+      "description": "I guess this works",
+      "status": "active"
     },
     {
       "id": 3,
       "userId": 1,
       "name": "New Registry",
-      "description": "adding a new registry - hi"
+      "description": "adding a new registry - hi",
+      "status": "active"
     },
     {
       "id": 4,
       "userId": 3,
       "name": "A Registry",
-      "description": "testing testing"
+      "description": "testing testing",
+      "status": "active"
     },
     {
       "userId": 3,
       "name": "look it's another registry",
       "description": "some other registry - nothing new",
-      "id": 5
+      "id": 5,
+      "status": "active"
     },
     {
-      "name": "A Random Registry",
-      "description": "Adding through the modal !!!",
+      "name": "Things work",
+      "description": "YAYAYAYAAYA",
       "userId": 2,
-      "id": 6
+      "id": 7,
+      "status": "active"
+    },
+    {
+      "name": "i dont like this class",
+      "description": "boi bye",
+      "userId": 2,
+      "id": 9,
+      "status": "archived"
+    },
+    {
+      "name": "Test Registry",
+      "description": "Do things get archived?",
+      "userId": 2,
+      "status": "archived",
+      "id": 11
+    },
+    {
+      "name": "Testing ",
+      "description": "testing~",
+      "userId": 2,
+      "status": "archived",
+      "id": 10
     }
   ]
 }
