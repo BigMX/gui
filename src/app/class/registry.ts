@@ -5,4 +5,6 @@ export class Registry {
   name?: string;
   description?: string;
   userId?: number;
+  status?: string;
+  id?: number;
 }
