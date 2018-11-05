@@ -43,7 +43,16 @@ const defaultRoute = 'login';
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'registry', component: RegistryComponent },
+      { path: 'registry',children: [
+        {
+          path: '',
+          component: RegistryComponent
+        },
+        {
+          path: ':id',
+          component: RegistryComponent
+        }
+      ] },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
       { path: '**', redirectTo: defaultRoute, pathMatch: 'full' }
     ])

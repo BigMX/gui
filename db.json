@@ -27,13 +27,6 @@
   ],
   "registries": [
     {
-      "id": 2,
-      "userId": 2,
-      "name": "Another Registry",
-      "description": "I guess this works",
-      "status": "active"
-    },
-    {
       "id": 3,
       "userId": 1,
       "name": "New Registry",
@@ -52,13 +45,6 @@
       "name": "look it's another registry",
       "description": "some other registry - nothing new",
       "id": 5,
-      "status": "active"
-    },
-    {
-      "name": "Things work",
-      "description": "YAYAYAYAAYA",
-      "userId": 2,
-      "id": 7,
       "status": "active"
     },
     {
@@ -81,6 +67,20 @@
       "userId": 2,
       "status": "archived",
       "id": 10
+    },
+    {
+      "name": "Things work",
+      "description": "YAYAYAYAYAY",
+      "userId": 2,
+      "status": "active",
+      "id": 13
+    },
+    {
+      "name": "More registries",
+      "description": "HELLO",
+      "userId": 2,
+      "status": "active",
+      "id": 14
     }
   ]
 }
