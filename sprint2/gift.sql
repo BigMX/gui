@@ -1,4 +1,3 @@
-DROP Database giftRegistry;
 
 create database giftRegistry;
 show databases;
