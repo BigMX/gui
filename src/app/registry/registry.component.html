@@ -67,6 +67,11 @@
         <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton">
             Add Item(s)
         </button>
+        <br>
+        <br><br>
+        <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186);" id="deleteButton"  data-toggle="modal" data-target="#deleteModal">
+            DELETE REGISTRY
+        </button>
     </div><!--end div class col 8-->
 
     <!--last two colomns spaces will be used to hold the cart button and the username dropdown-->
@@ -90,6 +95,25 @@
   </div> <!--end div class row-->
 </div> <!--end div class container-->
 
+<div class="deleteModal">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModal">Delete Registry</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <h4>Are you sure you want to delete this registry?</h4>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">NO</button>
+                  <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)='deleteRegistry()' [routerLink]="['/dashboard']">Yes!</button>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 <!--modals for the join and create buttons-->
 <div class="joinModal">
   <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">

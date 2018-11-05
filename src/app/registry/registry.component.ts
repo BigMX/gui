@@ -49,4 +49,13 @@ export class RegistryComponent implements OnInit {
     this.newRegistry = {};
   }
 
+  deleteRegistry() {
+    this.route.params.subscribe((params: RegistryParams) => {
+      if (params.id) {
+        this.registries.deleteReg(+params.id).subscribe((registry) => {
+        });
+      }
+    });
+  }
+
 }
