@@ -6,7 +6,7 @@
       <h2 id="menutitle">Menu</h2>
       <div class="myNav">
           <div class="nav flex-column nav-pills" style="background-color: #e5d4ee;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a [routerLink]="['/dashboard']" class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
+              <a routerLink='/dashboard/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
                   <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon"><span>Dashboard</span>
               </a>
               <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create" aria-selected="false">
@@ -14,10 +14,10 @@
                       <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
                   </button>
               </a>
-              <a [routerLink]="['/invite']" class="nav-link active" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-invite" aria-selected="false">
+              <a routerLink='/invite/{{id}}' class="nav-link active" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-invite" aria-selected="false">
                   <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon"><span>Invite</span>
               </a>
-              <a [routerLink]="['/archive']" class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-archive" aria-selected="false">
+              <a routerLink='/archive/{{id}}' class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-archive" aria-selected="false">
                   <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon"><span>Archive</span>
               </a>
               <a class="nav-link" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join" aria-selected="false">

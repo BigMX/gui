@@ -48,8 +48,26 @@ const defaultRoute = 'login';
             component: DashboardComponent
           }
         ] },
-      { path: 'invite', component: InviteComponent },
-      { path: 'archive', component: ArchiveComponent },
+      { path: 'invite', children: [
+          {
+            path: '',
+            component: InviteComponent
+          },
+          {
+            path: ':id',
+            component: InviteComponent
+          }
+       ] },
+      { path: 'archive', children: [
+          {
+            path: '',
+            component: ArchiveComponent
+          },
+          {
+            path: ':id',
+            component: ArchiveComponent
+          }
+       ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'cart', component: CartComponent },
@@ -59,7 +77,7 @@ const defaultRoute = 'login';
           component: RegistryComponent
         },
         {
-          path: ':id',
+          path: ':userid/:regid',
           component: RegistryComponent
         }
       ] },

@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 
+class DashboardParams {
+  id: string;
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,16 +16,22 @@ export class DashboardComponent implements OnInit {
 
   registry: Registry[];
   newRegistry: Registry;
-  id = 2;
+  id: number;
 
   constructor(
+    private route: ActivatedRoute,
     private registries: Registries
   ) { }
 
   ngOnInit() {
     this.newRegistry = new Registry;
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
+    this.route.params.subscribe((params: DashboardParams) => {
+      if (params.id) {
+        this.id = +params.id;
+        this.registries.getRegistries(this.id).subscribe((registry) => {
+          this.registry = registry;
+        });
+      }
     });
   }
 

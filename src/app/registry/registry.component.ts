@@ -4,7 +4,8 @@ import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 
 class RegistryParams {
-  id: string;
+  userid: string;
+  regid: string;
 }
 
 @Component({
@@ -17,7 +18,7 @@ export class RegistryComponent implements OnInit {
   currentReg: Registry;
   registry: Registry[];
   newRegistry: Registry;
-  id = 2;
+  id: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,12 +27,17 @@ export class RegistryComponent implements OnInit {
 
   ngOnInit() {
     this.newRegistry = new Registry;
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
+    this.route.params.subscribe((params: RegistryParams) => {
+      if (params.userid) {
+        this.id = +params.userid;
+        this.registries.getRegistries(this.id).subscribe((registry) => {
+          this.registry = registry;
+        });
+      }
     });
     this.route.params.subscribe((params: RegistryParams) => {
-      if (params.id) {
-        this.registries.getRegById(+params.id).subscribe((registry) => {
+      if (params.regid) {
+        this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
         });
       }
@@ -51,8 +57,8 @@ export class RegistryComponent implements OnInit {
 
   deleteRegistry() {
     this.route.params.subscribe((params: RegistryParams) => {
-      if (params.id) {
-        this.registries.deleteReg(+params.id).subscribe((registry) => {
+      if (params.regid) {
+        this.registries.deleteReg(+params.regid).subscribe((registry) => {
         });
       }
     });

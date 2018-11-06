@@ -71,13 +71,6 @@
       "status": "archived"
     },
     {
-      "name": "Test Registry",
-      "description": "Do things get archived?",
-      "userId": 2,
-      "status": "archived",
-      "id": 11
-    },
-    {
       "name": "Testing ",
       "description": "testing~",
       "userId": 2,
@@ -92,25 +85,11 @@
       "id": 14
     },
     {
-      "name": "A Test Registry",
-      "description": "things go here",
-      "userId": 2,
-      "status": "archived",
-      "id": 16
-    },
-    {
       "name": "Test",
       "description": "Registry",
       "userId": 2,
       "status": "active",
       "id": 18
-    },
-    {
-      "name": "Hola",
-      "description": "testing",
-      "userId": 2,
-      "status": "archived",
-      "id": 19
     }
   ]
 }
