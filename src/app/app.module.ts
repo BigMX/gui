@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 
 // services
 import { Registries } from './class/registries.service';
+import { User } from './class/user.service';
 
 const defaultRoute = 'login';
 
@@ -37,9 +38,36 @@ const defaultRoute = 'login';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'invite', component: InviteComponent },
-      { path: 'archive', component: ArchiveComponent },
+      { path: 'dashboard', children: [
+          {
+            path: '',
+            component: DashboardComponent
+          },
+          {
+            path: ':id',
+            component: DashboardComponent
+          }
+        ] },
+      { path: 'invite', children: [
+          {
+            path: '',
+            component: InviteComponent
+          },
+          {
+            path: ':id',
+            component: InviteComponent
+          }
+       ] },
+      { path: 'archive', children: [
+          {
+            path: '',
+            component: ArchiveComponent
+          },
+          {
+            path: ':id',
+            component: ArchiveComponent
+          }
+       ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'cart', component: CartComponent },
@@ -49,7 +77,7 @@ const defaultRoute = 'login';
           component: RegistryComponent
         },
         {
-          path: ':id',
+          path: ':userid/:regid',
           component: RegistryComponent
         }
       ] },
@@ -58,7 +86,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries],
+  providers: [Registries, User],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

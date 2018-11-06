@@ -4,4 +4,5 @@ export class Account {
   email?: string;
   password?:string;
   phone?: number;
+  id?: number;
 }

@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 
+class ArchiveParams {
+  id: string;
+}
 
 @Component({
   selector: 'app-archive',
@@ -14,30 +17,36 @@ export class ArchiveComponent implements OnInit {
   registry: Registry[];
   newRegistry: Registry;
   archived: Registry[];
-  id = 2;
+  id: number;
   regId: number;
 
   constructor(
+    private route: ActivatedRoute,
     private registries: Registries
   ) { }
 
   ngOnInit() {
     this.newRegistry = new Registry;
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
-    });
-    this.registries.getArchivedRegs(this.id).subscribe((registry) => {
-      this.archived = registry;
+    this.route.params.subscribe((params: ArchiveParams) => {
+      if (params.id) {
+        this.id = +params.id;
+        this.registries.getRegistries(this.id).subscribe((registry_) => {
+          this.registry = registry_;
+        });
+        this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
+          this.archived = registry_;
+        });
+      }
     });
   }
 
   addRegistry() {
     this.newRegistry.userId = this.id;
     this.newRegistry.status = 'active';
-    this.registries.add(this.newRegistry).subscribe((registry) => {
+    this.registries.add(this.newRegistry).subscribe((registry_) => {
     });
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
+    this.registries.getRegistries(this.id).subscribe((registry_) => {
+      this.registry = registry_;
     });
     this.newRegistry = {};
   }
@@ -47,9 +56,9 @@ export class ArchiveComponent implements OnInit {
       this.newRegistry = registry;
       this.newRegistry.status = 'archived';
       console.log(this.newRegistry);
-      this.registries.deleteReg(this.newRegistry.id).subscribe((registry) => {
+      this.registries.deleteReg(this.newRegistry.id).subscribe((registry_) => {
       });
-      this.registries.add(this.newRegistry).subscribe((registry) => {
+      this.registries.add(this.newRegistry).subscribe((registry_) => {
       });
       this.archived.push(this.newRegistry);
     });

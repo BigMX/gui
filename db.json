@@ -23,6 +23,46 @@
       "email": "efashenpoura@smu.edu",
       "phoneNumber": "214-999-9999",
       "password": "12345"
+    },
+    {
+      "lastName": "Alhumaid",
+      "firstName": "Haya",
+      "email": "halhumaid@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "lastName": "Holcomb",
+      "firstName": "Harry",
+      "email": "hholcomb@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "lastName": "Watkins",
+      "firstName": "Jake",
+      "email": "jwatkins@smu.edu",
+      "phone": null,
+      "password": "password",
+      "id": 6
+    },
+    {
+      "lastName": "Knotts",
+      "firstName": "Tristan",
+      "email": "tknotts@smu.edu",
+      "phone": null,
+      "password": "somepass",
+      "id": 7
+    },
+    {
+      "lastName": "Dunn",
+      "firstName": "Katelyn",
+      "email": "kdunn@smu.edu",
+      "phone": null,
+      "password": "ihategui",
+      "id": 8
     }
   ],
   "registries": [
@@ -55,13 +95,6 @@
       "status": "archived"
     },
     {
-      "name": "Test Registry",
-      "description": "Do things get archived?",
-      "userId": 2,
-      "status": "archived",
-      "id": 11
-    },
-    {
       "name": "Testing ",
       "description": "testing~",
       "userId": 2,
@@ -69,18 +102,18 @@
       "id": 10
     },
     {
-      "name": "Things work",
-      "description": "YAYAYAYAYAY",
-      "userId": 2,
-      "status": "active",
-      "id": 13
-    },
-    {
       "name": "More registries",
       "description": "HELLO",
       "userId": 2,
-      "status": "active",
+      "status": "archived",
       "id": 14
+    },
+    {
+      "name": "Test",
+      "description": "Registry",
+      "userId": 2,
+      "status": "active",
+      "id": 18
     }
   ]
 }
