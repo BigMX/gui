@@ -21,18 +21,13 @@ h3{
   text-align: center;
 }
 
-.card-body {
-  background: -webkit-linear-gradient(left, #a7c1e0a2, #eed4df);
+.card-body, .back-color {
+  background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee) ;
 }
-
-.back-color {
-  background: -webkit-linear-gradient(left, #e5d4ee, #a7c1e0a2);
-}
-
 
 .card {
    border:none;
-   background: -webkit-linear-gradient(left, #a7c1e0a2, #eed4df);
+   background: -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee) !important;
 }
 
 alert {

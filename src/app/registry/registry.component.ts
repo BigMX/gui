@@ -3,21 +3,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 
+class RegistryParams {
+  id: string;
+}
 
 @Component({
-  selector: 'app-archive',
-  templateUrl: './archive.component.html',
-  styleUrls: ['./archive.component.css']
+  selector: 'app-registry',
+  templateUrl: './registry.component.html',
+  styleUrls: ['./registry.component.css']
 })
-export class ArchiveComponent implements OnInit {
+export class RegistryComponent implements OnInit {
 
+  currentReg: Registry;
   registry: Registry[];
   newRegistry: Registry;
-  archived: Registry[];
   id = 2;
-  regId: number;
 
   constructor(
+    private route: ActivatedRoute,
     private registries: Registries
   ) { }
 
@@ -26,8 +29,12 @@ export class ArchiveComponent implements OnInit {
     this.registries.getRegistries(this.id).subscribe((registry) => {
       this.registry = registry;
     });
-    this.registries.getArchivedRegs(this.id).subscribe((registry) => {
-      this.archived = registry;
+    this.route.params.subscribe((params: RegistryParams) => {
+      if (params.id) {
+        this.registries.getRegById(+params.id).subscribe((registry) => {
+          this.currentReg = registry;
+        });
+      }
     });
   }
 
@@ -42,18 +49,13 @@ export class ArchiveComponent implements OnInit {
     this.newRegistry = {};
   }
 
-  archive() {
-    this.registries.getRegById(this.regId).subscribe((registry) => {
-      this.newRegistry = registry;
-      this.newRegistry.status = 'archived';
-      console.log(this.newRegistry);
-      this.registries.deleteReg(this.newRegistry.id).subscribe((registry) => {
-      });
-      this.registries.add(this.newRegistry).subscribe((registry) => {
-      });
-      this.archived.push(this.newRegistry);
+  deleteRegistry() {
+    this.route.params.subscribe((params: RegistryParams) => {
+      if (params.id) {
+        this.registries.deleteReg(+params.id).subscribe((registry) => {
+        });
+      }
     });
-    this.newRegistry = {};
   }
-}
 
+}

@@ -42,25 +42,14 @@ h2{
   font-size: .9em;
   margin: 1em;
 }
-
-.active2 {
-  background-color: #a7c1e0a2;
+#archiveButton, #inviteButton {
+  margin-left: 15em;
+  text-align: center;
 }
 
-.activebtn, .activebtn2 {
-  margin-left: -1em;
-  background-color: #e5d4ee;
-  width:10em;
-  text-align:left;
-}
-
-button:active{
-  background:#a7c1e0a2;
-  box-shadow: 10px 10px 5px  rgb(98, 135, 190);
-}
-
-.nav-pills > .active {
-  background: #a7c1e0a2;
+#deleteButton {
+  margin-left: 13.5em;
+  text-align: center;
 }
 
 #menutitle {
@@ -76,14 +65,35 @@ button:active{
   letter-spacing: .1em;
 }
 
-#registry, #invited {
-  margin-top: -.4em;
-  margin-left: 0.3em;
-  font-family: 'Palatino', sans-serif;
-  letter-spacing: .05em;
+.nav-pills > .active {
+  background: #a7c1e0a2;
 }
 
 .cartbtn {
   background-color: #a7c1e0a2;
   width: 8.7em;
+}
+
+.activebtn, .activebtn2 {
+  margin-left: -1em;
+  background-color: #e5d4ee;
+  width:10em;
+  text-align:left;
+}
+
+.form-check {
+  padding-left: 3em;
+}
+
+tr:nth-child(even) {
+  background-color: #a7c1e0a2;
+}
+
+thead {
+  background-color: #cdb4db;
+}
+
+th {
+  font-family: 'Palatino', sans-serif;
+  text-transform: none;
 }

@@ -1,18 +1,22 @@
 <div>
-  <br> <br> <br> <br> <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
 
 <div class="container">
-    <div class="sheet">
-      <div class="row">
-        <div class="col-md-6 align-self-center container" style="padding-right:1.5em;">
-          <h2 id="maintitle" class="alert" style="color:black;">Gift Registry</h2>
-          <img src="https://media.giphy.com/media/l3vRebb6HyeIgvmQ8/giphy.gif" alt="gifttt">
-        </div>
+  <div class="sheet">
+    <div class="row">
+      <div class="col-md-6 align-self-center container" style="padding-right:1.5em;">
+        <h2 id="maintitle" class="alert" style="color:black;">Gift Registry</h2>
+        <img src="https://media.giphy.com/media/l3vRebb6HyeIgvmQ8/giphy.gif" alt="gifttt">
+      </div>
 
       <div class="col-md-6">
-          <br>
-          <div class="card text-white bg-info mb-3" >
+        <br>
+        <div class="card text-white bg-info mb-3">
           <div class="card-body">
             <br>
             <h3 class="text-center">Log In</h3>
@@ -20,25 +24,28 @@
               <label for="account_email">
                 Email:
               </label>
-              <input type="email" placeholder="Email" id="account_email" class="form-control" [(ngModel)]="account.email"
+              <input type="email" placeholder="Email" id="account_email" class="form-control" [(ngModel)]="email"
                required/>
             </div>
             <div class="form-group">
               <label for="account_password">
                 Password:
               </label>
-              <input ng-hide="showpassword" type="password" ng-model="password" placeholder="Password" id="account_password" class="form-control" [(ngModel)]="account.password"
+              <input ng-hide="showpassword" type="password" ng-model="password" placeholder="Password" id="account_password" class="form-control" [(ngModel)]="password"
                required/>
             </div>
             <br>
           </div>
           <br>
-          <button id="login-button" class="btn btn-sm btn-danger" type="button">
-              Login
+          <button id="login-button" class="btn btn-sm btn-danger" type="button" [routerLink]="['/dashboard']"> Login
           </button>
           <p></p>
           <div id="no-account">
-              <p>Don't have an account? <a id="links" [routerLink]="['/signup']"><strong> Sign Up! </strong></a></p>
+            <p>Don't have an account?
+              <a id="links" [routerLink]="['/signup']">
+                <strong> Sign Up! </strong>
+              </a>
+            </p>
           </div>
         </div>
         <br />
