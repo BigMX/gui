@@ -23,6 +23,22 @@
       "email": "efashenpoura@smu.edu",
       "phoneNumber": "214-999-9999",
       "password": "12345"
+    },
+    {
+      "lastName": "Alhumaid",
+      "firstName": "Haya",
+      "email": "halhumaid@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "lastName": "Holcomb",
+      "firstName": "Harry",
+      "email": "hholcomb@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 5
     }
   ],
   "registries": [
@@ -69,18 +85,32 @@
       "id": 10
     },
     {
-      "name": "Things work",
-      "description": "YAYAYAYAYAY",
-      "userId": 2,
-      "status": "active",
-      "id": 13
-    },
-    {
       "name": "More registries",
       "description": "HELLO",
       "userId": 2,
-      "status": "active",
+      "status": "archived",
       "id": 14
+    },
+    {
+      "name": "A Test Registry",
+      "description": "things go here",
+      "userId": 2,
+      "status": "archived",
+      "id": 16
+    },
+    {
+      "name": "Test",
+      "description": "Registry",
+      "userId": 2,
+      "status": "active",
+      "id": 18
+    },
+    {
+      "name": "Hola",
+      "description": "testing",
+      "userId": 2,
+      "status": "archived",
+      "id": 19
     }
   ]
 }

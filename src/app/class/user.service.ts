@@ -7,6 +7,7 @@ import { Account } from '../class/account';
 @Injectable()
 export class User {
 
+  // protected endPoint = 'ec2-18-225-35-42.us-east-2.compute.amazonaws.com:8888';
   protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
@@ -19,7 +20,7 @@ export class User {
     protected httpClient: HttpClient
   ) { }
 
-  add(account: Account): Observable<Account> {
+  addUser(account: Account): Observable<Account> {
     return this.httpClient
       .post<Account>(this.endPoint, account, this.httpOptions)
       .pipe(catchError(this.handleException));
