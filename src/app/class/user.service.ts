@@ -32,6 +32,12 @@ export class User {
       .pipe(catchError(this.handleException));
   }
 
+  getLogin(email: string, password: string): Observable<Account> {
+    return this.httpClient
+    .get<Account>(`${this.endPoint}/?email=${email}&password=${password}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

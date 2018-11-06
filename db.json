@@ -39,6 +39,30 @@
       "phone": null,
       "password": "1234",
       "id": 5
+    },
+    {
+      "lastName": "Watkins",
+      "firstName": "Jake",
+      "email": "jwatkins@smu.edu",
+      "phone": null,
+      "password": "password",
+      "id": 6
+    },
+    {
+      "lastName": "Knotts",
+      "firstName": "Tristan",
+      "email": "tknotts@smu.edu",
+      "phone": null,
+      "password": "somepass",
+      "id": 7
+    },
+    {
+      "lastName": "Dunn",
+      "firstName": "Katelyn",
+      "email": "kdunn@smu.edu",
+      "phone": null,
+      "password": "ihategui",
+      "id": 8
     }
   ],
   "registries": [

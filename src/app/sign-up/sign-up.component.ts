@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../class/account';
 import { User } from './../class/user.service';
 
@@ -17,6 +18,7 @@ id: number;
 color: string;
 state: number;
 constructor(
+  private router: Router,
   private users: User
 ) { }
 
@@ -49,6 +51,7 @@ ngOnInit() {
   signUp() {
    this.users.addUser(this.account).subscribe((account) => {
      this.id = account.id;
+     this.router.navigate(['login']);
    });
    this.account = {};
  }
