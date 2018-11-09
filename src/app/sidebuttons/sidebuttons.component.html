@@ -1,0 +1,14 @@
+<button [routerLink]="['/cart']" npmtype="button" class="btn cartbtn">
+  <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
+</button>
+<div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{account.email}}
+      <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">My Account</a>
+      <a class="dropdown-item" href="#">Notifications</a>
+      <a class="dropdown-item" href="#">Logout</a>
+  </div>
+</div>

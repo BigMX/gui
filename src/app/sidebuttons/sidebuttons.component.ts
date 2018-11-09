@@ -5,20 +5,18 @@ import { Registries } from '../class/registries.service';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
 
-class DashboardParams {
+class SidebuttonsParams {
   id: string;
 }
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-sidebuttons',
+  templateUrl: './sidebuttons.component.html',
+  styleUrls: ['./sidebuttons.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class SidebuttonsComponent implements OnInit {
 
-  registry: Registry[];
   account: Account;
-  newRegistry: Registry;
   id: number;
 
   constructor(
@@ -29,18 +27,14 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newRegistry = new Registry;
-    this.route.params.subscribe((params: DashboardParams) => {
+    this.route.params.subscribe((params: SidebuttonsParams) => {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
         });
-        this.registries.getRegistries(this.id).subscribe((registry) => {
-          this.registry = registry;
-        });
       }
     });
   }
-}
 
+}

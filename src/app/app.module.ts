@@ -19,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
+import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 
 const defaultRoute = 'login';
 
@@ -32,7 +33,8 @@ const defaultRoute = 'login';
     LogInComponent,
     RegistryComponent,
     CartComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebuttonsComponent
   ],
   imports: [
     BrowserModule,
