@@ -14,6 +14,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { InviteComponent } from './invite/invite.component';
 import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 // services
 import { Registries } from './class/registries.service';
@@ -30,7 +31,8 @@ const defaultRoute = 'login';
     InviteComponent,
     LogInComponent,
     RegistryComponent,
-    CartComponent
+    CartComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

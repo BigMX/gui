@@ -1,20 +1,28 @@
-<div class="inviteComponent">
-  <div class="dash">
-      <h2 id="dashboard">Invite</h2>
+<br>
+<div class="container">
+  <div class="inviteComponent row">
+    <div class="col-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-8">
+      <div class="dash">
+          <h2 id="dashboard">Invite</h2>
+      </div>
+        <br>
+      <div id="email" class="form-group">
+        <label for="exampleFormControlInput1">Email Address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+      <div id="selectreg" class="form-group">
+        <label for="exampleFormControlSelect1">Select Registry</label>
+        <select class="form-control" id="selectRegistry">
+          <option value="" selected></option>
+          <option *ngFor="let r of registry" value="r">{{ r.name }}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton">
+        Invite
+      </button>
+    </div>
   </div>
-    <br>
-  <div id="email" class="form-group">
-    <label for="exampleFormControlInput1">Email Address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div id="selectreg" class="form-group">
-    <label for="exampleFormControlSelect1">Select Registry</label>
-    <select class="form-control" id="selectRegistry">
-      <option value="" selected></option>
-      <option *ngFor="let r of registry" value="r">{{ r.name }}</option>
-    </select>
-  </div>
-  <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton">
-    Invite
-  </button>
 </div>
