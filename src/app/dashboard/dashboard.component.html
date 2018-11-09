@@ -29,28 +29,48 @@
       </div>
     </div> <!--end div class col 2-->
 
-    <!--next 8 colomn spaces will be used to hold list of the users registries and the ones they have been invited to-->
     <div class="col-8">
-      <div class="dash">
-          <h2 id="dashboard">Dashboard</h2>
-      </div>
-          <br>
-          <div class="myRegistries">
-            <h4 id="registry"><u>My Registries</u></h4>
-            <div class="list-group">
-                <a *ngFor="let r of registry"
-                routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
-                      <h5 class="mb-1">{{r.name}}</h5>
-                      <small class="mb-1">{{r.description}}</small>
-                </a>
-            </div>
-          </div>
-         <br>
-         <div class="otherRegistries">
-          <h4 id="invited"><u>Invited Registries</u></h4>
 
-         </div>
-    </div> <!--end div class col 8-->
+      <div *ngIf="this.router.url != ''">
+        <div class="dash">
+            <h2 id="dashboard">Dashboard</h2>
+        </div>
+            <br>
+            <div class="myRegistries">
+              <h4 id="registry"><u>My Registries</u></h4>
+              <div class="list-group">
+                  <a *ngFor="let r of registry"
+                  routerLink='/registry/{{r.id}}' class="list-group-item">
+                        <h5 class="mb-1">{{r.name}}</h5>
+                        <small class="mb-1">{{r.description}}</small>
+                  </a>
+              </div>
+            </div>
+          <br>
+          <div class="otherRegistries">
+            <h4 id="invited"><u>Invited Registries</u></h4>
+          </div>
+      </div>
+
+      <div *ngIf="this.router.url == '/invite'">
+        <app-invite></app-invite>
+      </div>
+
+      <div *ngIf="this.router.url == '/archive'">
+        <app-archive></app-archive>
+      </div>
+
+      <div *ngIf="this.router.url == '/cart'">
+        <app-cart></app-cart>
+      </div>
+
+      <div *ngIf="this.router.url == '/registry'">
+        <app-registry></app-registry>
+      </div>
+
+    </div>
+
+
 
     <!--last two colomns spaces hold the shopping cart button and the username dropdown menu-->
     <div class="col-2">
@@ -135,4 +155,3 @@
     </div>
   <div>
 </div>
-<!--end modals-->

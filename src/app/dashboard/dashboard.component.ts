@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    protected router: Router
   ) { }
 
   ngOnInit() {
