@@ -1,19 +1,38 @@
 <?php
-// DIC configuration
-
+//DIC configuration
 $container = $app->getContainer();
-
-// view renderer
+//view renderer
 $container['renderer'] = function ($c) {
     $settings = $c->get('settings')['renderer'];
     return new Slim\Views\PhpRenderer($settings['template_path']);
 };
-
-// monolog
+//monolog
 $container['logger'] = function ($c) {
     $settings = $c->get('settings')['logger'];
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+    };
+
+// $container['dbConn'] = function ($c) {
+// 	$db = new PDO(
+// 	'mysql:localhost=127.0.0.1:8888;
+// 	dbname=giftRegistry;charset=utf8mb4', 'root', 'root');
+// 	return $db;
+// };
+
+
+$container['dbConn'] = function ($c) {
+    $settings = $c->get('settings')['dbConn'];
+        $pdo = new PDO("mysql:host=" . $settings['host'] . 
+                   ";dbname=" . $settings['dbname'],
+                   $settings['user'], $settings['pass']);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
+                       PDO::FETCH_ASSOC);
+    return $pdo;
 };
+
+
+
