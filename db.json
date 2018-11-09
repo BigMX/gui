@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Arely",
+      "lastName": "Alcantara",
+      "email": "aalcantara@smu.edu",
+      "phoneNumber": "214-777-7777",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "firstName": "Travis",
+      "lastName": "Mei",
+      "email": "smei@smu.edu",
+      "phoneNumber": "214-555-5555",
+      "password": "abcde"
+    },
+    {
+      "id": 3,
+      "firstName": "Emily",
+      "lastName": "Fashenpour",
+      "email": "efashenpoura@smu.edu",
+      "phoneNumber": "214-999-9999",
+      "password": "12345"
+    }
+  ],
+  "registries": [
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "name": "A Registry",
+      "description": "testing testing",
+      "status": "active"
+    },
+    {
+      "userId": 3,
+      "name": "look it's another registry",
+      "description": "some other registry - nothing new",
+      "id": 5,
+      "status": "active"
+    },
+    {
+      "name": "i dont like this class",
+      "description": "boi bye",
+      "userId": 2,
+      "id": 9,
+      "status": "archived"
+    },
+    {
+      "name": "Test Registry",
+      "description": "Do things get archived?",
+      "userId": 2,
+      "status": "archived",
+      "id": 11
+    },
+    {
+      "name": "Testing ",
+      "description": "testing~",
+      "userId": 2,
+      "status": "archived",
+      "id": 10
+    },
+    {
+      "name": "Things work",
+      "description": "YAYAYAYAYAY",
+      "userId": 2,
+      "status": "active",
+      "id": 13
+    },
+    {
+      "name": "More registries",
+      "description": "HELLO",
+      "userId": 2,
+      "status": "active",
+      "id": 14
+    }
+  ]
+}

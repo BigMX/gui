@@ -8,7 +8,7 @@
 }
 
 #dropdownMenuButton {
-  background-color: #DCDCDC;
+  background-color: #e5d4ee;
 }
 
 h4 {
@@ -24,8 +24,10 @@ h2{
 }
 
 .dash {
+  padding-top: 1em;
   background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  margin: 1em;
+  border: none;
+  padding-bottom: 0.4em;
 }
 
 .modal-header {
@@ -41,7 +43,61 @@ h2{
   margin: 1em;
 }
 
-#archiveButton{
-  width: 95%;
-  margin: 1em;
+#archiveButton, #inviteButton {
+  margin-left: 14em;
+  text-align: center;
+}
+
+#menutitle {
+  margin-left: 0.6em;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .3em;
+}
+
+#dashboard {
+  text-size: 90%;
+  text-transform: uppercase;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+}
+
+.nav-pills > .active {
+  background: #a7c1e0a2;
+}
+
+.cartbtn {
+  background-color: #a7c1e0a2;
+  width: 8.7em;
+}
+
+.activebtn, .activebtn2 {
+  margin-left: -1em;
+  background-color: #e5d4ee;
+  width:10em;
+  text-align:left;
+}
+
+.form-check {
+  padding-left: 3em;
+}
+
+tr:nth-child(even) {
+  background-color: #a7c1e0a2;
+}
+
+
+thead {
+  background-color: #cdb4db;
+}
+
+th {
+  font-family: 'Palatino', sans-serif;
+  text-transform: none;
+}
+
+#total {
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+  font-size:145%;
+  text-align: center;
 }
