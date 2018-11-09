@@ -32,7 +32,8 @@ export class LogInComponent implements OnInit {
     this.users.getLogin(this.email, this.password).subscribe((account) => {
       if (account[0].firstName !== undefined) {
         var userid = +account[0].id;
-        this.router.navigate(['dashboard/{{userid}}']);
+        console.log(userid);
+        this.router.navigate(['dashboard', userid]);
       }
     });
   }
