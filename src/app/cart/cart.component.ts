@@ -18,9 +18,4 @@ export class CartComponent implements OnInit {
     this.newRegistry = new Registry;
     this.registry = [];
   }
-
-  addRegistry() {
-    this.registry.push(this.newRegistry);
-    this.newRegistry = new Registry;
-  }
 }

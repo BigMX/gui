@@ -44,17 +44,6 @@ export class RegistryComponent implements OnInit {
     });
   }
 
-  addRegistry() {
-    this.newRegistry.userId = this.id;
-    this.newRegistry.status = 'active';
-    this.registries.add(this.newRegistry).subscribe((registry) => {
-    });
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
-    });
-    this.newRegistry = {};
-  }
-
   deleteRegistry() {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {
@@ -63,7 +52,4 @@ export class RegistryComponent implements OnInit {
       }
     });
   }
-
-
-
 }

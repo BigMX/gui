@@ -14,10 +14,12 @@ import { ArchiveComponent } from './archive/archive.component';
 import { InviteComponent } from './invite/invite.component';
 import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
+import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 
 const defaultRoute = 'login';
 
@@ -30,7 +32,9 @@ const defaultRoute = 'login';
     InviteComponent,
     LogInComponent,
     RegistryComponent,
-    CartComponent
+    CartComponent,
+    SidebarComponent,
+    SidebuttonsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,16 @@ const defaultRoute = 'login';
        ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart',  children: [
+        {
+          path: '',
+          component: CartComponent
+        },
+        {
+          path: ':id',
+          component: CartComponent
+        }
+      ] },
       { path: 'registry',children: [
         {
           path: '',
