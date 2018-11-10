@@ -1,39 +1,50 @@
-<div class="cartComponent">
-  <div class="dash">
-      <h2 id="dashboard">Cart</h2>
+<br>
+<div class="container">
+  <div class="cartComponent row">
+    <div class="col-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-8">
+      <div class="dash">
+          <h2 id="dashboard">Cart</h2>
+      </div>
+      <div>
+        <br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Remove</th>
+              <th>Name of Item</th>
+              <th>Price</th>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
+              <th>Dog</th>
+              <th>$1</th>
+              <th>Petsmart</th>
+              <th>Need</th>
+            </tr>
+            <tr>
+              <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
+              <th>Cat</th>
+              <th>$3</th>
+              <th>Petsmart</th>
+              <th>Need</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="total"><u>Total Price:</u> $4</p>
+      <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton">
+        Remove Item(s)
+      </button>
+    </div>
+    <div class="col-2">
+      <app-sidebuttons></app-sidebuttons>
+    </div>
   </div>
-  <div>
-    <br>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Remove</th>
-          <th>Name of Item</th>
-          <th>Price</th>
-          <th>Location</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
-          <th>Dog</th>
-          <th>$1</th>
-          <th>Petsmart</th>
-          <th>Need</th>
-        </tr>
-        <tr>
-          <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
-          <th>Cat</th>
-          <th>$3</th>
-          <th>Petsmart</th>
-          <th>Need</th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p id="total"><u>Total Price:</u> $4</p>
-  <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton">
-    Remove Item(s)
-  </button>
 </div>

@@ -114,20 +114,6 @@
       "userId": 2,
       "status": "active",
       "id": 18
-    },
-    {
-      "name": "a registry",
-      "description": "testing",
-      "userId": 1,
-      "status": "active",
-      "id": 19
-    },
-    {
-      "name": "TESTING",
-      "description": "testing",
-      "userId": 1,
-      "status": "active",
-      "id": 20
     }
   ]
 }

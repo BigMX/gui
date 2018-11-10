@@ -74,11 +74,20 @@ const defaultRoute = 'login';
        ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
-      { path: 'cart', component: DashboardComponent },
+      { path: 'cart',  children: [
+        {
+          path: '',
+          component: CartComponent
+        },
+        {
+          path: ':id',
+          component: CartComponent
+        }
+      ] },
       { path: 'registry',children: [
         {
           path: '',
-          component: DashboardComponent
+          component: RegistryComponent
         },
         {
           path: ':userid/:regid',

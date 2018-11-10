@@ -6,7 +6,6 @@
     </div>
 
     <div class="col-8">
-      <div *ngIf="this.router.url != ''">
         <div class="dash">
             <h2 id="dashboard">Dashboard</h2>
         </div>
@@ -15,7 +14,7 @@
               <h4 id="registry"><u>My Registries</u></h4>
               <div class="list-group">
                   <a *ngFor="let r of registry"
-                  routerLink='/registry/{{r.id}}' class="list-group-item">
+                  routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
                         <h5 class="mb-1">{{r.name}}</h5>
                         <small class="mb-1">{{r.description}}</small>
                   </a>
@@ -25,24 +24,6 @@
           <div class="otherRegistries">
             <h4 id="invited"><u>Invited Registries</u></h4>
           </div>
-      </div>
-
-      <div *ngIf="this.router.url == '/invite'">
-        <app-invite></app-invite>
-      </div>
-
-      <div *ngIf="this.router.url == '/archive'">
-        <app-archive></app-archive>
-      </div>
-
-      <div *ngIf="this.router.url == '/cart'">
-        <app-cart></app-cart>
-      </div>
-
-      <div *ngIf="this.router.url == '/registry'">
-        <app-registry></app-registry>
-      </div>
-
     </div>
 
     <!--last two colomns spaces hold the shopping cart button and the username dropdown menu-->

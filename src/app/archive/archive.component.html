@@ -13,7 +13,7 @@
         <div class="myRegistries">
           <h4 id="registry"><u>Archived Registries</u></h4>
           <div class="list-group">
-            <a *ngFor="let r of archived" routerLink='/registry/{{r.id}}' class="list-group-item">
+            <a *ngFor="let r of archived" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
               <h5 class="mb-1">{{r.name}}</h5>
               <small class="mb-1">{{r.description}}</small>
             </a>

@@ -40,17 +40,6 @@ export class ArchiveComponent implements OnInit {
     });
   }
 
-  addRegistry() {
-    this.newRegistry.userId = this.id;
-    this.newRegistry.status = 'active';
-    this.registries.add(this.newRegistry).subscribe((registry_) => {
-    });
-    this.registries.getRegistries(this.id).subscribe((registry_) => {
-      this.registry = registry_;
-    });
-    this.newRegistry = {};
-  }
-
   archive() {
     this.registries.getRegById(this.regId).subscribe((registry) => {
       this.newRegistry = registry;
