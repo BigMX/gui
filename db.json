@@ -8,9 +8,10 @@
       "phoneNumber": "214-777-7777",
       "password": "12345",
       "notifications": [
-        "some notification",
-        "Coffee has been bought!!!",
-        "Breakfast Sandwich has been bought!!!"
+        "Coffee, has been bought!!!",
+        "Tea, has been bought!!!",
+        "Breakfast Sandwich, has been bought!!!",
+        "all items have been bought for: New Registry!!!!"
       ],
       "cart": [
         {
@@ -111,7 +112,7 @@
           "name": "Tea",
           "price": "$3.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "bought"
         },
         {
           "name": "Breakfast Sandwich",
