@@ -1,4 +1,20 @@
 {
+  "invitation": [
+    {
+      "id": 1,
+      "receiverEmail": "bbb",
+      "registryId": 1,
+      "status": false,
+      "code": "code1"
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "registryId": 18,
+      "status": true,
+      "Code": "Code18",
+      "id": 2
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -163,6 +179,34 @@
       "userId": 2,
       "status": "active",
       "id": 18
+    },
+    {
+      "name": "MyR",
+      "description": "r",
+      "userId": null,
+      "status": "active",
+      "id": 19
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": null,
+      "status": "active",
+      "id": 20
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": null,
+      "status": "active",
+      "id": 21
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "userId": 2,
+      "status": "active",
+      "id": 22
     }
   ]
 }
