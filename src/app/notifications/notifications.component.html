@@ -9,11 +9,18 @@
             <h2 style="text-align: center; font-family: Markerfelt; text-decoration: underline; color: gray;">Notifications</h2>
           </div>
           <br>
-          <div class="alert alert-secondary alert-dismissible fade show" role="alert" *ngFor="let notif of notifs">
-              {{notif}}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(notif)">
-                <span aria-hidden="true">&times;</span>
-              </button>
+          <div *ngIf="notifs">
+            <div class="alert alert-secondary alert-dismissible fade show" role="alert" *ngFor="let notif of notifs">
+                {{notif}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(notif)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          </div>
+          <div *ngIf="!notifs">
+            <div class="alert alert-secondary" style="text-align: center;">
+              no notifications to display now :(
+            </div>
           </div>
       </div>
       <div class="col-2">
