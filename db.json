@@ -9,6 +9,14 @@
       "password": "12345",
       "notifications": [
         "some notification"
+      ],
+      "cart": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
       ]
     },
     {
