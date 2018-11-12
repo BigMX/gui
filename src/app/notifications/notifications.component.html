@@ -6,11 +6,11 @@
       </div>
       <div class="col-8">
           <div>
-            <h2 style="text-align: center; font-family: Markerfelt; text-decoration: underline; color: gray;">Notifications</h2>
+            <h2 class="notifs">Notifications</h2>
           </div>
           <br>
           <div *ngIf="notifs">
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert" *ngFor="let notif of notifs">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let notif of notifs">
                 {{notif}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(notif)">
                   <span aria-hidden="true">&times;</span>

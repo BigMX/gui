@@ -60,20 +60,28 @@ export class NotificationsComponent implements OnInit {
     for(i = 0; i < this.registryList.length; i++) {
       const registry = this.registryList[i];
       if (registry.items === undefined) {
-        const message = 'all items have been bought for ' + registry.name + '!!!!';
+        const message = 'all items have been bought for: ' + registry.name + '!!!!';
         if(this.notifs.indexOf(message)===-1) {
           this.notifs.push(message);
         }
       }
        let j;
        if(registry.items!==undefined) {
-        for (j = 0; j < registry.items.length; j++) {
+          let counter = 0;
+          for (j = 0; j < registry.items.length; j++) {
             const item = registry.items[j];
             if (item.status === 'bought') {
-              const message = item.name + ' has been bought!!!';
+              counter+=1;
+              const message = item.name + ', has been bought!!!';
               if(this.notifs.indexOf(message)===-1) {
                 this.notifs.push(message);
               }
+            }
+          }
+          if (counter === registry.items.length) {
+            const message = 'all items have been bought for: ' + registry.name + '!!!!';
+            if(this.notifs.indexOf(message)===-1) {
+            this.notifs.push(message);
             }
           }
        }
