@@ -8,12 +8,26 @@
       "phoneNumber": "214-777-7777",
       "password": "12345",
       "notifications": [
-        "some notification"
+        "some notification",
+        "Coffee has been bought!!!",
+        "Breakfast Sandwich has been bought!!!"
       ],
       "cart": [
         {
           "name": "Coffee",
           "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
           "location": "Starbucks",
           "status": "need"
         }
@@ -25,7 +39,10 @@
       "lastName": "Mei",
       "email": "smei@smu.edu",
       "phoneNumber": "214-555-5555",
-      "password": "abcde"
+      "password": "abcde",
+      "notifications": [
+        "all items have been bought for Test!!!!"
+      ]
     },
     {
       "id": 3,
@@ -82,7 +99,27 @@
       "userId": 1,
       "name": "New Registry",
       "description": "adding a new registry - hi",
-      "status": "active"
+      "status": "active",
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "bought"
+        }
+      ]
     },
     {
       "id": 4,

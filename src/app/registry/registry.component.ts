@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
+import { Item } from '../class/item';
+import { Account } from '../class/account';
+import { User } from '../class/user.service';
 
 class RegistryParams {
   userid: string;
@@ -16,14 +19,17 @@ class RegistryParams {
 export class RegistryComponent implements OnInit {
 
   currentReg: Registry;
+  cart: Item[] = [];
   name: string;
+  account: Account;
   registry: Registry[];
   newRegistry: Registry;
   id: number;
 
   constructor(
     private route: ActivatedRoute,
-    private registries: Registries
+    private registries: Registries,
+    private users: User
   ) { }
 
   ngOnInit() {
@@ -33,6 +39,10 @@ export class RegistryComponent implements OnInit {
         this.id = +params.userid;
         this.registries.getRegistries(this.id).subscribe((registry) => {
           this.registry = registry;
+        });
+        this.users.getById(this.id).subscribe((account) => {
+          this.account = account;
+          this.cart = account.cart;
         });
       }
       if (params.regid) {

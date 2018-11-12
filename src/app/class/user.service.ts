@@ -44,6 +44,12 @@ export class User {
     .pipe(catchError(this.handleException));
   }
 
+  addNotif(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   addItemToCart(user: Account): Observable<Account> {
     return this.httpClient
     .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
