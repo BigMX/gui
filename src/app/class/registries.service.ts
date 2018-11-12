@@ -20,30 +20,35 @@ export class Registries {
     protected httpClient: HttpClient
   ) { }
 
+  // this is for adding a new registry
   add(registries: Registry): Observable<Registry> {
     return this.httpClient
       .post<Registry>(`${this.endPoint}`, registries, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
+  // this is for getting the registries for a certain user
   getRegistries(userId: number): Observable<Registry[]> {
     return this.httpClient
       .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=active`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
+  // this is for getting the archived registries for a certain user
   getArchivedRegs(userId: number): Observable<Registry[]> {
     return this.httpClient
       .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=archived`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
+  // this is for deleting a registry
   deleteReg(regId: number): Observable<Registry> {
     return this.httpClient
     .delete<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
+  // this is for getting a registry
   getRegById(regId: number): Observable<Registry> {
     return this.httpClient
     .get<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
