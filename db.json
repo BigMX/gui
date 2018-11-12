@@ -13,6 +13,25 @@
       "status": true,
       "Code": "Code18",
       "id": 2
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 3
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 4
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 5
     }
   ],
   "users": [
@@ -207,6 +226,13 @@
       "userId": 2,
       "status": "active",
       "id": 22
+    },
+    {
+      "name": "testing",
+      "description": "t",
+      "userId": 1,
+      "status": "active",
+      "id": 23
     }
   ]
 }

@@ -15,10 +15,13 @@
       </div>
       <div id="selectreg" class="form-group">
         <label for="exampleFormControlSelect1">Select Registry</label>
-        <select class="form-control" id="selectRegistry">
+        <select class="form-control" [(ngModel)]="registryId" id="selectRegistry">
           <option value="" selected></option>
-          <option *ngFor="let r of registry" value="r" (click)="newInvitation.registryId=r.id">{{ r.name }}, {{r.id}}</option>
+          <option *ngFor="let r of registry" [ngValue]="r.id">{{ r.name }}, {{r.id}}</option>
         </select>
+      </div>
+      <div>
+        {{registryId}}
       </div>
       <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton" (click)="invite()" data-toggle="modal"
         data-target="#invModal">
