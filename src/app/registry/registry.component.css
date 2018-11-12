@@ -65,8 +65,8 @@ h2{
   letter-spacing: .1em;
 }
 
-.nav-pills > .active {
-  background: #a7c1e0a2;
+.nav-pills > a.active, .nav-pills > a:focus, .nav-item > a:visited {
+  background:#a7c1e0a2;
 }
 
 .cartbtn {
