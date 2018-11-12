@@ -16,6 +16,7 @@ class RegistryParams {
 export class RegistryComponent implements OnInit {
 
   currentReg: Registry;
+  name: string;
   registry: Registry[];
   newRegistry: Registry;
   id: number;
@@ -34,11 +35,10 @@ export class RegistryComponent implements OnInit {
           this.registry = registry;
         });
       }
-    });
-    this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
+          this.name = this.currentReg.name;
         });
       }
     });
