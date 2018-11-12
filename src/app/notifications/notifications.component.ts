@@ -27,6 +27,7 @@ export class NotificationsComponent implements OnInit {
     private registries: Registries
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.route.params.subscribe((params: NotificationsParams) => {
       if (params.id) {
@@ -45,6 +46,7 @@ export class NotificationsComponent implements OnInit {
     });
   }
 
+  // this method removes a notification when the 'x' on it is clicked - user notifications are updated to reflect the change
   removeAlert(notif: string) {
     const index = this.notifs.indexOf(notif);
     this.notifs.splice(index, 1);
@@ -54,6 +56,10 @@ export class NotificationsComponent implements OnInit {
     });
   }
 
+  // this method checks for newer notifications
+  // checks to see what items have been bought to alert the user of such purchases, and avoids duplicate alerts
+  // it also checks to see if all of the items in a given registry have been purchased and alerts accordingly
+  // this is done for all of the user's /active/ registries
   check() {
     let i;
     // tslint:disable-next-line:forin

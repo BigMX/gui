@@ -23,11 +23,13 @@ export class LogInComponent implements OnInit {
     private users: User
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.email = '';
     this.password = '';
   }
 
+  // this method is used for logging in and alerts the user if the wrong password is typed
   login() {
     this.users.getLogin(this.email, this.password).subscribe((account) => {
       console.log(account);

@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
     private users: User
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.newItem = new Item;
@@ -44,6 +45,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+  // this method is for adding an item to the cart - the status is set to need
   addItem() {
     this.newItem.status = 'need';
     this.cart.push(this.newItem);

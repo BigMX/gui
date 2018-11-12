@@ -26,9 +26,9 @@ export class DashboardComponent implements OnInit {
     private registries: Registries,
     private users: User,
     protected router: Router
-  ) {
-   }
+  ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: DashboardParams) => {

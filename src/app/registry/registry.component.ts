@@ -32,6 +32,7 @@ export class RegistryComponent implements OnInit {
     private users: User
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: RegistryParams) => {
@@ -54,6 +55,7 @@ export class RegistryComponent implements OnInit {
     });
   }
 
+  // this method deletes a registry
   deleteRegistry() {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {

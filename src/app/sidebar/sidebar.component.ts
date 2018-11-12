@@ -28,6 +28,7 @@ export class SidebarComponent implements OnInit {
     protected router: Router
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: SidebarParams) => {
@@ -43,6 +44,7 @@ export class SidebarComponent implements OnInit {
     });
   }
 
+  // this method is used for adding a registry to the appropriate user (who's logged in)
   addRegistry() {
     this.newRegistry.userId = this.id;
     this.newRegistry.status = 'active';
