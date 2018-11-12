@@ -26,7 +26,8 @@ export class DashboardComponent implements OnInit {
     private registries: Registries,
     private users: User,
     protected router: Router
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     this.newRegistry = new Registry;

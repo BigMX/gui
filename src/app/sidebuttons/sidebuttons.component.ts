@@ -18,6 +18,7 @@ export class SidebuttonsComponent implements OnInit {
 
   account: Account;
   id: number;
+  notifCount: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class SidebuttonsComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
+          this.notifCount = this.account.notifications.length;
         });
       }
     });
