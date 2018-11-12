@@ -20,6 +20,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
+import { Invitations } from './class/invitation.service';
 
 const defaultRoute = 'login';
 
@@ -99,7 +100,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User],
+  providers: [Registries, User,Invitations],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

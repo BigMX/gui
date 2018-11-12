@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from './../class/registries.service';
+import {Invitations} from './../class/invitation.service';
+import { Invitation } from '../class/invitation';
 
 class InviteParams {
   id: string;
@@ -17,14 +19,21 @@ export class InviteComponent implements OnInit {
   registry: Registry[];
   newRegistry: Registry;
   id: number;
+  registryId: number;
+  newInvitation: Invitation;
+  code: string;
+  show: boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private registries: Registries
+    private registries: Registries,
+    private invitations: Invitations
   ) { }
 
   ngOnInit() {
     this.newRegistry = new Registry;
+    this.newInvitation=new Invitation;
+    this.show=true;
     this.route.params.subscribe((params: InviteParams) => {
       if (params.id) {
         this.id = +params.id;
@@ -34,4 +43,17 @@ export class InviteComponent implements OnInit {
       }
     });
   }
+
+
+
+  invite() {
+    this.newInvitation.status=false;
+    this.newInvitation.Code='Code'+this.newInvitation.registryId;
+    this.code=this.newInvitation.Code;
+    this.invitations.add(this.newInvitation).subscribe((x) => {
+      this.newInvitation=new Invitation;
+      this.show=false;
+    });
+  }
+
 }

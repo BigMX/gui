@@ -6,23 +6,35 @@
     </div>
     <div class="col-8">
       <div class="dash">
-          <h2 id="dashboard">Invite</h2>
+        <h2 id="dashboard">Invite</h2>
       </div>
-        <br>
+      <br>
       <div id="email" class="form-group">
         <label for="exampleFormControlInput1">Email Address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="newInvitation.receiverEmail">
       </div>
       <div id="selectreg" class="form-group">
         <label for="exampleFormControlSelect1">Select Registry</label>
         <select class="form-control" id="selectRegistry">
           <option value="" selected></option>
-          <option *ngFor="let r of registry" value="r">{{ r.name }}</option>
+          <option *ngFor="let r of registry" value="r" (click)="newInvitation.registryId=r.id">{{ r.name }}, {{r.id}}</option>
         </select>
       </div>
-      <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton">
+      <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton" (click)="invite()" data-toggle="modal"
+        data-target="#invModal">
         Invite
       </button>
+      <!-- <div class="modal" id="invModal" aria-hidden="true" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>You successfully invite a person</h5>
+          </div>
+          <div class="modal-body">
+            <h5>Your code is {{code}}</h5>
+          </div>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div> -->
     </div>
     <div class="col-2">
       <app-sidebuttons></app-sidebuttons>

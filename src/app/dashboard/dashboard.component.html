@@ -6,31 +6,42 @@
     </div>
 
     <div class="col-8">
-        <div class="dash">
-            <h2 id="dashboard">Dashboard</h2>
+      <div class="dash">
+        <h2 id="dashboard">Dashboard</h2>
+      </div>
+      <br>
+      <div class="myRegistries">
+        <h4 id="registry">
+          <u>My Registries</u>
+        </h4>
+        <div class="list-group">
+          <a *ngFor="let r of registry" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
+            <h5 class="mb-1">{{r.name}}</h5>
+            <small class="mb-1">{{r.description}}</small>
+          </a>
         </div>
-            <br>
-            <div class="myRegistries">
-              <h4 id="registry"><u>My Registries</u></h4>
-              <div class="list-group">
-                  <a *ngFor="let r of registry"
-                  routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
-                        <h5 class="mb-1">{{r.name}}</h5>
-                        <small class="mb-1">{{r.description}}</small>
-                  </a>
-              </div>
-            </div>
-          <br>
-          <div class="otherRegistries">
-            <h4 id="invited"><u>Invited Registries</u></h4>
-          </div>
+      </div>
+      <br>
+      <div class="otherRegistries">
+        <h4 id="invited">
+          <u>Invited Registries</u>
+        </h4>
+        <div class="list-group">
+          <a *ngFor="let r of inviteReg" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
+            <h5 class="mb-1">{{r.name}}</h5>
+            <small class="mb-1">{{r.description}}</small>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!--last two colomns spaces hold the shopping cart button and the username dropdown menu-->
     <div class="col-2">
       <app-sidebuttons></app-sidebuttons>
-    </div> <!--end div class col 2-->
+    </div>
+    <!--end div class col 2-->
 
-  </div> <!--end div for the row class-->
-</div> <!--end div for container class-->
-
+  </div>
+  <!--end div for the row class-->
+</div>
+<!--end div for container class-->
