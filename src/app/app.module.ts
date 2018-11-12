@@ -15,11 +15,11 @@ import { InviteComponent } from './invite/invite.component';
 import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
-import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 
 const defaultRoute = 'login';
 
