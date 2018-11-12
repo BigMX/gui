@@ -23,6 +23,7 @@ export class InviteComponent implements OnInit {
     private registries: Registries
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: InviteParams) => {

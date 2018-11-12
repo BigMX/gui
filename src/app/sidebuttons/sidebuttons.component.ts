@@ -27,6 +27,7 @@ export class SidebuttonsComponent implements OnInit {
     protected router: Router
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.route.params.subscribe((params: SidebuttonsParams) => {
       if (params.id) {
