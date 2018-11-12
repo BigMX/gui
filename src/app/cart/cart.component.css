@@ -43,8 +43,9 @@ h2{
   margin: 1em;
 }
 
-#archiveButton, #inviteButton {
-  margin-left: 14em;
+#removeItem {
+  margin-left: 11em;
+  margin-right: 1em;
   text-align: center;
 }
 
