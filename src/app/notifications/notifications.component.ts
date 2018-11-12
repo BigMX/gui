@@ -40,7 +40,7 @@ export class NotificationsComponent implements OnInit {
     this.notifs.splice(index, 1);
     this.account.notifications = this.notifs;
     this.users.removeNotif(this.account).subscribe((account) => {
-      console.log(account);
+      // console.log(account);
     });
   }
 
