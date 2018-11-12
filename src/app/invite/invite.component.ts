@@ -45,10 +45,14 @@ export class InviteComponent implements OnInit {
     });
   }
 
+  change(id: number) {
+    this.registryId=id;
+  }
 
 
   invite() {
     this.newInvitation.status=false;
+    this.newInvitation.registryId=this.registryId;
     this.newInvitation.Code='Code'+this.newInvitation.registryId;
     this.code=this.newInvitation.Code;
     this.invitations.add(this.newInvitation).subscribe((x) => {
