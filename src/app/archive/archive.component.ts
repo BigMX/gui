@@ -25,6 +25,7 @@ export class ArchiveComponent implements OnInit {
     private registries: Registries
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: ArchiveParams) => {
@@ -40,6 +41,7 @@ export class ArchiveComponent implements OnInit {
     });
   }
 
+  // this method archives a registry - changed it's status to archived
   archive() {
     this.registries.getRegById(this.regId).subscribe((registry) => {
       this.newRegistry = registry;

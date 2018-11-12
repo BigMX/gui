@@ -20,21 +20,45 @@ export class User {
     protected httpClient: HttpClient
   ) { }
 
+  // this is for adding a user
   addUser(account: Account): Observable<Account> {
     return this.httpClient
       .post<Account>(this.endPoint, account, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
+  // this is for getting a user based on id
   getById(id: number): Observable<Account> {
     return this.httpClient
       .get<Account>(`${this.endPoint}/${id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
+  // this is for logging in since we don't know how to authorize and do security
   getLogin(email: string, password: string): Observable<Account> {
     return this.httpClient
     .get<Account>(`${this.endPoint}/?email=${email}&password=${password}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  // this is for removing a notification when the user clicks on the x
+  removeNotif(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  // this is for adding a notification to the notifications page
+  addNotif(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  // this is for adding an item to the user's cart
+  addItemToCart(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

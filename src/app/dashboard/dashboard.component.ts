@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
     protected router: Router
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.inviteReg=[];

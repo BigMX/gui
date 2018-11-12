@@ -1,3 +1,4 @@
+import { Item } from './item';
 export class Account {
   firstName?: string;
   lastName?: string;
@@ -5,4 +6,6 @@ export class Account {
   password?:string;
   phone?: number;
   id?: number;
+  notifications?: string[];
+  cart?: Item[];
 }

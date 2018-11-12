@@ -30,6 +30,7 @@ export class InviteComponent implements OnInit {
     private invitations: Invitations
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.newInvitation=new Invitation;

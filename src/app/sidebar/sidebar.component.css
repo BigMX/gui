@@ -55,9 +55,10 @@ button:active{
   box-shadow: 10px 10px 5px  rgb(98, 135, 190);
 }
 
-.nav-pills > .active {
-  background: #a7c1e0a2;
+.nav-pills > a.active, .nav-pills > a:focus, .nav-item > a:visited {
+  background:#a7c1e0a2;
 }
+
 
 #menutitle {
   margin-left: 0.6em;

@@ -23,17 +23,24 @@ export class LogInComponent implements OnInit {
     private users: User
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.email = '';
     this.password = '';
   }
 
+  // this method is used for logging in and alerts the user if the wrong password is typed
   login() {
     this.users.getLogin(this.email, this.password).subscribe((account) => {
-      if (account[0].firstName !== undefined) {
-        var userid = +account[0].id;
+      console.log(account);
+      if(account !== undefined && account[0]===undefined) {
+        alert('wrong password!');
+      } else if (account[0].firstName !== undefined) {
+        const userid = +account[0].id;
         console.log(userid);
         this.router.navigate(['dashboard', userid]);
+      } else {
+        alert('wrong password');
       }
     });
   }
