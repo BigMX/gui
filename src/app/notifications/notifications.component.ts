@@ -59,7 +59,6 @@ export class NotificationsComponent implements OnInit {
     // tslint:disable-next-line:forin
     for(i = 0; i < this.registryList.length; i++) {
       const registry = this.registryList[i];
-      console.log(registry);
       if (registry.items === undefined) {
         const message = 'all items have been bought for ' + registry.name + '!!!!';
         if(this.notifs.indexOf(message)===-1) {
@@ -79,7 +78,6 @@ export class NotificationsComponent implements OnInit {
           }
        }
     }
-    console.log(this.notifs);
     this.account.notifications = this.notifs;
     this.users.addNotif(this.account).subscribe((account) => {
 
