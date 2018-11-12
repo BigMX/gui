@@ -33,7 +33,11 @@ export class SidebuttonsComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
+          if(this.account.notifications !== undefined) {
           this.notifCount = this.account.notifications.length;
+          } else {
+            this.notifCount = 0;
+          }
         });
       }
     });
