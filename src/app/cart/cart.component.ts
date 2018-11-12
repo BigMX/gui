@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((account) => {
           this.account = account;
+          this.cart = account.cart;
         });
       }
     });
