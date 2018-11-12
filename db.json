@@ -6,7 +6,10 @@
       "lastName": "Alcantara",
       "email": "aalcantara@smu.edu",
       "phoneNumber": "214-777-7777",
-      "password": "12345"
+      "password": "12345",
+      "notifications": [
+        "some notification"
+      ]
     },
     {
       "id": 2,

@@ -5,4 +5,5 @@ export class Account {
   password?:string;
   phone?: number;
   id?: number;
+  notifications?: string[];
 }

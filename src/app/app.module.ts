@@ -20,6 +20,7 @@ import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const defaultRoute = 'login';
 
@@ -34,7 +35,8 @@ const defaultRoute = 'login';
     RegistryComponent,
     CartComponent,
     SidebarComponent,
-    SidebuttonsComponent
+    SidebuttonsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,16 @@ const defaultRoute = 'login';
         {
           path: ':userid/:regid',
           component: RegistryComponent
+        }
+      ] },
+      { path: 'notifications', children: [
+        {
+          path: '',
+          component: NotificationsComponent
+        },
+        {
+          path: ':id',
+          component: NotificationsComponent
         }
       ] },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
