@@ -22,6 +22,10 @@ export class RegistryComponent implements OnInit {
   currentReg: Registry;
   cart: Item[] = [];
   name: string;
+  item: Item;
+  length: number;
+  itemList: Item[] = [];
+  adding: Item[] = [];
   account: Account;
   registry: Registry[];
   newRegistry: Registry;
@@ -56,6 +60,10 @@ export class RegistryComponent implements OnInit {
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
+          if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
+            this.length = this.currentReg.items.length;
+            this.itemList = this.currentReg.items;
+          }
           this.name = this.currentReg.name;
         });
       }
@@ -70,5 +78,24 @@ export class RegistryComponent implements OnInit {
         });
       }
     });
+  }
+
+  addItem(event: boolean, item: Item) {
+    if(event) {
+      this.adding = this.currentReg.items;
+      this.adding.push(item);
+      console.log(this.adding);
+    } else {
+      const index2 = this.adding.indexOf(item);
+      this.adding.splice(index2,1);
+    }
+  }
+
+  addItems() {
+    this.currentReg.items = this.adding;
+    console.log(this.currentReg);
+    this.registries.updateReg(this.currentReg).subscribe(() => {
+    });
+    location.reload();
   }
 }

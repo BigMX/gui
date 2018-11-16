@@ -28,33 +28,66 @@
         </div>
     </div>
     <div class="col-8">
-      <div class="dash">
-          <h2 id="dashboard">{{name}}</h2>
-      </div>
-      <br>
+        <div class="dash">
+            <h2 id="dashboard">{{name}}</h2>
+        </div>
+        <div *ngIf=!length>
+            <br> <br>
+          <h3 class="text-center" style="font-family: Helvetica;">You don't have anything in your registry :( add items!! </h3>
+          <br> <br> <hr style="background-color:purple;">
+        </div>
+        <div *ngIf=length>
+            <br>
+          <h6 class="text-center" style="font-family: Helvetica;">Items in your registry: </h6>
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">Name of Item</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Location</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Bought By</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="cart">
+                  <tr *ngFor="let newItem of itemList">
+                    <td class="text-center">{{newItem.name}}</td>
+                    <td class="text-center">{{newItem.price}}</td>
+                    <td class="text-center">{{newItem.location}}</td>
+                    <td class="text-center">{{newItem.status}}</td>
+                    <td class="text-center"></td>
+                  </tr>
+                </tbody>
+            </table>
+          <br>  <hr style="background-color:purple;">
+        </div>
       <div>
+        <br>
+        <h6 class="text-center" style="font-family: Helvetica;"> Currently in your cart...</h6>
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Add</th>
-              <th>Name of Item</th>
-              <th>Price</th>
-              <th>Location</th>
-              <th>Status</th>
+              <th class="text-left">Add</th>
+              <th class="text-center">Name of Item</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Location</th>
+              <th class="text-center">Status</th>
             </tr>
           </thead>
           <tbody *ngIf="cart">
-              <tr *ngFor="let item of cart">
-                <th class="form-check"><input type="checkbox" class="form-check-input" id="checkRemove"></th>
-                <th>{{item.name}}</th>
-                <th>{{item.price}}</th>
-                <th>{{item.location}}</th>
-                <th>{{item.status}}</th>
+              <tr *ngFor="let newItem of cart">
+                <td class="text-center" class="form-check">
+                  <input type="checkbox" class="form-check-input" id="checkRemove" (change)="addItem($event.target.checked, newItem)">
+                </td>
+                <td class="text-center">{{newItem.name}}</td>
+                <td class="text-center">{{newItem.price}}</td>
+                <td class="text-center">{{newItem.location}}</td>
+                <td class="text-center">{{newItem.status}}</td>
               </tr>
             </tbody>
         </table>
       </div>
-      <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton">
+      <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton" (click)="addItems()">
           Add Item(s)
       </button>
       <br><br>

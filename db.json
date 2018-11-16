@@ -132,22 +132,22 @@
       "status": "active",
       "items": [
         {
-          "name": "Coffee",
-          "price": "$4.99",
-          "location": "Starbucks",
-          "status": "bought"
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
         },
         {
-          "name": "Tea",
-          "price": "$3.99",
+          "name": "coffee",
+          "price": "$5.99",
           "location": "Starbucks",
-          "status": "bought"
+          "status": "need"
         },
         {
-          "name": "Breakfast Sandwich",
-          "price": "$3.50",
-          "location": "Starbucks",
-          "status": "bought"
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
         }
       ]
     },
