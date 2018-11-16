@@ -9,6 +9,7 @@
 
 #dropdownMenuButton {
   background-color: #e5d4ee;
+  width: 7.8em;
 }
 
 h4 {
@@ -71,7 +72,8 @@ h2{
 
 .cartbtn {
   background-color: #a7c1e0a2;
-  width: 8.7em;
+  width: 7.8em;
+  margin-bottom: 0.5em;
 }
 
 .activebtn, .activebtn2 {

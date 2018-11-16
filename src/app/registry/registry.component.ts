@@ -9,6 +9,7 @@ import { User } from '../class/user.service';
 class RegistryParams {
   userid: string;
   regid: string;
+  notifCount: number;
 }
 
 @Component({
@@ -25,6 +26,7 @@ export class RegistryComponent implements OnInit {
   registry: Registry[];
   newRegistry: Registry;
   id: number;
+  notifCount: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +45,11 @@ export class RegistryComponent implements OnInit {
         });
         this.users.getById(this.id).subscribe((account) => {
           this.account = account;
+          if(this.account.notifications !== undefined) {
+            this.notifCount = this.account.notifications.length;
+            } else {
+              this.notifCount = 0;
+            }
           this.cart = account.cart;
         });
       }

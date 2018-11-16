@@ -109,9 +109,15 @@
       ],
       "cart": [
         {
-          "name": "Item",
-          "price": "$1.23",
-          "location": "A store",
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
           "status": "need"
         }
       ]
