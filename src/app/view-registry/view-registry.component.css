@@ -1,0 +1,101 @@
+#navIcon{
+  width: 1.8em;
+  margin-right:.5em;
+}
+
+#userIcon{
+  width: 1.5em;
+}
+
+#dropdownMenuButton {
+  background-color: #e5d4ee;
+  width: 7.8em;
+}
+
+h4 {
+  margin: 1em;
+}
+
+h2{
+  margin-left: 1em;
+}
+
+.nav-item {
+  text-decoration: underline;
+}
+
+.dash {
+  padding-top: 1em;
+  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+  border: none;
+  padding-bottom: 0.4em;
+}
+
+.modal-header {
+  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+}
+
+* {
+  color: black;
+}
+
+.joinMessage {
+  font-size: .9em;
+  margin: 1em;
+}
+#archiveButton, #inviteButton {
+  margin-left: 15em;
+  text-align: center;
+}
+
+#deleteButton {
+  margin-left: 13.5em;
+  text-align: center;
+}
+
+#menutitle {
+  margin-left: 0.6em;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .3em;
+}
+
+#dashboard {
+  text-size: 90%;
+  text-transform: uppercase;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+}
+
+.nav-pills > a.active, .nav-pills > a:focus, .nav-item > a:visited {
+  background:#a7c1e0a2;
+}
+
+.cartbtn {
+  background-color: #a7c1e0a2;
+  width: 7.8em;
+  margin-bottom: 0.5em;
+}
+
+.activebtn, .activebtn2 {
+  margin-left: -1em;
+  background-color: #e5d4ee;
+  width:10em;
+  text-align:left;
+}
+
+.form-check {
+  padding-left: 3em;
+}
+
+tr:nth-child(even) {
+  background-color: #a7c1e0a2;
+}
+
+thead {
+  background-color: #cdb4db;
+}
+
+th {
+  font-family: 'Palatino', sans-serif;
+  text-transform: none;
+}

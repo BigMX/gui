@@ -16,12 +16,13 @@ import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ViewRegistryComponent } from './view-registry/view-registry.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
-import { NotificationsComponent } from './notifications/notifications.component';
 
 const defaultRoute = 'login';
 
@@ -37,7 +38,8 @@ const defaultRoute = 'login';
     CartComponent,
     SidebarComponent,
     SidebuttonsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ViewRegistryComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,16 @@ const defaultRoute = 'login';
         {
           path: ':userid/:regid',
           component: RegistryComponent
+        }
+      ] },
+      { path: 'viewRegistry',children: [
+        {
+          path: '',
+          component: ViewRegistryComponent
+        },
+        {
+          path: ':userid/:regid',
+          component: ViewRegistryComponent
         }
       ] },
       { path: 'notifications', children: [

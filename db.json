@@ -191,7 +191,27 @@
       "description": "Registry",
       "userId": 2,
       "status": "active",
-      "id": 18
+      "id": 18,
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "MyR",
