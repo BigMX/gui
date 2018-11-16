@@ -60,6 +60,7 @@ export class SidebarComponent implements OnInit {
       this.registry = registry;
     });
     this.newRegistry = {};
+    location.reload();
   }
   join() {
     this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {

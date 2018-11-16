@@ -48,6 +48,13 @@ export class Registries {
     .pipe(catchError(this.handleException));
   }
 
+  // used to update a registry
+  updateReg(reg: Registry): Observable<Registry> {
+    return this.httpClient
+    .put<Registry>(`${this.endPoint}/${reg.id}`, reg, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   // this is for getting a registry
   getRegById(regId: number): Observable<Registry> {
     return this.httpClient
