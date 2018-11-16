@@ -35,6 +35,7 @@ export class ViewRegistryComponent implements OnInit {
     private users: User
   ) { }
 
+  // initialize everything - alll important things needed
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: RegistryParams) => {

@@ -80,6 +80,7 @@ export class RegistryComponent implements OnInit {
     });
   }
 
+  // this method is for when the checkbox is clicked on - for adding an item to a registry
   addItem(event: boolean, item: Item) {
     if(event) {
       this.adding = this.currentReg.items;
@@ -91,6 +92,7 @@ export class RegistryComponent implements OnInit {
     }
   }
 
+  // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
     this.currentReg.items = this.adding;
     console.log(this.currentReg);
