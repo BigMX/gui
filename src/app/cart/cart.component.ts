@@ -18,7 +18,7 @@ class CartParams {
 export class CartComponent implements OnInit {
 
   registry: Registry[];
-  cart: Item[] = [];
+  cart: Item[];
   newItem: Item;
   newRegistry: Registry;
   account: Account;
@@ -54,5 +54,19 @@ export class CartComponent implements OnInit {
 
     });
     this.newItem = {};
+  }
+
+  // used for removing items from the cart
+  removeItem(id: number, index:number) {
+    if (window.confirm('Are you sure?')) {
+      this.users.getById(this.id).subscribe((acct) => {
+        this.account = acct;
+        this.account.cart.splice(index, 1);
+        console.log(this.account);
+        // lthis.users.removeNotif(this.account).subscribe(()=> {
+        // });
+        location.reload();
+      });
+    }
   }
 }

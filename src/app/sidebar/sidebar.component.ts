@@ -70,6 +70,7 @@ export class SidebarComponent implements OnInit {
     let url='dashboard/';
     url+=this.id;
     this.router.navigateByUrl(url);
+    location.reload();
   }
   join() {
     this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {

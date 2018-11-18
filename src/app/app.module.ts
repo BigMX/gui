@@ -16,6 +16,8 @@ import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ViewRegistryComponent } from './view-registry/view-registry.component';
 
 // services
 import { Registries } from './class/registries.service';
@@ -24,6 +26,7 @@ import { Invitations } from './class/invitation.service';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JoinComponent } from './join/join.component';
+import { Notifs } from './class/notifs.service';
 
 const defaultRoute = 'login';
 
@@ -42,6 +45,7 @@ const defaultRoute = 'login';
     NotificationsComponent,
     ProfileComponent,
     JoinComponent
+    ViewRegistryComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +125,16 @@ const defaultRoute = 'login';
           component: RegistryComponent
         }
       ] },
+      { path: 'viewRegistry',children: [
+        {
+          path: '',
+          component: ViewRegistryComponent
+        },
+        {
+          path: ':userid/:regid',
+          component: ViewRegistryComponent
+        }
+      ] },
       { path: 'notifications', children: [
         {
           path: '',
@@ -136,7 +150,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations],
+  providers: [Registries, User,Invitations, Notifs],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

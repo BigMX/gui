@@ -129,10 +129,7 @@
       "lastName": "Mei",
       "email": "smei@smu.edu",
       "phoneNumber": "214-555-5555",
-      "password": "abcde",
-      "notifications": [
-        "all items have been bought for Test!!!!"
-      ]
+      "password": "abcde"
     },
     {
       "id": 3,
@@ -175,15 +172,63 @@
       "id": 7
     },
     {
-      "lastName": "Dunn",
-      "firstName": "Katelyn",
-      "email": "kdunn@smu.edu",
-      "phone": null,
-      "password": "ihategui",
+      "lastName": "Notif",
+      "firstName": "Testing",
+      "email": "notifs@gmail.com",
+      "phone": "2020202020",
+      "password": "123",
       "id": 8
     }
   ],
+  "notifications": [
+    {
+      "userId": 1,
+      "notifications": [
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "all items have been bought for: New Registry!!!!"
+      ],
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "notifications": [],
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "notifications": [],
+      "id": 3
+    }
+  ],
   "registries": [
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
+      "status": "active",
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "bought"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "bought"
+        }
+      ]
+    },
     {
       "id": 4,
       "userId": 3,
@@ -224,7 +269,27 @@
       "description": "Registry",
       "userId": 2,
       "status": "active",
-      "id": 18
+      "id": 18,
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "MyR",
@@ -248,17 +313,17 @@
       "id": 21
     },
     {
-      "name": "2",
-      "description": "2",
-      "userId": 2,
-      "status": "active",
+      "name": "things ",
+      "description": "travis doesnt have this",
+      "userId": 1,
+      "status": "archived",
       "id": 22
     },
     {
-      "name": "testing",
-      "description": "t",
+      "name": "testing archive",
+      "description": "archive",
       "userId": 1,
-      "status": "active",
+      "status": "archived",
       "id": 23
     },
     {

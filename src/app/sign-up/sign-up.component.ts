@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from '../class/account';
 import { User } from './../class/user.service';
+import { Notifs } from '../class/notifs.service';
+import { Notif } from '../class/notifications';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +21,8 @@ color: string;
 state: number;
 constructor(
   private router: Router,
-  private users: User
+  private users: User,
+  private notifs: Notifs
 ) { }
 
 // important variables initialized
@@ -58,6 +61,12 @@ ngOnInit() {
    this.users.addUser(this.account).subscribe((account) => {
      this.id = account.id;
      console.log(account);
+     const obj = {
+       userId: this.id,
+       notifications: []
+     };
+     this.notifs.newUser(obj).subscribe((n) => {
+     });
      this.router.navigate(['login']);
    });
    this.account = {};
