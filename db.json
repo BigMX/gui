@@ -48,10 +48,7 @@
       "lastName": "Mei",
       "email": "smei@smu.edu",
       "phoneNumber": "214-555-5555",
-      "password": "abcde",
-      "notifications": [
-        "all items have been bought for Test!!!!"
-      ]
+      "password": "abcde"
     },
     {
       "id": 3,
@@ -100,13 +97,6 @@
       "email": "aalcantara@smu.edu",
       "phoneNumber": "214-777-7777",
       "password": "12345",
-      "notifications": [
-        "Coffee, has been bought!!!",
-        "Tea, has been bought!!!",
-        "Breakfast Sandwich, has been bought!!!",
-        "all items have been bought for: New Registry!!!!",
-        "all items have been bought for: things !!!!"
-      ],
       "cart": [
         {
           "name": "stuff",
@@ -121,6 +111,35 @@
           "status": "need"
         }
       ]
+    },
+    {
+      "lastName": "Notif",
+      "firstName": "Testing",
+      "email": "notifs@gmail.com",
+      "phone": "2020202020",
+      "password": "123",
+      "id": 8
+    }
+  ],
+  "notifications": [
+    {
+      "userId": 1,
+      "notifications": [
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "all items have been bought for: New Registry!!!!"
+      ],
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "notifications": [],
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "notifications": [],
+      "id": 3
     }
   ],
   "registries": [
@@ -135,19 +154,19 @@
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "bought"
         },
         {
           "name": "coffee",
           "price": "$5.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "bought"
         },
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "bought"
         }
       ]
     },
