@@ -41,20 +41,6 @@ export class User {
     .pipe(catchError(this.handleException));
   }
 
-  // this is for removing a notification when the user clicks on the x
-  removeNotif(user: Account): Observable<Account> {
-    return this.httpClient
-    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
-    .pipe(catchError(this.handleException));
-  }
-
-  // this is for adding a notification to the notifications page
-  addNotif(user: Account): Observable<Account> {
-    return this.httpClient
-    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
-    .pipe(catchError(this.handleException));
-  }
-
   // this is for adding an item to the user's cart
   addItemToCart(user: Account): Observable<Account> {
     return this.httpClient

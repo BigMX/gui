@@ -23,6 +23,7 @@ import { ViewRegistryComponent } from './view-registry/view-registry.component';
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
+import { Notifs } from './class/notifs.service';
 
 const defaultRoute = 'login';
 
@@ -124,7 +125,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations],
+  providers: [Registries, User,Invitations, Notifs],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

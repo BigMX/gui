@@ -1,3 +1,4 @@
+import { Notifs } from './../class/notifs.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
@@ -24,7 +25,8 @@ export class SidebuttonsComponent implements OnInit {
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
-    protected router: Router
+    protected router: Router,
+    protected notifs: Notifs
   ) { }
 
   // important variables initialized
@@ -34,11 +36,15 @@ export class SidebuttonsComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
-          if(this.account.notifications !== undefined) {
-          this.notifCount = this.account.notifications.length;
-          } else {
-            this.notifCount = 0;
-          }
+          this.notifs.getNotifs(this.id).subscribe((n) => {
+            if(n[0]!==undefined && n[0].notifications !== undefined) {
+              this.notifCount = n[0].notifications.length;
+            } else {
+             this.notifCount = 0;
+            }
+            console.log('here');
+            console.log(n);
+          });
         });
       }
     });

@@ -1,9 +1,11 @@
+import { Notifs } from './../class/notifs.service';
 import { Registries } from './../class/registries.service';
 import { Account } from './../class/account';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../class/user.service';
 import { Registry } from '../class/registry';
+import { Notif } from '../class/notifications';
 
 class NotificationsParams {
   id: string;
@@ -20,11 +22,13 @@ export class NotificationsComponent implements OnInit {
   account: Account;
   registryList: Registry[] = [];
   notifs: string[] = [];
+  nObj: Notif;
 
   constructor(
     private route: ActivatedRoute,
     private users: User,
-    private registries: Registries
+    private registries: Registries,
+    private notificts: Notifs
   ) { }
 
   // important variables initialized
@@ -35,11 +39,15 @@ export class NotificationsComponent implements OnInit {
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
         });
-        this.users.getById(this.id).subscribe((account) => {
-          if (account.notifications !== undefined) {
-          this.notifs = account.notifications;
+        this.notificts.getNotifs(this.id).subscribe((n) => {
+          if (n.notifications !== undefined) {
+            this.notifs = n.notifications;
           }
-          this.account = account;
+          this.nObj = n[0];
+          console.log(this.nObj);
+          this.users.getById(this.id).subscribe((account) => {
+            this.account = account;
+          });
           this.check();
         });
       }
@@ -50,8 +58,9 @@ export class NotificationsComponent implements OnInit {
   removeAlert(notif: string) {
     const index = this.notifs.indexOf(notif);
     this.notifs.splice(index, 1);
-    this.account.notifications = this.notifs;
-    this.users.removeNotif(this.account).subscribe((account) => {
+    this.nObj.notifications = this.notifs;
+    console.log(this.nObj);
+    this.notificts.removeNotif(this.nObj.id, this.nObj).subscribe((n) => {
       // console.log(account);
     });
   }
@@ -92,8 +101,8 @@ export class NotificationsComponent implements OnInit {
           }
        }
     }
-    this.account.notifications = this.notifs;
-    this.users.addNotif(this.account).subscribe((account) => {
+    this.nObj.notifications = this.notifs;
+    this.notificts.addNotif(this.nObj.id, this.nObj).subscribe((n) => {
 
     });
   }
