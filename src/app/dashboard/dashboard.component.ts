@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   account: Account;
   newRegistry: Registry;
   id: number;
+  test: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   // important variables initialized
   ngOnInit() {
+    this.test=1;
     this.newRegistry = new Registry;
     this.inviteReg=[];
     this.route.params.subscribe((params: DashboardParams) => {
@@ -44,7 +46,6 @@ export class DashboardComponent implements OnInit {
             for( const y of x) {
               this.registries.getRegById(y.registryId).subscribe((registry) => {
                 this.inviteReg.push(registry);
-                console.log(registry);
               });
             }
           });

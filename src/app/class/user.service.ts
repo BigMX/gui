@@ -7,12 +7,13 @@ import { Account } from '../class/account';
 @Injectable()
 export class User {
 
-  // protected endPoint = 'ec2-18-225-35-42.us-east-2.compute.amazonaws.com:8888';
+//  protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
   protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
+      'Access-Control-Allow-Origin' : '*',
     })
   };
 
@@ -23,7 +24,7 @@ export class User {
   // this is for adding a user
   addUser(account: Account): Observable<Account> {
     return this.httpClient
-      .post<Account>(this.endPoint, account, this.httpOptions)
+      .post<Account>(`${this.endPoint}`, account, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
@@ -31,6 +32,12 @@ export class User {
   getById(id: number): Observable<Account> {
     return this.httpClient
       .get<Account>(`${this.endPoint}/${id}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  getByName(lastName: string): Observable<Account[]> {
+    return this.httpClient
+      .get<Account[]>(`${this.endPoint}/?lastName=${lastName}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
@@ -43,6 +50,12 @@ export class User {
 
   // this is for removing a notification when the user clicks on the x
   removeNotif(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  updatePassword(user: Account): Observable<Account> {
     return this.httpClient
     .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
     .pipe(catchError(this.handleException));

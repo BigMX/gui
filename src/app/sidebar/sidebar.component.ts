@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
@@ -6,6 +6,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 import { Invitations } from '../class/invitation.service';
 import { Invitation } from '../class/invitation';
+import { Output } from '@angular/core';
 
 class SidebarParams {
   id: string;
@@ -18,12 +19,19 @@ class SidebarParams {
 })
 export class SidebarComponent implements OnInit {
 
+  @Input()
+  @Output()
   registry: Registry[];
+
   account: Account;
   newRegistry: Registry;
   invitation: Invitation;
+
+  @Input()
   id: number;
   code: string;
+  @Input()
+  test: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,9 +51,6 @@ export class SidebarComponent implements OnInit {
           console.log(acct);
           this.account = acct;
         });
-        this.registries.getRegistries(this.id).subscribe((registry) => {
-          this.registry = registry;
-        });
       }
     });
   }
@@ -55,11 +60,16 @@ export class SidebarComponent implements OnInit {
     this.newRegistry.userId = this.id;
     this.newRegistry.status = 'active';
     this.registries.add(this.newRegistry).subscribe((registry) => {
-    });
-    this.registries.getRegistries(this.id).subscribe((registry) => {
-      this.registry = registry;
+      this.registries.getRegistries(this.id).subscribe((r) => {
+        this.registry = r;
+        console.log(this.registry);
+        console.log(this.test);
+      });
     });
     this.newRegistry = {};
+    let url='dashboard/';
+    url+=this.id;
+    this.router.navigateByUrl(url);
   }
   join() {
     this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {

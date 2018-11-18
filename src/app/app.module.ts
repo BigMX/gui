@@ -22,6 +22,8 @@ import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
 
 const defaultRoute = 'login';
 
@@ -37,7 +39,9 @@ const defaultRoute = 'login';
     CartComponent,
     SidebarComponent,
     SidebuttonsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ProfileComponent,
+    JoinComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,16 @@ const defaultRoute = 'login';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      { path: 'join', children: [
+        {
+          path: '',
+          component: JoinComponent
+        },
+        {
+          path: ':id',
+          component: JoinComponent
+        }
+      ] },
       { path: 'dashboard', children: [
           {
             path: '',
@@ -77,6 +91,16 @@ const defaultRoute = 'login';
        ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
+      { path: 'profile', children: [
+        {
+          path: '',
+          component: ProfileComponent
+        },
+        {
+          path: ':userid',
+          component: ProfileComponent
+        }
+      ]},
       { path: 'cart',  children: [
         {
           path: '',

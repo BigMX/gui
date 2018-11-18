@@ -29,13 +29,13 @@ export class Invitations {
 
   getByEmail(email: string, Code:string): Observable<Invitation> {
     return this.httpClient
-    .get<Invitation>(`${this.endPoint}/?email=${email}&Code=${Code}`, this.httpOptions)
+    .get<Invitation>(`${this.endPoint}/?receiverEmail=${email}&Code=${Code}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   getAll(email: string): Observable<Invitation[]> {
     return this.httpClient
-    .get<Invitation[]>(`${this.endPoint}/?email=${email}&status=true`, this.httpOptions)
+    .get<Invitation[]>(`${this.endPoint}/?receiverEmail=${email}&status=true`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

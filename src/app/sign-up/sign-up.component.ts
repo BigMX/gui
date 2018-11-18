@@ -57,6 +57,7 @@ ngOnInit() {
   signUp() {
    this.users.addUser(this.account).subscribe((account) => {
      this.id = account.id;
+     console.log(account);
      this.router.navigate(['login']);
    });
    this.account = {};
