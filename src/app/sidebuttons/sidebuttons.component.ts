@@ -40,10 +40,8 @@ export class SidebuttonsComponent implements OnInit {
             if(n[0]!==undefined && n[0].notifications !== undefined) {
               this.notifCount = n[0].notifications.length;
             } else {
-             this.notifCount = 0;
+              this.notifCount = 0;
             }
-            console.log('here');
-            console.log(n);
           });
         });
       }

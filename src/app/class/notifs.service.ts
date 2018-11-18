@@ -33,6 +33,7 @@ export class Notifs {
     .pipe(catchError(this.handleException));
   }
 
+  // this is used to get the notifications for a certain user
   getNotifs(id: number): Observable<Notif> {
     console.log(id);
     return this.httpClient
@@ -40,6 +41,7 @@ export class Notifs {
     .pipe(catchError(this.handleException));
   }
 
+  // this is used to initialize the notifications array once a new user is created
   newUser(notif: Notif): Observable<Notif> {
     return this.httpClient
       .post<Notif>(this.endPoint, notif, this.httpOptions)
