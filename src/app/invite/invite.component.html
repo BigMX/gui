@@ -9,10 +9,39 @@
         <h2 id="dashboard">Invite</h2>
       </div>
       <br>
-      <div id="email" class="form-group">
+      <div id="email" class="form-group" [hidden]="check===true">
         <label for="exampleFormControlInput1">Email Address</label>
         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="newInvitation.receiverEmail">
       </div>
+
+      <div [hidden]="check===false" class="ml-3">
+        <h6>Don't know email? try search for last name</h6>
+        <div class="form-group">
+          <label for="exampleFormControlInpu">Last Name</label>
+          <div>
+            <input type="text" id="exampleFormControlInput" [(ngModel)]="searchName">
+
+            <button class="btn btn-success" (click)=search(searchName)> Search</button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div id="selectemail" class="form-group">
+          <label for="exampleFormControlSelect2">Select Email</label>
+          <select class="form-control" [(ngModel)]="newInvitation.receiverEmail">
+            <option *ngFor="let r of accounts" [ngValue]="r.email">{{ r.lastName }},{{r.email}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group ml-3">
+        <label for="Use search">
+          <input type="checkbox"
+          [(ngModel)]="check"/> Search By Name
+        </label>
+      </div>
+
       <div id="selectreg" class="form-group">
         <label for="exampleFormControlSelect1">Select Registry</label>
         <select class="form-control" [(ngModel)]="registryId" id="selectRegistry">
@@ -24,20 +53,33 @@
         {{registryId}}
       </div>
       <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="archiveButton" (click)="invite()" data-toggle="modal"
-        data-target="#invModal">
+        data-target="#deleteModal">
         Invite
       </button>
-      <!-- <div class="modal" id="invModal" aria-hidden="true" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5>You successfully invite a person</h5>
+
+      <div class="deleteModal">
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">Successfully Invite!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h4>Your invitation code is :</h4>
+                <hr>
+                <h3 class="text-center">Code{{registryId}}</h3>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">OK</button>
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            <h5>Your code is {{code}}</h5>
-          </div>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
-      </div> -->
+      </div>
+
     </div>
     <div class="col-2">
       <app-sidebuttons></app-sidebuttons>

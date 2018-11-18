@@ -26,7 +26,7 @@
           <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon">
           <span>Archive</span>
         </a>
-        <a class="nav-link" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join"
+        <a routerLink='/join/{{id}}' class="nav-link"id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join"
           aria-selected="false">
           <button type="button" class="btn activebtn2" data-toggle="modal" data-target="#joinModal">
             <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon">
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div class="joinModal">
+  <!-- <div class="joinModal">
     <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <div class="createModal">
@@ -100,14 +100,4 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Registry Code</label>
-    <input type="text" class="form-control" [(ngModel)]="code" />
-  </div>
-  <div>
-    {{code}}
-  </div>
-  <button class="btn" (click)="join()">
-    join
-  </button>
 

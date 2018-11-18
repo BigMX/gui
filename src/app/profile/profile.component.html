@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-sidebar [id] = "id"></app-sidebar>
+    </div>
+    <div class="col-8 mb-3">
+      <div class="modal-body">
+        <h4>YOUR old password:</h4>
+        <hr>
+        <input type="password" class="form-control" id="exampleFormControlInput1" [(ngModel)]="password">
+        <h4>YOUR new password:</h4>
+        <input type="password" class="form-control" id="exampleFormControlInput1" [(ngModel)]="newPassword1">
+        <h4>Confirm YOUR new password:</h4>
+        <hr>
+        <input type="password" class="form-control" id="exampleFormControlInput1" [(ngModel)]="newPassword2">
+      </div>
+      <button class="btn" (click)="update()">change my password</button>
+      <h1 [hidden]="success">{{message}}</h1>
+    </div>
+    <div class="col-2">
+      <app-sidebuttons></app-sidebuttons>
+    </div>
+    <!--end div class col 2-->
+
+  </div>
+  <!--end div for the row class-->
+</div>

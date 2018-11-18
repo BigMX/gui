@@ -23,6 +23,9 @@ import { ViewRegistryComponent } from './view-registry/view-registry.component';
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
 import { Notifs } from './class/notifs.service';
 
 const defaultRoute = 'login';
@@ -40,6 +43,8 @@ const defaultRoute = 'login';
     SidebarComponent,
     SidebuttonsComponent,
     NotificationsComponent,
+    ProfileComponent,
+    JoinComponent
     ViewRegistryComponent
   ],
   imports: [
@@ -48,6 +53,16 @@ const defaultRoute = 'login';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
+      { path: 'join', children: [
+        {
+          path: '',
+          component: JoinComponent
+        },
+        {
+          path: ':id',
+          component: JoinComponent
+        }
+      ] },
       { path: 'dashboard', children: [
           {
             path: '',
@@ -80,6 +95,16 @@ const defaultRoute = 'login';
        ] },
       { path: 'login', component: LogInComponent },
       { path: 'signup', component: SignUpComponent },
+      { path: 'profile', children: [
+        {
+          path: '',
+          component: ProfileComponent
+        },
+        {
+          path: ':userid',
+          component: ProfileComponent
+        }
+      ]},
       { path: 'cart',  children: [
         {
           path: '',
