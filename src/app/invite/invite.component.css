@@ -94,3 +94,8 @@ button:active{
   padding-left: 1em;
   padding-right: 1em;
 }
+
+.searchName {
+  margin-left: 1em;
+  color: white;
+}

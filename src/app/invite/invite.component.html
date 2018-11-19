@@ -15,13 +15,13 @@
       </div>
 
       <div [hidden]="check===false" class="ml-3">
-        <h6>Don't know email? try search for last name</h6>
+        <h5 style="text-align: center; font-family: Calibri;">Don't know email? try searching by last name</h5>
         <div class="form-group">
-          <label for="exampleFormControlInpu">Last Name</label>
+          <label for="exampleFormControlInpu" style="margin-left: 16em;">Last Name</label>
           <div>
-            <input type="text" id="exampleFormControlInput" [(ngModel)]="searchName">
+            <input style="margin-left: 13em;" type="text" id="exampleFormControlInput" [(ngModel)]="searchName">
 
-            <button class="btn btn-success" (click)=search(searchName)> Search</button>
+            <button class="btn btn-success searchName" (click)=search(searchName)> Search</button>
           </div>
         </div>
 
