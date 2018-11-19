@@ -18,14 +18,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ViewRegistryComponent } from './view-registry/view-registry.component';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { ProfileComponent } from './profile/profile.component';
-import { JoinComponent } from './join/join.component';
 import { Notifs } from './class/notifs.service';
 
 const defaultRoute = 'login';
@@ -44,7 +43,7 @@ const defaultRoute = 'login';
     SidebuttonsComponent,
     NotificationsComponent,
     ProfileComponent,
-    JoinComponent
+    JoinComponent,
     ViewRegistryComponent
   ],
   imports: [
