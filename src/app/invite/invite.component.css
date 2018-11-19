@@ -88,11 +88,15 @@ button:active{
   width: 8.7em;
 }
 
-#selectreg, #selectemail {
+#selectreg {
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
-  padding-left: 1em;
   padding-right: 1em;
+}
+
+#selectemail {
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
 }
 
 .searchName {
