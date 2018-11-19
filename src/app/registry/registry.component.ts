@@ -79,6 +79,7 @@ export class RegistryComponent implements OnInit {
     });
   }
 
+  // this method makes sure that no duplicate items are added to a registry
   arrayObjectIndexOf(myArray, searchTerm) {
     let i;
     for(i = 0; i < myArray.length; i++) {
