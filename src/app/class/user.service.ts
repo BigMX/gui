@@ -38,7 +38,7 @@ export class User {
 
   getById(user_id: number): Observable<Account> {
     return this.httpClient
-      .get<Account>(`${this.endPoint}/users/${user_id}`, this.httpOptions)
+      .get<Account>(`${this.endPoint}/user/${user_id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
