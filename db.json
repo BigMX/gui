@@ -94,7 +94,7 @@
       "lastName": "Alcantara",
       "email": "aalcantara@smu.edu",
       "phoneNumber": "214-777-7777",
-      "password": "12345",
+      "password": "123",
       "notifications": [
         "Tea, has been bought!!!",
         "Breakfast Sandwich, has been bought!!!",
@@ -327,7 +327,27 @@
       "description": "1",
       "userId": 1,
       "status": "active",
-      "id": 25
+      "id": 25,
+      "items": [
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "id": 3,
@@ -375,7 +395,15 @@
       "description": "1",
       "userId": 1,
       "status": "active",
-      "id": 29
+      "id": 29,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "a",
@@ -389,21 +417,69 @@
       "description": "12",
       "userId": 1,
       "status": "active",
-      "id": 31
+      "id": 31,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "123",
       "description": "123",
       "userId": 1,
       "status": "active",
-      "id": 32
+      "id": 32,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "no",
       "description": "no",
       "userId": 1,
       "status": "active",
-      "id": 33
+      "id": 33,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "yes",
@@ -417,7 +493,27 @@
       "description": "2",
       "userId": 1,
       "status": "active",
-      "id": 35
+      "id": 35,
+      "items": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "1",
@@ -445,7 +541,15 @@
       "description": "2",
       "userId": 1,
       "status": "active",
-      "id": 39
+      "id": 39,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "3",
