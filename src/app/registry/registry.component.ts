@@ -107,8 +107,6 @@ export class RegistryComponent implements OnInit {
           this.account.cart[index] = item;
           this.users.addItemToCart(this.account).subscribe((acct) => {
           });
-          console.log(index);
-          console.log(this.cart);
         }
       }
     } else {
