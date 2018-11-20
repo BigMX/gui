@@ -4,4 +4,5 @@ export class Item {
   location?: string;
   status?: string;
   id?: number;
+  disabled?: boolean;
 }

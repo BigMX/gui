@@ -77,7 +77,7 @@
           <tbody *ngIf="cart">
               <tr *ngFor="let newItem of cart">
                 <td class="text-center" class="form-check">
-                  <input type="checkbox" class="form-check-input" id="checkRemove" (change)="addItem($event.target.checked, newItem)">
+                  <input type="checkbox" class="form-check-input" [disabled]="newItem.disabled" id="checkRemove" (change)="addItem($event.target.checked, newItem);">
                 </td>
                 <td class="text-center">{{newItem.name}}</td>
                 <td class="text-center">{{newItem.price}}</td>

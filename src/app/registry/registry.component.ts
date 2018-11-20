@@ -30,6 +30,7 @@ export class RegistryComponent implements OnInit {
   newRegistry: Registry;
   id: number;
   notifCount: number;
+  isDisable = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +55,7 @@ export class RegistryComponent implements OnInit {
               this.notifCount = 0;
             }
           this.cart = account.cart;
+          console.log(this.cart);
         });
       }
       if (params.regid) {
@@ -67,6 +69,10 @@ export class RegistryComponent implements OnInit {
         });
       }
     });
+  }
+
+  onDisableUser() {
+    this.isDisable = true;
   }
 
   // this method deletes a registry
@@ -95,8 +101,14 @@ export class RegistryComponent implements OnInit {
     if(event) {
       if(this.itemList !== undefined) {
         if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
+          const index = this.arrayObjectIndexOf(this.cart, item);
+          item.disabled = true;
           this.itemList.push(item);
-          console.log(this.itemList);
+          this.account.cart[index] = item;
+          this.users.addItemToCart(this.account).subscribe((acct) => {
+          });
+          console.log(index);
+          console.log(this.cart);
         }
       }
     } else {
