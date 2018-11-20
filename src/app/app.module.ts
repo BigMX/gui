@@ -14,9 +14,18 @@ import { ArchiveComponent } from './archive/archive.component';
 import { InviteComponent } from './invite/invite.component';
 import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ViewRegistryComponent } from './view-registry/view-registry.component';
 
 // services
 import { Registries } from './class/registries.service';
+import { User } from './class/user.service';
+import { Invitations } from './class/invitation.service';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
+import { Notifs } from './class/notifs.service';
 
 const defaultRoute = 'login';
 
@@ -29,7 +38,13 @@ const defaultRoute = 'login';
     InviteComponent,
     LogInComponent,
     RegistryComponent,
-    CartComponent
+    CartComponent,
+    SidebarComponent,
+    SidebuttonsComponent,
+    NotificationsComponent,
+    ProfileComponent,
+    JoinComponent,
+    ViewRegistryComponent
   ],
   imports: [
     BrowserModule,
@@ -37,20 +52,96 @@ const defaultRoute = 'login';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'invite', component: DashboardComponent },
-      { path: 'archive', component: DashboardComponent },
-      { path: 'login', component: LogInComponent },
-      { path: 'signup', component: SignUpComponent },
-      { path: 'cart', component: DashboardComponent },
-      { path: 'registry',children: [
+      { path: 'join', children: [
         {
           path: '',
-          component: DashboardComponent
+          component: JoinComponent
         },
         {
           path: ':id',
-          component: DashboardComponent
+          component: JoinComponent
+        }
+      ] },
+      { path: 'dashboard', children: [
+          {
+            path: '',
+            component: DashboardComponent
+          },
+          {
+            path: ':id',
+            component: DashboardComponent
+          }
+        ] },
+      { path: 'invite', children: [
+          {
+            path: '',
+            component: InviteComponent
+          },
+          {
+            path: ':id',
+            component: InviteComponent
+          }
+       ] },
+      { path: 'archive', children: [
+          {
+            path: '',
+            component: ArchiveComponent
+          },
+          {
+            path: ':id',
+            component: ArchiveComponent
+          }
+       ] },
+      { path: 'login', component: LogInComponent },
+      { path: 'signup', component: SignUpComponent },
+      { path: 'profile', children: [
+        {
+          path: '',
+          component: ProfileComponent
+        },
+        {
+          path: ':userid',
+          component: ProfileComponent
+        }
+      ]},
+      { path: 'cart',  children: [
+        {
+          path: '',
+          component: CartComponent
+        },
+        {
+          path: ':id',
+          component: CartComponent
+        }
+      ] },
+      { path: 'registry',children: [
+        {
+          path: '',
+          component: RegistryComponent
+        },
+        {
+          path: ':userid/:regid',
+          component: RegistryComponent
+        }
+      ] },
+      { path: 'viewRegistry',children: [
+        {
+          path: '',
+          component: ViewRegistryComponent
+        },
+        {
+          path: ':userid/:regid',
+          component: ViewRegistryComponent
+        }
+      ] },
+      { path: 'notifications', children: [
+        {
+          path: '',
+          component: NotificationsComponent
+        },
+        {
+          path: ':id',
+          component: NotificationsComponent
         }
       ] },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
@@ -58,7 +149,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries],
+  providers: [Registries, User,Invitations, Notifs],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

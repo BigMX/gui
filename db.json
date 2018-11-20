@@ -1,4 +1,92 @@
 {
+  "invitation": [
+    {
+      "id": 1,
+      "receiverEmail": "bbb",
+      "registryId": 1,
+      "status": false,
+      "code": "code1"
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "registryId": 18,
+      "status": true,
+      "Code": "Code18",
+      "id": 2
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 3
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 4
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": true,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 5
+    },
+    {
+      "receiverEmail": "d",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 6
+    },
+    {
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 7
+    },
+    {
+      "receiverEmail": "s",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 8
+    },
+    {
+      "status": false,
+      "registryId": 23,
+      "Code": "Code23",
+      "id": 9
+    },
+    {
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 10
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 11
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 5,
+      "Code": "Code5",
+      "id": 12
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 4,
+      "Code": "Code4",
+      "id": 13
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -6,7 +94,34 @@
       "lastName": "Alcantara",
       "email": "aalcantara@smu.edu",
       "phoneNumber": "214-777-7777",
-      "password": "12345"
+      "password": "12345",
+      "notifications": [
+        "Tea, has been bought!!!",
+        "Breakfast Sandwich, has been bought!!!",
+        "all items have been bought for: New Registry!!!!",
+        "all items have been bought for: testing!!!!",
+        "Coffee, has been bought!!!"
+      ],
+      "cart": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "id": 2,
@@ -23,6 +138,75 @@
       "email": "efashenpoura@smu.edu",
       "phoneNumber": "214-999-9999",
       "password": "12345"
+    },
+    {
+      "lastName": "Alhumaid",
+      "firstName": "Haya",
+      "email": "halhumaid@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "lastName": "Holcomb",
+      "firstName": "Harry",
+      "email": "hholcomb@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "lastName": "Watkins",
+      "firstName": "Jake",
+      "email": "jwatkins@smu.edu",
+      "phone": null,
+      "password": "password",
+      "id": 6
+    },
+    {
+      "lastName": "Knotts",
+      "firstName": "Tristan",
+      "email": "tknotts@smu.edu",
+      "phone": null,
+      "password": "somepass",
+      "id": 7
+    },
+    {
+      "lastName": "Notif",
+      "firstName": "Testing",
+      "email": "notifs@gmail.com",
+      "phone": "2020202020",
+      "password": "123",
+      "id": 8
+    }
+  ],
+  "notifications": [
+    {
+      "userId": 1,
+      "notifications": [
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "all items have been bought for: New Registry!!!!"
+      ],
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "notifications": [],
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "notifications": [],
+      "id": 3
+    },
+    {
+      "notifications": [],
+      "id": 4
+    },
+    {
+      "notifications": [],
+      "id": 5
     }
   ],
   "registries": [
@@ -31,7 +215,8 @@
       "userId": 1,
       "name": "New Registry",
       "description": "adding a new registry - hi",
-      "status": "active"
+      "status": "active",
+      "items": []
     },
     {
       "id": 4,
@@ -55,13 +240,6 @@
       "status": "archived"
     },
     {
-      "name": "Test Registry",
-      "description": "Do things get archived?",
-      "userId": 2,
-      "status": "archived",
-      "id": 11
-    },
-    {
       "name": "Testing ",
       "description": "testing~",
       "userId": 2,
@@ -69,18 +247,233 @@
       "id": 10
     },
     {
-      "name": "Things work",
-      "description": "YAYAYAYAYAY",
-      "userId": 2,
-      "status": "active",
-      "id": 13
-    },
-    {
       "name": "More registries",
       "description": "HELLO",
       "userId": 2,
-      "status": "active",
+      "status": "archived",
       "id": 14
+    },
+    {
+      "name": "Test",
+      "description": "Registry",
+      "userId": 2,
+      "status": "active",
+      "id": 18,
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "MyR",
+      "description": "r",
+      "userId": null,
+      "status": "active",
+      "id": 19
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": null,
+      "status": "active",
+      "id": 20
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": null,
+      "status": "active",
+      "id": 21
+    },
+    {
+      "name": "things ",
+      "description": "travis doesnt have this",
+      "userId": 1,
+      "status": "archived",
+      "id": 22
+    },
+    {
+      "name": "testing archive",
+      "description": "archive",
+      "userId": 1,
+      "status": "archived",
+      "id": 23
+    },
+    {
+      "name": "new",
+      "description": "old",
+      "userId": 2,
+      "status": "active",
+      "id": 24
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": 1,
+      "status": "active",
+      "id": 25
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
+      "status": "archived",
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "bought"
+        }
+      ]
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": 1,
+      "status": "active",
+      "id": 26
+    },
+    {
+      "name": "a",
+      "description": "a",
+      "userId": 1,
+      "status": "active",
+      "id": 28
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": 1,
+      "status": "active",
+      "id": 29
+    },
+    {
+      "name": "a",
+      "description": "a",
+      "userId": 1,
+      "status": "active",
+      "id": 30
+    },
+    {
+      "name": "12",
+      "description": "12",
+      "userId": 1,
+      "status": "active",
+      "id": 31
+    },
+    {
+      "name": "123",
+      "description": "123",
+      "userId": 1,
+      "status": "active",
+      "id": 32
+    },
+    {
+      "name": "no",
+      "description": "no",
+      "userId": 1,
+      "status": "active",
+      "id": 33
+    },
+    {
+      "name": "yes",
+      "description": "yes",
+      "userId": 1,
+      "status": "active",
+      "id": 34
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "userId": 1,
+      "status": "active",
+      "id": 35
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": 1,
+      "status": "active",
+      "id": 36
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "userId": 2,
+      "status": "active",
+      "id": 37
+    },
+    {
+      "name": "hello",
+      "description": "hello",
+      "userId": 2,
+      "status": "active",
+      "id": 38
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "userId": 1,
+      "status": "active",
+      "id": 39
+    },
+    {
+      "name": "3",
+      "description": "3",
+      "userId": 2,
+      "status": "active",
+      "id": 40
+    },
+    {
+      "name": "4",
+      "description": "4",
+      "userId": 2,
+      "status": "active",
+      "id": 41
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "userId": 2,
+      "status": "active",
+      "id": 42
+    },
+    {
+      "name": "333",
+      "description": "333",
+      "userId": 2,
+      "status": "active",
+      "id": 43
     }
   ]
 }

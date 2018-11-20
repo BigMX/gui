@@ -13,23 +13,20 @@ class RegistryParams {
 }
 
 @Component({
-  selector: 'app-registry',
-  templateUrl: './registry.component.html',
-  styleUrls: ['./registry.component.css']
+  selector: 'app-view-registry',
+  templateUrl: './view-registry.component.html',
+  styleUrls: ['./view-registry.component.css']
 })
-export class RegistryComponent implements OnInit {
+export class ViewRegistryComponent implements OnInit {
 
   currentReg: Registry;
-  cart: Item[] = [];
-  name: string;
   item: Item;
-  length: number;
   itemList: Item[] = [];
-  adding: Item[] = [];
   account: Account;
   registry: Registry[];
   newRegistry: Registry;
   id: number;
+  name: string;
   notifCount: number;
 
   constructor(
@@ -38,7 +35,7 @@ export class RegistryComponent implements OnInit {
     private users: User
   ) { }
 
-  // important variables initialized
+  // initialize everything - alll important things needed
   ngOnInit() {
     this.newRegistry = new Registry;
     this.route.params.subscribe((params: RegistryParams) => {
@@ -54,50 +51,17 @@ export class RegistryComponent implements OnInit {
             } else {
               this.notifCount = 0;
             }
-          this.cart = account.cart;
         });
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
-          if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
-            this.length = this.currentReg.items.length;
-            this.itemList = this.currentReg.items;
-          }
+          this.itemList = this.currentReg.items;
+          console.log(this.itemList);
           this.name = this.currentReg.name;
         });
       }
     });
   }
 
-  // this method deletes a registry
-  deleteRegistry() {
-    this.route.params.subscribe((params: RegistryParams) => {
-      if (params.regid) {
-        this.registries.deleteReg(+params.regid).subscribe((registry) => {
-        });
-      }
-    });
-  }
-
-  // this method is for when the checkbox is clicked on - for adding an item to a registry
-  addItem(event: boolean, item: Item) {
-    if(event) {
-      this.adding = this.currentReg.items;
-      this.adding.push(item);
-      console.log(this.adding);
-    } else {
-      const index2 = this.adding.indexOf(item);
-      this.adding.splice(index2,1);
-    }
-  }
-
-  // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
-  addItems() {
-    this.currentReg.items = this.adding;
-    console.log(this.currentReg);
-    this.registries.updateReg(this.currentReg).subscribe(() => {
-    });
-    location.reload();
-  }
 }

@@ -3,4 +3,5 @@ export class Item {
   price?: string;
   location?: string;
   status?: string;
+  id?: number;
 }
