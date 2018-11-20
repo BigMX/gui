@@ -199,6 +199,14 @@
       "userId": 8,
       "notifications": [],
       "id": 3
+    },
+    {
+      "notifications": [],
+      "id": 4
+    },
+    {
+      "notifications": [],
+      "id": 5
     }
   ],
   "registries": [
@@ -208,26 +216,7 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
-      "items": [
-        {
-          "name": "stuff",
-          "price": "$15",
-          "location": "a store",
-          "status": "bought"
-        },
-        {
-          "name": "coffee",
-          "price": "$5.99",
-          "location": "Starbucks",
-          "status": "bought"
-        },
-        {
-          "name": "stuff",
-          "price": "$15",
-          "location": "a store",
-          "status": "bought"
-        }
-      ]
+      "items": []
     },
     {
       "id": 4,
