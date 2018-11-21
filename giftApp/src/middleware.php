@@ -29,7 +29,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/addtocart","/cart/{user_id}", "/deleteitem/{item_id}", 
 				"/users", "/user/{user_id}", "/users/{lastName}", "/changepassword/{user_id}",
 				"/addnotifcation", "/notifications/{user_id}", "deletenotification", 
-				"/registry/{user_id}", "addnewregistry", "/registries/{registry_id}", "/deletearegistry/{registry_id}"
+				"/registry/{user_id}", "addnewregistry", "/registries/{registry_id}", "/deleteregistry/{registry_id}"
 				],
 	"header" => "X-Token",
 	"algorithm" => ["HS256", "HS384"],

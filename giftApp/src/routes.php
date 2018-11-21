@@ -207,8 +207,8 @@ $app->post('/addnewregistry', function ($request, $response) {
     return $this->response->withJson($input);  
 });
 
-//
-//display registry
+//CONNECTED
+//display all registries related to that user_id
 $app->get('/registry/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
 		"SELECT * FROM Registries WHERE user_id = :user_id");
@@ -218,7 +218,7 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
-//registry
+//display a registry
 $app->get('/registries/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
         "SELECT * FROM Registries WHERE registry_id = :registry_id");
@@ -228,10 +228,11 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
+
 //delete the whole registry related to that user_id
-$app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) {
-    $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE user_id=:user_id");
-    $sth->bindParam("user_id", $args['user_id']);
+$app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE registry_id=:registry_id");
+    $sth->bindParam("registry_id", $args['registry_id']);
     $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
@@ -246,7 +247,7 @@ $app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) 
 // });
 
 // //delete registry table based on the registry_id
-// $app->delete('/deletearegistry/{registry_id}', function ($request, $response, $args) {
+// $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
 //     $sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
 //     $sth = $this->dbConn->prepare($sql);
 //     $sth->bindParam("registry_id", $args['registry_id']);
