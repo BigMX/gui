@@ -20,6 +20,7 @@ $app->add(function ($req, $res, $next) {
 
 // ---------- user routes ----------
 
+//CONNECTED
 // adding a new user or signup
 $app->post('/signup', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -36,7 +37,7 @@ $app->post('/signup', function ($request, $response) {
     return $this->response->withJson($input);
 });
 
-
+//CONNECTED
 // login to your account
 $app->post('/login', function (Request $request, Response $response, array $args) {
     $input = $request->getParsedBody();
@@ -73,7 +74,7 @@ $app->post('/login', function (Request $request, Response $response, array $args
     return $this->response->withJson($user);
 });
 
-//check if the user is logged in
+//display with user is logined in
 $app->group('/api', function(\Slim\App $app) {
     $app->get('/user',function(Request $request, Response $response, array $args) {
         return $this->response->withJson( $_SESSION['userId']);
@@ -88,6 +89,7 @@ $app->group('/api', function(\Slim\App $app) {
     });
 });
 
+//CONNECTED
 //get all info for a user from the users table by user_id 
 $app->get('/user/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
@@ -98,6 +100,7 @@ $app->get('/user/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($users);
 });
 
+//CONNECTED
 //get all info for a user from the users table by lastname 
 $app->get('/users/{lastName}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
@@ -108,6 +111,7 @@ $app->get('/users/{lastName}', function ($request, $response, $args) {
 	return $this->response->withJson($users);
 });
 
+//NOT CONNECTED
 //update user password
 $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
 	$input = $request->getParsedBody();
@@ -115,6 +119,7 @@ $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
 	$sth = $this->dbConn->prepare($sql);
 	$sth->bindParam("user_id", $args['user_id']);
 	$sth->bindParam("password", $input['password']);
+    //var_dump($input);
 	$res = $sth->execute();
 	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
@@ -130,6 +135,7 @@ $app->get('/users', function ($request, $response, $args) {
 
 // ---------- cart/item routes ----------
 
+//CONNECTED
 //add to cart
 $app->post('/addtocart', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -146,6 +152,7 @@ $app->post('/addtocart', function ($request, $response) {
     return $this->response->withJson($input);
 });
 
+//CONNECTED
 //displays all everything in the items table
 $app->get('/cart/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
@@ -157,7 +164,16 @@ $app->get('/cart/{user_id}', function ($request, $response, $args) {
 
 });
 
-//add items to registry //idk if we need this
+//delete an item from the cart
+$app->delete('/deleteregistry/{item_id}', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Items WHERE item_id=:item_id");
+    $sth->bindParam("item_id", $args['item_id']);
+    $sth->execute();  
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
+
+//not in the front end maybe we dont need this
+//add items to registry
 $app->post('/additems', function ($request, $response) {
     $input = $request->getParsedBody();
     $sql = "INSERT INTO 
