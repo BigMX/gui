@@ -165,7 +165,7 @@ $app->get('/cart/{user_id}', function ($request, $response, $args) {
 });
 
 //delete an item from the cart
-$app->delete('/deleteregistry/{item_id}', function ($request, $response, $args) {
+$app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare("DELETE FROM Items WHERE item_id=:item_id");
     $sth->bindParam("item_id", $args['item_id']);
     $sth->execute();  
