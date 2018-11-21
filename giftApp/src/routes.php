@@ -8,6 +8,7 @@ $app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
 });
 
+// Add Cors
 $app->add(function ($req, $res, $next) {
     $response = $next($req, $res);
     return $response
@@ -309,20 +310,20 @@ $app->get('/items/{item_id}', function ($request, $response, $args) {
 
 // 
 // //delete registry table
-// $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
-// 	$sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("registry_id", $args['registry_id']);
-// 	$sth->execute();
-// 	
-// 	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
-// });
+$app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
+	$sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
+	$sth = $this->dbConn->prepare($sql);
+	$sth->bindParam("registry_id", $args['registry_id']);
+	$sth->execute();
+	
+	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
 // 
 // //delete a user from a registry 
-// $app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
-// 	$sql = "DELETE FROM Registries WHERE user_id = :user_id";
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("user_id", $args['user_id']);
-// 	$sth->execute();
-// 	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
-// });
+$app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
+	$sql = "DELETE FROM Registries WHERE user_id = :user_id";
+	$sth = $this->dbConn->prepare($sql);
+	$sth->bindParam("user_id", $args['user_id']);
+	$sth->execute();
+	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
