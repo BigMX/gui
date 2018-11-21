@@ -201,13 +201,13 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
-// //delete the whole registry related to that user_id
-// $app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) {
-//     $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE user_id=:user_id");
-//     $sth->bindParam("user_id", $args['user_id']);
-//     $sth->execute();  
-//     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
-// });
+//delete the whole registry related to that user_id
+$app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE user_id=:user_id");
+    $sth->bindParam("user_id", $args['user_id']);
+    $sth->execute();  
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
  
 // // //delete a user from a registry 
 // $app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
@@ -292,6 +292,15 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 	$sth->execute();
 	$user = $sth->fetchAll();
 	return $this->response->withJson($user);
+});
+
+//delete notifications table based on the notifications_id
+$app->delete('/deletenotification/{Notifications_id}', function ($request, $response, $args) {
+    $sql = "DELETE FROM Notifications WHERE Notifications_id = :Notifications_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("Notifications_id", $args['Notifications_id']);
+    $sth->execute();
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
 // ---------- needs to be fixed ----------
