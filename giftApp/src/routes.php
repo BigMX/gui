@@ -20,7 +20,7 @@ $app->add(function ($req, $res, $next) {
 
 // ---------- user routes ----------
 
-// adding a new user or signup //connected
+// adding a new user or signup
 $app->post('/signup', function ($request, $response) {
     $input = $request->getParsedBody();
     $sql = "INSERT INTO 
@@ -37,7 +37,7 @@ $app->post('/signup', function ($request, $response) {
 });
 
 
-// login to your account //connected
+// login to your account
 $app->post('/login', function (Request $request, Response $response, array $args) {
     $input = $request->getParsedBody();
     $sql = "SELECT user_id FROM Users WHERE email=:email AND password =:password";
@@ -88,7 +88,7 @@ $app->group('/api', function(\Slim\App $app) {
     });
 });
 
-//get all info for a user from the users table by user_id //connected 
+//get all info for a user from the users table by user_id 
 $app->get('/user/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
 		"SELECT * FROM Users WHERE user_id =:user_id" );
@@ -119,7 +119,6 @@ $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-
 //display all the users 
 $app->get('/users', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
@@ -131,7 +130,7 @@ $app->get('/users', function ($request, $response, $args) {
 
 // ---------- cart/item routes ----------
 
-//add to cart //connected
+//add to cart
 $app->post('/addtocart', function ($request, $response) {
     $input = $request->getParsedBody();
     $sql = "INSERT INTO 
@@ -147,7 +146,7 @@ $app->post('/addtocart', function ($request, $response) {
     return $this->response->withJson($input);
 });
 
-//displays all everything in the items table// connected
+//displays all everything in the items table
 $app->get('/cart/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
 		"SELECT * FROM Items WHERE user_id = :user_id");
@@ -175,7 +174,7 @@ $app->post('/additems', function ($request, $response) {
 
 // ---------- registry routes ----------
 
-//add a new registry //connected
+//add a new registry
 $app->post('/addnewregistry', function ($request, $response) {
     $input = $request->getParsedBody();
     $sql = "INSERT INTO 
@@ -187,11 +186,10 @@ $app->post('/addnewregistry', function ($request, $response) {
     $sth->bindParam("description", $input['description']);
     $sth->bindParam("status", $input['status']);
     $sth->execute();
-    return $this->response->withJson($input);
-    
+    return $this->response->withJson($input);  
 });
 
-//registry // connected
+//registry
 $app->get('/registry/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
 		"SELECT * FROM Registries WHERE user_id = :user_id");
@@ -199,6 +197,16 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 	$sth->execute();
 	$user = $sth->fetchAll();
 	return $this->response->withJson($user);
+});
+
+//registry
+$app->get('/registries/{registry_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Registries WHERE registry_id = :registry_id");
+    $sth->bindParam("registry_id", $args['registry_id']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
 });
 
 //delete the whole registry related to that user_id
@@ -226,7 +234,6 @@ $app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) 
 //     $sth->execute();
 //     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 // });
-
 
 // ---------- invitation routes ----------
 
@@ -269,6 +276,17 @@ $app->post('/invitations/{status}', function ($request, $response) {
 	return $this->response->withJson($user);
 });
 
+//update user password
+$app->put('/changeinvitation/{id}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Invitation SET status = :status WHERE id = :id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("id", $args['id']);
+    $sth->bindParam("status", $input['status']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+});
+
 // ---------- notification routes ----------
 
 //add Notifications
@@ -296,7 +314,7 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 
 //delete notifications table based on the notifications_id
 $app->delete('/deletenotification/{Notifications_id}', function ($request, $response, $args) {
-    $sql = "DELETE FROM Notifications WHERE Notifications_id = :Notifications_id";
+    $sql = "DELETE FROM Notif WHERE Notifications_id = :Notifications_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("Notifications_id", $args['Notifications_id']);
     $sth->execute();
