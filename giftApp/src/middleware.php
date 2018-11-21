@@ -28,7 +28,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 	"path" => [	"/addinvitation", "/invitation/{code}", "/invitations/{status}",
 				"/addtocart","/cart/{user_id}", 
 				"/users", "/user/{user_id}", "/users/{lastName}", "/changepassword/{user_id}",
-				"/addnotifcation", "/notifications/{user_id}", 
+				"/addnotifcation", "/notifications/{user_id}", "deletenotification", 
 				"/registry/{user_id}", "addnewregistry","deleteregistry/{user_id}", "/deletearegistry/{registry_id}"
 				],
 	"header" => "X-Token",
