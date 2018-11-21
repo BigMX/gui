@@ -108,7 +108,7 @@ $app->get('/users/{lastName}', function ($request, $response, $args) {
 	return $this->response->withJson($users);
 });
 
-//update user password changes password to null
+//update user password
 $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
 	$input = $request->getParsedBody();
 	$sql = "UPDATE Users SET password = :password WHERE user_id = :user_id";
@@ -201,12 +201,29 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
-
-//delete registry by passing a user_id //needs to be fixed
+//delete the whole registry related to that user_id
 $app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE user_id=:user_id");
     $sth->bindParam("user_id", $args['user_id']);
     $sth->execute();  
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
+ 
+// // //delete a user from a registry 
+// $app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
+//  $sql = "DELETE FROM Registries WHERE user_id = :user_id";
+//  $sth = $this->dbConn->prepare($sql);
+//  $sth->bindParam("user_id", $args['user_id']);
+//  $sth->execute();
+//  return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+// });
+
+//delete registry table based on the registry_id
+$app->delete('/deletearegistry/{registry_id}', function ($request, $response, $args) {
+    $sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("registry_id", $args['registry_id']);
+    $sth->execute();
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
@@ -279,49 +296,28 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 
 // ---------- needs to be fixed ----------
 
-//changing the status of the item to bought or not bought
-$app->put('/items/{status}', function ($request, $response, $args) {
-	$input = $request->getParsedBody();
-	$sql = "Update items SET status = :status WHERE item_id = :item_id";
-	$sth = $this->dbConn->prepare($sql);
-	$sth->bindParam("item_id", $input['item_id']);
-	$sth->bindParam("status", $args['status']);
-	$res = $sth->execute();
-	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
-});
-
-//display the user id of the person that bought the item from the registry 
-$app->get('/items/{item_id}', function ($request, $response, $args) { 
-	$sth = $this->dbConn->prepare(
-		"SELECT u.user_id 
-		FROM Users u 
-		LEFT JOIN Registries r 
-		ON u.user_id = r.user_id
-		LEFT JOIN items i
-		ON r.registry_id = i.registry_id
-		WHERE item_id = :item_id" );
-	$sth->bindParam("item_id", $args['item_id']);
-	$sth->execute();
-	$users = $sth->fetchAll();
-	return $this->response->withJson($users);
-});
-
-// // 
-// // //delete registry table
-// $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
-// 	$sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
+// //changing the status of the item to bought or not bought
+// $app->put('/items/{status}', function ($request, $response, $args) {
+// 	$input = $request->getParsedBody();
+// 	$sql = "Update items SET status = :status WHERE item_id = :item_id";
 // 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("registry_id", $args['registry_id']);
-// 	$sth->execute();
-	
-// 	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+// 	$sth->bindParam("item_id", $input['item_id']);
+// 	$sth->bindParam("status", $args['status']);
+// 	$res = $sth->execute();
+// 	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 // });
- 
-// // //delete a user from a registry 
-// $app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
-// 	$sql = "DELETE FROM Registries WHERE user_id = :user_id";
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("user_id", $args['user_id']);
+
+// //display the user id of the person that bought the item from the registry 
+// $app->get('/items/{item_id}', function ($request, $response, $args) { 
+// 	$sth = $this->dbConn->prepare(
+// 		"SELECT *
+//          FROM Registries r  
+//          LEFT JOIN Users u
+//          ON u.user_id = r.user_id
+//          LEFT JOIN Items i 
+//          ON u.user_id = i.user_id; );
+// 	$sth->bindParam("item_id", $args['item_id']);
 // 	$sth->execute();
-// 	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+// 	$users = $sth->fetchAll();
+// 	return $this->response->withJson($users);
 // });
