@@ -106,30 +106,18 @@ $app->get('/users/{lastName}', function ($request, $response, $args) {
 	$users = $sth->fetchAll();
 	return $this->response->withJson($users);
 });
-// 
-// //update user password changes password to null
-// $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
-// 	$input = $request->getParsedBody();
-// 	$sql = "UPDATE Users SET password = :password WHERE user_id = :user_id";
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("user_id", $input['user_id']);
-// 	$sth->bindParam("password", $args['password']);
-// 	$res = $sth->execute();
-// 	$users = $sth->fetchAll();
-// 	return $this->response->withJson($users);
-// 	//return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
-// });
 
+//update user password changes password to null
 $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
-    $sql = "UPDATE Users SET password= :password WHERE user_id= :user_id";
-    $sth = $this->db->prepare($sql);
-    $sth->bindParam("user_id", $args['user_id']);
-    $sth->bindParam("password", $input['password']);
-    $sth->execute();
-    $input['user_id'] = $args['user_id'];
-    return $this->response->withJson($input);
+	$input = $request->getParsedBody();
+	$sql = "UPDATE Users SET password = :password WHERE user_id = :user_id";
+	$sth = $this->dbConn->prepare($sql);
+	$sth->bindParam("user_id", $args['user_id']);
+	$sth->bindParam("password", $input['password']);
+	$res = $sth->execute();
+	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
+
 
 //display all the users 
 $app->get('/users', function ($request, $response, $args) { 
@@ -215,12 +203,13 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 
 //delete registry by passing a user_id //needs to be fixed
 $app->delete('/deleteregistry/{user_id}', function ($request, $response, $args) {
-    $sth = $this->db->prepare("DELETE FROM Registries WHERE user_id=:user_id");
+    $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE user_id=:user_id");
     $sth->bindParam("user_id", $args['user_id']);
+    //var_dump($args); exit;
     $sth->execute();
-    $users = $sth->fetchObject();
-    return $this->response->withJson($users);
-    });
+  
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
 
 
 // ---------- invitation routes ----------
@@ -317,6 +306,7 @@ $app->get('/items/{item_id}', function ($request, $response, $args) {
 	$users = $sth->fetchAll();
 	return $this->response->withJson($users);
 });
+
 // 
 // //delete registry table
 // $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
@@ -336,5 +326,3 @@ $app->get('/items/{item_id}', function ($request, $response, $args) {
 // 	$sth->execute();
 // 	return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 // });
-
-
