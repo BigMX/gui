@@ -164,6 +164,7 @@ $app->get('/cart/{user_id}', function ($request, $response, $args) {
 
 });
 
+//CONNECTED
 //delete an item from the cart
 $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare("DELETE FROM Items WHERE item_id=:item_id");
@@ -190,6 +191,7 @@ $app->post('/additems', function ($request, $response) {
 
 // ---------- registry routes ----------
 
+//CONNECTED
 //add a new registry
 $app->post('/addnewregistry', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -205,7 +207,8 @@ $app->post('/addnewregistry', function ($request, $response) {
     return $this->response->withJson($input);  
 });
 
-//registry
+//
+//display registry
 $app->get('/registry/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
 		"SELECT * FROM Registries WHERE user_id = :user_id");
