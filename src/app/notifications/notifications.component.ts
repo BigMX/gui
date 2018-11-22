@@ -27,7 +27,7 @@ export class NotificationsComponent implements OnInit {
     private route: ActivatedRoute,
     private users: User,
     private registries: Registries,
-    private notificts: Notifs
+    private notifs: Notifs
   ) { }
 
   // important variables initialized
