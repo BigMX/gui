@@ -22,6 +22,7 @@ export class NotificationsComponent implements OnInit {
   account: Account;
   registryList: Registry[] = [];
   notifications: Notif[] = [];
+  length: number;
   notif: Notif;
 
   constructor(
@@ -43,6 +44,7 @@ export class NotificationsComponent implements OnInit {
         this.check();
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;
+          this.length = n.length;
           console.log(n);
           this.users.getById(this.id).subscribe((account) => {
             this.account = account;
