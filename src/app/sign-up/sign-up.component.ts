@@ -60,13 +60,6 @@ ngOnInit() {
   signUp() {
    this.users.addUser(this.account).subscribe((account) => {
      this.id = account.id;
-     console.log(account);
-     const obj = {
-       userId: this.id,
-       notifications: []
-     };
-     this.notifs.newUser(obj).subscribe((n) => {
-     });
      this.router.navigate(['login']);
    });
    this.account = {};

@@ -7,11 +7,14 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class Notifs {
 
-  protected endPoint = 'http://localhost:3004/notifications';
+  protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+  // protected endPoint = 'http://localhost:3004/notifications';
 
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
+      // tslint:disable-next-line:max-line-length
+      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjpudWxsLCJlbWFpbCI6bnVsbH0.ZQBWd-2ksow_Ty-9dfwQfyeR8fMtAB_leFBibGMW0aM'
     })
   };
 
@@ -22,31 +25,24 @@ export class Notifs {
   // this is for removing a notification when the user clicks on the x
   removeNotif(id: number, notif: Notif): Observable<Notif> {
     return this.httpClient
-    .put<Notif>(`${this.endPoint}/${id}`, notif, this.httpOptions)
+    .delete<Notif>(`${this.endPoint}/${id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   // this is for adding a notification to the notifications page
-  addNotif(id: number, notif: Notif): Observable<Notif> {
+  addNotifs(id: number, notif: Notif): Observable<Notif> {
     return this.httpClient
-    .put<Notif>(`${this.endPoint}/${id}`, notif, this.httpOptions)
+    .post<Notif>(`${this.endPoint}/addNotifications`, notif, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   // this is used to get the notifications for a certain user
-  getNotifs(id: number): Observable<Notif> {
-    console.log(id);
+  getNotifs(id: number): Observable<Notif[]> {
     return this.httpClient
-    .get<Notif>(`${this.endPoint}/?userId=${id}`, this.httpOptions)
+    .get<Notif[]>(`${this.endPoint}/notifications/${id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
-  // this is used to initialize the notifications array once a new user is created
-  newUser(notif: Notif): Observable<Notif> {
-    return this.httpClient
-      .post<Notif>(this.endPoint, notif, this.httpOptions)
-      .pipe(catchError(this.handleException));
-  }
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

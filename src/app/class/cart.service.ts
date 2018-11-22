@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { Registry } from './registry';
-import { Account } from './account';
-import { Invitation } from './invitation';
+import { Account } from '../class/account';
+import { Token} from '../class/token';
+import { Item } from './item';
 
-@Injectable()
-export class Invitations {
+@Injectable({
+  providedIn: 'root'
+})
+export class Cart {
 
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+//  protected endPoint = 'http://localhost:3004/users';
+
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -24,32 +28,27 @@ export class Invitations {
   ) { }
 
   // CONNECTED
-  add(invitation:Invitation): Observable<Invitation> {
+  // adding an item to the a specific user's cart
+  addItemToCart(item: Item): Observable<Item> {
     return this.httpClient
-      .post<Invitation>(`${this.endPoint}/addinvitation`, invitation, this.httpOptions)
-      .pipe(catchError(this.handleException));
-  }
-
-  getByEmail(email: string, Code:string): Observable<Invitation> {
-    const obj = {
-      email: email,
-      Code: Code
-    };
-    return this.httpClient
-    .post<Invitation>(`${this.endPoint}/invitation/${Code}`, obj, this.httpOptions)
+    .post<Item>(`${this.endPoint}/addtocart`, item, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
-  getAll(email: string): Observable<Invitation[]> {
+  // CONNECTED
+  // retrieving cart items for a specific user
+  getItems(id: number): Observable<Item[]> {
     return this.httpClient
-    .get<Invitation[]>(`${this.endPoint}/?receiverEmail=${email}&status=true`, this.httpOptions)
-    .pipe(catchError(this.handleException));
+      .get<Item[]>(`${this.endPoint}/cart/${id}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
   }
 
-  update(invitation:Invitation): Observable<Invitation> {
+  // CONNECTED
+  // used for deleting an item from the user's cart
+  deleteItem(item_id: number):Observable<Item> {
     return this.httpClient
-      .put<Invitation>(`${this.endPoint}/${invitation.id}`, invitation, this.httpOptions)
-      .pipe(catchError(this.handleException));
+    .delete<Item>(`${this.endPoint}/deleteitem/${item_id}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
   }
 
   protected handleException(exception: any) {

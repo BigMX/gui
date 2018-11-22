@@ -8,13 +8,14 @@
       <div class="dash">
         <h2 id="dashboard">Join</h2>
       </div>
+      <br>
       <div class="form-group">
-        <label for="exampleInputEmail1">Registry Code</label>
-        <input type="text" class="form-control" [(ngModel)]="code" />
+        <label id="email" for="exampleInputEmail1">Registry Code</label>
+        <input style="margin-left: 1em; width: 44.5em;" type="text" class="form-control" placeholder="please type the code you received here" [(ngModel)]="code" />
       </div>
-      <button class="btn" (click)="join()" data-toggle="modal"
+      <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="joinButton" (click)="join()" data-toggle="modal"
       data-target="#deleteModal">
-        join
+        Join
       </button>
 
 

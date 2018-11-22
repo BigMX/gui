@@ -20,6 +20,7 @@ export class Registries {
     protected httpClient: HttpClient
   ) { }
 
+  // CONNECTED
   // this is for adding a new registry
   add(registries: Registry): Observable<Registry> {
     return this.httpClient
@@ -27,15 +28,11 @@ export class Registries {
       .pipe(catchError(this.handleException));
   }
 
-  // this is for getting the registries for a certain user
-  // getRegistries(userId: number): Observable<Registry[]> {
-  //   return this.httpClient
-  //     .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=active`, this.httpOptions)
-  //     .pipe(catchError(this.handleException));
-  // }
+  // CONNECTED
+  // this is for getting all of the registries for a certain user
   getRegistries(user_id: number): Observable<Registry[]> {
     return this.httpClient
-      .get<Registry[]>(`${this.endPoint}/registry/user_id=${user_id}`, this.httpOptions)
+      .get<Registry[]>(`${this.endPoint}/registry/${user_id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
@@ -46,24 +43,26 @@ export class Registries {
       .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   // this is for deleting a registry
   deleteReg(regId: number): Observable<Registry> {
     return this.httpClient
-    .delete<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
+    .delete<Registry>(`${this.endPoint}/deleteregistry/${regId}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   // used to update a registry
   updateReg(reg: Registry): Observable<Registry> {
     return this.httpClient
-    .put<Registry>(`${this.endPoint}/${reg.id}`, reg, this.httpOptions)
+    .put<Registry>(`${this.endPoint}/${reg.registry_id}`, reg, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   // this is for getting a registry
   getRegById(regId: number): Observable<Registry> {
     return this.httpClient
-    .get<Registry>(`${this.endPoint}/${regId}`, this.httpOptions)
+    .get<Registry>(`${this.endPoint}/registries/${regId}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

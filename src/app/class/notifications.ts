@@ -1,5 +1,5 @@
 export class Notif {
-  userId?: number;
-  notifications?: string[];
-  id?: number;
+  user_id?: number;
+  notifications?: string;
+  Notifications_id?: number;
 }

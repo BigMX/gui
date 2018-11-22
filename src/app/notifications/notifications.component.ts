@@ -21,8 +21,7 @@ export class NotificationsComponent implements OnInit {
   id: number;
   account: Account;
   registryList: Registry[] = [];
-  notifs: string[] = [];
-  nObj: Notif;
+  notif: Notif;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,11 +39,8 @@ export class NotificationsComponent implements OnInit {
           this.registryList = registries;
         });
         this.notificts.getNotifs(this.id).subscribe((n) => {
-          if (n.notifications !== undefined) {
-            this.notifs = n.notifications;
-          }
-          this.nObj = n[0];
-          console.log(this.nObj);
+          this.notif = {};
+          console.log(this.notif);
           this.users.getById(this.id).subscribe((account) => {
             this.account = account;
           });
@@ -56,11 +52,10 @@ export class NotificationsComponent implements OnInit {
 
   // this method removes a notification when the 'x' on it is clicked - user notifications are updated to reflect the change
   removeAlert(notif: string) {
-    const index = this.notifs.indexOf(notif);
-    this.notifs.splice(index, 1);
-    this.nObj.notifications = this.notifs;
-    console.log(this.nObj);
-    this.notificts.removeNotif(this.nObj.id, this.nObj).subscribe((n) => {
+    this.notif.notifications = notif;
+    this.notif.user_id = this.id;
+    console.log(this.notif);
+    this.notificts.removeNotif(this.notif.user_id, this.notif).subscribe((n) => {
       // console.log(account);
     });
   }
@@ -74,37 +69,39 @@ export class NotificationsComponent implements OnInit {
     // tslint:disable-next-line:forin
     for(i = 0; i < this.registryList.length; i++) {
       const registry = this.registryList[i];
-      if (registry.items === undefined) {
+      if (registry.items === null) {
         const message = 'all items have been bought for: ' + registry.name + '!!!!';
-        if(this.notifs.indexOf(message)===-1) {
-          this.notifs.push(message);
-        }
-      }
-       let j;
-       if(registry.items!==undefined) {
-          let counter = 0;
-          for (j = 0; j < registry.items.length; j++) {
-            const item = registry.items[j];
-            if (item.status === 'bought') {
-              counter+=1;
-              const message = item.name + ', has been bought!!!';
-              if(this.notifs.indexOf(message)===-1) {
-                this.notifs.push(message);
-              }
-            }
-          }
-          if (counter === registry.items.length) {
-            const message = 'all items have been bought for: ' + registry.name + '!!!!';
-            if(this.notifs.indexOf(message)===-1) {
-            this.notifs.push(message);
-            }
-          }
-       }
-    }
-    this.nObj.notifications = this.notifs;
-    this.notificts.addNotif(this.nObj.id, this.nObj).subscribe((n) => {
+        this.notif.notifications = message;
+        this.notif.user_id = this.id;
+        this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
 
-    });
+        });
+      }
+      let j;
+      let counter = 0;
+      if (registry.items!==null) {
+        for (j = 0; j < registry.items.length; j++) {
+          const item = registry.items[j];
+          if (item.status === 'bought') {
+            counter+=1;
+            const message = item.name + ', has been bought!!!';
+              this.notif.notifications = message;
+              this.notif.user_id = this.id;
+              this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
+
+              });
+            }
+          }
+      }
+        if (counter === registry.items.length) {
+          const message = 'all items have been bought for: ' + registry.name + '!!!!';
+            this.notif.notifications = message;
+            this.notif.user_id = this.id;
+            this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
+
+            });
+          }
+        }
   }
 
 }

@@ -1,3 +1,4 @@
+import { Cart } from './../class/cart.service';
 import { Item } from './../class/item';
 import { Account } from './../class/account';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +28,9 @@ export class CartComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    private cartItems: Cart,
+    protected router: Router
   ) { }
 
   // important variables initialized
@@ -37,9 +40,13 @@ export class CartComponent implements OnInit {
     this.route.params.subscribe((params: CartParams) => {
       if (params.id) {
         this.id = +params.id;
+        console.log(this.id);
         this.users.getById(this.id).subscribe((account) => {
           this.account = account;
-          this.cart = account.cart;
+        });
+        this.cartItems.getItems(this.id).subscribe((c) => {
+          console.log(c);
+          this.cart = c;
         });
       }
     });
@@ -48,23 +55,24 @@ export class CartComponent implements OnInit {
   // this method is for adding an item to the cart - the status is set to need
   addItem() {
     this.newItem.status = 'need';
-    this.cart.push(this.newItem);
-    this.account.cart = this.cart;
-    this.users.addItemToCart(this.account).subscribe((account) => {
-
+    this.newItem.user_id = this.id;
+    console.log(this.newItem);
+    this.cartItems.addItemToCart(this.newItem).subscribe((itemS) => {
+      console.log(itemS);
     });
     this.newItem = {};
+    this.cartItems.getItems(this.id).subscribe((c) => {
+      this.cart = c;
+    });
+    let url='cart/';
+    url+=this.id;
+    this.router.navigateByUrl(url);
   }
 
   // used for removing items from the cart
-  removeItem(id: number, index:number) {
+  removeItem(item_id: number) {
     if (window.confirm('Are you sure?')) {
-      this.users.getById(this.id).subscribe((acct) => {
-        this.account = acct;
-        this.account.cart.splice(index, 1);
-        console.log(this.account);
-        // lthis.users.removeNotif(this.account).subscribe(()=> {
-        // });
+      this.cartItems.deleteItem(item_id).subscribe((item) => {
         location.reload();
       });
     }

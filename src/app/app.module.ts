@@ -18,14 +18,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ViewRegistryComponent } from './view-registry/view-registry.component';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
-import { ProfileComponent } from './profile/profile.component';
-import { JoinComponent } from './join/join.component';
 import { Notifs } from './class/notifs.service';
+import { Cart } from './class/cart.service';
 
 const defaultRoute = 'login';
 
@@ -149,7 +150,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations, Notifs],
+  providers: [Registries, User,Invitations, Notifs, Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

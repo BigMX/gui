@@ -1,7 +1,10 @@
 export class Item {
   name?: string;
   price?: string;
+  user_id?: number;
   location?: string;
   status?: string;
-  id?: number;
+  item_id?: number;
+  registry_id?: number;
+  disabled?: boolean;
 }
