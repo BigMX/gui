@@ -23,14 +23,14 @@ export class Notifs {
   ) { }
 
   // this is for removing a notification when the user clicks on the x
-  removeNotif(id: number, notif: Notif): Observable<Notif> {
+  removeNotif(id: number): Observable<Notif> {
     return this.httpClient
-    .delete<Notif>(`${this.endPoint}/${id}`, this.httpOptions)
+    .delete<Notif>(`${this.endPoint}/deletenotification/${id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   // this is for adding a notification to the notifications page
-  addNotifs(id: number, notif: Notif): Observable<Notif> {
+  addNotifs(notif: Notif): Observable<Notif> {
     return this.httpClient
     .post<Notif>(`${this.endPoint}/addNotifications`, notif, this.httpOptions)
     .pipe(catchError(this.handleException));

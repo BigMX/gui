@@ -57,7 +57,6 @@ export class SidebuttonsComponent implements OnInit {
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
           this.notifs.getNotifs(this.id).subscribe((n) => {
-            console.log(n);
             if(n!==undefined) {
               this.notifCount = n.length;
             } else {

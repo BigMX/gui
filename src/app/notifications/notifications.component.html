@@ -10,9 +10,9 @@
           </div>
           <br>
           <div *ngIf="notifs">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let notif of notifs">
-                {{notif}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(notif)">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let n of notifications">
+                {{n.notifications}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(n.Notification_id)">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>

@@ -74,6 +74,7 @@ export class RegistryComponent implements OnInit {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {
         this.registries.deleteReg(+params.regid).subscribe((registry) => {
+          location.reload();
         });
       }
     });
