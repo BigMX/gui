@@ -341,7 +341,7 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 //CONNECTED
 //delete notifications table based on the notifications_id
 $app->delete('/deletenotification/{notification_id}', function ($request, $response, $args) {
-    $sql = "DELETE FROM Notif WHERE notifications_id = :notifications_id";
+    $sql = "DELETE FROM Notif WHERE notification_id = :notification_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("notification_id", $args['notification_id']);
     $sth->execute();
