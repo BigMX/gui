@@ -40,8 +40,8 @@ export class NotificationsComponent implements OnInit {
         this.id = +params.id;
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
+          console.log(this.registryList);
         });
-        this.check();
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;
           this.length = n.length;
@@ -66,35 +66,45 @@ export class NotificationsComponent implements OnInit {
   // it also checks to see if all of the items in a given registry have been purchased and alerts accordingly
   // this is done for all of the user's /active/ registries
   check() {
-    let i;
-    // tslint:disable-next-line:forin
-    for(i = 0; i < this.registryList.length; i++) {
-      const registry = this.registryList[i];
-      let j;
-      let counter = 0;
-      if (registry.items!==null) {
-        for (j = 0; j < registry.items.length; j++) {
-          const item = registry.items[j];
-          if (item.status === 'bought') {
-            counter+=1;
-            const message = item.name + ', has been bought!!!';
+        let i;
+        // tslint:disable-next-line:forin
+        for(i = 0; i < this.registryList.length; i++) {
+          // if (this.registryList[i].items === null) {
+          //   const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
+          //   this.notif.notifications = message;
+          //   this.notif.user_id = this.id;
+          //   this.notifs.addNotifs(this.notif).subscribe((n) => {
+          //     console.log(n);
+          //   });
+          //   this.notif = new Notif;
+          // }
+          let j;
+          let counter = 0;
+          if (this.registryList[i].items!==null) {
+            for (j = 0; j < this.registryList[i].items.length; j++) {
+              const item = this.registryList[i].items[j];
+              if (item.status === 'bought') {
+                counter+=1;
+                const message = item.name + ', has been bought!!!';
+                this.notif.notifications = message;
+                this.notif.user_id = this.id;
+                this.notifs.addNotifs(this.notif).subscribe((n) => {
+                  console.log(n);
+                });
+                this.notif = new Notif;
+              }
+            }
+          }
+          if (counter === this.registryList[i].items.length) {
+            const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
             this.notif.notifications = message;
             this.notif.user_id = this.id;
             this.notifs.addNotifs(this.notif).subscribe((n) => {
-
+              console.log(n);
             });
+            this.notif = new Notif;
           }
         }
-      }
-      if (counter === registry.items.length) {
-        const message = 'all items have been bought for: ' + registry.name + '!!!!';
-        this.notif.notifications = message;
-        this.notif.user_id = this.id;
-        this.notifs.addNotifs(this.notif).subscribe((n) => {
-
-        });
-      }
-    }
   }
 
 }

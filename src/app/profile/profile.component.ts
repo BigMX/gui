@@ -6,7 +6,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 
 class ProfileParams {
-  userid: number;
+  userid: string;
 }
 
 @Component({
