@@ -338,13 +338,12 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
-//CONNECTED
+//
 //delete notifications table based on the notifications_id
-$app->delete('deletenotification/{notification_id}', function ($request, $response, $args) {
-    $sql = "DELETE FROM Notif WHERE notification_id = :notification_id";
-    $sth = $this->dbConn->prepare($sql);
+$app->delete('/deletenotification/{notification_id}', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Notif WHERE notification_id=:notification_id");
     $sth->bindParam("notification_id", $args['notification_id']);
-    $sth->execute();
+    $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
