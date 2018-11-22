@@ -331,7 +331,7 @@ $app->post('/addNotifications', function ($request, $response) {
 //display Notifications
 $app->get('/notifications/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
-		"SELECT notifications FROM Notif WHERE user_id = :user_id");
+		"SELECT notifications, notification_id FROM Notif WHERE user_id = :user_id");
 	$sth->bindParam("user_id", $args['user_id']);
 	$sth->execute();
 	$user = $sth->fetchAll();
