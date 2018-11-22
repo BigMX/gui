@@ -218,6 +218,7 @@ $app->get('/registry/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
+//CONNECTED
 //display a registry
 $app->get('/registries/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -228,7 +229,7 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
-
+//CONNECTED
 //delete the whole registry related to that user_id
 $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare("DELETE FROM Registries WHERE registry_id=:registry_id");
@@ -257,6 +258,7 @@ $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $ar
 
 // ---------- invitation routes ----------
 
+//CONNECTED
 //add a new invitation //tell her to change registryId to registry_id
 $app->post('/addinvitation', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -272,6 +274,7 @@ $app->post('/addinvitation', function ($request, $response) {
     return $this->response->withJson($input);  
 });
 
+
 //display invitation with having code an the input
 $app->post('/invitation/{code}', function ($request, $response) { 
 	$input = $request->getParsedBody();
@@ -284,7 +287,8 @@ $app->post('/invitation/{code}', function ($request, $response) {
 	return $this->response->withJson($user);
 });
 
-//display invitation 
+//
+//display invitation  //idk if we need this 
 $app->post('/invitations/{status}', function ($request, $response) { 
 	$input = $request->getParsedBody();
 	$sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND status = :status" ;
@@ -309,6 +313,7 @@ $app->put('/changeinvitation/{id}', function ($request, $response, $args) {
 
 // ---------- notification routes ----------
 
+//CONNECTED
 //add Notifications
 $app->post('/addNotifications', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -322,6 +327,7 @@ $app->post('/addNotifications', function ($request, $response) {
     return $this->response->withJson($input);
 });
 
+//CONNECTED
 //display Notifications
 $app->get('/notifications/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
@@ -332,16 +338,17 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
+//CONNECTED
 //delete notifications table based on the notifications_id
-$app->delete('/deletenotification/{Notifications_id}', function ($request, $response, $args) {
+$app->delete('/deletenotification/{notification_id}', function ($request, $response, $args) {
     $sql = "DELETE FROM Notif WHERE Notifications_id = :Notifications_id";
     $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("Notifications_id", $args['Notifications_id']);
+    $sth->bindParam("notification_id", $args['notification_id']);
     $sth->execute();
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
-// ---------- needs to be fixed ----------
+// ---------- needs to be fixed or dont need----------
 
 // //changing the status of the item to bought or not bought
 // $app->put('/items/{status}', function ($request, $response, $args) {
