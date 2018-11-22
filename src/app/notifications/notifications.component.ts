@@ -38,7 +38,7 @@ export class NotificationsComponent implements OnInit {
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
         });
-        this.notificts.getNotifs(this.id).subscribe((n) => {
+        this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notif = {};
           console.log(this.notif);
           this.users.getById(this.id).subscribe((account) => {
@@ -55,7 +55,7 @@ export class NotificationsComponent implements OnInit {
     this.notif.notifications = notif;
     this.notif.user_id = this.id;
     console.log(this.notif);
-    this.notificts.removeNotif(this.notif.user_id, this.notif).subscribe((n) => {
+    this.notifs.removeNotif(this.notif.user_id, this.notif).subscribe((n) => {
       // console.log(account);
     });
   }
@@ -73,7 +73,7 @@ export class NotificationsComponent implements OnInit {
         const message = 'all items have been bought for: ' + registry.name + '!!!!';
         this.notif.notifications = message;
         this.notif.user_id = this.id;
-        this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
+        this.notifs.addNotifs(this.id, this.notif).subscribe((n) => {
 
         });
       }
@@ -87,7 +87,7 @@ export class NotificationsComponent implements OnInit {
             const message = item.name + ', has been bought!!!';
               this.notif.notifications = message;
               this.notif.user_id = this.id;
-              this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
+              this.notifs.addNotifs(this.id, this.notif).subscribe((n) => {
 
               });
             }
@@ -97,7 +97,7 @@ export class NotificationsComponent implements OnInit {
           const message = 'all items have been bought for: ' + registry.name + '!!!!';
             this.notif.notifications = message;
             this.notif.user_id = this.id;
-            this.notificts.addNotifs(this.id, this.notif).subscribe((n) => {
+            this.notifs.addNotifs(this.id, this.notif).subscribe((n) => {
 
             });
           }
