@@ -16,7 +16,7 @@
             <br>
             <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let n of notifications">
                 {{n.notifications}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(n.Notification_id)">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(n)">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
