@@ -318,21 +318,8 @@ $app->post('/addinvitation', function ($request, $response) {
 });
 
 
-//check if we need this
-// //display invitation with having code an the input
-// $app->post('/invitation/{code}', function ($request, $response) { 
-// 	$input = $request->getParsedBody();
-// 	$sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code" ;
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("receiverEmail", $input['receiverEmail']);
-// 	$sth->bindParam("Code", $input['Code']);
-// 	$sth->execute();
-// 	$user = $sth->fetchAll();
-// 	return $this->response->withJson($user);
-// });
-
 //CONNECTED
-//
+//change the status to true 
 $app->put('/acceptinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Invitation SET status = 'true' WHERE receiverEmail = :receiverEmail AND Code = :Code";
@@ -343,7 +330,18 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//
+//change the status to true 
+$app->put('/getinvitation', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("receiverEmail", $input['receiverEmail']);
+    $res = $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson(user);
+});
+
+//CONNECTED
 //display invitation  //idk if we need this 
 $app->post('/invitations/{status}', function ($request, $response) { 
 	$input = $request->getParsedBody();
@@ -389,17 +387,6 @@ $app->get('/invitationstatus/{id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
-//
-//update status of the invitation
-$app->put('/changeinvitation/{id}', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
-    $sql = "UPDATE Invitation SET status = :status WHERE id = :id";
-    $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("id", $args['id']);
-    $sth->bindParam("status", $input['status']);
-    $res = $sth->execute();
-    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
-});
 
 // ---------- notification routes ----------
 
