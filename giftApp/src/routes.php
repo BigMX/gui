@@ -172,6 +172,17 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
+//changes the status of a registry
+$app->put('/itemregistryid/{item_id}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Registries SET registry_id = :registry_id WHERE item_id = :item_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("item_id", $args['item_id']);
+    $sth->bindParam("registry_id", $input['registry_id']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+});
+
 //not in the front end maybe we dont need this
 //add items to registry
 $app->post('/additems', function ($request, $response) {
@@ -272,24 +283,6 @@ $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $ar
     $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
- 
-// // //delete a user from a registry 
-// $app->delete('/deleteuserregistry/{user_id}', function ($request, $response, $args) {
-//  $sql = "DELETE FROM Registries WHERE user_id = :user_id";
-//  $sth = $this->dbConn->prepare($sql);
-//  $sth->bindParam("user_id", $args['user_id']);
-//  $sth->execute();
-//  return $this->response->withJson(["success" => $sth->rowCount() == 1]);
-// });
-
-// //delete registry table based on the registry_id
-// $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
-//     $sql = "DELETE FROM Registries WHERE registry_id = :registry_id";
-//     $sth = $this->dbConn->prepare($sql);
-//     $sth->bindParam("registry_id", $args['registry_id']);
-//     $sth->execute();
-//     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
-// });
 
 // ---------- invitation routes ----------
 
@@ -308,7 +301,6 @@ $app->post('/addinvitation', function ($request, $response) {
     $sth->execute();
     return $this->response->withJson($input);  
 });
-
 
 //CONNECTED
 //change the status to true 
@@ -335,19 +327,6 @@ $app->put('/getinvitation', function ($request, $response, $args) {
 });
 
 //CONNECTED
-//display invitation  //idk if we need this 
-$app->post('/invitations/{status}', function ($request, $response) { 
-	$input = $request->getParsedBody();
-	$sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND status = :status" ;
-	$sth = $this->dbConn->prepare($sql);
-	$sth->bindParam("receiverEmail", $input['receiverEmail']);
-	$sth->bindParam("status", $input['status']);
-	$sth->execute();
-	$user = $sth->fetchAll();
-	return $this->response->withJson($user);
-});
-
-//
 //delete a user from the invitation
 $app->put('/deleteinvitation', function ($request, $response) {
     $input = $request->getParsedBody();
@@ -360,6 +339,20 @@ $app->put('/deleteinvitation', function ($request, $response) {
 
 
 //fix this
+
+//CONNECTED
+//display invitation  //idk if we need this 
+$app->post('/invitations/{status}', function ($request, $response) { 
+    $input = $request->getParsedBody();
+    $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND status = :status" ;
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("receiverEmail", $input['receiverEmail']);
+    $sth->bindParam("status", $input['status']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+
 //display invatation
 $app->get('/displayinvitation/{id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
