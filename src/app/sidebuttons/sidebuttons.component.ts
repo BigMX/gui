@@ -5,6 +5,7 @@ import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
+import { Cart } from '../class/cart.service';
 
 class SidebuttonsParams {
   id: string;
@@ -23,6 +24,7 @@ export class SidebuttonsComponent implements OnInit {
   password: string;
   newPassword1: string;
   newPassword2: string;
+  itemCount: number;
 
   update() {
     if(this.newPassword1!==this.newPassword2) {
@@ -46,7 +48,8 @@ export class SidebuttonsComponent implements OnInit {
     private registries: Registries,
     private users: User,
     protected router: Router,
-    protected notifs: Notifs
+    protected notifs: Notifs,
+    private cart: Cart
   ) { }
 
   // important variables initialized
@@ -55,7 +58,8 @@ export class SidebuttonsComponent implements OnInit {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
-          this.account = acct;
+          this.account = acct[0];
+          console.log(this.account);
           this.notifs.getNotifs(this.id).subscribe((n) => {
             if(n!==undefined) {
               this.notifCount = n.length;
@@ -63,6 +67,9 @@ export class SidebuttonsComponent implements OnInit {
               this.notifCount = 0;
             }
           });
+        });
+        this.cart.getItems(this.id).subscribe((items) => {
+          this.itemCount = items.length;
         });
       }
     });

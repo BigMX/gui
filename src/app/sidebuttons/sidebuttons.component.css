@@ -5,12 +5,20 @@
 
 .topbuttons{
   background-color: black;
-  width:110%;
+  width:145%;
+  height: 4em;
+}
+
+.userName {
+  width: 15.5em;
+  margin-top: 1em;
+  text-align: center;
 }
 
 .name {
-  font: 200%/200% Garamond, Georgia, serif;
-  font-weight: bold;
+  font: Georgia, serif;
+  font-size: 150%;
+  text-decoration: underline;
   color:white;
 }
 
@@ -20,8 +28,13 @@
   color:white;
 }
 
+.giftReg {
+  width: 65em;
+  text-align: center;
+}
+
 .cart{
-  margin-left: 10em;
+  margin-left: -4em;
 }
 
 .dropd{
@@ -35,8 +48,11 @@
 }
 
 #dropdownMenuButton {
+  margin-top: .5em;
   background-color: #e5d4ee;
-  width: 7.8em;
+  width: 4.5em;
+  height: 3em;
+  text-align: center;
 }
 
 h4 {
@@ -112,8 +128,11 @@ button:active{
 }
 
 .cartbtn {
-  background-color: #a7c1e0a2;
-  width: 7.8em;
+  margin-top: .4em;
+  background-color: #b3ccff;
+  margin-right: 1em;
+  width: 7em;
+  height: 3em;
   margin-bottom: 0.5em;
 }
 
