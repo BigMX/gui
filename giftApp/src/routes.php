@@ -253,6 +253,7 @@ $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, 
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//C
 //get users in the registry
 $app->get('/getusers/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -260,7 +261,7 @@ $app->get('/getusers/{registry_id}', function ($request, $response, $args) {
     $sth->bindParam("registry_id", $args['registry_id']);
     $sth->execute();
     $user = $sth->fetchAll();
-    return $this->response->withJson($user);
+    return $this->response->withJson($args);
 });
 
 // //fix this 
