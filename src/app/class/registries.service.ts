@@ -55,14 +55,15 @@ export class Registries {
   // this is for getting the archived registries for a certain user
   getArchivedRegs(userId: number): Observable<Registry[]> {
     return this.httpClient
-      .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=archived`, this.httpOptions)
+      .get<Registry[]>(`${this.endPoint}/archived/${userId}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
-  // used to update a registry
+  // CONNECTED
+  // used to update a registry's status to archived for archive registries
   updateReg(reg: Registry): Observable<Registry> {
     return this.httpClient
-    .put<Registry>(`${this.endPoint}/changeregistry/${reg.registry_id}`, reg, this.httpOptions)
+    .put<Registry>(`${this.endPoint}/changeregistrystatus/${reg.registry_id}`, reg, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
