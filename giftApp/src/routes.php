@@ -355,7 +355,7 @@ $app->delete('/deleteinvitation', function ($request, $response) {
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $sth->execute();  
-    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+    return $this->response->withJson($input);
 });
 
 
