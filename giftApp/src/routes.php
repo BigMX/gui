@@ -195,6 +195,16 @@ $app->put('/itembought', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+$app->get('/item/{registry_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Items WHERE registry_id = :registry_id");
+    $sth->bindParam("registry_id", $args['registry_id']);   
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+
+});
+
 //not in the front end maybe we dont need this
 //add items to registry
 $app->post('/additems', function ($request, $response) {
