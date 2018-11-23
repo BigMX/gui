@@ -349,13 +349,13 @@ $app->post('/invitations/{status}', function ($request, $response) {
 
 //
 //delete a user from the invitation
-$app->delete('/deleteinvitation', function ($request, $response) {
-    $input = $request->getParsedBody();
+$app->delete('/deleteinvitation', function ($request, $response, $args) {
+    //$input = $request->getParsedBody();
     $sql = "DELETE FROM Invitation WHERE receiverEmail=:receiverEmail";
     $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("receiverEmail", $input['receiverEmail']);
+    $sth->bindParam("receiverEmail", $args['receiverEmail']);
     $sth->execute();  
-    return $this->response->withJson($input);
+    return $this->response->withJson($args);
 });
 
 
