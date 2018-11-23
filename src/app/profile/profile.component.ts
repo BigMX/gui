@@ -6,7 +6,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 
 class ProfileParams {
-  userid: string;
+  id: string;
 }
 
 @Component({
@@ -35,8 +35,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.success=true;
     this.route.params.subscribe((params: ProfileParams) => {
-      if (params.userid) {
-        this.id = +params.userid;
+      if (params.id) {
+        this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
         });

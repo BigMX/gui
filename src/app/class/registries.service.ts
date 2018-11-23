@@ -36,11 +36,12 @@ export class Registries {
       .pipe(catchError(this.handleException));
   }
 
-  // this is for getting the archived registries for a certain user
-  getArchivedRegs(userId: number): Observable<Registry[]> {
+  // CONNECTED
+  // this is for getting a registry
+  getRegById(regId: number): Observable<Registry> {
     return this.httpClient
-      .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=archived`, this.httpOptions)
-      .pipe(catchError(this.handleException));
+    .get<Registry>(`${this.endPoint}/registries/${regId}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
   }
 
   // CONNECTED
@@ -51,18 +52,17 @@ export class Registries {
     .pipe(catchError(this.handleException));
   }
 
+  // this is for getting the archived registries for a certain user
+  getArchivedRegs(userId: number): Observable<Registry[]> {
+    return this.httpClient
+      .get<Registry[]>(`${this.endPoint}/?userId=${userId}&status=archived`, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
   // used to update a registry
   updateReg(reg: Registry): Observable<Registry> {
     return this.httpClient
     .put<Registry>(`${this.endPoint}/${reg.registry_id}`, reg, this.httpOptions)
-    .pipe(catchError(this.handleException));
-  }
-
-  // CONNECTED
-  // this is for getting a registry
-  getRegById(regId: number): Observable<Registry> {
-    return this.httpClient
-    .get<Registry>(`${this.endPoint}/registries/${regId}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

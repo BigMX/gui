@@ -101,7 +101,7 @@ const defaultRoute = 'login';
           component: ProfileComponent
         },
         {
-          path: ':userid',
+          path: ':id',
           component: ProfileComponent
         }
       ]},
