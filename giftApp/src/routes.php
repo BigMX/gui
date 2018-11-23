@@ -319,16 +319,27 @@ $app->post('/addinvitation', function ($request, $response) {
 
 
 //
-//display invitation with having code an the input
-$app->post('/invitation/{code}', function ($request, $response) { 
-	$input = $request->getParsedBody();
-	$sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code" ;
-	$sth = $this->dbConn->prepare($sql);
-	$sth->bindParam("receiverEmail", $input['receiverEmail']);
-	$sth->bindParam("Code", $input['Code']);
-	$sth->execute();
-	$user = $sth->fetchAll();
-	return $this->response->withJson($user);
+// //display invitation with having code an the input
+// $app->post('/invitation/{code}', function ($request, $response) { 
+// 	$input = $request->getParsedBody();
+// 	$sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code" ;
+// 	$sth = $this->dbConn->prepare($sql);
+// 	$sth->bindParam("receiverEmail", $input['receiverEmail']);
+// 	$sth->bindParam("Code", $input['Code']);
+// 	$sth->execute();
+// 	$user = $sth->fetchAll();
+// 	return $this->response->withJson($user);
+// });
+
+//update status of the invitation
+$app->put('/invitation/{code}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("receiverEmail", $args['receiverEmail']);
+    $sth->bindParam("Code", $input['Code']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
 //
