@@ -73,6 +73,9 @@ export class ViewRegistryComponent implements OnInit {
     this.registries.updateReg(this.currentReg).subscribe((x) => {
       this.currentReg = x;
     });
+    if(this.account.claimed===undefined) {
+      this.account.claimed=[];
+    }
     this.account.claimed.push(this.currentReg.items[index]);
     this.users.updateAccount(this.account).subscribe((x) => {
 

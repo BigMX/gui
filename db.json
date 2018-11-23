@@ -85,6 +85,20 @@
       "registryId": 4,
       "Code": "Code4",
       "id": 13
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 32,
+      "Code": "Code32",
+      "id": 14
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 33,
+      "Code": "Code33",
+      "id": 15
     }
   ],
   "users": [
@@ -128,30 +142,6 @@
           "price": "$15",
           "location": "a store",
           "status": "Claimed by aalcantara@smu.edu"
-        },
-        {
-          "name": "coffee",
-          "price": "$5.99",
-          "location": "Starbucks",
-          "status": "Claimed by aalcantara@smu.edu"
-        },
-        {
-          "name": "coffee",
-          "price": "$5.99",
-          "location": "Starbucks",
-          "status": "Claimed by aalcantara@smu.edu"
-        },
-        {
-          "name": "coffee",
-          "price": "$5.99",
-          "location": "Starbucks",
-          "status": "Claimed by aalcantara@smu.edu"
-        },
-        {
-          "name": "stuff",
-          "price": "$15",
-          "location": "a store",
-          "status": "Claimed by aalcantara@smu.edu"
         }
       ],
       "boughtItems": [
@@ -160,6 +150,54 @@
           "price": "$15",
           "location": "a store",
           "status": "claimed"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "stuff",
@@ -175,7 +213,24 @@
       "lastName": "Mei",
       "email": "smei@smu.edu",
       "phoneNumber": "214-555-5555",
-      "password": "abcde"
+      "password": "abcde",
+      "claimed": [],
+      "boughtItems": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "Claimed by smei@smu.edu"
+        }
+      ],
+      "cart": [
+        {
+          "name": "1",
+          "price": "1",
+          "location": "1",
+          "status": "Unclaimed"
+        }
+      ]
     },
     {
       "id": 3,
@@ -236,13 +291,24 @@
         "all items have been bought for: 1!!!!",
         "all items have been bought for: a!!!!",
         "all items have been bought for: yes!!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "coffee, has been bought!!!",
+        "stuff, has been bought!!!",
         "stuff, has been bought!!!"
       ],
       "id": 1
     },
     {
       "userId": 2,
-      "notifications": [],
+      "notifications": [
+        "Tea, has been bought!!!"
+      ],
       "id": 2
     },
     {
@@ -266,7 +332,6 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
-
       "viewers": [
         {
           "viewerEmail": "emfashenpoura@smu.edu",
@@ -526,7 +591,13 @@
           "name": "Coffee",
           "price": "$4.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "Claimed by smei@smu.edu"
+        }
+      ],
+      "viewers": [
+        {
+          "viewerEmail": "smei@smu.edu",
+          "viewerId": 2
         }
       ]
     },
@@ -541,13 +612,13 @@
           "name": "Coffee",
           "price": "$4.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "Claimed by smei@smu.edu"
         },
         {
           "name": "Tea",
           "price": "$3.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "Claimed by smei@smu.edu"
         },
         {
           "name": "Breakfast Sandwich",
@@ -555,7 +626,8 @@
           "location": "Starbucks",
           "status": "need"
         }
-      ]
+      ],
+      "viewers": []
     },
     {
       "name": "yes",

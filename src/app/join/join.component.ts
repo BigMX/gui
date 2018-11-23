@@ -37,6 +37,7 @@ export class JoinComponent implements OnInit {
 
   ngOnInit() {
     this.in=true;
+    this.viewer=new Viewer;
     this.route.params.subscribe((params: JoinParams) => {
       if (params.id) {
         this.id = +params.id;
@@ -56,41 +57,24 @@ export class JoinComponent implements OnInit {
       } else {
         this.message='You are in';
         this.in=false;
-        this.registries.getRegById(x.id).subscribe((reg) => {
+        this.registries.getRegById(x[0].registryId).subscribe((reg) => {
           this.currentReg = reg;
+          if (this.currentReg.viewers === undefined) {
+            this.currentReg.viewers = [];
+          }
+          this.viewer.viewerEmail = this.account.email;
+          this.viewer.viewerId = this.account.id;
+          this.currentReg.viewers.push(this.viewer);
+          this.registries.updateReg(this.currentReg).subscribe((re) => {
+          });
         });
-        if (this.currentReg.viewers === undefined) {
-          this.currentReg.viewers = [];
-        }
-        this.viewer.viewerEmail = this.account.email;
-        this.viewer.viewerId = this.account.id;
-        this.currentReg.viewers.push(this.viewer);
-        this.registries.updateReg(this.currentReg).subscribe((reg) => {
 
-        });
       }
       x[0].status=true;
       this.invitations.update(x[0]).subscribe((y)=> {
+
       });
       this.code='';
-      if(x[0]===undefined) {
-        this.message='wrong code or no invitation';
-      } else {
-        this.message='You are in';
-        this.in=false;
-        this.registries.getRegById(x.id).subscribe((reg) => {
-          this.currentReg = reg;
-        });
-        if (this.currentReg.viewers === undefined) {
-          this.currentReg.viewers = [];
-        }
-        this.viewer.viewerEmail = this.account.email;
-        this.viewer.viewerId = this.account.id;
-        this.currentReg.viewers.push(this.viewer);
-        this.registries.updateReg(this.currentReg).subscribe((reg) => {
-
-        });
-      }
     });
   }
 

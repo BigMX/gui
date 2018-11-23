@@ -5,4 +5,5 @@ export class Item {
   location?: string;
   status?: string;
   id?: number;
+  boughtBy?: string;
 }

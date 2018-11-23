@@ -80,9 +80,10 @@ export class CartComponent implements OnInit {
         this.account = acct;
         this.account.cart.splice(index, 1);
         console.log(this.account);
-        // lthis.users.removeNotif(this.account).subscribe(()=> {
+        this.account.cart=this.account.cart;
+        // this.users.removeNotif(this.account).subscribe(()=> {
         // });
-        location.reload();
+        // location.reload();
       });
     }
   }

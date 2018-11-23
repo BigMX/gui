@@ -1,5 +1,5 @@
 
-<div class="topbuttons">
+<div class="topbuttons" *ngIf="account">
 
   <span class="ml-4">
     <span class=" ml-2  name">
@@ -14,22 +14,6 @@
         Gift Registry
     </span>
   </span>
-<button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn">
-  <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">Cart
-</button>
-<div class="dropdown">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <!-- <button class="dropdown-item" data-toggle="modal"
-      data-target="#deleteModal">Change Password</button> -->
-      <a class="dropdown-item" href="/profile/{{id}}">profile</a>
-      <a class="dropdown-item" href="/notifications/{{id}}">Notifications <span class="badge badge-danger" style="color: white;">{{notifCount}}</span></a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="/login">Logout</a>
-  </div>
-</div>
 
   <span class="ml-4 mt-3 cart">
 
