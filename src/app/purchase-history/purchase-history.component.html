@@ -1,0 +1,44 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col-8">
+      <div class="dash">
+        <h2 id="purchaseHistory">Purchase History</h2>
+      </div>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">Name of Item</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Location</th>
+          </tr>
+        </thead>
+        <div *ngIf="!currentUser.boughtItems">
+          <h3 class="text-center" style="font-family: Helvetica;">You have not purchased any items! </h3>
+        </div>
+        <tbody *ngIf="currentUser.boughtItems">
+            <tr *ngFor="let item of currentUser.boughtItems">
+              <td class="text-center">{{item.name}}</td>
+              <td class="text-center">{{item.price}}</td>
+              <td class="text-center">{{item.location}}</td>
+            </tr>
+          </tbody>
+      </table>
+      <br>
+    </div>
+
+    <!--last two colomns spaces hold the shopping cart button and the username dropdown menu-->
+    <div class="col-2">
+      <app-sidebuttons></app-sidebuttons>
+    </div>
+    <!--end div class col 2-->
+
+  </div>
+  <!--end div for the row class-->
+</div>
+<!--end div for container class-->

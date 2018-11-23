@@ -121,6 +121,52 @@
           "location": "Starbucks",
           "status": "need"
         }
+      ],
+      "claimed": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        }
+      ],
+      "boughtItems": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "claimed"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        }
       ]
     },
     {
@@ -183,7 +229,15 @@
   "notifications": [
     {
       "userId": 1,
-      "notifications": [],
+      "notifications": [
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "all items have been bought for: New Registry!!!!",
+        "all items have been bought for: 1!!!!",
+        "all items have been bought for: a!!!!",
+        "all items have been bought for: yes!!!!",
+        "stuff, has been bought!!!"
+      ],
       "id": 1
     },
     {
@@ -212,12 +266,31 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
+
+      "viewers": [
+        {
+          "viewerEmail": "emfashenpoura@smu.edu",
+          "viewerId": 3
+        }
+      ],
       "items": [
         {
-          "name": "Coffee",
-          "price": "$4.99",
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "bought"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "bought"
         }
       ]
     },
@@ -267,19 +340,19 @@
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "coffee",
           "price": "$5.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         }
       ]
     },
@@ -330,7 +403,27 @@
       "description": "1",
       "userId": 1,
       "status": "active",
-      "id": 25
+      "id": 25,
+      "items": [
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "id": 3,
@@ -378,7 +471,15 @@
       "description": "1",
       "userId": 1,
       "status": "active",
-      "id": 29
+      "id": 29,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "a",
@@ -392,21 +493,69 @@
       "description": "12",
       "userId": 1,
       "status": "active",
-      "id": 31
+      "id": 31,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "123",
       "description": "123",
       "userId": 1,
       "status": "active",
-      "id": 32
+      "id": 32,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "no",
       "description": "no",
       "userId": 1,
       "status": "active",
-      "id": 33
+      "id": 33,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "yes",
@@ -420,7 +569,27 @@
       "description": "2",
       "userId": 1,
       "status": "active",
-      "id": 35
+      "id": 35,
+      "items": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "1",
@@ -448,7 +617,15 @@
       "description": "2",
       "userId": 1,
       "status": "active",
-      "id": 39
+      "id": 39,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "name": "3",

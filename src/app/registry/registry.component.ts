@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Invitations } from './../class/invitation.service';
+import { Component, OnInit, ViewRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 import { Item } from '../class/item';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
+import { Viewer } from '../class/viewers';
+import { Invitation } from '../class/invitation';
 
 class RegistryParams {
   userid: string;
@@ -25,17 +28,19 @@ export class RegistryComponent implements OnInit {
   item: Item;
   length: number;
   itemList: Item[] = [];
-  adding: Item[] = [];
   account: Account;
   registry: Registry[];
   newRegistry: Registry;
   id: number;
   notifCount: number;
+  viewers: Viewer[];
+  invites: Invitation[];
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    private invitations: Invitations
   ) { }
 
   // important variables initialized
@@ -61,6 +66,7 @@ export class RegistryComponent implements OnInit {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
           this.adding = this.currentReg.items;
+          this.viewers = registry.viewers;
           if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
             this.length = this.currentReg.items.length;
             this.itemList = this.currentReg.items;
@@ -81,24 +87,48 @@ export class RegistryComponent implements OnInit {
     });
   }
 
+  arrayObjectIndexOf(myArray, searchTerm) {
+    let i;
+    for(i = 0; i < myArray.length; i++) {
+        if (myArray[i].name === searchTerm.name) {
+          return i;
+        }
+    }
+    return -1;
+  }
+
   // this method is for when the checkbox is clicked on - for adding an item to a registry
   addItem(event: boolean, item: Item) {
     if(event) {
-      this.adding = this.currentReg.items;
-      this.adding.push(item);
-      console.log(this.adding);
+      if(this.itemList !== undefined) {
+        if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
+          this.itemList.push(item);
+          console.log(this.itemList);
+        }
+      }
     } else {
-      const index2 = this.adding.indexOf(item);
-      this.adding.splice(index2,1);
+        const index2 = this.itemList.indexOf(item);
+        this.itemList.splice(index2,1);
     }
   }
 
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
-    this.currentReg.items = this.adding;
-    console.log(this.currentReg);
-    this.registries.updateReg(this.currentReg).subscribe(() => {
+    this.currentReg.items = this.itemList;
+    this.registries.updateReg(this.currentReg).subscribe((reg) => {
+      this.itemList = reg.items;
     });
     location.reload();
+  }
+
+  removeUserFromReg(index: number) {
+    this.invitations.deleteByEmailAndReg(this.viewers[index].viewerEmail, this.currentReg.id).subscribe((x) => {
+
+    });
+    this.viewers.splice(index, 1);
+    this.currentReg.viewers = this.viewers;
+    this.registries.updateReg(this.currentReg).subscribe((x) => {
+
+    });
   }
 }

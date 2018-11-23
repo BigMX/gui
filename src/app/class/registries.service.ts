@@ -7,8 +7,11 @@ import { Account } from './account';
 
 @Injectable()
 export class Registries {
-  //protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+
+
   protected endPoint = 'http://localhost:3004/registries';
+  protected endPointViewers = 'http://localhost:3004/viewersOfRegs';
+
 
   protected httpOptions = {
     headers: new HttpHeaders({

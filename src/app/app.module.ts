@@ -18,15 +18,16 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebuttonsComponent } from './sidebuttons/sidebuttons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ViewRegistryComponent } from './view-registry/view-registry.component';
+import { ProfileComponent } from './profile/profile.component';
+import { JoinComponent } from './join/join.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
-import { ProfileComponent } from './profile/profile.component';
-import { JoinComponent } from './join/join.component';
 import { Notifs } from './class/notifs.service';
 import { StartComponent } from './start/start.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const defaultRoute = 'login';
 
@@ -46,7 +47,8 @@ const defaultRoute = 'login';
     ProfileComponent,
     JoinComponent,
     ViewRegistryComponent,
-    StartComponent
+    StartComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -147,6 +149,10 @@ const defaultRoute = 'login';
           component: NotificationsComponent
         }
       ] },
+      { path: 'purchaseHistory', children: [
+        { path: '', component: PurchaseHistoryComponent },
+        { path: ':id' , component: PurchaseHistoryComponent }
+    ] },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
       { path: '**', redirectTo: defaultRoute, pathMatch: 'full' }
     ])

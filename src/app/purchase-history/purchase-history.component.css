@@ -7,25 +7,6 @@
   width: 1.5em;
 }
 
-
-
-.menu{
-  position:fixed;
-  z-index:1;
- }
-
- .das{
-   margin-top:4em;
-   margin-left: 14em;
- }
-
- .topbuttons{
-   position:fixed;
-   top:0;
-   z-index:2;
-  }
-
-
 #dropdownMenuButton {
   background-color: #e5d4ee;
 }
@@ -41,7 +22,6 @@ h2{
 .nav-item {
   text-decoration: underline;
 }
-
 
 .dash {
   padding-top: 1em;
@@ -61,12 +41,6 @@ h2{
 .joinMessage {
   font-size: .9em;
   margin: 1em;
-}
-
-#archiveButton, #inviteButton {
-  width: 15%;
-  margin-left: 16em;
-  text-align: center;
 }
 
 .active2 {
@@ -95,21 +69,35 @@ button:active{
   letter-spacing: .3em;
 }
 
-#dashboard {
+#purchaseHistory {
   /* text-size: 90%; */
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
 }
 
-.cartbtn {
-  background-color: #a7c1e0a2;
-  width: 8.7em;
+#registry, #invited {
+  margin-top: -.4em;
+  margin-left: 0.3em;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .05em;
 }
 
-#email, #selectreg {
+.cartbtn {
+  background-color: #a7c1e0a2;
+  width: 7.8em;
+  margin-bottom: 0.5em;
+}
+
+tr:nth-child(even) {
+  background-color: #a7c1e0a2;
+}
+
+thead {
+  background-color: #cdb4db;
+}
+
+th {
   font-family: 'Palatino', sans-serif;
-  letter-spacing: .1em;
-  padding-left: 1em;
-  padding-right: 1em;
+  text-transform: none;
 }

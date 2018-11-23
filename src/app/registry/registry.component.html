@@ -24,6 +24,11 @@
                 <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon"><span>Join</span>
               </button>
             </a>
+            <a routerLink='/purchaseHistory/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+            aria-controls="v-pills-dashboard" aria-selected="true">
+            <img src="https://cdn4.iconfinder.com/data/icons/linecon/512/time-512.png" alt="" id="navIcon">
+            <span>History</span>
+            </a>
           </div>
         </div>
     </div>
@@ -91,7 +96,20 @@
           Add Item(s)
       </button>
       <br><br>
-      <hr>
+      <br>
+        <div>
+          <h3 id="dashboard">Invited Users</h3>
+          <br>
+          <div *ngIf="!viewers">
+            <p>No invited users!</p>
+          </div>
+          <div *ngIf="viewers">
+            <ul class="list-group" *ngFor="let viewer of viewers; let i = index">
+              <li class="list-group-item"><button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button>   {{ viewer.viewerEmail }}</li>
+            </ul>
+          </div>
+        </div>
+      <br> <hr>
       <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186);" id="deleteButton"  data-toggle="modal" data-target="#deleteModal">
         DELETE REGISTRY
       </button>

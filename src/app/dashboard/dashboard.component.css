@@ -91,7 +91,7 @@ button:active{
 }
 
 #dashboard {
-  text-size: 90%;
+  /* text-size: 90%; */
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;

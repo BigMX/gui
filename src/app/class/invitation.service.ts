@@ -45,6 +45,12 @@ export class Invitations {
       .pipe(catchError(this.handleException));
   }
 
+  deleteByEmailAndReg(email: string, regId: number): Observable<Invitation> {
+    return this.httpClient
+    .delete<Invitation>(`${this.endPoint}/?receiverEmail=${email}&status=true/?registryId=${regId}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

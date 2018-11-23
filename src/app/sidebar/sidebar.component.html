@@ -2,7 +2,44 @@
 
 <div class="menu">
   <div class="ml-5" id="menutitle">
-    Menu
+    Menu</div>
+    <div class="myNav">
+      <div class="nav flex-column nav-pills" style="background-color: #e5d4ee;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a routerLink='/dashboard/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+          aria-controls="v-pills-dashboard" aria-selected="true">
+          <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon">
+          <span>Dashboard</span>
+        </a>
+        <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create"
+          aria-selected="false">
+          <button type="button" class="btn activebtn" data-toggle="modal" data-target="#createModal">
+            <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon">
+            <span>Create</span>
+          </button>
+        </a>
+        <a class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" routerLink='/invite/{{id}}' role="tab"
+          aria-controls="v-pills-invite" aria-selected="false">
+          <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon">
+          <span>Invite</span>
+        </a>
+        <a routerLink='/archive/{{id}}' class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+          aria-controls="v-pills-archive" aria-selected="false">
+          <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon">
+          <span>Archive</span>
+        </a>
+        <a routerLink='/join/{{id}}' class="nav-link"id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join"
+          aria-selected="false">
+          <button type="button" class="btn activebtn2" data-toggle="modal" data-target="#joinModal">
+            <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon">
+            <span>Join</span>
+          </button>
+        </a>
+        <a routerLink='/purchaseHistory/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+          aria-controls="v-pills-dashboard" aria-selected="true">
+          <img src="https://cdn4.iconfinder.com/data/icons/linecon/512/time-512.png" alt="" id="navIcon">
+          <span>History</span>
+        </a>
+      </div>
   </div>
   <div class="myNav">
     <div class="nav flex-column nav-pills" style="background-color: #b3ccff;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
