@@ -68,6 +68,13 @@ export class Registries {
     .pipe(catchError(this.handleException));
   }
 
+  // used for moving items from cart to registry
+  updateItems(reg:Registry): Observable<Registry> {
+    return this.httpClient
+    .put<Registry>(`${this.endPoint}/changeregistrystatus/${reg.registry_id}`, reg, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

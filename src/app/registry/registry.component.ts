@@ -120,9 +120,8 @@ export class RegistryComponent implements OnInit {
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
     this.currentReg.items = this.itemList;
-    this.registries.updateReg(this.currentReg).subscribe((reg) => {
-      this.itemList = reg.items;
+    this.registries.updateItems(this.currentReg).subscribe((reg) => {
+      
     });
-    location.reload();
   }
 }
