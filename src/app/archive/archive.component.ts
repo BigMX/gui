@@ -35,9 +35,10 @@ export class ArchiveComponent implements OnInit {
           this.registry = registry_;
           console.log(registry_);
         });
-        // this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
-        //   this.archived = registry_;
-        // });
+        console.log(this.id);
+        this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
+          this.archived = registry_;
+        });
       }
     });
   }

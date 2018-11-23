@@ -52,10 +52,11 @@ export class Registries {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   // this is for getting the archived registries for a certain user
   getArchivedRegs(userId: number): Observable<Registry[]> {
     return this.httpClient
-      .get<Registry[]>(`${this.endPoint}/archived/${userId}`, this.httpOptions)
+      .get<Registry[]>(`${this.endPoint}/archive/${userId}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
