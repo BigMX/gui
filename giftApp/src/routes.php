@@ -132,7 +132,7 @@ $app->get('/users', function ($request, $response, $args) {
 	return $this->response->withJson($users);
 });
 
-// ---------- cart/item routes ----------
+// ---------- cart routes ----------
 
 //CONNECTED
 //add to cart
@@ -172,6 +172,7 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
+// ---------- item routes ----------
 //CONNECTED
 //changes the registry id for the item
 $app->put('/itemregistry', function ($request, $response, $args) {
@@ -195,6 +196,8 @@ $app->put('/itembought', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//
+//get all the items in the registry
 $app->get('/item/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
         "SELECT * FROM Items WHERE registry_id = :registry_id");
