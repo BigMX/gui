@@ -60,6 +60,7 @@ export class RegistryComponent implements OnInit {
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
+          this.adding = this.currentReg.items;
           if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
             this.length = this.currentReg.items.length;
             this.itemList = this.currentReg.items;

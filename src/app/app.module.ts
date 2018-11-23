@@ -26,6 +26,7 @@ import { Invitations } from './class/invitation.service';
 import { ProfileComponent } from './profile/profile.component';
 import { JoinComponent } from './join/join.component';
 import { Notifs } from './class/notifs.service';
+import { StartComponent } from './start/start.component';
 
 const defaultRoute = 'login';
 
@@ -44,7 +45,8 @@ const defaultRoute = 'login';
     NotificationsComponent,
     ProfileComponent,
     JoinComponent,
-    ViewRegistryComponent
+    ViewRegistryComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +95,7 @@ const defaultRoute = 'login';
           }
        ] },
       { path: 'login', component: LogInComponent },
+      { path: 'start', component: StartComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'profile', children: [
         {

@@ -2,6 +2,11 @@
   width:100%;
 }
 
+.image{
+  background-image: url("../../assets/sea.jpg");
+  background-size: 100% 100%;
+}
+
 h3{
   color: #343434;
 	font-size: 1.7em;

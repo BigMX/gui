@@ -3,6 +3,33 @@
   margin-right:.5em;
 }
 
+.topbuttons{
+  background-color: black;
+  width:110%;
+}
+
+.name {
+  font: 200%/200% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:white;
+}
+
+.title {
+  font: 200%/200% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:white;
+}
+
+.cart{
+  margin-left: 10em;
+}
+
+.dropd{
+  height:80%;
+
+}
+
+
 #userIcon{
   width: 1.5em;
 }

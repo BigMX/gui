@@ -1,18 +1,58 @@
-<button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn">
-  <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
-</button>
-<div class="dropdown">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <!-- <button class="dropdown-item" data-toggle="modal"
-      data-target="#deleteModal">Change Password</button> -->
-      <a class="dropdown-item" href="/profile/{{id}}">profile</a>
-      <a class="dropdown-item" href="/notifications/{{id}}">Notifications <span class="badge badge-danger" style="color: white;">{{notifCount}}</span></a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="/login">Logout</a>
-  </div>
+<div class="topbuttons">
+
+  <span class="ml-4">
+    <span class=" ml-2  name">
+
+        {{account.lastName}}
+    </span>
+  </span>
+
+  <span class="ml-5">
+    <span class=" ml-5  title">
+
+        Gift Registry
+    </span>
+  </span>
+
+  <span class="ml-4 mt-3 cart">
+
+
+    <span class="ml-5"></span>
+
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <span class="ml-5"></span>
+    <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn mt-2">
+      <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
+    </button>
+  </span>
+
+  <span class="dr">
+    <span class="dropdown">
+      <button class="btn dropdown-toggle dropd" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!-- <button class="dropdown-item" data-toggle="modal"
+            data-target="#deleteModal">Change Password</button> -->
+        <a class="dropdown-item" href="/profile/{{id}}">profile</a>
+        <a class="dropdown-item" href="/notifications/{{id}}">Notifications
+          <span class="badge badge-danger" style="color: white;">{{notifCount}}</span>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/login">Logout</a>
+      </div>
+    </span>
+  </span>
 </div>
-
-

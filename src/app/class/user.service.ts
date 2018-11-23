@@ -8,8 +8,8 @@ import { Token} from '../class/token';
 @Injectable()
 export class User {
 
-  protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-//  protected endPoint = 'http://localhost:3004/users';
+ // protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+  protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -30,17 +30,17 @@ export class User {
   }
 
   // this is for getting a user based on id
-  // getById(id: number): Observable<Account> {
-  //   return this.httpClient
-  //     .get<Account>(`${this.endPoint}/${id}`, this.httpOptions)
-  //     .pipe(catchError(this.handleException));
-  // }
-
-  getById(user_id: number): Observable<Account> {
+  getById(id: number): Observable<Account> {
     return this.httpClient
-      .get<Account>(`${this.endPoint}/user/${user_id}`, this.httpOptions)
+      .get<Account>(`${this.endPoint}/${id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
+
+  // getById(user_id: number): Observable<Account> {
+  //   return this.httpClient
+  //     .get<Account>(`${this.endPoint}/user/${user_id}`, this.httpOptions)
+  //     .pipe(catchError(this.handleException));
+  // }
 
   getByName(lastName: string): Observable<Account[]> {
     return this.httpClient

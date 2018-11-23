@@ -1,3 +1,14 @@
+.menu{
+ background-color: #e6eeff;
+ width: 14em;
+}
+
+#menutitle {
+  font: 200%/210% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:black;
+}
+
 #navIcon{
   width: 1.8em;
   margin-right:.5em;
@@ -7,16 +18,11 @@
   width: 1.5em;
 }
 
-h4 {
-  margin: 1em;
-}
 
-h2{
-  margin-left: 1em;
-}
 
-.nav-item {
-  text-decoration: underline;
+
+.createModal{
+  z-index: 1;
 }
 
 .dash {
@@ -45,7 +51,7 @@ h2{
 
 .activebtn, .activebtn2 {
   margin-left: -1em;
-  background-color: #e5d4ee;
+  background-color: #b3ccff;
   width:10em;
   text-align:left;
 }

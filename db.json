@@ -183,11 +183,7 @@
   "notifications": [
     {
       "userId": 1,
-      "notifications": [
-        "stuff, has been bought!!!",
-        "coffee, has been bought!!!",
-        "all items have been bought for: New Registry!!!!"
-      ],
+      "notifications": [],
       "id": 1
     },
     {
@@ -216,7 +212,14 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
-      "items": []
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
     },
     {
       "id": 4,

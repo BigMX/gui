@@ -1,0 +1,33 @@
+.image{
+  background-image: url("../../assets/start.jpg");
+  background-size: 100% 100%;
+}
+
+.zeng {
+  font: 200%/200% Garamond, KaiTi, serif;
+  font-weight: bold;
+  color:black;
+}
+
+.pround {
+  font: 150%/150% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:black;
+}
+
+.sub {
+  font: 140%/140% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:black;
+}
+
+.mybtn {
+  font: 160%/160% Garamond, Georgia, serif;
+  font-weight: bold;
+}
+
+.bn{
+ background: black;
+ width:55%;
+ height:5%;
+}
