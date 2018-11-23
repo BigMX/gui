@@ -5,6 +5,7 @@ import { Registries } from '../class/registries.service';
 import { Item } from '../class/item';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
+import { Cart } from '../class/cart.service';
 
 class RegistryParams {
   userid: string;
@@ -35,7 +36,8 @@ export class RegistryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    private cartItems: Cart
   ) { }
 
   // important variables initialized
@@ -54,8 +56,11 @@ export class RegistryComponent implements OnInit {
             } else {
               this.notifCount = 0;
             }
-          this.cart = account.cart;
         });
+        this.cartItems.getItems(this.id).subscribe((items) => {
+          this.cart = items;
+          console.log(this.cart);
+        })
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {

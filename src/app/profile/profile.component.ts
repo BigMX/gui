@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
         this.id = +params.userid;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
+          console.log(this.account);
         });
       }
     });
