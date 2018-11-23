@@ -68,7 +68,7 @@ export class JoinComponent implements OnInit {
   }
 
   lead() {
-    const url='dashboard/'+this.account.id;
+    const url='dashboard/'+this.account.user_id;
     this.router.navigateByUrl(url);
   }
 }

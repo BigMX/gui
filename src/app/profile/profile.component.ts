@@ -6,7 +6,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 
 class ProfileParams {
-  userid: number;
+  id: string;
 }
 
 @Component({
@@ -35,11 +35,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.success=true;
     this.route.params.subscribe((params: ProfileParams) => {
-      if (params.userid) {
-        this.id = +params.userid;
+      if (params.id) {
+        this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
-          console.log();
         });
       }
     });
@@ -47,14 +46,15 @@ export class ProfileComponent implements OnInit {
 
   update() {
     if(this.newPassword1!==this.newPassword2) {
-      window.confirm('two new Passwords are not same');
+      window.confirm('two new passwords are not same');
     } else {
-      if(this.account.password!==this.password) {
+      if(this.password !== this.account[0].password) {
         window.confirm('wrong old password');
       } else {
-        this.account.password=this.newPassword1;
-        console.log(this.account);
-        this.users.updatePassword(this.account).subscribe((x)=> {
+        this.account[0].password= this.newPassword1;
+        console.log(this.account[0]);
+        this.users.updatePassword(this.account[0]).subscribe((x)=> {
+          console.log(x);
           this.message='You successfully change your password';
         });
       }

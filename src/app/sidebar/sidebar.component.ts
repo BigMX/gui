@@ -48,7 +48,6 @@ export class SidebarComponent implements OnInit {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
-          console.log(acct);
           this.account = acct;
         });
       }
@@ -57,21 +56,17 @@ export class SidebarComponent implements OnInit {
 
   // this method is used for adding a registry to the appropriate user (who's logged in)
   addRegistry() {
-    this.newRegistry.userId = this.id;
+    this.newRegistry.user_id = this.id;
     this.newRegistry.status = 'active';
     this.registries.add(this.newRegistry).subscribe((registry) => {
-      this.registries.getRegistries(this.id).subscribe((r) => {
-        this.registry = r;
-        console.log(this.registry);
-        console.log(this.test);
-      });
+      this.newRegistry = {};
+      let url='dashboard/';
+      url+=this.id;
+      this.router.navigateByUrl(url);
+      location.reload();
     });
-    this.newRegistry = {};
-    let url='dashboard/';
-    url+=this.id;
-    this.router.navigateByUrl(url);
-    location.reload();
   }
+
   join() {
     this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {
       console.log(x[0]);

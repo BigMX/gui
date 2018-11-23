@@ -21,48 +21,58 @@ export class NotificationsComponent implements OnInit {
   id: number;
   account: Account;
   registryList: Registry[] = [];
-  notifs: string[] = [];
-  nObj: Notif;
+  notifications: Notif[] = [];
+  length: number;
+  notif: Notif;
 
   constructor(
     private route: ActivatedRoute,
     private users: User,
     private registries: Registries,
-    private notificts: Notifs
+    private notifs: Notifs
   ) { }
 
   // important variables initialized
   ngOnInit() {
     this.route.params.subscribe((params: NotificationsParams) => {
+      this.notif = new Notif;
       if (params.id) {
         this.id = +params.id;
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
+          console.log(this.id)
+          this.check();
         });
-        this.notificts.getNotifs(this.id).subscribe((n) => {
-          if (n.notifications !== undefined) {
-            this.notifs = n.notifications;
-          }
-          this.nObj = n[0];
-          console.log(this.nObj);
+        this.notifs.getNotifs(this.id).subscribe((n) => {
+          this.notifications = n;
+          this.length = n.length;
+          console.log(this.notifications);
           this.users.getById(this.id).subscribe((account) => {
             this.account = account;
-          });
-          this.check();
+          })
         });
       }
     });
   }
 
   // this method removes a notification when the 'x' on it is clicked - user notifications are updated to reflect the change
-  removeAlert(notif: string) {
-    const index = this.notifs.indexOf(notif);
-    this.notifs.splice(index, 1);
-    this.nObj.notifications = this.notifs;
-    console.log(this.nObj);
-    this.notificts.removeNotif(this.nObj.id, this.nObj).subscribe((n) => {
-      // console.log(account);
+  removeAlert(n: Notif) {
+    console.log(n);
+    this.notifs.removeNotif(n.notification_id).subscribe((n) => {
     });
+    console.log(this.notifications);
+  }
+
+  // this method makes sure that no duplicate items are added to a registry
+  arrayObjectIndexOf(myArray, searchTerm) {
+    let i;
+    for(i = 0; i < myArray.length; i++) {
+        if (myArray[i].notifications === searchTerm) {
+          return i;
+        }
+    }
+    console.log(i)
+    return -1;
   }
 
   // this method checks for newer notifications
@@ -70,41 +80,53 @@ export class NotificationsComponent implements OnInit {
   // it also checks to see if all of the items in a given registry have been purchased and alerts accordingly
   // this is done for all of the user's /active/ registries
   check() {
-    let i;
-    // tslint:disable-next-line:forin
-    for(i = 0; i < this.registryList.length; i++) {
-      const registry = this.registryList[i];
-      if (registry.items === undefined) {
-        const message = 'all items have been bought for: ' + registry.name + '!!!!';
-        if(this.notifs.indexOf(message)===-1) {
-          this.notifs.push(message);
-        }
-      }
-       let j;
-       if(registry.items!==undefined) {
-          let counter = 0;
-          for (j = 0; j < registry.items.length; j++) {
-            const item = registry.items[j];
-            if (item.status === 'bought') {
-              counter+=1;
+        let i;
+        let j;
+        let counter = 0;
+        console.log(this.registryList);
+        // tslint:disable-next-line:forin
+        for(i = 0; i < this.registryList.length; i++) {
+          const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
+          this.notifs.getNotifs(this.id).subscribe((n) => {
+            this.notifications = n;
+          });
+          if (this.registryList[i].items === null && this.arrayObjectIndexOf(this.notifications, message) === -1) {
+             this.notif.notifications = message;
+             this.notif.user_id = this.id;
+             this.notifs.addNotifs(this.notif).subscribe((n) => {
+              });
+            this.notif = new Notif;
+          } 
+          if (this.registryList[i].items !== null && this.arrayObjectIndexOf(this.notifications, message) === -1) {
+            for (j = 0; j < this.registryList[i].items.length; j++) {
+              const item = this.registryList[i].items[j];
               const message = item.name + ', has been bought!!!';
-              if(this.notifs.indexOf(message)===-1) {
-                this.notifs.push(message);
+              this.notifs.getNotifs(this.id).subscribe((n) => {
+                this.notifications = n;
+              });
+              if (item.status === 'bought' && this.arrayObjectIndexOf(this.notifications, message) === -1) {
+                counter+=1;
+                this.notif.notifications = message;
+                this.notif.user_id = this.id;
+                  console.log(this.notif);
+                  this.notifs.addNotifs(this.notif).subscribe((n) => {
+                 });
+                this.notif = new Notif;
               }
             }
-          }
-          if (counter === registry.items.length) {
-            const message = 'all items have been bought for: ' + registry.name + '!!!!';
-            if(this.notifs.indexOf(message)===-1) {
-            this.notifs.push(message);
+            const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
+            this.notifs.getNotifs(this.id).subscribe((n) => {
+              this.notifications = n;
+            });
+            if (counter === this.registryList[i].items.length && this.arrayObjectIndexOf(this.notifications, message) === -1) {
+              this.notif.notifications = message;
+              this.notif.user_id = this.id;
+              this.notifs.addNotifs(this.notif).subscribe((n) => {
+               });
+              this.notif = new Notif;
             }
           }
-       }
-    }
-    this.nObj.notifications = this.notifs;
-    this.notificts.addNotif(this.nObj.id, this.nObj).subscribe((n) => {
-
-    });
+        }
   }
 
 }

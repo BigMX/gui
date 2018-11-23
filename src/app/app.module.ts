@@ -26,6 +26,7 @@ import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
 import { Notifs } from './class/notifs.service';
+import { Cart } from './class/cart.service';
 
 const defaultRoute = 'login';
 
@@ -100,7 +101,7 @@ const defaultRoute = 'login';
           component: ProfileComponent
         },
         {
-          path: ':userid',
+          path: ':id',
           component: ProfileComponent
         }
       ]},
@@ -149,7 +150,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations, Notifs],
+  providers: [Registries, User,Invitations, Notifs, Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

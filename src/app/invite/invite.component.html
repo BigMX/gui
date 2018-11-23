@@ -31,7 +31,7 @@
         <div id="selectemail" class="form-group" style="padding-right: 1em;">
           <label for="exampleFormControlSelect2" >Select Email</label>
           <select style="padding-right:-1em;" class="form-control" [(ngModel)]="newInvitation.receiverEmail">
-            <option *ngFor="let r of accounts" [ngValue]="r.email">{{ r.lastName }},{{r.email}}</option>
+            <option *ngFor="let r of accounts" [ngValue]="r.email">{{ r.lastName }} {{r.email}}</option>
           </select>
         </div>
       </div>
@@ -47,7 +47,7 @@
         <label for="exampleFormControlSelect1">Select Registry</label>
         <select class="form-control" [(ngModel)]="registryId" id="selectRegistry">
           <option value="" selected></option>
-          <option *ngFor="let r of registry" [ngValue]="r.id">{{ r.name }}, {{r.id}}</option>
+          <option *ngFor="let r of registry" [ngValue]="r.registry_id">{{ r.name }}</option>
         </select>
       </div>
       <div>
