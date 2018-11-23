@@ -172,12 +172,13 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
-//changes the status of a registry
+//
+//changes the registry id for the item
 $app->put('/itemregistryid/{item_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Items SET registry_id=:registry_id WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("item_id", $args['item_id']);
+    $sth->bindParam("item_id", $input['item_id']);
     $sth->bindParam("registry_id", $input['registry_id']);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
