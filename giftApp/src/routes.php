@@ -348,9 +348,9 @@ $app->post('/invitations/{status}', function ($request, $response) {
 });
 
 //
-$app->delete('/deleteinvitation/{id}', function ($request, $response, $args) {
-    $sth = $this->dbConn->prepare("DELETE FROM Invitation WHERE id=:id");
-    $sth->bindParam("id", $args['id']);
+$app->delete('/deleteinvitation', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Invitation WHERE receiverEmail=:receiverEmail");
+    $sth->bindParam("receiverEmail", $args['receiverEmail']);
     $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });

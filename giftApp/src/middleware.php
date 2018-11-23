@@ -26,7 +26,7 @@ $objData =  new \Slim\Middleware\JwtAuthentication($arrData);
 
 $app->add(new \Slim\Middleware\JwtAuthentication([
 	//routes that need the token
-	"path" => [	"/addinvitation", "/invitation/{code}", "/invitations/{status}", "/changeinvitation/{id}", "/displayinvitation/{id}", "/invitationcode/{receiverEmail}", "/invitationstatus/{receiverEmail}", "/acceptinvitation", "/getinvitation",
+	"path" => [	"/addinvitation", "/invitation/{code}", "/invitations/{status}", "/changeinvitation/{id}", "/displayinvitation/{id}", "/invitationcode/{receiverEmail}", "/invitationstatus/{receiverEmail}", "/acceptinvitation", "/getinvitation", "/deleteinvitation",
 				"/addtocart","/cart/{user_id}", "/deleteitem/{item_id}", 
 				"/users", "/user/{user_id}", "/users/{lastName}", "/changepassword/{user_id}",
 				"/addnotifcation", "/notifications/{user_id}", "/deletenotification/{notification_id}", 
