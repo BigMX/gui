@@ -266,6 +266,7 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
+
       "viewers": [
         {
           "viewerEmail": "emfashenpoura@smu.edu",

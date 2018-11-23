@@ -26,6 +26,7 @@ import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
 import { Notifs } from './class/notifs.service';
+import { StartComponent } from './start/start.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const defaultRoute = 'login';
@@ -46,6 +47,7 @@ const defaultRoute = 'login';
     ProfileComponent,
     JoinComponent,
     ViewRegistryComponent,
+    StartComponent,
     PurchaseHistoryComponent
   ],
   imports: [
@@ -95,6 +97,7 @@ const defaultRoute = 'login';
           }
        ] },
       { path: 'login', component: LogInComponent },
+      { path: 'start', component: StartComponent },
       { path: 'signup', component: SignUpComponent },
       { path: 'profile', children: [
         {
