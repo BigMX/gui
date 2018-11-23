@@ -350,8 +350,8 @@ $app->post('/invitations/{status}', function ($request, $response) {
 //
 //delete a user from the invitation
 $app->delete('/deleteinvitation', function ($request, $response, $args) {
-    $sth = $this->dbConn->prepare("DELETE Invitation WHERE receiverEmail=:receiverEmail");
-    $sth->bindParam("receiverEmail", $args['receiverEmail']);
+    $sth = $this->dbConn->prepare("DELETE FROM Invitation WHERE receiverEmail=:receiverEmail");
+    $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
