@@ -175,7 +175,7 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
 //changes the status of a registry
 $app->put('/itemregistryid/{item_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "UPDATE Registries SET registry_id = :registry_id WHERE item_id = :item_id";
+    $sql = "UPDATE Registries SET registry_id=:registry_id WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("item_id", $args['item_id']);
     $sth->bindParam("registry_id", $input['registry_id']);
