@@ -253,6 +253,16 @@ $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, 
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//get users in the registry
+$app->get('/getusers/{registry_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT u.user_id,u.firstName,u.lastName FROM Registries r INNER JOIN Users u ON r.user_id= u.user_id WHERE registry_id =: registry_id");
+    $sth->bindParam("registry_id", $args['registry_id']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+
 // //fix this 
 // //add items to the registry
 // $app->put('/additemstoregistry/{registry_id}', function ($request, $response, $args) {
@@ -330,7 +340,8 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//change the status to true 
+//CONNECTED
+//get the invitation 
 $app->put('/getinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail";
@@ -353,6 +364,15 @@ $app->post('/invitations/{status}', function ($request, $response) {
 	$user = $sth->fetchAll();
 	return $this->response->withJson($user);
 });
+
+//
+$app->delete('/deleteinvitation/{id}', function ($request, $response, $args) {
+    $sth = $this->dbConn->prepare("DELETE FROM Invitation WHERE id=:id");
+    $sth->bindParam("id", $args['id']);
+    $sth->execute();  
+    return $this->response->withJson(["success" => $sth->rowCount() == 1]);
+});
+
 
 //fix this
 //display invatation
