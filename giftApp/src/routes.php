@@ -318,7 +318,7 @@ $app->post('/addinvitation', function ($request, $response) {
 });
 
 
-//
+//check if we need this
 // //display invitation with having code an the input
 // $app->post('/invitation/{code}', function ($request, $response) { 
 // 	$input = $request->getParsedBody();
@@ -336,7 +336,7 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code";
     $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("receiverEmail", $args['receiverEmail']);
+    $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $sth->bindParam("Code", $input['Code']);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
