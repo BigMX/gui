@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
         this.id = +params.userid;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
-          console.log(this.account);
         });
       }
     });
@@ -52,9 +51,9 @@ export class ProfileComponent implements OnInit {
       if(this.password !== this.account[0].password) {
         window.confirm('wrong old password');
       } else {
-        this.account.password=this.newPassword1;
-        console.log(this.account);
-        this.users.updatePassword(this.account).subscribe((x)=> {
+        this.account[0].password= this.newPassword1;
+        console.log(this.account[0]);
+        this.users.updatePassword(this.account[0]).subscribe((x)=> {
           console.log(x);
           this.message='You successfully change your password';
         });

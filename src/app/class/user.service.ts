@@ -19,14 +19,6 @@ export class User {
     })
   };
 
-  protected httpOptions2 = {
-    headers: new HttpHeaders({
-      'Content-Type' : 'application/x-www-form-urlencoded',
-     // tslint:disable-next-line:max-line-length
-     'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjpudWxsLCJlbWFpbCI6bnVsbH0.ZQBWd-2ksow_Ty-9dfwQfyeR8fMtAB_leFBibGMW0aM'
-    })
-  };
-
   constructor(
     protected httpClient: HttpClient
   ) { }
@@ -63,18 +55,13 @@ export class User {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   updatePassword(user: Account): Observable<Account> {
+    const obj = { user: user}  
     return this.httpClient
-    .put<Account>(`${this.endPoint}/changepassword/${user.id}`, user, this.httpOptions2)
+    .put<Account>(`${this.endPoint}/changepassword/${user.user_id}`, user, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
-
-  // // this is for adding an item to the user's cart
-  // addItemToCart(user: Account): Observable<Account> {
-  //   return this.httpClient
-  //   .put<Account>(`${this.endPoint}/additems/${user.id}`, user, this.httpOptions)
-  //   .pipe(catchError(this.handleException));
-  // }
 
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
