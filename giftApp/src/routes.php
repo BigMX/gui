@@ -155,7 +155,7 @@ $app->post('/addtocart', function ($request, $response) {
 //displays all everything in the items table
 $app->get('/cart/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
-		"SELECT * FROM Items WHERE user_id = :user_id AND registry_id = NULL");
+		"SELECT * FROM Items WHERE user_id = :user_id");
 	$sth->bindParam("user_id", $args['user_id']);	
 	$sth->execute();
 	$users = $sth->fetchAll();
