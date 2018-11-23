@@ -256,7 +256,7 @@ $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, 
 //get users in the registry
 $app->get('/getusers/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT u.user_id,u.firstName,u.lastName FROM Registries r INNER JOIN Users u ON r.user_id= u.user_id WHERE registry_id =: registry_id");
+        "SELECT u.user_id,u.firstName,u.lastName FROM Registries r INNER JOIN Users u ON r.user_id= u.user_id WHERE registry_id =:registry_id");
     $sth->bindParam("registry_id", $args['registry_id']);
     $sth->execute();
     $user = $sth->fetchAll();
