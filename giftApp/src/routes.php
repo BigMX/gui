@@ -210,9 +210,9 @@ $app->post('/addnewregistry', function ($request, $response) {
 //display all registries related to that user_id
 $app->get('/registry/{user_id}', function ($request, $response, $args) { 
 	$sth = $this->dbConn->prepare(
-		"SELECT * FROM Registries WHERE user_id = :user_id AND status=: status");
+		"SELECT * FROM Registries WHERE user_id = :user_id AND status= 'active'");
 	$sth->bindParam("user_id", $args['user_id']);
-    $sth->bindParam("status", $args['status']);
+    //$sth->bindParam("status", $args['status']);
 	$sth->execute();
 	$user = $sth->fetchAll();
 	return $this->response->withJson($user);
@@ -233,9 +233,9 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
 //display a archive
 $app->get('/archive/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Registries WHERE user_id = :user_id AND status=:status");
+        "SELECT * FROM Registries WHERE user_id = :user_id AND status='archive'" );
     $sth->bindParam("user_id", $args['user_id']);
-    $sth->bindParam("status", $args['status']);
+   // $sth->bindParam("status", $args['status']);
     $sth->execute();
     $user = $sth->fetchAll();
     return $this->response->withJson($user);
