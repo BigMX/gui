@@ -229,7 +229,7 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
-//
+//CONNECTED
 //display a archive
 $app->get('/archive/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -241,7 +241,7 @@ $app->get('/archive/{user_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
-//
+//CONNECTED
 //changes the status of a registry
 $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
@@ -252,6 +252,25 @@ $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, 
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
+
+// //fix this 
+// //add items to the registry
+// $app->put('/additemstoregistry/{registry_id}', function ($request, $response, $args) {
+//     $input = $request->getParsedBody();
+//     $sql = "SELECT r.items
+//             FROM Registries r  
+//             LEFT JOIN Users u
+//             ON u.user_id = r.user_id
+//             LEFT JOIN Items i 
+//             ON u.user_id = i.user_id 
+//             WHERE r.registry_id =1;"
+//     //$sql = "UPDATE Registries SET items = :items WHERE registry_id = :registry_id";
+//     $sth = $this->dbConn->prepare($sql);
+//     $sth->bindParam("registry_id", $args['registry_id']);
+//     //$sth->bindParam("items", $input['items']);
+//     $res = $sth->execute();
+//     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+// });
 
 //CONNECTED
 //delete the whole registry related to that user_id
@@ -330,6 +349,28 @@ $app->get('/displayinvitation/{id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare(
         "SELECT * FROM Invitation WHERE id = :id");
     $sth->bindParam("id", $args['id']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+
+//display invatation with code
+$app->get('/invitationcode/{id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Invitation WHERE id = :id AND Code = :Code");
+    $sth->bindParam("id", $args['id']);
+    $sth->bindParam("Code", $args['Code']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+
+//display invatation with status
+$app->get('/invitationstatus/{id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Invitation WHERE id = :id AND status = :status");
+    $sth->bindParam("id", $args['id']);
+    $sth->bindParam("status", $args['status']);
     $sth->execute();
     $user = $sth->fetchAll();
     return $this->response->withJson($user);
