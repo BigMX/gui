@@ -64,10 +64,11 @@ export class CartComponent implements OnInit {
     this.newItem = {};
     this.cartItems.getItems(this.id).subscribe((c) => {
       this.cart = c;
+      let url='cart/';
+      url+=this.id;
+      this.router.navigateByUrl(url);
+      location.reload();
     });
-    let url='cart/';
-    url+=this.id;
-    this.router.navigateByUrl(url);
   }
 
   // used for removing items from the cart
