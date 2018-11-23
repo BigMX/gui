@@ -330,16 +330,16 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-// //change the status to true 
-// $app->put('/getinvitation', function ($request, $response, $args) {
-//     $input = $request->getParsedBody();
-//     $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail";
-//     $sth = $this->dbConn->prepare($sql);
-//     $sth->bindParam("receiverEmail", $input['receiverEmail']);
-//     $res = $sth->execute();
-//     $user = $sth->fetchAll();
-//     return $this->response->withJson(user);
-// });
+//change the status to true 
+$app->put('/getinvitation', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("receiverEmail", $input['receiverEmail']);
+    $res = $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson(user);
+});
 
 //CONNECTED
 //display invitation  //idk if we need this 
