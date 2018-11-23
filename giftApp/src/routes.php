@@ -196,7 +196,7 @@ $app->put('/itembought', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//
+//CONNECTED
 //get all the items in the registry
 $app->get('/item/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -208,12 +208,11 @@ $app->get('/item/{registry_id}', function ($request, $response, $args) {
 
 });
 
-//not in the front end maybe we dont need this
+//
 //add items to registry
 $app->post('/additems', function ($request, $response) {
     $input = $request->getParsedBody();
-    $sql = "INSERT INTO 
-        Items (name,price,location,status) 
+    $sql = "INSERT INTO Items (name,price,location,status) 
         VALUES (:name,:price,:location,:status)";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("name", $input['price']);
@@ -243,18 +242,6 @@ $app->post('/addnewregistry', function ($request, $response) {
 });
 
 //CONNECTED
-//display all registries related to that user_id
-$app->get('/registry/{user_id}', function ($request, $response, $args) { 
-	$sth = $this->dbConn->prepare(
-		"SELECT * FROM Registries WHERE user_id = :user_id AND status= 'active'");
-	$sth->bindParam("user_id", $args['user_id']);
-    //$sth->bindParam("status", $args['status']);
-	$sth->execute();
-	$user = $sth->fetchAll();
-	return $this->response->withJson($user);
-});
-
-//CONNECTED
 //display a registry
 $app->get('/registries/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -266,12 +253,22 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
 });
 
 //CONNECTED
+//display all registries related to that user_id
+$app->get('/registry/{user_id}', function ($request, $response, $args) { 
+	$sth = $this->dbConn->prepare(
+		"SELECT * FROM Registries WHERE user_id = :user_id AND status= 'active'");
+	$sth->bindParam("user_id", $args['user_id']);
+	$sth->execute();
+	$user = $sth->fetchAll();
+	return $this->response->withJson($user);
+});
+
+//CONNECTED
 //display a archive
 $app->get('/archive/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Registries WHERE user_id = :user_id AND status='archived'" );
+        "SELECT * FROM Registries WHERE user_id = :user_id AND status='archived'");
     $sth->bindParam("user_id", $args['user_id']);
-   // $sth->bindParam("status", $args['status']);
     $sth->execute();
     $user = $sth->fetchAll();
     return $this->response->withJson($user);
@@ -281,10 +278,10 @@ $app->get('/archive/{user_id}', function ($request, $response, $args) {
 //changes the status of a registry
 $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "UPDATE Registries SET status = :status WHERE registry_id = :registry_id";
+    $sql = "UPDATE Registries SET status='archived' WHERE registry_id = :registry_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("registry_id", $args['registry_id']);
-    $sth->bindParam("status", $input['status']);
+    //$sth->bindParam("status", $input['status']);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
