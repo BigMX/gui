@@ -37,36 +37,6 @@
     </div>
   </div>
 
-  <!-- <div class="joinModal">
-    <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="joinModal">Join Registry</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <h6 class="joinMessage">Congrats! Someone has invited you join their registry. With the invite, a code should have been provided. After
-            entering the code below, you will be able to see all the items in their registry.</h6>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Registry Code</label>
-                <input type="text" class="form-control" />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal">Join</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
   <div class="createModal">
     <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -86,7 +56,7 @@
               </div>
               <div class="form-group">
                 <label for="registryDescription">Description</label>
-                <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter description" [(ngModel)]="newRegistry.description"
+                <input type="text" class="form-control" id="regCode1" aria-describedby="codeHelp" placeholder="Enter description" [(ngModel)]="newRegistry.description"
                   (ngModelChange)="newRegistry.description = $event" name='rdes'>
               </div>
             </form>
