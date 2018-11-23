@@ -23,9 +23,9 @@ export class Notifs {
   ) { }
 
   // this is for removing a notification when the user clicks on the x
-  removeNotif(id: number): Observable<Notif> {
+  removeNotif(notification_id: number): Observable<Notif> {
     return this.httpClient
-    .delete<Notif>(`${this.endPoint}/deletenotification/${id}`, this.httpOptions)
+    .delete<Notif>(`${this.endPoint}/deletenotification/${notification_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
