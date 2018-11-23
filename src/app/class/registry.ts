@@ -1,4 +1,5 @@
 import {Item} from './item';
+import { Viewer } from './viewers';
 
 export class Registry {
   items?: Item[];
@@ -7,4 +8,5 @@ export class Registry {
   userId?: number;
   status?: string;
   id?: number;
+  viewers?: Viewer[];
 }

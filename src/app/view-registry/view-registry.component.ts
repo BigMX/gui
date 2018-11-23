@@ -28,6 +28,8 @@ export class ViewRegistryComponent implements OnInit {
   id: number;
   name: string;
   notifCount: number;
+  regId: number;
+  tempAccount: Account;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +43,7 @@ export class ViewRegistryComponent implements OnInit {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.userid) {
         this.id = +params.userid;
+        this.regId = +params.regid;
         this.registries.getRegistries(this.id).subscribe((registry) => {
           this.registry = registry;
         });
@@ -61,6 +64,18 @@ export class ViewRegistryComponent implements OnInit {
           this.name = this.currentReg.name;
         });
       }
+    });
+  }
+
+  claim(index: number) {
+    console.log(this.currentReg);
+    this.currentReg.items[index].status = 'Claimed by ' + this.account.email;
+    this.registries.updateReg(this.currentReg).subscribe((x) => {
+      this.currentReg = x;
+    });
+    this.account.claimed.push(this.currentReg.items[index]);
+    this.users.updateAccount(this.account).subscribe((x) => {
+
     });
   }
 

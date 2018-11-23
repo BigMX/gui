@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Invitations } from './../class/invitation.service';
+import { Component, OnInit, ViewRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 import { Item } from '../class/item';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
+import { Viewer } from '../class/viewers';
+import { Invitation } from '../class/invitation';
 
 class RegistryParams {
   userid: string;
@@ -30,11 +33,14 @@ export class RegistryComponent implements OnInit {
   newRegistry: Registry;
   id: number;
   notifCount: number;
+  viewers: Viewer[];
+  invites: Invitation[];
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    private invitations: Invitations
   ) { }
 
   // important variables initialized
@@ -59,6 +65,7 @@ export class RegistryComponent implements OnInit {
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry;
+          this.viewers = registry.viewers;
           if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
             this.length = this.currentReg.items.length;
             this.itemList = this.currentReg.items;
@@ -111,5 +118,16 @@ export class RegistryComponent implements OnInit {
       this.itemList = reg.items;
     });
     location.reload();
+  }
+
+  removeUserFromReg(index: number) {
+    this.invitations.deleteByEmailAndReg(this.viewers[index].viewerEmail, this.currentReg.id).subscribe((x) => {
+
+    });
+    this.viewers.splice(index, 1);
+    this.currentReg.viewers = this.viewers;
+    this.registries.updateReg(this.currentReg).subscribe((x) => {
+
+    });
   }
 }

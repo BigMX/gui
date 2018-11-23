@@ -75,6 +75,12 @@ export class User {
     .pipe(catchError(this.handleException));
   }
 
+  updateAccount(user: Account): Observable<Account> {
+    return this.httpClient
+    .put<Account>(`${this.endPoint}/${user.id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
     alert(message);

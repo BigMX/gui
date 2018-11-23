@@ -121,6 +121,52 @@
           "location": "Starbucks",
           "status": "need"
         }
+      ],
+      "claimed": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        }
+      ],
+      "boughtItems": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "claimed"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        }
       ]
     },
     {
@@ -186,7 +232,11 @@
       "notifications": [
         "stuff, has been bought!!!",
         "coffee, has been bought!!!",
-        "all items have been bought for: New Registry!!!!"
+        "all items have been bought for: New Registry!!!!",
+        "all items have been bought for: 1!!!!",
+        "all items have been bought for: a!!!!",
+        "all items have been bought for: yes!!!!",
+        "stuff, has been bought!!!"
       ],
       "id": 1
     },
@@ -208,12 +258,18 @@
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "active",
+      "viewers": [
+        {
+          "viewerEmail": "emfashenpoura@smu.edu",
+          "viewerId": 3
+        }
+      ],
       "items": [
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "bought"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "coffee",
@@ -275,19 +331,19 @@
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "coffee",
           "price": "$5.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         }
       ]
     },

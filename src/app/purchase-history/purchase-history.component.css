@@ -69,7 +69,7 @@ button:active{
   letter-spacing: .3em;
 }
 
-#dashboard {
+#purchaseHistory {
   /* text-size: 90%; */
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
@@ -89,3 +89,15 @@ button:active{
   margin-bottom: 0.5em;
 }
 
+tr:nth-child(even) {
+  background-color: #a7c1e0a2;
+}
+
+thead {
+  background-color: #cdb4db;
+}
+
+th {
+  font-family: 'Palatino', sans-serif;
+  text-transform: none;
+}

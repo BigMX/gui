@@ -26,6 +26,7 @@ import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
 import { Notifs } from './class/notifs.service';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const defaultRoute = 'login';
 
@@ -44,7 +45,8 @@ const defaultRoute = 'login';
     NotificationsComponent,
     ProfileComponent,
     JoinComponent,
-    ViewRegistryComponent
+    ViewRegistryComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -144,6 +146,10 @@ const defaultRoute = 'login';
           component: NotificationsComponent
         }
       ] },
+      { path: 'purchaseHistory', children: [
+        { path: '', component: PurchaseHistoryComponent },
+        { path: ':id' , component: PurchaseHistoryComponent }
+    ] },
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
       { path: '**', redirectTo: defaultRoute, pathMatch: 'full' }
     ])

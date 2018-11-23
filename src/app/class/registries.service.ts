@@ -9,6 +9,7 @@ import { Account } from './account';
 export class Registries {
 
   protected endPoint = 'http://localhost:3004/registries';
+  protected endPointViewers = 'http://localhost:3004/viewersOfRegs';
 
   protected httpOptions = {
     headers: new HttpHeaders({

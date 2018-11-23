@@ -8,4 +8,6 @@ export class Account {
   id?: number;
   notifications?: string[];
   cart?: Item[];
+  claimed?: Item[];
+  boughtItems?: Item[];
 }
