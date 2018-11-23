@@ -8,6 +8,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 import { Viewer } from '../class/viewers';
 import { Invitation } from '../class/invitation';
+import { Cart } from '../class/cart.service';
 
 class RegistryParams {
   userid: string;
@@ -35,12 +36,14 @@ export class RegistryComponent implements OnInit {
   notifCount: number;
   viewers: Viewer[];
   invites: Invitation[];
+  isDisable = false;
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
-    private invitations: Invitations
+    private invitations: Invitations,
+    private cartItems: Cart
   ) { }
 
   // important variables initialized
@@ -59,8 +62,11 @@ export class RegistryComponent implements OnInit {
             } else {
               this.notifCount = 0;
             }
-          this.cart = account.cart;
         });
+        this.cartItems.getItems(this.id).subscribe((items) => {
+          this.cart = items;
+          console.log(this.cart);
+        })
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
@@ -71,10 +77,14 @@ export class RegistryComponent implements OnInit {
             this.length = this.currentReg.items.length;
             this.itemList = this.currentReg.items;
           }
-          this.name = this.currentReg.name;
+          this.name = this.currentReg[0].name;
         });
       }
     });
+  }
+
+  onDisableUser() {
+    this.isDisable = true;
   }
 
   // this method deletes a registry
@@ -82,11 +92,13 @@ export class RegistryComponent implements OnInit {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {
         this.registries.deleteReg(+params.regid).subscribe((registry) => {
+          location.reload();
         });
       }
     });
   }
 
+  // this method makes sure that no duplicate items are added to a registry
   arrayObjectIndexOf(myArray, searchTerm) {
     let i;
     for(i = 0; i < myArray.length; i++) {
@@ -102,8 +114,9 @@ export class RegistryComponent implements OnInit {
     if(event) {
       if(this.itemList !== undefined) {
         if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
+          const index = this.arrayObjectIndexOf(this.cart, item);
+          item.disabled = 'true';
           this.itemList.push(item);
-          console.log(this.itemList);
         }
       }
     } else {
@@ -115,14 +128,13 @@ export class RegistryComponent implements OnInit {
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
     this.currentReg.items = this.itemList;
-    this.registries.updateReg(this.currentReg).subscribe((reg) => {
-      this.itemList = reg.items;
+    this.registries.updateItems(this.currentReg).subscribe((reg) => {
+      
     });
-    location.reload();
   }
 
   removeUserFromReg(index: number) {
-    this.invitations.deleteByEmailAndReg(this.viewers[index].viewerEmail, this.currentReg.id).subscribe((x) => {
+    this.invitations.deleteByEmailAndReg(this.viewers[index].viewerEmail, this.currentReg.registry_id).subscribe((x) => {
 
     });
     this.viewers.splice(index, 1);

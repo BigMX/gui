@@ -1,0 +1,641 @@
+<<<<<<< HEAD
+=======
+{
+  "invitation": [
+    {
+      "id": 1,
+      "receiverEmail": "bbb",
+      "registryId": 1,
+      "status": false,
+      "code": "code1"
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "registryId": 18,
+      "status": true,
+      "Code": "Code18",
+      "id": 2
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 3
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": false,
+      "Code": "Codeundefined",
+      "id": 4
+    },
+    {
+      "receiverEmail": "aalcantara@smu.edu",
+      "status": true,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 5
+    },
+    {
+      "receiverEmail": "d",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 6
+    },
+    {
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 7
+    },
+    {
+      "receiverEmail": "s",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 8
+    },
+    {
+      "status": false,
+      "registryId": 23,
+      "Code": "Code23",
+      "id": 9
+    },
+    {
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 10
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": false,
+      "registryId": 3,
+      "Code": "Code3",
+      "id": 11
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 5,
+      "Code": "Code5",
+      "id": 12
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 4,
+      "Code": "Code4",
+      "id": 13
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Arely",
+      "lastName": "Alcantara",
+      "email": "aalcantara@smu.edu",
+      "phoneNumber": "214-777-7777",
+      "password": "123",
+      "cart": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "Travis",
+      "lastName": "Mei",
+      "email": "smei@smu.edu",
+      "phoneNumber": "214-555-5555",
+      "password": "abcde"
+    },
+    {
+      "id": 3,
+      "firstName": "Emily",
+      "lastName": "Fashenpour",
+      "email": "efashenpoura@smu.edu",
+      "phoneNumber": "214-999-9999",
+      "password": "12345"
+    },
+    {
+      "lastName": "Alhumaid",
+      "firstName": "Haya",
+      "email": "halhumaid@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "lastName": "Holcomb",
+      "firstName": "Harry",
+      "email": "hholcomb@smu.edu",
+      "phone": null,
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "lastName": "Watkins",
+      "firstName": "Jake",
+      "email": "jwatkins@smu.edu",
+      "phone": null,
+      "password": "password",
+      "id": 6
+    },
+    {
+      "lastName": "Knotts",
+      "firstName": "Tristan",
+      "email": "tknotts@smu.edu",
+      "phone": null,
+      "password": "somepass",
+      "id": 7
+    },
+    {
+      "lastName": "Notif",
+      "firstName": "Testing",
+      "email": "notifs@gmail.com",
+      "phone": "2020202020",
+      "password": "123",
+      "id": 8
+    }
+  ],
+  "notifications": [
+    {
+      "userId": 1,
+      "notifications": [
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "all items have been bought for: New Registry!!!!",
+        "all items have been bought for: 1!!!!",
+        "all items have been bought for: a!!!!"
+      ],
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "notifications": [],
+      "id": 2
+    },
+    {
+      "userId": 8,
+      "notifications": [],
+      "id": 3
+    },
+    {
+      "notifications": [],
+      "id": 4
+    },
+    {
+      "notifications": [],
+      "id": 5
+    }
+  ],
+  "registries": [
+    {
+      "registry_id": 3,
+      "user_id": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
+      "status": "active",
+      "items": []
+    },
+    {
+      "registry_id": 4,
+      "user_id": 3,
+      "name": "A Registry",
+      "description": "testing testing",
+      "status": "active"
+    },
+    {
+      "user_id": 3,
+      "name": "look it's another registry",
+      "description": "some other registry - nothing new",
+      "registry_id": 5,
+      "status": "active"
+    },
+    {
+      "name": "i dont like this class",
+      "description": "boi bye",
+      "user_id": 2,
+      "registry_id": 9,
+      "status": "archived"
+    },
+    {
+      "name": "Testing ",
+      "description": "testing~",
+      "user_id": 2,
+      "status": "archived",
+      "registry_id": 10
+    },
+    {
+      "name": "More registries",
+      "description": "HELLO",
+      "user_id": 2,
+      "status": "archived",
+      "registry_id": 14
+    },
+    {
+      "name": "Test",
+      "description": "Registry",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 18,
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "MyR",
+      "description": "r",
+      "user_id": null,
+      "status": "active",
+      "registry_id": 19
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": null,
+      "status": "active",
+      "registry_id": 20
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": null,
+      "status": "active",
+      "registry_id": 21
+    },
+    {
+      "name": "things ",
+      "description": "travis doesnt have this",
+      "user_id": 1,
+      "status": "archived",
+      "registry_id": 22
+    },
+    {
+      "name": "testing archive",
+      "description": "archive",
+      "user_id": 1,
+      "status": "archived",
+      "registry_id": 23
+    },
+    {
+      "name": "new",
+      "description": "old",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 24
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 25,
+      "items": [
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "registry_id": 3,
+      "user_id": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
+      "status": "archived",
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "bought"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "bought"
+        }
+      ]
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": 1,
+      "status": "active",
+      "id": 26
+    },
+    {
+      "name": "a",
+      "description": "a",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 28
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 29,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "a",
+      "description": "a",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 30,
+      "items": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        },
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "12",
+      "description": "12",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 31,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "123",
+      "description": "123",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 32,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "no",
+      "description": "no",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 33,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "yes",
+      "description": "yes",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 34,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 35,
+      "items": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 36,
+      "items": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        },
+        {
+          "name": "Breakfast Sandwich",
+          "price": "$3.50",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "1",
+      "description": "1",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 37
+    },
+    {
+      "name": "hello",
+      "description": "hello",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 38
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "user_id": 1,
+      "status": "active",
+      "registry_id": 39,
+      "items": [
+        {
+          "name": "Coffee",
+          "price": "$4.99",
+          "location": "Starbucks",
+          "status": "need"
+        }
+      ]
+    },
+    {
+      "name": "3",
+      "description": "3",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 40
+    },
+    {
+      "name": "4",
+      "description": "4",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 41
+    },
+    {
+      "name": "2",
+      "description": "2",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 42
+    },
+    {
+      "name": "333",
+      "description": "333",
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 43
+    }
+  ]
+}
+>>>>>>> origin/dev

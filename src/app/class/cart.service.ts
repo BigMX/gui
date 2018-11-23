@@ -1,14 +1,19 @@
-import { Notif } from './notifications';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { Account } from '../class/account';
+import { Token} from '../class/token';
+import { Item } from './item';
 
-@Injectable()
-export class Notifs {
+@Injectable({
+  providedIn: 'root'
+})
+export class Cart {
 
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-  // protected endPoint = 'http://localhost:3004/notifications';
+//  protected endPoint = 'http://localhost:3004/users';
+
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -21,28 +26,28 @@ export class Notifs {
   constructor(
     protected httpClient: HttpClient
   ) { }
-  
+
   // CONNECTED
-  // this is for removing a notification when the user clicks on the x
-  removeNotif(notification_id: number): Observable<Notif> {
+  // adding an item to the a specific user's cart
+  addItemToCart(item: Item): Observable<Item> {
     return this.httpClient
-    .delete<Notif>(`${this.endPoint}/deletenotification/${notification_id}`, this.httpOptions)
+    .post<Item>(`${this.endPoint}/addtocart`, item, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
   // CONNECTED
-  // this is for adding a notification to the notifications page
-  addNotifs(notif: Notif): Observable<Notif> {
+  // retrieving cart items for a specific user
+  getItems(id: number): Observable<Item[]> {
     return this.httpClient
-    .post<Notif>(`${this.endPoint}/addNotifications`, notif, this.httpOptions)
-    .pipe(catchError(this.handleException));
+      .get<Item[]>(`${this.endPoint}/cart/${id}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
   }
 
   // CONNECTED
-  // this is used to get the notifications for a certain user
-  getNotifs(id: number): Observable<Notif[]> {
+  // used for deleting an item from the user's cart
+  deleteItem(item_id: number):Observable<Item> {
     return this.httpClient
-    .get<Notif[]>(`${this.endPoint}/notifications/${id}`, this.httpOptions)
+    .delete<Item>(`${this.endPoint}/deleteitem/${item_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

@@ -9,11 +9,13 @@ import { Invitation } from './invitation';
 @Injectable()
 export class Invitations {
 
-  protected endPoint = 'http://localhost:3004/invitation';
+  protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
 
   protected httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json',
+      // tslint:disable-next-line:max-line-length
+      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjpudWxsLCJlbWFpbCI6bnVsbH0.ZQBWd-2ksow_Ty-9dfwQfyeR8fMtAB_leFBibGMW0aM'
     })
   };
 
@@ -21,15 +23,20 @@ export class Invitations {
     protected httpClient: HttpClient
   ) { }
 
+  // CONNECTED
   add(invitation:Invitation): Observable<Invitation> {
     return this.httpClient
-      .post<Invitation>(`${this.endPoint}`, invitation, this.httpOptions)
+      .post<Invitation>(`${this.endPoint}/addinvitation`, invitation, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
   getByEmail(email: string, Code:string): Observable<Invitation> {
+    const obj = {
+      email: email,
+      Code: Code
+    };
     return this.httpClient
-    .get<Invitation>(`${this.endPoint}/?receiverEmail=${email}&Code=${Code}`, this.httpOptions)
+    .post<Invitation>(`${this.endPoint}/invitation/${Code}`, obj, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

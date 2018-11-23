@@ -20,16 +20,17 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { ViewRegistryComponent } from './view-registry/view-registry.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JoinComponent } from './join/join.component';
+import { StartComponent } from './start/start.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 // services
 import { Registries } from './class/registries.service';
 import { User } from './class/user.service';
 import { Invitations } from './class/invitation.service';
 import { Notifs } from './class/notifs.service';
-import { StartComponent } from './start/start.component';
-import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { Cart } from './class/cart.service';
 
-const defaultRoute = 'login';
+const defaultRoute = 'home';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,7 @@ const defaultRoute = 'login';
           component: ProfileComponent
         },
         {
-          path: ':userid',
+          path: ':id',
           component: ProfileComponent
         }
       ]},
@@ -153,12 +154,13 @@ const defaultRoute = 'login';
         { path: '', component: PurchaseHistoryComponent },
         { path: ':id' , component: PurchaseHistoryComponent }
     ] },
+      { path: 'home', component: StartComponent},
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' },
       { path: '**', redirectTo: defaultRoute, pathMatch: 'full' }
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations, Notifs],
+  providers: [Registries, User,Invitations, Notifs, Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

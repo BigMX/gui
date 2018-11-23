@@ -1,3 +1,4 @@
+import { Cart } from './../class/cart.service';
 import { Item } from './../class/item';
 import { Account } from './../class/account';
 import { Component, OnInit } from '@angular/core';
@@ -27,82 +28,76 @@ export class CartComponent implements OnInit {
   id: number;
   claimed: Item[];
   bought: Item[];
-  notifObj: Notif;
+  notif: Notif;
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
-    private notifs: Notifs
+    private notifs: Notifs,
+    private cartItems: Cart,
+    protected router: Router
   ) { }
 
-  // important variables initialized
-  ngOnInit() {
-    this.newRegistry = new Registry;
-    this.newItem = new Item;
-    this.route.params.subscribe((params: CartParams) => {
-      if (params.id) {
-        this.id = +params.id;
-        this.users.getById(this.id).subscribe((account) => {
-          this.account = account;
-          if (account.boughtItems === undefined) {
-            account.boughtItems = [];
-          }
-          if (account.claimed === undefined) {
-            account.claimed = [];
-          }
-          this.cart = account.cart;
-          this.claimed = account.claimed;
-          this.bought = account.boughtItems;
-        });
-      }
-    });
-    this.notifs.getNotifs(this.id).subscribe((notifications) => {
-      this.notifObj = notifications[0];
-    });
-  }
+    // important variables initialized
+    ngOnInit() {
+      this.newRegistry = new Registry;
+      this.newItem = new Item;
+      this.route.params.subscribe((params: CartParams) => {
+        if (params.id) {
+          this.id = +params.id;
+          console.log(this.id);
+          this.users.getById(this.id).subscribe((account) => {
+            this.account = account;
+          });
+          this.cartItems.getItems(this.id).subscribe((c) => {
+            console.log(c);
+            this.cart = c;
+          });
+        }
+      });
+    }
 
   // this method is for adding an item to the cart - the status is set to need
   addItem() {
-    this.newItem.status = 'Unclaimed';
-    this.cart.push(this.newItem);
-    this.account.cart = this.cart;
-    this.users.addItemToCart(this.account).subscribe((account) => {
-
+    this.newItem.status = 'unclaimed';
+    this.newItem.user_id = this.id;
+    this.newItem.disabled = 'false';
+    console.log(this.newItem);
+    this.cartItems.addItemToCart(this.newItem).subscribe((itemS) => {
+      console.log(itemS);
     });
     this.newItem = {};
+    this.cartItems.getItems(this.id).subscribe((c) => {
+      this.cart = c;
+      let url='cart/';
+      url+=this.id;
+      this.router.navigateByUrl(url);
+      location.reload();
+    });
   }
 
-  // used for removing items from the cart
-  removeItem(id: number, index:number) {
-    if (window.confirm('Are you sure?')) {
-      this.users.getById(this.id).subscribe((acct) => {
-        this.account = acct;
-        this.account.cart.splice(index, 1);
-        console.log(this.account);
-        this.account.cart=this.account.cart;
-        // this.users.removeNotif(this.account).subscribe(()=> {
-        // });
-        // location.reload();
-      });
+    // used for removing items from the cart
+    removeItem (item_id: number) {
+      if (window.confirm('Are you sure?')) {
+        this.cartItems.deleteItem(item_id).subscribe((item) => {
+          location.reload();
+        });
+      }
     }
-  }
 
-  markAsBought(index: number) {
+  markAsBought (index: number) {
     // deleting item from claimed
-    console.log(this.account.id);
-
-    console.log(this.notifObj);
-    this.notifObj.notifications.push(this.claimed[index].name + ', has been bought!!!');
-    this.notifs.addNotif(this.account.id, this.notifObj).subscribe((x) => {
-
+    this.notif.notifications = this.claimed[index].name + ', has been bought!!!'
+    this.notif.user_id = this.id;
+    this.notifs.addNotifs(this.notif).subscribe((x) => {
     });
     this.bought.push(this.claimed[index]);
     this.claimed.splice(index, 1);
     this.account.boughtItems = this.bought;
     this.account.claimed = this.claimed;
-    this.users.updateAccount(this.account).subscribe((x) => {
+    // this.users.updateAccount(this.account).subscribe((x) => {
 
-    });
+    // });
   }
 }

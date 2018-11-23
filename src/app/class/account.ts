@@ -5,7 +5,7 @@ export class Account {
   email?: string;
   password?:string;
   phone?: number;
-  id?: number;
+  user_id?: number;
   notifications?: string[];
   cart?: Item[];
   claimed?: Item[];

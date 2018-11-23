@@ -5,8 +5,8 @@ export class Registry {
   items?: Item[];
   name?: string;
   description?: string;
-  userId?: number;
+  user_id?: number;
   status?: string;
-  id?: number;
+  registry_id?: number;
   viewers?: Viewer[];
 }

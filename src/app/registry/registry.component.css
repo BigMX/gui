@@ -99,3 +99,7 @@ th {
   font-family: 'Palatino', sans-serif;
   text-transform: none;
 }
+
+.disable{
+  cursor: not-allowed;
+  }

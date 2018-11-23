@@ -1,5 +1,5 @@
 export class Invitation {
-  status: boolean;
+  status: string;
   registryId: number;
   receiverEmail: string;
   Code: string;

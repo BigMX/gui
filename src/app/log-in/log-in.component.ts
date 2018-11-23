@@ -31,32 +31,11 @@ export class LogInComponent implements OnInit {
 
   // this method is used for logging in and alerts the user if the wrong password is typed
   login() {
-    let acc = new Account;
+    const acc = new Account;
     acc.email=this.email;
     acc.password=this.password;
-    // this.users.getLogin(this.email, this.password).subscribe((account) => {
-    //   console.log(account);
-    //   if(account !== undefined && account[0]===undefined) {
-    //     alert('wrong password!');
-    //   } else if (account[0].firstName !== undefined) {
-    //     const userid = +account[0].id;
-    //     console.log(userid);
-    //     this.router.navigate(['dashboard', userid]);
-    //   } else {
-    //     alert('wrong password');
-    //   }
-    // });
     this.users.getLogin(acc).subscribe((Userid) => {
-      console.log(Userid);
-      // if(account !== undefined && account[0]===undefined) {
-      //   alert('wrong password!');
-      // } else if (account[0].firstName !== undefined) {
-      //   const userid = +account[0].id;
-      //   console.log(userid);
       this.router.navigate(['dashboard', Userid.user_id]);
-      // } else {
-      //   alert('wrong password');
-      // }
     });
   }
 }

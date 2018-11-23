@@ -62,7 +62,7 @@ export class InviteComponent implements OnInit {
   }
 
   invite() {
-    this.newInvitation.status=false;
+    this.newInvitation.status='false';
     this.newInvitation.registryId=this.registryId;
     this.newInvitation.Code='Code'+this.newInvitation.registryId;
     this.code=this.newInvitation.Code;

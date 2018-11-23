@@ -77,9 +77,9 @@ export class ViewRegistryComponent implements OnInit {
       this.account.claimed=[];
     }
     this.account.claimed.push(this.currentReg.items[index]);
-    this.users.updateAccount(this.account).subscribe((x) => {
+    // this.users.updateAccount(this.account).subscribe((x) => {
 
-    });
+    // });
   }
 
 }

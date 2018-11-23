@@ -42,13 +42,13 @@ export class DashboardComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           this.account = acct;
-          this.invitations.getAll(this.account.email).subscribe((x) => {
-            for( const y of x) {
-              this.registries.getRegById(y.registryId).subscribe((registry) => {
-                this.inviteReg.push(registry);
-              });
-            }
-          });
+          // this.invitations.getAll(this.account.email).subscribe((x) => {
+          //   for( const y of x) {
+          //     this.registries.getRegById(y.registryId).subscribe((registry) => {
+          //       this.inviteReg.push(registry);
+          //     });
+          //   }
+          // });
         });
         this.registries.getRegistries(this.id).subscribe((registry) => {
           this.registry = registry;

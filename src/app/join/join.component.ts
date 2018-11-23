@@ -63,7 +63,7 @@ export class JoinComponent implements OnInit {
             this.currentReg.viewers = [];
           }
           this.viewer.viewerEmail = this.account.email;
-          this.viewer.viewerId = this.account.id;
+          this.viewer.viewerId = this.account.user_id;
           this.currentReg.viewers.push(this.viewer);
           this.registries.updateReg(this.currentReg).subscribe((re) => {
           });
@@ -79,7 +79,7 @@ export class JoinComponent implements OnInit {
   }
 
   lead() {
-    const url='dashboard/'+this.account.id;
+    const url='dashboard/'+this.account.user_id;
     this.router.navigateByUrl(url);
   }
 }
