@@ -253,35 +253,16 @@ $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, 
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//C
+//CONNECTED
 //get users in the registry
 $app->get('/getusers/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT u.firstname, u.lastname FROM Users u Inner join Invitation i ON u.email=i.receiverEmail WHERE i.registry_id=:registry_id");
+        "SELECT u.firstname, u.lastname, u.email FROM Users u Inner join Invitation i ON u.email=i.receiverEmail WHERE i.registry_id=:registry_id");
     $sth->bindParam("registry_id", $args['registry_id']);
     $sth->execute();
     $user = $sth->fetchAll();
     return $this->response->withJson($user);
 });
-
-// //fix this 
-// //add items to the registry
-// $app->put('/additemstoregistry/{registry_id}', function ($request, $response, $args) {
-//     $input = $request->getParsedBody();
-//     $sql = "SELECT r.items
-//             FROM Registries r  
-//             LEFT JOIN Users u
-//             ON u.user_id = r.user_id
-//             LEFT JOIN Items i 
-//             ON u.user_id = i.user_id 
-//             WHERE r.registry_id =1;"
-//     //$sql = "UPDATE Registries SET items = :items WHERE registry_id = :registry_id";
-//     $sth = $this->dbConn->prepare($sql);
-//     $sth->bindParam("registry_id", $args['registry_id']);
-//     //$sth->bindParam("items", $input['items']);
-//     $res = $sth->execute();
-//     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
-// });
 
 //CONNECTED
 //delete the whole registry related to that user_id
