@@ -174,7 +174,7 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
 
 //
 //changes the registry id for the item
-$app->put('/itemregistryid/{item_id}', function ($request, $response, $args) {
+$app->put('/itemregistry', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Items SET registry_id=:registry_id WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
