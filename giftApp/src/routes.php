@@ -331,8 +331,8 @@ $app->post('/addinvitation', function ($request, $response) {
 // 	return $this->response->withJson($user);
 // });
 
-//update status of the invitation
-$app->put('/invitation/{code}', function ($request, $response, $args) {
+//
+$app->put('/acceptinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code";
     $sth = $this->dbConn->prepare($sql);
