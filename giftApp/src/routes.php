@@ -228,10 +228,11 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
+//
 //display a archive
 $app->get('/archive/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Registries WHERE registry_id = :registry_id AND status= 'active');
+        "SELECT * FROM Registries WHERE registry_id = :registry_id AND status= 'active'");
     $sth->bindParam("registry_id", $args['registry_id']);
     $sth->execute();
     $user = $sth->fetchAll();
