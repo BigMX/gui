@@ -228,13 +228,23 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
+//display a archive
+$app->get('/archive/{registry_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Registries WHERE registry_id = :registry_id AND status= 'active');
+    $sth->bindParam("registry_id", $args['registry_id']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+//
+//changes the status of a registry
 $app->put('/changeregistrystatus/{registry_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Registries SET status = :status WHERE registry_id = :registry_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("registry_id", $args['registry_id']);
     $sth->bindParam("status", $input['status']);
-    //var_dump($input);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
