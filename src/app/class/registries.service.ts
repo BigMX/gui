@@ -62,7 +62,7 @@ export class Registries {
   // used to update a registry
   updateReg(reg: Registry): Observable<Registry> {
     return this.httpClient
-    .put<Registry>(`${this.endPoint}/${reg.registry_id}`, reg, this.httpOptions)
+    .put<Registry>(`${this.endPoint}/changeregistry/${reg.registry_id}`, reg, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

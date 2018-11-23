@@ -59,7 +59,7 @@ ngOnInit() {
  // this method is used for making a new account - a new user - registration
   signUp() {
    this.users.addUser(this.account).subscribe((account) => {
-     this.id = account.id;
+     this.id = account.user_id;
      this.router.navigate(['login']);
    });
    this.account = {};
