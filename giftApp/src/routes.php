@@ -331,10 +331,11 @@ $app->post('/addinvitation', function ($request, $response) {
 // 	return $this->response->withJson($user);
 // });
 
+//CONNECTED
 //
 $app->put('/acceptinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND Code = :Code";
+    $sql = "UPDATE Invitation SET status = true WHERE receiverEmail = :receiverEmail AND Code = :Code";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $sth->bindParam("Code", $input['Code']);
