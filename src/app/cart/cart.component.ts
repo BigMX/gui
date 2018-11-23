@@ -56,6 +56,7 @@ export class CartComponent implements OnInit {
   addItem() {
     this.newItem.status = 'need';
     this.newItem.user_id = this.id;
+    this.newItem.disabled = 'false';
     console.log(this.newItem);
     this.cartItems.addItemToCart(this.newItem).subscribe((itemS) => {
       console.log(itemS);

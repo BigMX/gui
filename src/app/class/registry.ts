@@ -7,5 +7,4 @@ export class Registry {
   user_id?: number;
   status?: string;
   registry_id?: number;
-  disabled?: string
 }

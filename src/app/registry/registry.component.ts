@@ -102,7 +102,7 @@ export class RegistryComponent implements OnInit {
       if(this.itemList !== undefined) {
         if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
           const index = this.arrayObjectIndexOf(this.cart, item);
-          item.disabled = true;
+          item.disabled = 'true';
           this.itemList.push(item);
         }
       }

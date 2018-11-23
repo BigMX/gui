@@ -6,5 +6,5 @@ export class Item {
   status?: string;
   item_id?: number;
   registry_id?: number;
-  disabled?: boolean;
+  disabled?: string;
 }
