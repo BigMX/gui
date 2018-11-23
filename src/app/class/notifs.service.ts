@@ -21,7 +21,8 @@ export class Notifs {
   constructor(
     protected httpClient: HttpClient
   ) { }
-
+  
+  // CONNECTED
   // this is for removing a notification when the user clicks on the x
   removeNotif(notification_id: number): Observable<Notif> {
     return this.httpClient
@@ -29,6 +30,7 @@ export class Notifs {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   // this is for adding a notification to the notifications page
   addNotifs(notif: Notif): Observable<Notif> {
     return this.httpClient
@@ -36,6 +38,7 @@ export class Notifs {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
   // this is used to get the notifications for a certain user
   getNotifs(id: number): Observable<Notif[]> {
     return this.httpClient
