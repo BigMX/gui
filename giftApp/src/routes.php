@@ -172,7 +172,7 @@ $app->delete('/deleteitem/{item_id}', function ($request, $response, $args) {
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
 
-//
+//CONNECTED
 //changes the registry id for the item
 $app->put('/itemregistry', function ($request, $response, $args) {
     $input = $request->getParsedBody();
@@ -180,6 +180,17 @@ $app->put('/itemregistry', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("item_id", $input['item_id']);
     $sth->bindParam("registry_id", $input['registry_id']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+});
+
+//add which user bought the item
+$app->put('/itembought', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Items SET boughtby=:boughtby WHERE item_id=:item_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("item_id", $input['item_id']);
+    $sth->bindParam("boughtby", $input['boughtby']);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
