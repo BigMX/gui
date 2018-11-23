@@ -17,7 +17,6 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 });
 
-
 // ---------- user routes ----------
 
 //CONNECTED
@@ -70,7 +69,7 @@ $app->post('/login', function (Request $request, Response $response, array $args
             foreach($users as $user){
                 $_SESSION['userId'] = $user['user_id'];
         }
-    //return $this->response->withJson(["token" => $token]);
+    //return $this->response->withJson(["token" => $token]);  //gets the token
     return $this->response->withJson($user);
 });
 
@@ -111,7 +110,7 @@ $app->get('/users/{lastName}', function ($request, $response, $args) {
 	return $this->response->withJson($users);
 });
 
-//NOT CONNECTED
+//CONNECTED
 //update user password
 $app->put('/changepassword/{user_id}', function ($request, $response, $args) {
 	$input = $request->getParsedBody();
@@ -229,6 +228,17 @@ $app->get('/registries/{registry_id}', function ($request, $response, $args) {
     return $this->response->withJson($user);
 });
 
+$app->put('/changeregistrystatus/{registry_id}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Registries SET status = :status WHERE registry_id = :registry_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("registry_id", $args['registry_id']);
+    $sth->bindParam("status", $input['status']);
+    //var_dump($input);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+});
+
 //CONNECTED
 //delete the whole registry related to that user_id
 $app->delete('/deleteregistry/{registry_id}', function ($request, $response, $args) {
@@ -300,7 +310,19 @@ $app->post('/invitations/{status}', function ($request, $response) {
 	return $this->response->withJson($user);
 });
 
-//update user password
+//fix this
+//display invatation
+$app->get('/displayinvitation/{id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Invitation WHERE id = :id");
+    $sth->bindParam("id", $args['id']);
+    $sth->execute();
+    $user = $sth->fetchAll();
+    return $this->response->withJson($user);
+});
+
+//
+//update status of the invitation
 $app->put('/changeinvitation/{id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Invitation SET status = :status WHERE id = :id";
@@ -338,7 +360,7 @@ $app->get('/notifications/{user_id}', function ($request, $response, $args) {
 	return $this->response->withJson($user);
 });
 
-//
+//CONNECTED
 //delete notifications table based on the notifications_id
 $app->delete('/deletenotification/{notification_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare("DELETE FROM Notif WHERE notification_id=:notification_id");
