@@ -338,7 +338,7 @@ $app->put('/getinvitation', function ($request, $response, $args) {
     $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $res = $sth->execute();
     $user = $sth->fetchAll();
-    return $this->response->withJson(user);
+    return $this->response->withJson($user);
 });
 
 //CONNECTED
