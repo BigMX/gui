@@ -185,6 +185,7 @@ $app->put('/itemregistry', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//
 //add which user bought the item
 $app->put('/itembought', function ($request, $response, $args) {
     $input = $request->getParsedBody();
@@ -206,6 +207,17 @@ $app->get('/item/{registry_id}', function ($request, $response, $args) {
     $users = $sth->fetchAll();
     return $this->response->withJson($users);
 
+});
+
+//changes the status to claimed in items table
+$app->put('/changeitem/{item_id}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Items SET status='claimed', boughtBy=:user_id WHERE item_id=:item_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("item_id", $args['item_id']);
+    $sth->bindParam("user_id", $args['user_id']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
 //
