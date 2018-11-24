@@ -241,6 +241,17 @@ $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) {
     return $this->response->withJson($users);
 
 });
+
+//get bought items from the items table
+$app->get('/getboughtitem/{user_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Items WHERE user_id =:user_id AND status= 'Bought'");
+    $sth->bindParam("user_id", $args['user_id']);   
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+
+});
 //
 //add items to registry
 $app->post('/additems', function ($request, $response) {
