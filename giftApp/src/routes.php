@@ -240,7 +240,6 @@ $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) {
     $sth->execute();
     $users = $sth->fetchAll();
     return $this->response->withJson($users);
-
 });
 
 //CONNECTED
@@ -249,6 +248,28 @@ $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) {
     $sth = $this->dbConn->prepare(
         "SELECT * FROM Items WHERE boughtBy=:user_id AND status= 'Bought'");
     $sth->bindParam("user_id", $args['user_id']);   
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+});
+
+//
+//get item name
+$app->get('/getitemname/{name}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Items WHERE name=:name'");
+    $sth->bindParam("name", $args['name']);   
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+});
+
+//
+//get item store
+$app->get('/getitemstore/{location}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Items WHERE location=:location'");
+    $sth->bindParam("location", $args['location']);   
     $sth->execute();
     $users = $sth->fetchAll();
     return $this->response->withJson($users);
