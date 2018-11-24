@@ -62,9 +62,9 @@ export class InviteComponent implements OnInit {
   }
 
   invite() {
-    this.newInvitation.status='false';
-    this.newInvitation.registryId=this.registryId;
-    this.newInvitation.Code='Code'+this.newInvitation.registryId;
+    this.newInvitation.status=false;
+    this.newInvitation.registry_id=this.registryId;
+    this.newInvitation.Code='Code'+this.newInvitation.registry_id;
     this.code=this.newInvitation.Code;
     this.invitations.add(this.newInvitation).subscribe((x) => {
       this.newInvitation=new Invitation;

@@ -8,6 +8,4 @@ export class Account {
   user_id?: number;
   notifications?: string[];
   cart?: Item[];
-  claimed?: Item[];
-  boughtItems?: Item[];
 }

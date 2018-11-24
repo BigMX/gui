@@ -4,8 +4,8 @@
 }
 
 .menu{
- position:fixed;
- z-index:1;
+ /* position:fixed; */
+ z-index:0;
 }
 
 .das{
@@ -15,9 +15,9 @@
 }
 
 .topbuttons{
-  position:fixed;
+  /* position:fixed; */
   top:0;
-  z-index:2;
+  z-index:0;
  }
 
 #userIcon{

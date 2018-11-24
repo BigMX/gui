@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { JoinComponent } from './join/join.component';
 import { StartComponent } from './start/start.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { CreateRegComponent } from './create-reg/create-reg.component';
 
 // services
 import { Registries } from './class/registries.service';
@@ -49,7 +50,8 @@ const defaultRoute = 'home';
     JoinComponent,
     ViewRegistryComponent,
     StartComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    CreateRegComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +99,16 @@ const defaultRoute = 'home';
             component: ArchiveComponent
           }
        ] },
+       { path: 'create', children: [
+        {
+          path: '',
+          component: CreateRegComponent
+        },
+        {
+          path: ':id',
+          component: CreateRegComponent
+        }
+     ] },
       { path: 'login', component: LogInComponent },
       { path: 'start', component: StartComponent },
       { path: 'signup', component: SignUpComponent },
@@ -160,7 +172,7 @@ const defaultRoute = 'home';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations, Notifs, Cart],
+  providers: [Registries, User, Invitations, Notifs, Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

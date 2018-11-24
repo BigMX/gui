@@ -7,11 +7,9 @@ import { Account } from './account';
 
 @Injectable()
 export class Registries {
-
+  
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-  // protected endPoint = 'http://localhost:3004/registries';
-  // protected endPointViewers = 'http://localhost:3004/viewersOfRegs';
-
+ // protected endPoint = 'http://localhost:3004/registries';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -27,7 +25,7 @@ export class Registries {
   // this is for adding a new registry
   add(registries: Registry): Observable<Registry> {
     return this.httpClient
-      .post<Registry>(`${this.endPoint}`, registries, this.httpOptions)
+      .post<Registry>(`${this.endPoint}/addnewregistry`, registries, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
@@ -77,6 +75,7 @@ export class Registries {
     .put<Registry>(`${this.endPoint}/changeregistrystatus/${reg.registry_id}`, reg, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
+
 
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;

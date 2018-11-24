@@ -5,63 +5,77 @@
       <h2 id="menutitle">Menu</h2>
       <div class="myNav">
         <div class="nav flex-column nav-pills" style="background-color: #e5d4ee;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a routerLink='/dashboard/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-              <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon"><span>Dashboard</span>
-            </a>
-            <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create" aria-selected="false">
-              <button type="button" class="btn activebtn" data-toggle="modal" data-target="#createModal">
-                <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
-              </button>
-            </a>
-            <a class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" routerLink='/invite/{{id}}'  role="tab" aria-controls="v-pills-invite" aria-selected="false">
-              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon"><span>Invite</span>
-            </a>
-            <a routerLink='/archive/{{id}}' class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-archive" aria-selected="false">
-              <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon"><span>Archive</span>
-            </a>
-            <a class="nav-link" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join" aria-selected="false">
-              <button type="button" class="btn activebtn2" data-toggle="modal" data-target="#joinModal">
-                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon"><span>Join</span>
-              </button>
-            </a>
+          <a routerLink='/dashboard/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+            aria-controls="v-pills-dashboard" aria-selected="true">
+            <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon">
+            <span>Dashboard</span>
+          </a>
+          <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create"
+            aria-selected="false">
+            <button type="button" class="btn activebtn" data-toggle="modal" data-target="#createModal">
+              <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon">
+              <span>Create</span>
+            </button>
+          </a>
+          <a class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" routerLink='/invite/{{id}}' role="tab"
+            aria-controls="v-pills-invite" aria-selected="false">
+            <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon">
+            <span>Invite</span>
+          </a>
+          <a routerLink='/archive/{{id}}' class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+            aria-controls="v-pills-archive" aria-selected="false">
+            <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon">
+            <span>Archive</span>
+          </a>
+          <a class="nav-link" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join"
+            aria-selected="false">
+            <button type="button" class="btn activebtn2" data-toggle="modal" data-target="#joinModal">
+              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon">
+              <span>Join</span>
+            </button>
+          </a>
 
-          </div>
         </div>
+      </div>
     </div>
     <div class="col-8">
-        <div class="dash">
-            <h2 id="dashboard">{{name}}</h2>
-        </div>
-        <div *ngIf=!length>
-            <br> <br>
-          <h3 class="text-center" style="font-family: Helvetica;">You don't have anything in your registry :( add items!! </h3>
-          <br> <br> <hr style="background-color:purple;">
-        </div>
-        <div *ngIf=length>
-            <br>
-          <h6 class="text-center" style="font-family: Helvetica;">Items in your registry: </h6>
-          <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="text-center">Name of Item</th>
-                  <th class="text-center">Price</th>
-                  <th class="text-center">Location</th>
-                  <th class="text-center">Status</th>
-                  <th class="text-center">Bought By</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="cart">
-                  <tr *ngFor="let newItem of itemList">
-                    <td class="text-center">{{newItem.name}}</td>
-                    <td class="text-center">{{newItem.price}}</td>
-                    <td class="text-center">{{newItem.location}}</td>
-                    <td class="text-center">{{newItem.status}}</td>
-                    <td class="text-center">  </td>
-                  </tr>
-                </tbody>
-            </table>
-          <br>  <hr style="background-color:purple;">
-        </div>
+      <div class="dash">
+        <h2 id="dashboard">{{name}}</h2>
+      </div>
+      <div *ngIf='assignedItems'>
+        <br>
+        <br>
+        <h3 class="text-center" style="font-family: Helvetica;">You don't have anything in your registry :( add items!! </h3>
+        <br>
+        <br>
+        <hr style="background-color:purple;">
+      </div>
+      <div *ngIf='!assignedItems'>
+        <br>
+        <h6 class="text-center" style="font-family: Helvetica;">Items in your registry: </h6>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Name of Item</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Location</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Bought By</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let newItem of assigneditems">
+              <td class="text-center">{{newItem.name}}</td>
+              <td class="text-center">{{newItem.price}}</td>
+              <td class="text-center">{{newItem.location}}</td>
+              <td class="text-center">{{newItem.status}}</td>
+              <td class="text-center"> </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <hr style="background-color:purple;">
+      </div>
       <div>
         <br>
         <h6 class="text-center" style="font-family: Helvetica;"> Currently in your cart...</h6>
@@ -89,30 +103,38 @@
         </table>
       </div>
       <button type="button" class="btn btn-lg" style="background-color: #cdb4db;" id="archiveButton" (click)="addItems()">
-          Add Item(s)
+        Add Item(s)
       </button>
-      <br><br>
       <br>
-        <div>
-          <h3 id="dashboard">Invited Users</h3>
-          <br>
-          <div *ngIf="!viewers">
-            <p>No invited users!</p>
-          </div>
-          <div *ngIf="viewers">
-            <ul class="list-group" *ngFor="let viewer of viewers; let i = index">
-              <li class="list-group-item"><button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button>   {{ viewer.viewerEmail }}</li>
-            </ul>
-          </div>
+      <br>
+      <br>
+      <div>
+        <h3 id="dashboard">Invited Users</h3>
+        <br>
+        <div *ngIf="!viewers">
+          <p>No invited users!</p>
         </div>
-      <br> <hr>
-      <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186);" id="deleteButton"  data-toggle="modal" data-target="#deleteModal">
+        <div *ngIf="viewers">
+          <ul class="list-group" *ngFor="let viewer of viewers; let i = index">
+            <li class="list-group-item">
+              <button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button> {{ viewer.email }}</li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186);" id="deleteButton" data-toggle="modal"
+        data-target="#deleteModal">
         DELETE REGISTRY
       </button>
     </div>
     <div class="col-2">
-        <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn">
-          <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
+      <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn">
+        <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
+      </button>
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
         </button>
         <div class="dropdown">
           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,6 +147,7 @@
               <a class="dropdown-item" href="#">Logout</a>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -132,19 +155,21 @@
 <div class="deleteModal">
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModal">Delete Registry</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-              <h4>Are you sure you want to delete this registry?</h4>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">NO</button>
-                <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)='deleteRegistry()' routerLink='/dashboard/{{id}}'>Yes!</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModal">Delete Registry</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <h4>Are you sure you want to delete this registry?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">NO</button>
+          <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)='deleteRegistry()' routerLink='/dashboard/{{id}}'>Yes!</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

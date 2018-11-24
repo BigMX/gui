@@ -1,4 +1,3 @@
-import { Cart } from './../class/cart.service';
 import { Item } from './../class/item';
 import { Account } from './../class/account';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +7,7 @@ import { Registries } from './../class/registries.service';
 import { User } from '../class/user.service';
 import { Notifs } from '../class/notifs.service';
 import { Notif } from '../class/notifications';
+import { Cart} from '../class/cart.service';
 
 class CartParams {
   id: string;
@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
   newRegistry: Registry;
   account: Account;
   id: number;
-  claimed: Item[];
+  claimed: Item[]=[];
   bought: Item[];
   notif: Notif;
 
@@ -86,18 +86,25 @@ export class CartComponent implements OnInit {
       }
     }
 
-  markAsBought (index: number) {
-    // deleting item from claimed
-    this.notif.notifications = this.claimed[index].name + ', has been bought!!!'
-    this.notif.user_id = this.id;
-    this.notifs.addNotifs(this.notif).subscribe((x) => {
-    });
-    this.bought.push(this.claimed[index]);
-    this.claimed.splice(index, 1);
-    this.account.boughtItems = this.bought;
-    this.account.claimed = this.claimed;
+  markAsBought(index: number) {
+    // // deleting item from claimed
+    // console.log(this.account.id);
+
+    // console.log(this.notifObj);
+    // this.notifObj.notifications.push(this.claimed[index].name + ', has been bought!!!');
+    // this.notifs.addNotif(this.account.id, this.notifObj).subscribe((x) => {
+
+    // });
+    // this.bought.push(this.claimed[index]);
+    // this.claimed.splice(index, 1);
+    // this.account.boughtItems = this.bought;
+    // this.account.claimed = this.claimed;
     // this.users.updateAccount(this.account).subscribe((x) => {
 
     // });
+    this.cartItems.buyItem(this.claimed[index].item_id).subscribe((x)=> {
+      console.log(x);
+      this.claimed.splice(index,1);
+    });
   }
 }

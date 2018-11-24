@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
 {
   "invitation": [
     {
@@ -87,6 +90,23 @@
       "registryId": 4,
       "Code": "Code4",
       "id": 13
+<<<<<<< HEAD
+=======
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 32,
+      "Code": "Code32",
+      "id": 14
+    },
+    {
+      "receiverEmail": "smei@smu.edu",
+      "status": true,
+      "registryId": 33,
+      "Code": "Code33",
+      "id": 15
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     }
   ],
   "users": [
@@ -96,28 +116,121 @@
       "lastName": "Alcantara",
       "email": "aalcantara@smu.edu",
       "phoneNumber": "214-777-7777",
+<<<<<<< HEAD
       "password": "123",
+=======
+      "password": "12345",
+      "notifications": [
+        "Tea, has been bought!!!",
+        "Breakfast Sandwich, has been bought!!!",
+        "all items have been bought for: New Registry!!!!",
+        "all items have been bought for: testing!!!!",
+        "Coffee, has been bought!!!"
+      ],
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "cart": [
         {
           "name": "Coffee",
           "price": "$4.99",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need",
           "disabled": true
+=======
+          "status": "need"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         },
         {
           "name": "Tea",
           "price": "$3.99",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need",
           "disabled": true
+=======
+          "status": "need"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         },
         {
           "name": "Breakfast Sandwich",
           "price": "$3.50",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need",
           "disabled": true
+=======
+          "status": "need"
+        }
+      ],
+      "claimed": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        }
+      ],
+      "boughtItems": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "claimed"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+          "status": "Claimed by aalcantara@smu.edu"
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+          "status": "Claimed by aalcantara@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         }
       ]
     },
@@ -127,7 +240,28 @@
       "lastName": "Mei",
       "email": "smei@smu.edu",
       "phoneNumber": "214-555-5555",
+<<<<<<< HEAD
       "password": "abcde"
+=======
+      "password": "abcde",
+      "claimed": [],
+      "boughtItems": [
+        {
+          "name": "Tea",
+          "price": "$3.99",
+          "location": "Starbucks",
+          "status": "Claimed by smei@smu.edu"
+        }
+      ],
+      "cart": [
+        {
+          "name": "1",
+          "price": "1",
+          "location": "1",
+          "status": "Unclaimed"
+        }
+      ]
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "id": 3,
@@ -186,13 +320,34 @@
         "coffee, has been bought!!!",
         "all items have been bought for: New Registry!!!!",
         "all items have been bought for: 1!!!!",
+<<<<<<< HEAD
         "all items have been bought for: a!!!!"
+=======
+        "all items have been bought for: a!!!!",
+        "all items have been bought for: yes!!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!",
+        "coffee, has been bought!!!",
+        "coffee, has been bought!!!",
+        "stuff, has been bought!!!",
+        "stuff, has been bought!!!"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       ],
       "id": 1
     },
     {
       "userId": 2,
+<<<<<<< HEAD
       "notifications": [],
+=======
+      "notifications": [
+        "Tea, has been bought!!!"
+      ],
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "id": 2
     },
     {
@@ -207,10 +362,26 @@
     {
       "notifications": [],
       "id": 5
+<<<<<<< HEAD
+=======
+    },
+    {
+      "notifications": [],
+      "id": 6
+    },
+    {
+      "notifications": [],
+      "id": 7
+    },
+    {
+      "notifications": [],
+      "id": 8
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     }
   ],
   "registries": [
     {
+<<<<<<< HEAD
       "registry_id": 3,
       "user_id": 1,
       "name": "New Registry",
@@ -221,113 +392,234 @@
     {
       "registry_id": 4,
       "user_id": 3,
-      "name": "A Registry",
-      "description": "testing testing",
-      "status": "active"
-    },
-    {
-      "user_id": 3,
-      "name": "look it's another registry",
-      "description": "some other registry - nothing new",
-      "registry_id": 5,
-      "status": "active"
-    },
-    {
-      "name": "i dont like this class",
-      "description": "boi bye",
-      "user_id": 2,
-      "registry_id": 9,
-      "status": "archived"
-    },
-    {
-      "name": "Testing ",
-      "description": "testing~",
-      "user_id": 2,
-      "status": "archived",
-      "registry_id": 10
-    },
-    {
-      "name": "More registries",
-      "description": "HELLO",
-      "user_id": 2,
-      "status": "archived",
-      "registry_id": 14
-    },
-    {
-      "name": "Test",
-      "description": "Registry",
-      "user_id": 2,
+=======
+      "id": 3,
+      "userId": 1,
+      "name": "New Registry",
+      "description": "adding a new registry - hi",
       "status": "active",
-      "registry_id": 18,
+      "viewers": [
+        {
+          "viewerEmail": "emfashenpoura@smu.edu",
+          "viewerId": 3
+        }
+      ],
       "items": [
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
-          "status": "need"
+          "status": "Claimed by aalcantara@smu.edu"
         },
         {
           "name": "coffee",
           "price": "$5.99",
           "location": "Starbucks",
-          "status": "need"
+          "status": "bought"
         },
         {
           "name": "stuff",
           "price": "$15",
           "location": "a store",
+          "status": "bought"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "userId": 3,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+      "name": "A Registry",
+      "description": "testing testing",
+      "status": "active"
+    },
+    {
+<<<<<<< HEAD
+      "user_id": 3,
+      "name": "look it's another registry",
+      "description": "some other registry - nothing new",
+      "registry_id": 5,
+=======
+      "userId": 3,
+      "name": "look it's another registry",
+      "description": "some other registry - nothing new",
+      "id": 5,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+      "status": "active"
+    },
+    {
+      "name": "i dont like this class",
+      "description": "boi bye",
+<<<<<<< HEAD
+      "user_id": 2,
+      "registry_id": 9,
+=======
+      "userId": 2,
+      "id": 9,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+      "status": "archived"
+    },
+    {
+      "name": "Testing ",
+      "description": "testing~",
+<<<<<<< HEAD
+      "user_id": 2,
+      "status": "archived",
+      "registry_id": 10
+=======
+      "userId": 2,
+      "status": "archived",
+      "id": 10
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+    },
+    {
+      "name": "More registries",
+      "description": "HELLO",
+<<<<<<< HEAD
+      "user_id": 2,
+      "status": "archived",
+      "registry_id": 14
+=======
+      "userId": 2,
+      "status": "archived",
+      "id": 14
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+    },
+    {
+      "name": "Test",
+      "description": "Registry",
+<<<<<<< HEAD
+      "user_id": 2,
+      "status": "active",
+      "registry_id": 18,
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 18,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+      "items": [
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+<<<<<<< HEAD
           "status": "need"
+=======
+          "status": "Claimed by aalcantara@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+        },
+        {
+          "name": "coffee",
+          "price": "$5.99",
+          "location": "Starbucks",
+<<<<<<< HEAD
+          "status": "need"
+=======
+          "status": "Claimed by aalcantara@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
+        },
+        {
+          "name": "stuff",
+          "price": "$15",
+          "location": "a store",
+<<<<<<< HEAD
+          "status": "need"
+=======
+          "status": "Claimed by aalcantara@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         }
       ]
     },
     {
       "name": "MyR",
       "description": "r",
+<<<<<<< HEAD
       "user_id": null,
       "status": "active",
       "registry_id": 19
+=======
+      "userId": null,
+      "status": "active",
+      "id": 19
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": null,
       "status": "active",
       "registry_id": 20
+=======
+      "userId": null,
+      "status": "active",
+      "id": 20
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": null,
       "status": "active",
       "registry_id": 21
+=======
+      "userId": null,
+      "status": "active",
+      "id": 21
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "things ",
       "description": "travis doesnt have this",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "archived",
       "registry_id": 22
+=======
+      "userId": 1,
+      "status": "archived",
+      "id": 22
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "testing archive",
       "description": "archive",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "archived",
       "registry_id": 23
+=======
+      "userId": 1,
+      "status": "archived",
+      "id": 23
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "new",
       "description": "old",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 24
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 24
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 25,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 25,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Breakfast Sandwich",
@@ -350,8 +642,13 @@
       ]
     },
     {
+<<<<<<< HEAD
       "registry_id": 3,
       "user_id": 1,
+=======
+      "id": 3,
+      "userId": 1,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "name": "New Registry",
       "description": "adding a new registry - hi",
       "status": "archived",
@@ -379,23 +676,39 @@
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": 1,
+=======
+      "userId": 1,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "status": "active",
       "id": 26
     },
     {
       "name": "a",
       "description": "a",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 28
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 28
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 29,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 29,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Coffee",
@@ -408,6 +721,7 @@
     {
       "name": "a",
       "description": "a",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 30,
@@ -434,13 +748,24 @@
           "disabled": true
         }
       ]
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 30
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "12",
       "description": "12",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 31,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 31,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Coffee",
@@ -465,36 +790,66 @@
     {
       "name": "123",
       "description": "123",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 32,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 32,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Coffee",
           "price": "$4.99",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need"
+=======
+          "status": "Claimed by smei@smu.edu"
+        }
+      ],
+      "viewers": [
+        {
+          "viewerEmail": "smei@smu.edu",
+          "viewerId": 2
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         }
       ]
     },
     {
       "name": "no",
       "description": "no",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 33,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 33,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Coffee",
           "price": "$4.99",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need"
+=======
+          "status": "Claimed by smei@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         },
         {
           "name": "Tea",
           "price": "$3.99",
           "location": "Starbucks",
+<<<<<<< HEAD
           "status": "need"
+=======
+          "status": "Claimed by smei@smu.edu"
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
         },
         {
           "name": "Breakfast Sandwich",
@@ -502,11 +857,17 @@
           "location": "Starbucks",
           "status": "need"
         }
+<<<<<<< HEAD
       ]
+=======
+      ],
+      "viewers": []
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "yes",
       "description": "yes",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 34,
@@ -524,13 +885,24 @@
           "status": "need"
         }
       ]
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 34
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "2",
       "description": "2",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 35,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 35,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Tea",
@@ -555,6 +927,7 @@
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 36,
@@ -578,27 +951,50 @@
           "status": "need"
         }
       ]
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 36
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "1",
       "description": "1",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 37
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 37
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "hello",
       "description": "hello",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 38
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 38
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "2",
       "description": "2",
+<<<<<<< HEAD
       "user_id": 1,
       "status": "active",
       "registry_id": 39,
+=======
+      "userId": 1,
+      "status": "active",
+      "id": 39,
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
       "items": [
         {
           "name": "Coffee",
@@ -611,27 +1007,46 @@
     {
       "name": "3",
       "description": "3",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 40
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 40
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "4",
       "description": "4",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 41
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 41
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "2",
       "description": "2",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 42
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 42
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70
     },
     {
       "name": "333",
       "description": "333",
+<<<<<<< HEAD
       "user_id": 2,
       "status": "active",
       "registry_id": 43
@@ -639,3 +1054,11 @@
   ]
 }
 >>>>>>> origin/dev
+=======
+      "userId": 2,
+      "status": "active",
+      "id": 43
+    }
+  ]
+}
+>>>>>>> 82349d07225380b165ac5cf80555508c3c844e70

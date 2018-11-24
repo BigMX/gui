@@ -10,6 +10,7 @@ import { Invitation } from './invitation';
 export class Invitations {
 
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+//  protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -30,19 +31,15 @@ export class Invitations {
       .pipe(catchError(this.handleException));
   }
 
-  getByEmail(email: string, Code:string): Observable<Invitation> {
-    const obj = {
-      email: email,
-      Code: Code
-    };
+    getByEmail(invitation: Invitation): Observable<Invitation> {
     return this.httpClient
-    .post<Invitation>(`${this.endPoint}/invitation/${Code}`, obj, this.httpOptions)
+    .put<Invitation>(`${this.endPoint}/acceptinvitation`,invitation, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
-  getAll(email: string): Observable<Invitation[]> {
+  getAll(invitation: Invitation): Observable<Invitation[]> {
     return this.httpClient
-    .get<Invitation[]>(`${this.endPoint}/?receiverEmail=${email}&status=true`, this.httpOptions)
+    .put<Invitation[]>(`${this.endPoint}/getinvitation`,invitation, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
@@ -52,11 +49,12 @@ export class Invitations {
       .pipe(catchError(this.handleException));
   }
 
-  deleteByEmailAndReg(email: string, regId: number): Observable<Invitation> {
+  deleteByEmail(invitation: Invitation): Observable<Invitation> {
     return this.httpClient
-    .delete<Invitation>(`${this.endPoint}/?receiverEmail=${email}&status=true/?registryId=${regId}`, this.httpOptions)
+    .put<Invitation>(`${this.endPoint}/deleteinvitation`, invitation,this.httpOptions)
     .pipe(catchError(this.handleException));
   }
+
 
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;

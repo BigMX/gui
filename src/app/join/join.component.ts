@@ -34,6 +34,7 @@ export class JoinComponent implements OnInit {
   in: boolean;
   viewer: Viewer;
   currentReg: Registry;
+  invitation: Invitation;
 
   ngOnInit() {
     this.in=true;
@@ -43,38 +44,46 @@ export class JoinComponent implements OnInit {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
           console.log(acct);
-          this.account = acct;
+          this.account = acct[0];
         });
       }
     });
   }
 
   join() {
-    this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {
-      console.log(x[0].registryId);
-      if(x[0]===undefined) {
-        this.message='wrong code or no invitation';
-      } else {
+    this.invitation=new Invitation;
+    this.invitation.Code=this.code;
+    this.invitation.receiverEmail=this.account.email;
+    this.invitations.getByEmail(this.invitation).subscribe((x)=> {
+      console.log(this.invitation);
+      if(x.updated){
         this.message='You are in';
-        this.in=false;
-        this.registries.getRegById(x[0].registryId).subscribe((reg) => {
-          this.currentReg = reg;
-          if (this.currentReg.viewers === undefined) {
-            this.currentReg.viewers = [];
-          }
-          this.viewer.viewerEmail = this.account.email;
-          this.viewer.viewerId = this.account.user_id;
-          this.currentReg.viewers.push(this.viewer);
-          this.registries.updateReg(this.currentReg).subscribe((re) => {
-          });
-        });
-
+      }else{
+        this.message='wrong code or no invitation';
       }
-      x[0].status=true;
-      this.invitations.update(x[0]).subscribe((y)=> {
-
-      });
       this.code='';
+      // if(x[0]===undefined) {
+      //   this.message='wrong code or no invitation';
+      // } else {
+      //   this.message='You are in';
+      //   this.in=false;
+      //   // this.registries.getRegById(x[0].registryId).subscribe((reg) => {
+      //   //   this.currentReg = reg;
+      //   //   if (this.currentReg.viewers === undefined) {
+      //   //     this.currentReg.viewers = [];
+      //   //   }
+      //   //   this.viewer.viewerEmail = this.account.email;
+      //   //   this.viewer.viewerId = this.account.id;
+      //   //   this.currentReg.viewers.push(this.viewer);
+      //   //   this.registries.updateReg(this.currentReg).subscribe((re) => {
+      //   //   });
+      //   // });
+      // }
+      // x[0].status=true;
+      // this.invitations.update(x[0]).subscribe((y)=> {
+
+      // });
+      // this.code='';
     });
   }
 

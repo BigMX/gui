@@ -5,6 +5,7 @@ import { Registries } from '../class/registries.service';
 import { Item } from '../class/item';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
+import { Cart } from '../class/cart.service';
 
 class RegistryParams {
   userid: string;
@@ -34,7 +35,8 @@ export class ViewRegistryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
-    private users: User
+    private users: User,
+    private carts: Cart,
   ) { }
 
   // initialize everything - alll important things needed
@@ -58,25 +60,31 @@ export class ViewRegistryComponent implements OnInit {
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
-          this.currentReg = registry;
-          this.itemList = this.currentReg.items;
-          console.log(this.itemList);
+          console.log(registry);
+          this.currentReg = registry[0];
           this.name = this.currentReg.name;
+          this.carts.getItemsByReg(+params.regid).subscribe((x)=> {
+            this.itemList=x;
+            console.log(this.itemList);
+          });
         });
       }
     });
   }
 
   claim(index: number) {
-    console.log(this.currentReg);
-    this.currentReg.items[index].status = 'Claimed by ' + this.account.email;
-    this.registries.updateReg(this.currentReg).subscribe((x) => {
-      this.currentReg = x;
+    // this.currentReg.items[index].status = 'Claimed' + this.account.email;
+    this.carts.claimItem(this.itemList[index].item_id,this.id).subscribe((x)=> {
+      console.log(x);
     });
-    if(this.account.claimed===undefined) {
-      this.account.claimed=[];
-    }
-    this.account.claimed.push(this.currentReg.items[index]);
+    this.itemList[index].status='Claimed';
+    // this.registries.updateReg(this.currentReg).subscribe((x) => {
+    //   this.currentReg = x;
+    // });
+    // if(this.account.claimed===undefined) {
+    //   this.account.claimed=[];
+    // }
+    // this.account.claimed.push(this.currentReg.items[index]);
     // this.users.updateAccount(this.account).subscribe((x) => {
 
     // });

@@ -5,6 +5,7 @@ import { Registries } from '../class/registries.service';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
 import { Invitations } from '../class/invitation.service';
+import { Invitation } from '../class/invitation';
 
 class DashboardParams {
   id: string;
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
   newRegistry: Registry;
   id: number;
   test: number;
+  invitation: Invitation;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,21 +37,24 @@ export class DashboardComponent implements OnInit {
 
   // important variables initialized
   ngOnInit() {
-    this.test=1;
+    this.test = 1;
     this.newRegistry = new Registry;
-    this.inviteReg=[];
+    this.inviteReg = [];
     this.route.params.subscribe((params: DashboardParams) => {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
-          this.account = acct;
-          // this.invitations.getAll(this.account.email).subscribe((x) => {
-          //   for( const y of x) {
-          //     this.registries.getRegById(y.registryId).subscribe((registry) => {
-          //       this.inviteReg.push(registry);
-          //     });
-          //   }
-          // });
+          this.account = acct[0];
+          this.invitation = new Invitation;
+          this.invitation.receiverEmail = this.account.email;
+          this.invitations.getAll(this.invitation).subscribe((x) => {
+            for (const y of x) {
+              this.registries.getRegById(y.registry_id).subscribe((registry) => {
+                this.inviteReg.push(registry[0]);
+              });
+
+            }
+          });
         });
         this.registries.getRegistries(this.id).subscribe((registry) => {
           this.registry = registry;

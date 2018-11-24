@@ -35,11 +35,23 @@ export class Cart {
     .pipe(catchError(this.handleException));
   }
 
+  addItemToRegisty(item: Item): Observable<Item> {
+    return this.httpClient
+    .put<Item>(`${this.endPoint}/itemregistry`, item, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
   // CONNECTED
   // retrieving cart items for a specific user
-  getItems(id: number): Observable<Item[]> {
+  getItems(user_id: number): Observable<Item[]> {
     return this.httpClient
-      .get<Item[]>(`${this.endPoint}/cart/${id}`, this.httpOptions)
+      .get<Item[]>(`${this.endPoint}/cart/${user_id}`, this.httpOptions)
+      .pipe(catchError(this.handleException));
+  }
+
+  getItemsByReg(reg_id: number): Observable<Item[]> {
+    return this.httpClient
+      .get<Item[]>(`${this.endPoint}/item/${reg_id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
 
@@ -48,6 +60,30 @@ export class Cart {
   deleteItem(item_id: number):Observable<Item> {
     return this.httpClient
     .delete<Item>(`${this.endPoint}/deleteitem/${item_id}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  claimItem(item_id: number, user_id: number):Observable<Item> {
+    return this.httpClient
+    .put<Item>(`${this.endPoint}/changeitem/${item_id}/${user_id}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  getClaimedItem(user_id: number):Observable<Item[]> {
+    return this.httpClient
+    .get<Item[]>(`${this.endPoint}/getclaimeditem/${user_id}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  buyItem(item_id: number):Observable<Item> {
+    return this.httpClient
+    .put<Item>(`${this.endPoint}/buyitem/${item_id}`, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  getBoughtItem(user_id: number):Observable<Item[]> {
+    return this.httpClient
+    .get<Item[]>(`${this.endPoint}/getboughtitem/${user_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

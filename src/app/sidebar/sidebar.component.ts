@@ -68,13 +68,13 @@ export class SidebarComponent implements OnInit {
   }
 
   join() {
-    this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {
-      console.log(x[0]);
-      x[0].status=true;
-      console.log(x[0]);
-      this.invitations.update(x[0]).subscribe((y)=> {
-        console.log(y[0]);
-      });
-    });
+    // this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {
+    //   console.log(x[0]);
+    //   x[0].status=true;
+    //   console.log(x[0]);
+    //   this.invitations.update(x[0]).subscribe((y)=> {
+    //     console.log(y[0]);
+    //   });
+    // });
   }
 }

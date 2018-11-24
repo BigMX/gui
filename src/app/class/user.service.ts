@@ -8,8 +8,8 @@ import { Token} from '../class/token';
 @Injectable()
 export class User {
 
- protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-// protected endPoint = 'http://localhost:3004/users';
+  protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
+//  protected endPoint = 'http://localhost:3004/users';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -57,9 +57,14 @@ export class User {
 
   // CONNECTED
   updatePassword(user: Account): Observable<Account> {
-    const obj = { user: user}  
+    const obj = { user: user}
     return this.httpClient
     .put<Account>(`${this.endPoint}/changepassword/${user.user_id}`, user, this.httpOptions)
+    .pipe(catchError(this.handleException));
+  }
+
+  getViewer(regId: number): Observable<Account[]> {
+    return this.httpClient.get<Account[]>(`${this.endPoint}/getusers/${regId}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
