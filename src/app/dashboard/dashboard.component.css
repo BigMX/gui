@@ -44,7 +44,6 @@ h2{
   padding-top: 1em;
   background-color: #e6eeff;
   border-top: solid rgb(36, 62, 175) .09em;
-  /* background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee); */
   padding-bottom: 0.4em;
 }
 
@@ -107,3 +106,12 @@ button:active{
   margin-bottom: 0.5em;
 }
 
+.noReg {
+  font-family: Helvetica;
+  margin-left: 5em;
+}
+
+.image{
+  background-image: url("../../assets/start.jpg");
+  background-size: 100% 100%;
+}

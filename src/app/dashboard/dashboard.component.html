@@ -12,11 +12,15 @@
       <h2 id="dashboard">Dashboard</h2>
     </div>
     <br>
-    <div class="myRegistries">
+    <br>
+    <div style="margin-left: 2em;" class="myRegistries">
       <h4 id="registry">
         <u>My Registries</u>
       </h4>
-      <div class="list-group">
+      <div *ngIf=!length>
+        <h3 class="noReg">You don't have any registries right now :( </h3>
+      </div>
+      <div class="list-group" *ngIf=length>
         <a *ngFor="let r of registry" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
           <h5 class="mb-1">{{r.name}}</h5>
           <small class="mb-1">{{r.description}}</small>
@@ -24,7 +28,7 @@
       </div>
     </div>
     <br>
-    <div class="otherRegistries">
+    <div style="margin-left: 2em;" class="otherRegistries">
       <h4 id="invited">
         <u>Invited Registries</u>
       </h4>
@@ -36,10 +40,8 @@
       </div>
     </div>
   </div>
-  <!--last two colomns spaces hold the shopping cart button and the username dropdown menu-->
+  <div class="image">
 
-
-  <!--end div class col 2-->
-
+  </div>
 </div>
 <!--end div for the row class-->
