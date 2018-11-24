@@ -1,15 +1,21 @@
 .dash {
-    padding-top: 1em;
-    background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-    border: none;
-    padding-bottom: 0.4em;
-  }
+  padding-top: 1em;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
+  padding-bottom: 0.4em;
+  padding-left: 2em;
+}
 
   #dashboard {
     text-size: 90%;
     text-transform: uppercase;
     font-family: 'Palatino', sans-serif;
     letter-spacing: .1em;
+  }
+
+  .das{
+    margin-left: 14em;
+    width:84.4%;
   }
 
   h4 {
@@ -24,11 +30,14 @@
     font-family: 'Palatino', sans-serif;
     letter-spacing: .1em;
     margin-left: .5em;
+    text-align: center;
+    /* padding-left: 19em; */
     padding-right: 1em;
   }
 
   #changeButton {
-    width: 35%;
-    margin-left: 12em;
+    width: 25%;
+    margin-left: 21.5em;
     text-align: center;
+    background-color: #e5d4ee;
   }

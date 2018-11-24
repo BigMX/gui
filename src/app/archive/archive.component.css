@@ -98,3 +98,8 @@ h2{
   font-family: Helvetica;
   padding-left: 11em;
 }
+
+.list-group {
+  padding-left: 2em;
+  width: 93%;
+}
