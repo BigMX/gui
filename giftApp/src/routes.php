@@ -210,7 +210,7 @@ $app->get('/item/{registry_id}', function ($request, $response, $args) {
 });
 
 //changes the status to claimed in items table
-$app->put('/changeitem/{item_id}', function ($request, $response, $args) {
+$app->put('/changeitem/{item_id}/{user_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Items SET status='claimed', boughtBy=:user_id WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
