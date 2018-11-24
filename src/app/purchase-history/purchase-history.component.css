@@ -7,6 +7,11 @@
   width: 1.5em;
 }
 
+.das{
+  margin-left: 14em;
+  width:84.4%;
+}
+
 #dropdownMenuButton {
   background-color: #e5d4ee;
 }
@@ -25,9 +30,10 @@ h2{
 
 .dash {
   padding-top: 1em;
-  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  border: none;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
   padding-bottom: 0.4em;
+  padding-left: 2em;
 }
 
 .modal-header {
@@ -70,7 +76,7 @@ button:active{
 }
 
 #purchaseHistory {
-  /* text-size: 90%; */
+  text-size: 90%;
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
@@ -85,8 +91,7 @@ button:active{
 
 .cartbtn {
   background-color: #a7c1e0a2;
-  width: 7.8em;
-  margin-bottom: 0.5em;
+  width: 8.7em;
 }
 
 tr:nth-child(even) {
@@ -100,4 +105,12 @@ thead {
 th {
   font-family: 'Palatino', sans-serif;
   text-transform: none;
+}
+
+.noPurchases {
+  font-family: Helvetica;
+  margin-left: 3.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 15em;
 }
