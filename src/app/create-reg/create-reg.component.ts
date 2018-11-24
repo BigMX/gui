@@ -4,9 +4,6 @@ import { Registry } from '../class/registry';
 import { Registries } from '../class/registries.service';
 import { Account } from '../class/account';
 import { User } from '../class/user.service';
-import { Invitations } from '../class/invitation.service';
-import { Invitation } from '../class/invitation';
-import { Output } from '@angular/core';
 
 class CreateParams {
   id: string;
@@ -51,7 +48,6 @@ export class CreateRegComponent implements OnInit {
       let url='dashboard/';
       url+=this.id;
       this.router.navigateByUrl(url);
-      location.reload();
     });
   }
 

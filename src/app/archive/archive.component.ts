@@ -17,6 +17,7 @@ export class ArchiveComponent implements OnInit {
   registry: Registry[];
   newRegistry: Registry;
   archived: Registry[] = [];
+  length: number;
   id: number;
   regId: number;
 
@@ -38,6 +39,7 @@ export class ArchiveComponent implements OnInit {
         console.log(this.id);
         this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
           this.archived = registry_;
+          this.length = registry_.length;
         });
       }
     });

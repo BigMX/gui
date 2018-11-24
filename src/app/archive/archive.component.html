@@ -1,33 +1,35 @@
-<br>
-<div class="container">
-  <!--next 8 colomn spaces will contain a list of registries that have been added to archive and a button to add another to archive-->
-  <div class="archiveComponent row">
-      <div class="col-2">
-        <app-sidebar></app-sidebar>
+<div class="topbuttons">
+  <app-sidebuttons></app-sidebuttons>
+</div>
+
+<div>
+  <div class="menu border-right border-light float-left">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="das">
+    <div class="dash">
+      <h2 id="dashboard">Archive</h2>
+    </div>
+    <br>
+    <br>
+    <div class="myRegistries">
+      <h4 id="registry"><u>Archived Registries</u></h4>
+      <div *ngIf=!length>
+          <h4 class="alert noReg" style="width: 90%; background: #e5d4ee; margin-left: 3em;">You don't have any archived registries at this moment </h4>
       </div>
-      <div class="col-8">
-        <div class="dash">
-          <h2 id="dashboard">Archive</h2>
-        </div>
-        <br>
-        <div class="myRegistries">
-          <h4 id="registry"><u>Archived Registries</u></h4>
-          <div class="list-group">
-            <a *ngFor="let r of archived" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
-              <h5 class="mb-1">{{r.name}}</h5>
-              <small class="mb-1">{{r.description}}</small>
-            </a>
-          </div>
-        </div>
-        <br>
-        <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" data-toggle="modal" data-target="#archiveModal" id="archiveButton">
-          Add to Archive
-        </button>
-      </div>
-      <div class="col-2">
-         <app-sidebuttons></app-sidebuttons>
+      <div class="list-group" *ngIf=length>
+        <a *ngFor="let r of archived" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
+          <h5 class="mb-1">{{r.name}}</h5>
+          <small class="mb-1">{{r.description}}</small>
+        </a>
       </div>
     </div>
+    <br>
+    <button type="button" class="btn btn-lg" style="background-color: #a7c1e0a2;" data-toggle="modal" data-target="#archiveModal" id="archiveButton">
+      Add to Archive
+    </button>
+  </div>
 </div>
 <!--modal for archiving a registry-->
 <div class="archiveModal">
@@ -57,5 +59,4 @@
       </div>
   </div>
 </div>
-<!--end archive modal-->
 

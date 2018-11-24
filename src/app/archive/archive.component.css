@@ -7,6 +7,11 @@
   width: 1.5em;
 }
 
+.das{
+  margin-left: 14em;
+  width:84.4%;
+}
+
 #dropdownMenuButton {
   background-color: #e5d4ee;
 }
@@ -25,9 +30,10 @@ h2{
 
 .dash {
   padding-top: 1em;
-  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  border: none;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
   padding-bottom: 0.4em;
+  padding-left: 2em;
 }
 
 .modal-header {
@@ -44,7 +50,7 @@ h2{
 }
 
 #archiveButton, #inviteButton {
-  margin-left: 15em;
+  margin-left: 26em;
   text-align: center;
 }
 
@@ -78,7 +84,7 @@ h2{
 
 #registry{
   margin-top: -.4em;
-  margin-left: 0.3em;
+  margin-left: 2.5em;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .05em;
 }
@@ -86,4 +92,9 @@ h2{
 .cartbtn {
   background-color: #a7c1e0a2;
   width: 8.7em;
+}
+
+.noReg {
+  font-family: Helvetica;
+  padding-left: 11em;
 }
