@@ -230,6 +230,17 @@ $app->put('/boughtitem/{item_id}/{user_id}', function ($request, $response, $arg
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
+
+//get claimed items from the items table
+$app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) { 
+    $sth = $this->dbConn->prepare(
+        "SELECT * FROM Items WHERE user_id =:user_id AND status= 'Claimed'");
+    $sth->bindParam("user_id", $args['user_id']);   
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+
+});
 //
 //add items to registry
 $app->post('/additems', function ($request, $response) {
