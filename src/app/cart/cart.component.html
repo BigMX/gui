@@ -1,22 +1,23 @@
-<br>
-<div class="container">
-  <div class="cartComponent row">
-    <div class="col-2">
-      <app-sidebar></app-sidebar>
+<div class="topbuttons">
+  <app-sidebuttons></app-sidebuttons>
+</div>
+  
+<div>
+  <div class="menu border-right border-light float-left">
+    <app-sidebar></app-sidebar>
+  </div>
+  
+  <div class="das">
+    <div class="dash">
+      <h2 id="dashboard">Cart</h2>
     </div>
-    <div class="col-8" *ngIf=!cart>
-        <div class="dash">
-            <h2 id="dashboard">Cart</h2>
-        </div>
-        <br> <br>
-      <h3 class="text-center" style="font-family: Helvetica;">You don't have anything in your cart now :( </h3>
-      <br> <br> <br>
-      <button type="button" class="btn btn-lg center" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 16em;" id="addItem"> Add Item</button>
+    <br> <br>
+    <div *ngIf=!length>
+      <h3 class="text-center alert" style="font-family: Helvetica; width: 93%; background: #e5d4ee; margin-left: 2em;">You don't have anything in your cart now :( </h3>
+      <br> 
+      <button type="button" class="btn btn-lg center" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 29em;" id="addItem"> Add Item</button>
     </div>
-    <div class="col-8" *ngIf=cart>
-      <div class="dash">
-          <h2 id="dashboard">Cart</h2>
-      </div>
+    <div *ngIf=length>
       <div>
         <br>
         <table class="table table-striped">
@@ -42,54 +43,50 @@
           </tbody>
         </table>
       </div>
-
-      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 16em;" id="addItem"> Add Item</button>
+      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 29em;" id="addItem"> Add Item</button>
     </div>
-    <div class="col-2">
-      <app-sidebuttons></app-sidebuttons>
-    </div>
-  </div>
-
-  <div class="addModal">
-      <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="addModal">Add an item</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </div>
-                  <h6 class="joinMessage">Add an item to your cart!</h6>
-                  <div class="modal-body">
-                      <form>
-                          <div class="form-group">
-                              <label for="name">Item name</label>
-                              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter name"
-                               [ngModel]="newItem.name"
-                               (ngModelChange)="newItem.name = $event"
-                               name="iname">
-                          </div>
-                          <div class="form-group">
-                              <label for="price">Price</label>
-                              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter price"
-                              [ngModel]="newItem.price"
-                              (ngModelChange)="newItem.price = $event"
-                              name="iprice">
-                          </div>
-                          <div class="form-group">
-                              <label for="location">Location</label>
-                              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter location"
-                              [ngModel]="newItem.location"
-                               (ngModelChange)="newItem.location = $event"
-                               name="ilocation">
-                          </div>
-                      </form>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn" style="background-color: #a7c1e0a2;"  data-dismiss="modal" (click)="newItem={}">Cancel</button>
-                      <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)="addItem()">Add</button>
-                  </div>
-              </div>
-          </div>
-      </div>
   </div>
 </div>
+
+<div class="addModal">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModal">Add an item</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <h6 class="joinMessage">Add an item to your cart!</h6>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name">Item name</label>
+              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter name"
+                [ngModel]="newItem.name"
+                (ngModelChange)="newItem.name = $event"
+                name="iname">
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter price"
+               [ngModel]="newItem.price"
+                (ngModelChange)="newItem.price = $event"
+                name="iprice">
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter location"
+              [ngModel]="newItem.location"
+              (ngModelChange)="newItem.location = $event"
+              name="ilocation">
+             </div>
+          </form>
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" style="background-color: #a7c1e0a2;"  data-dismiss="modal" (click)="newItem={}">Cancel</button>
+          <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)="addItem()">Add</button>
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>

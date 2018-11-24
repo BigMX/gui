@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
 
   registry: Registry[];
   cart: Item[];
+  length: number;
   newItem: Item;
   newRegistry: Registry;
   account: Account;
@@ -53,6 +54,7 @@ export class CartComponent implements OnInit {
           this.cartItems.getItems(this.id).subscribe((c) => {
             console.log(c);
             this.cart = c;
+            this.length = c.length;
           });
         }
       });
