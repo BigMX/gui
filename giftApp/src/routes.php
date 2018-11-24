@@ -234,7 +234,7 @@ $app->put('/boughtitem/{item_id}/{user_id}', function ($request, $response, $arg
 //get claimed items from the items table
 $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Items WHERE user_id =:user_id AND status= 'Claimed'");
+        "SELECT * FROM Items WHERE boughtBy=:user_id AND status= 'Claimed'");
     $sth->bindParam("user_id", $args['user_id']);   
     $sth->execute();
     $users = $sth->fetchAll();
@@ -245,7 +245,7 @@ $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) {
 //get bought items from the items table
 $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Items WHERE user_id =:user_id AND status= 'Bought'");
+        "SELECT * FROM Items WHERE boughtBy=:user_id AND status= 'Bought'");
     $sth->bindParam("user_id", $args['user_id']);   
     $sth->execute();
     $users = $sth->fetchAll();
