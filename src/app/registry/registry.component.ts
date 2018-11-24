@@ -25,6 +25,7 @@ export class RegistryComponent implements OnInit {
 
   currentReg: Registry;
   cart: Item[] = [];
+  itemCount: number;
   unassignedcart: Item[] = [];
   assigneditems: Item[]=[];
   name: string;
@@ -37,6 +38,7 @@ export class RegistryComponent implements OnInit {
   id: number;
   notifCount: number;
   viewers: Account[];
+  views: number;
   invites: Invitation[];
   isDisable = false;
   deleteInv: Invitation;
@@ -68,6 +70,7 @@ export class RegistryComponent implements OnInit {
             this.carts.getItems(this.id).subscribe((items)=> {
               console.log(items);
               this.cart=items;
+              this.itemCount = items.length;
               for( const c of this.cart) {
                 if(!c.registry_id) {
                   this.unassignedcart.push(c);
@@ -99,6 +102,7 @@ export class RegistryComponent implements OnInit {
       const rid= +params.regid;
       this.users.getViewer(rid).subscribe((viewers) => {
         this.viewers=viewers;
+        this.views = viewers.length;
         console.log(this.viewers);
       });
     });

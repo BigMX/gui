@@ -21,7 +21,7 @@
         <h4 class="alert noReg" style="width: 93%; background: #e5d4ee">You don't have any registries right now :( </h4>
       </div>
       <div class="list-group" *ngIf=length>
-        <a *ngFor="let r of registry" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
+        <a *ngFor="let r of registry" routerLink='/registry/{{id}}/{{r.registry_id}}' class="list-group-item">
           <h5 class="mb-1">{{r.name}}</h5>
           <small class="mb-1">{{r.description}}</small>
         </a>

@@ -1,62 +1,130 @@
-#navIcon{
-  width: 1.8em;
-  margin-right:.5em;
+.menu{
+  background-color: #e6eeff;
+  width: 16em;
+  border: solid rgb(36, 62, 175) .09em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+ }
+ 
+ #menutitle {
+   font: 200%/210% Garamond, Georgia, serif;
+   font-weight: bold;
+   color:black;
+ }
+ 
+ #navIcon{
+   width: 1.8em;
+   margin-right:.5em;
+ }
+
+ .dropd{
+  height:80%;
+
 }
 
-#userIcon{
-  width: 1.5em;
+.cart {
+  margin-left: -5em;
 }
 
-#dropdownMenuButton {
-  background-color: #e5d4ee;
-  width: 7.8em;
+ .topbuttons{
+  background-color: black;
+  width:100%;
+  height: 4em;
 }
 
-h4 {
-  margin: 1em;
+.userName {
+  width: 18em;
+  margin-top: 1em;
+  text-align: center;
 }
 
-h2{
-  margin-left: 1em;
-}
-
-.nav-item {
+.name {
+  font: Georgia, serif;
+  font-size: 150%;
   text-decoration: underline;
+  color:white;
 }
 
+.title {
+  font: 200%/200% Garamond, Georgia, serif;
+  font-weight: bold;
+  color:white;
+}
+
+
+.giftReg {
+  width: 59em;
+  text-align: center;
+}
+ 
+ #userIcon{
+   width: 1.5em;
+ }
+
+ #dropdownMenuButton {
+  margin-top: .5em;
+  background-color: #e5d4ee;
+  width: 4.5em;
+  height: 3em;
+  text-align: center;
+}
+ 
+ .modal-header {
+   background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
+ }
+ 
+ * {
+   color: black;
+ }
+ 
+ .active2 {
+   background-color: #a7c1e0a2;
+ }
+ 
+ .activebtn, .activebtn2 {
+   margin-left: -1em;
+   background-color: #b3ccff;
+   width:10em;
+   text-align:left;
+ }
+ 
+ button:active{
+   background:#a7c1e0a2;
+   box-shadow: 10px 10px 5px  rgb(98, 135, 190);
+ }
+ 
+ .nav-pills > a.active, .nav-pills > a:focus, .nav-item > a:visited {
+   background:#a7c1e0a2;
+ }
+ 
+ 
+ #menutitle {
+   margin-left: 0.6em;
+   font-family: 'Palatino', sans-serif;
+   letter-spacing: .3em;
+ }
+ 
+ .cartbtn {
+  margin-top: .4em;
+  background-color: #b3ccff;
+  margin-right: 1em;
+  width: 5em;
+  height: 3em;
+  margin-bottom: 0.5em;
+}
+
+.das{
+  margin-left: 16em;
+  margin-top: -48.55em;
+}
+ 
 .dash {
   padding-top: 1em;
-  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  border: none;
+  width:570%;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
   padding-bottom: 0.4em;
-}
-
-.modal-header {
-  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-}
-
-* {
-  color: black;
-}
-
-.joinMessage {
-  font-size: .9em;
-  margin: 1em;
-}
-#archiveButton, #inviteButton {
-  margin-left: 15em;
-  text-align: center;
-}
-
-#deleteButton {
-  margin-left: 13.5em;
-  text-align: center;
-}
-
-#menutitle {
-  margin-left: 0.6em;
-  font-family: 'Palatino', sans-serif;
-  letter-spacing: .3em;
+  padding-left:3em;
 }
 
 #dashboard {
@@ -65,41 +133,9 @@ h2{
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
 }
-
-.nav-pills > a.active, .nav-pills > a:focus, .nav-item > a:visited {
-  background:#a7c1e0a2;
+ 
+.noInv {
+  font-family: Helvetica;
+  margin-left: 2em;
+  padding-left: 17em;
 }
-
-.cartbtn {
-  background-color: #a7c1e0a2;
-  width: 7.8em;
-  margin-bottom: 0.5em;
-}
-
-.activebtn, .activebtn2 {
-  margin-left: -1em;
-  background-color: #e5d4ee;
-  width:10em;
-  text-align:left;
-}
-
-.form-check {
-  padding-left: 3em;
-}
-
-tr:nth-child(even) {
-  background-color: #a7c1e0a2;
-}
-
-thead {
-  background-color: #cdb4db;
-}
-
-th {
-  font-family: 'Palatino', sans-serif;
-  text-transform: none;
-}
-
-.disable{
-  cursor: not-allowed;
-  }
