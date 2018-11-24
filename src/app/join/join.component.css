@@ -1,7 +1,7 @@
 .dash {
   padding-top: 1em;
-  background:  -webkit-linear-gradient(left, #a7c1e0a2, #e5d4ee);
-  border: none;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
   padding-bottom: 0.4em;
 }
 
@@ -29,6 +29,11 @@ h2{
 
 #joinButton {
   width: 15%;
-  margin-left: 16em;
+  margin-left: 25em;
   text-align: center;
+}
+
+.das{
+  margin-left: 14em;
+  width:84.4%;
 }

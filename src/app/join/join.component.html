@@ -1,48 +1,46 @@
-<br>
-<div class="container">
-  <div class="inviteComponent row">
-    <div class="col-2">
-      <app-sidebar></app-sidebar>
+<div class="topbuttons">
+    <app-sidebuttons></app-sidebuttons>
+</div>
+
+<div>
+  <div class="menu border-right border-light float-left">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="das">
+    <div style="padding-left: 2.5em;" class="dash">
+      <h2 id="dashboard">Join</h2>
     </div>
-    <div class="col-8">
-      <div class="dash">
-        <h2 id="dashboard">Join</h2>
-      </div>
-      <br>
-      <div class="form-group">
-        <label id="email" for="exampleInputEmail1">Registry Code</label>
-        <input style="margin-left: 1em; width: 44.5em;" type="text" class="form-control" placeholder="please type the code you received here" [(ngModel)]="code" />
-      </div>
-      <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="joinButton" (click)="join()" data-toggle="modal"
+    <br>
+    <br>
+    <div style="margin-left: 3em;" class="form-group">
+      <label id="email" for="exampleInputEmail1">Registry Code</label>
+      <input style="margin-left: 1em; width: 70em;" type="text" class="form-control" placeholder="please type the code you received here" [(ngModel)]="code" />
+    </div>
+    <button type="button" class="btn btn-lg" style="background-color: #e5d4ee;" id="joinButton" (click)="join()" data-toggle="modal"
       data-target="#deleteModal">
-        Join
-      </button>
+      Join
+    </button>
 
-
-      <div class="deleteModal" ng-disabled="dis">
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <h4>{{message}}</h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">OK</button>
-                <button type="button" class="btn btn-success" [hidden]="in" data-dismiss="modal" (click)="lead()">Lead me to dashboard</button>
-              </div>
+    <div class="deleteModal" ng-disabled="dis">
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="joinModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4>{{message}}</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-success" [hidden]="in" data-dismiss="modal" (click)="lead()">Lead me to dashboard</button>
             </div>
           </div>
         </div>
       </div>
-
-    </div>
-    <div class="col-2">
-      <app-sidebuttons></app-sidebuttons>
     </div>
   </div>
 </div>
