@@ -41,7 +41,7 @@ export class NotificationsComponent implements OnInit {
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
           console.log(this.id)
-          this.check();
+          // this.check();
         });
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;

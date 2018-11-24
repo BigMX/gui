@@ -1,10 +1,24 @@
 .notifs{
-  text-align: center;
-  font-family: Markerfelt;
-  text-decoration: underline;
-  color: rgb(88, 78, 78);
+  text-size: 90%;
+  text-transform: uppercase;
+  font-family: 'Palatino', sans-serif;
+  letter-spacing: .1em;
+  padding-left:2em;
 }
 
 .btn-success {
   margin-left: 18em;
+}
+
+.das{
+  margin-left: 14em;
+  width:84.4%;
+}
+
+.dash {
+  padding-top: 1em;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
+  padding-bottom: 0.4em;
+  padding-left: 2em;
 }
