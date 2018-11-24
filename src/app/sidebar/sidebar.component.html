@@ -11,7 +11,7 @@
           <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon">
           <span>Dashboard</span>
         </a>
-        <a class="nav-link border-bottom border-light" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create"
+        <a routerLink='/create/{{id}}' class="nav-link border-bottom border-light" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create"
           aria-selected="false">
           <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon">
           <span>Create</span>
@@ -39,38 +39,5 @@
       </div>
     </div>
     <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> <br>
-</div>
-
-<div class="createModal">
-  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="createModal">Create Registry</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="registyName">Registry Name</label>
-              <input type="text" class="form-control" id="regCode" aria-describedby="codeHelp" placeholder="Enter registry name" [ngModel]="newRegistry.name"
-                (ngModelChange)="newRegistry.name = $event" name='rname' />
-            </div>
-            <div class="form-group">
-              <label for="registryDescription">Description</label>
-              <input type="text" class="form-control" id="regCode1" aria-describedby="codeHelp" placeholder="Enter description" [(ngModel)]="newRegistry.description"
-                (ngModelChange)="newRegistry.description = $event" name='rdes'>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn" style="background-color: #a7c1e0a2;" data-dismiss="modal" (click)="newRegistry={}">Cancel</button>
-          <button type="button" class="btn" style="background-color: #e5d4ee;" data-dismiss="modal" (click)="addRegistry()">Create</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 

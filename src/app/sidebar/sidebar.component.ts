@@ -54,19 +54,6 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  // this method is used for adding a registry to the appropriate user (who's logged in)
-  addRegistry() {
-    this.newRegistry.user_id = this.id;
-    this.newRegistry.status = 'active';
-    this.registries.add(this.newRegistry).subscribe((registry) => {
-      this.newRegistry = {};
-      let url='dashboard/';
-      url+=this.id;
-      this.router.navigateByUrl(url);
-      location.reload();
-    });
-  }
-
   join() {
     // this.invitations.getByEmail(this.account.email,this.code).subscribe((x)=> {
     //   console.log(x[0]);

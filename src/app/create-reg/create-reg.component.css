@@ -4,13 +4,37 @@
  }
 
  .das{
-   margin-top:4em;
-   margin-left: 14em;
-   width:70%;
+   margin-left: 15em;
+   width:83.4%;
  }
 
- .topbuttons{
-   position:fixed;
-   top:0;
-   z-index:2;
-  }
+ .reg {
+  padding-top: 1em;
+  background-color: #e6eeff;
+  border-top: solid rgb(36, 62, 175) .09em;
+  padding-bottom: 0.4em;
+}
+
+.topbuttons{
+  /* position:fixed; */
+  top:0;
+  z-index:0;
+ }
+
+ #registry {
+    font-size: 190%; 
+    text-transform: uppercase;
+    font-family: 'Palatino', sans-serif;
+    letter-spacing: .1em;
+    margin-left: 2em;
+ }
+
+ form {
+   padding-left: 4em;
+   padding-right: 10em;
+ }
+
+ #cancel-btn {
+   margin-left: 31em;
+   margin-right: 1em;
+ }
