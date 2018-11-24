@@ -45,7 +45,7 @@
                             id="selectRegistry"
                             [(ngModel)]="regId">
                         <option value="" selected></option>
-                        <option *ngFor="let r of registry"  [value]="r.id">{{ r.name }}</option>
+                        <option *ngFor="let r of registry"  [value]="r.registry_id">{{ r.name }}</option>
                     </select>
                   </div>
               </div>

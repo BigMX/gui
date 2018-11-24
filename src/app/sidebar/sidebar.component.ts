@@ -57,7 +57,7 @@ export class SidebarComponent implements OnInit {
 
   // this method is used for adding a registry to the appropriate user (who's logged in)
   addRegistry() {
-    this.newRegistry.userId = this.id;
+    this.newRegistry.user_id = this.id;
     this.newRegistry.status = 'active';
     this.registries.add(this.newRegistry).subscribe((registry) => {
       this.registries.getRegistries(this.id).subscribe((r) => {

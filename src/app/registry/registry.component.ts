@@ -8,6 +8,7 @@ import { Account } from '../class/account';
 import { User } from '../class/user.service';
 import { Viewer } from '../class/viewers';
 import { Invitation } from '../class/invitation';
+import { Cart } from '../class/cart.service';
 
 class RegistryParams {
   userid: string;
@@ -24,6 +25,8 @@ export class RegistryComponent implements OnInit {
 
   currentReg: Registry;
   cart: Item[] = [];
+  unassignedcart: Item[] = [];
+  assigneditems: Item[]=[];
   name: string;
   item: Item;
   length: number;
@@ -33,14 +36,16 @@ export class RegistryComponent implements OnInit {
   newRegistry: Registry;
   id: number;
   notifCount: number;
-  viewers: Viewer[];
+  viewers: Account[];
   invites: Invitation[];
+  deleteInv: Invitation;
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
-    private invitations: Invitations
+    private invitations: Invitations,
+    private carts: Cart
   ) { }
 
   // important variables initialized
@@ -59,23 +64,41 @@ export class RegistryComponent implements OnInit {
             } else {
               this.notifCount = 0;
             }
-          this.cart = account.cart;
+            this.carts.getItems(this.id).subscribe((items)=> {
+              console.log(items);
+              this.cart=items;
+              for( const c of this.cart) {
+                if(!c.registry_id) {
+                  this.unassignedcart.push(c);
+
+                }
+              }
+            });
         });
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
-          this.currentReg = registry;
-          // this.adding = this.currentReg.items;
-          this.viewers = registry.viewers;
-          if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
-            this.length = this.currentReg.items.length;
-            this.itemList = this.currentReg.items;
-          }
+          this.currentReg = registry[0];
+          // if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
+            // this.length = this.currentReg.items.length;
+            // this.itemList = this.currentReg.items;
+          // }
           this.name = this.currentReg.name;
+          this.carts.getItemsByReg(this.currentReg.registry_id).subscribe((its)=> {
+            this.assigneditems=its;
+            console.log(its);
+          });
         });
       }
+      console.log(+params.regid);
+      const rid= +params.regid;
+      this.users.getViewer(rid).subscribe((viewers) => {
+        this.viewers=viewers;
+        console.log(this.viewers);
+      });
     });
   }
+
 
   // this method deletes a registry
   deleteRegistry() {
@@ -114,21 +137,31 @@ export class RegistryComponent implements OnInit {
 
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
-    this.currentReg.items = this.itemList;
-    this.registries.updateReg(this.currentReg).subscribe((reg) => {
-      this.itemList = reg.items;
-    });
-    location.reload();
+    // this.currentReg.items = this.itemList;
+    console.log(this.itemList);
+
+    for( const it of this.itemList) {
+      const index= this.itemList.indexOf(it);
+      this.unassignedcart.splice(index,1);
+      it.registry_id=this.currentReg.registry_id;
+      this.assigneditems.push(it);
+      this.carts.addItemToRegisty(it).subscribe((x)=> {
+        console.log(x);
+      });
+    }
+    // this.registries.updateReg(this.currentReg).subscribe((reg) => {
+    //   this.itemList = reg.items;
+    // });
+    // location.reload();
   }
 
   removeUserFromReg(index: number) {
-    this.invitations.deleteByEmailAndReg(this.viewers[index].viewerEmail, this.currentReg.id).subscribe((x) => {
-
+    this.deleteInv=new Invitation;
+    this.deleteInv.receiverEmail=this.viewers[index].email;
+    this.invitations.deleteByEmail(this.deleteInv).subscribe((x) => {
+      console.log(x);
     });
     this.viewers.splice(index, 1);
-    this.currentReg.viewers = this.viewers;
-    this.registries.updateReg(this.currentReg).subscribe((x) => {
-
-    });
+    // this.currentReg.viewers = this.viewers;
   }
 }

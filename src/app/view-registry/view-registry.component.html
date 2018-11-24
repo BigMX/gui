@@ -54,7 +54,7 @@
                     <td class="text-center">{{newItem.price}}</td>
                     <td class="text-center">{{newItem.location}}</td>
                     <td class="text-center">{{newItem.status}}</td>
-                    <td class="text-center"><button class="btn btn-sm btn-warning" [disabled]="newItem.status!='need'" (click)='claim(i)'>Claim</button></td>
+                    <td class="text-center"><button class="btn btn-sm btn-warning" [disabled]="newItem.status!='Unclaimed'" (click)='claim(i)'>Claim</button></td>
                   </tr>
                 </tbody>
             </table>

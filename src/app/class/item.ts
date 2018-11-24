@@ -1,9 +1,10 @@
 export class Item {
-  regId?: number;
+  registry_id?: number;
   name?: string;
   price?: string;
   location?: string;
   status?: string;
-  id?: number;
+  user_id?: number;
+  item_id?: number;
   boughtBy?: string;
 }

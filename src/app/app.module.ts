@@ -28,6 +28,8 @@ import { Invitations } from './class/invitation.service';
 import { Notifs } from './class/notifs.service';
 import { StartComponent } from './start/start.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { CreateRegComponent } from './create-reg/create-reg.component';
+import { Cart} from './class/cart.service';
 
 const defaultRoute = 'login';
 
@@ -48,7 +50,8 @@ const defaultRoute = 'login';
     JoinComponent,
     ViewRegistryComponent,
     StartComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    CreateRegComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,16 @@ const defaultRoute = 'login';
             component: ArchiveComponent
           }
        ] },
+       { path: 'create', children: [
+        {
+          path: '',
+          component: CreateRegComponent
+        },
+        {
+          path: ':id',
+          component: CreateRegComponent
+        }
+     ] },
       { path: 'login', component: LogInComponent },
       { path: 'start', component: StartComponent },
       { path: 'signup', component: SignUpComponent },
@@ -158,7 +171,7 @@ const defaultRoute = 'login';
     ])
   ],
   exports: [RouterModule],
-  providers: [Registries, User,Invitations, Notifs],
+  providers: [Registries, User,Invitations, Notifs,Cart],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

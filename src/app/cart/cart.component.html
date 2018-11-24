@@ -61,15 +61,15 @@
           <th class='text-center'>Buy</th>
         </tr>
       </thead>
-      <p *ngIf="!account.claimed">
+      <p *ngIf="!claimed">
         <br>You have no claimed items!!</p>
-      <tbody *ngIf="account.claimed">
-        <tr *ngFor="let item of account.claimed; let i = index;">
+      <tbody *ngIf="claimed">
+        <tr *ngFor="let item of claimed; let i = index;">
           <td class='text-center'>{{item.name}}</td>
           <td class='text-center'>{{item.price}}</td>
           <td class='text-center'>{{item.location}}</td>
           <td class="text-center">
-            <button class="btn btn-sm btn-success" (click)="markAsBought(i)">Buy</button>
+            <button class="btn btn-sm btn-success" (click)="markAsBought(i)" [disabled]="item.status=='bought'">Buy</button>
           </td>
         </tr>
       </tbody>

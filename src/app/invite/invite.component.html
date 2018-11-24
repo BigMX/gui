@@ -50,7 +50,7 @@
         <label for="exampleFormControlSelect1">Select Registry</label>
         <select class="form-control" [(ngModel)]="registryId" id="selectRegistry">
           <option value="" selected></option>
-          <option *ngFor="let r of registry" [ngValue]="r.id">{{ r.name }}, {{r.id}}</option>
+          <option *ngFor="let r of registry" [ngValue]="r.registry_id">{{ r.name }}, {{r.registry_id}}</option>
         </select>
       </div>
       <div>

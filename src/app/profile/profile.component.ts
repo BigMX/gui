@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
       if (params.userid) {
         this.id = +params.userid;
         this.users.getById(this.id).subscribe((acct) => {
-          this.account = acct;
-          console.log();
+          this.account = acct[0];
+          console.log(acct[0].password);
         });
       }
     });
@@ -50,6 +50,7 @@ export class ProfileComponent implements OnInit {
       window.confirm('two new Passwords are not same');
     } else {
       if(this.account.password!==this.password) {
+        console.log(this.account.password);
         window.confirm('wrong old password');
       } else {
         this.account.password=this.newPassword1;

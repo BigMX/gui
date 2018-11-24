@@ -7,6 +7,7 @@ import { Registries } from './../class/registries.service';
 import { User } from '../class/user.service';
 import { Notifs } from '../class/notifs.service';
 import { Notif } from '../class/notifications';
+import { Cart} from '../class/cart.service';
 
 class CartParams {
   id: string;
@@ -25,7 +26,7 @@ export class CartComponent implements OnInit {
   newRegistry: Registry;
   account: Account;
   id: number;
-  claimed: Item[];
+  claimed: Item[]=[];
   bought: Item[];
   notifObj: Notif;
 
@@ -33,27 +34,37 @@ export class CartComponent implements OnInit {
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
-    private notifs: Notifs
+    private notifs: Notifs,
+    private carts: Cart
   ) { }
 
   // important variables initialized
   ngOnInit() {
     this.newRegistry = new Registry;
     this.newItem = new Item;
+    this.cart= [];
     this.route.params.subscribe((params: CartParams) => {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((account) => {
           this.account = account;
-          if (account.boughtItems === undefined) {
-            account.boughtItems = [];
-          }
-          if (account.claimed === undefined) {
-            account.claimed = [];
-          }
-          this.cart = account.cart;
-          this.claimed = account.claimed;
-          this.bought = account.boughtItems;
+          this.carts.getItems(this.id).subscribe((items)=> {
+            console.log(items);
+            this.cart=items;
+          });
+          this.carts.getClaimedItem(this.id).subscribe((items)=> {
+            this.claimed=items;
+            console.log(this.claimed);
+          });
+        //   if (account.boughtItems === undefined) {
+        //     account.boughtItems = [];
+        //   }
+        //   if (account.claimed === undefined) {
+        //     account.claimed = [];
+        //   }
+        //   this.cart = account.cart;
+        //   this.claimed = account.claimed;
+        //   this.bought = account.boughtItems;
         });
       }
     });
@@ -65,9 +76,9 @@ export class CartComponent implements OnInit {
   // this method is for adding an item to the cart - the status is set to need
   addItem() {
     this.newItem.status = 'Unclaimed';
+    this.newItem.user_id=this.id;
     this.cart.push(this.newItem);
-    this.account.cart = this.cart;
-    this.users.addItemToCart(this.account).subscribe((account) => {
+    this.carts.addItemToCart(this.newItem).subscribe((account) => {
 
     });
     this.newItem = {};
@@ -76,33 +87,41 @@ export class CartComponent implements OnInit {
   // used for removing items from the cart
   removeItem(id: number, index:number) {
     if (window.confirm('Are you sure?')) {
-      this.users.getById(this.id).subscribe((acct) => {
-        this.account = acct;
-        this.account.cart.splice(index, 1);
-        console.log(this.account);
-        this.account.cart=this.account.cart;
-        // this.users.removeNotif(this.account).subscribe(()=> {
-        // });
-        // location.reload();
+      // this.users.getById(this.id).subscribe((acct) => {
+      //   this.account = acct;
+      //   this.account.cart.splice(index, 1);
+      //   console.log(this.account);
+      //   this.account.cart=this.account.cart;
+      //   // this.users.removeNotif(this.account).subscribe(()=> {
+      //   // });
+      //   // location.reload();
+      // });
+      this.carts.deleteItem(this.cart[index].item_id).subscribe((x)=> {
+        console.log(x);
+        this.cart.splice(index,1);
       });
     }
   }
 
   markAsBought(index: number) {
-    // deleting item from claimed
-    console.log(this.account.id);
+    // // deleting item from claimed
+    // console.log(this.account.id);
 
-    console.log(this.notifObj);
-    this.notifObj.notifications.push(this.claimed[index].name + ', has been bought!!!');
-    this.notifs.addNotif(this.account.id, this.notifObj).subscribe((x) => {
+    // console.log(this.notifObj);
+    // this.notifObj.notifications.push(this.claimed[index].name + ', has been bought!!!');
+    // this.notifs.addNotif(this.account.id, this.notifObj).subscribe((x) => {
 
-    });
-    this.bought.push(this.claimed[index]);
-    this.claimed.splice(index, 1);
-    this.account.boughtItems = this.bought;
-    this.account.claimed = this.claimed;
-    this.users.updateAccount(this.account).subscribe((x) => {
+    // });
+    // this.bought.push(this.claimed[index]);
+    // this.claimed.splice(index, 1);
+    // this.account.boughtItems = this.bought;
+    // this.account.claimed = this.claimed;
+    // this.users.updateAccount(this.account).subscribe((x) => {
 
+    // });
+    this.carts.buyItem(this.claimed[index].item_id).subscribe((x)=> {
+      console.log(x);
+      this.claimed.splice(index,1);
     });
   }
 }
