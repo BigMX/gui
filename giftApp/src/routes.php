@@ -220,6 +220,16 @@ $app->put('/changeitem/{item_id}/{user_id}', function ($request, $response, $arg
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//change status to bought
+$app->put('/boughtitem/{item_id}/{user_id}', function ($request, $response, $args) {
+    $input = $request->getParsedBody();
+    $sql = "UPDATE Items SET status='Bought', boughtBy=:user_id WHERE item_id=:item_id";
+    $sth = $this->dbConn->prepare($sql);
+    $sth->bindParam("item_id", $args['item_id']);
+    $sth->bindParam("user_id", $args['user_id']);
+    $res = $sth->execute();
+    return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
+});
 //
 //add items to registry
 $app->post('/additems', function ($request, $response) {
