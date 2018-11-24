@@ -209,6 +209,7 @@ $app->get('/item/{registry_id}', function ($request, $response, $args) {
 
 });
 
+//CONNECTED
 //changes the status to claimed in items table
 $app->put('/changeitem/{item_id}/{user_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
@@ -221,7 +222,7 @@ $app->put('/changeitem/{item_id}/{user_id}', function ($request, $response, $arg
 });
 
 //change status to bought
-$app->put('/boughtitem/{item_id}/{user_id}', function ($request, $response, $args) {
+$app->put('/buyitem/{item_id}/{user_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
     $sql = "UPDATE Items SET status='Bought', boughtBy=:user_id WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
@@ -231,6 +232,7 @@ $app->put('/boughtitem/{item_id}/{user_id}', function ($request, $response, $arg
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
+//CONNECTED
 //get claimed items from the items table
 $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -242,6 +244,7 @@ $app->get('/getclaimeditem/{user_id}', function ($request, $response, $args) {
 
 });
 
+//CONNECTED
 //get bought items from the items table
 $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
@@ -250,8 +253,8 @@ $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) {
     $sth->execute();
     $users = $sth->fetchAll();
     return $this->response->withJson($users);
-
 });
+
 //
 //add items to registry
 $app->post('/additems', function ($request, $response) {
