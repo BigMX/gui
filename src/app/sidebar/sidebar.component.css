@@ -1,7 +1,9 @@
 .menu{
  background-color: #e6eeff;
- width: 14em;
+ width: 16em;
  border: solid rgb(36, 62, 175) .09em;
+ padding-left: 1.5em;
+ padding-right: 1.5em;
 }
 
 #menutitle {

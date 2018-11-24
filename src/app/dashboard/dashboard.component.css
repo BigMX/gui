@@ -9,9 +9,8 @@
 }
 
 .das{
-  margin-top:4em;
   margin-left: 14em;
-  width:120%;
+  width:84.4%;
 }
 
 .topbuttons{
@@ -91,6 +90,7 @@ button:active{
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
+  margin-left: 2em;
 }
 
 #registry, #invited {
@@ -108,7 +108,12 @@ button:active{
 
 .noReg {
   font-family: Helvetica;
-  margin-left: 7em;
+  padding-left: 13em;
+}
+
+.noInvReg {
+  font-family: Helvetica;
+  padding-left: 12em;
 }
 
 .image{

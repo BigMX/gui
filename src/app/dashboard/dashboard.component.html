@@ -13,12 +13,12 @@
     </div>
     <br>
     <br>
-    <div style="margin-left: 2em;" class="myRegistries">
+    <div style="margin-left: 4em;" class="myRegistries">
       <h4 id="registry">
         <u>My Registries</u>
       </h4>
       <div *ngIf=!length>
-        <h3 class="noReg">You don't have any registries right now :( </h3>
+        <h4 class="alert noReg" style="width: 93%; background: #e5d4ee">You don't have any registries right now :( </h4>
       </div>
       <div class="list-group" *ngIf=length>
         <a *ngFor="let r of registry" routerLink='/registry/{{id}}/{{r.id}}' class="list-group-item">
@@ -28,11 +28,14 @@
       </div>
     </div>
     <br>
-    <div style="margin-left: 2em;" class="otherRegistries">
+    <div style="margin-left: 4em;" class="otherRegistries">
       <h4 id="invited">
         <u>Invited Registries</u>
       </h4>
-      <div class="list-group">
+      <div *ngIf=!invLength>
+        <h4 class="alert noInvReg" style="width: 93%; background: #e5d4ee">You have not been invited to any registries yet </h4>
+      </div>
+      <div class="list-group" *ngIf=invLength>
         <a *ngFor="let r of inviteReg" routerLink='/viewRegistry/{{id}}/{{r.registry_id}}' class="list-group-item">
           <h5 class="mb-1">{{r.name}}</h5>
           <small class="mb-1">{{r.description}}</small>

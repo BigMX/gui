@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   registry: Registry[];
   length: number;
   inviteReg: Registry[];
+  invLength: number;
   account: Account;
   newRegistry: Registry;
   id: number;
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
               });
 
             }
+            this.invLength = this.inviteReg.length;
           });
         });
         this.registries.getRegistries(this.id).subscribe((registry) => {

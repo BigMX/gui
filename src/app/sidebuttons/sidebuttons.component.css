@@ -5,12 +5,12 @@
 
 .topbuttons{
   background-color: black;
-  width:118.5%;
+  width:100%;
   height: 4em;
 }
 
 .userName {
-  width: 15.5em;
+  width: 18em;
   margin-top: 1em;
   text-align: center;
 }
@@ -29,7 +29,7 @@
 }
 
 .giftReg {
-  width: 62em;
+  width: 59em;
   text-align: center;
 }
 
@@ -38,6 +38,9 @@
 
 }
 
+.cart {
+  margin-left: -5em;
+}
 
 #userIcon{
   width: 1.5em;
