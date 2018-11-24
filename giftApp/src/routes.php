@@ -222,12 +222,11 @@ $app->put('/changeitem/{item_id}/{user_id}', function ($request, $response, $arg
 });
 
 //change status to bought
-$app->put('/buyitem/{item_id}/{user_id}', function ($request, $response, $args) {
+$app->put('/buyitem/{item_id}', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "UPDATE Items SET status='Bought', boughtBy=:user_id WHERE item_id=:item_id";
+    $sql = "UPDATE Items SET status='Bought' WHERE item_id=:item_id";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("item_id", $args['item_id']);
-    $sth->bindParam("user_id", $args['user_id']);
     $res = $sth->execute();
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
