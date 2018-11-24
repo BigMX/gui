@@ -86,7 +86,6 @@ button:active{
 }
 
 #dashboard {
-  /* text-size: 90%; */
   text-transform: uppercase;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .1em;
@@ -98,12 +97,6 @@ button:active{
   margin-left: 0.3em;
   font-family: 'Palatino', sans-serif;
   letter-spacing: .05em;
-}
-
-.cartbtn {
-  background-color: #a7c1e0a2;
-  width: 7.8em;
-  margin-bottom: 0.5em;
 }
 
 .noReg {

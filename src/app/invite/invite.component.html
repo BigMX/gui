@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <div class="menu border-right border-light">
+  <div class="menu border-right border-light float-left">
     <app-sidebar></app-sidebar>
   </div>
 
@@ -13,15 +13,16 @@
         <h2 id="dashboard">Invite</h2>
       </div>
       <br>
-      <div style="padding-left:1em;" id="email" class="form-group" [hidden]="check===true">
+      <br>
+      <div style="margin-left: 4.5em; margin-right: 3em;" id="email" class="form-group" [hidden]="check===true">
         <label id="selectemail" for="exampleFormControlInput1">Email Address</label>
         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="newInvitation.receiverEmail">
       </div>
 
       <div [hidden]="check===false" class="ml-3">
-        <h5 style="font-family: Calibri;">Don't know email? try searching by last name</h5>
+        <h5 style="font-family: Calibri; margin-left: 3.5em; margin-right: 3em;">Don't know email? try searching by last name</h5>
         <br>
-        <div id="selectemail" class="form-group">
+        <div style="margin-left: 4.5em; margin-right: 3em;" id="selectemail" class="form-group">
           <label for="exampleFormControlInpu">Last Name</label>
           <div>
             <input type="text" id="exampleFormControlInput" [(ngModel)]="searchName">
@@ -30,24 +31,24 @@
           </div>
         </div>
 
-        <hr>
+        <hr style="margin-left: 4.5em; width: 30em;">
 
-        <div id="selectemail" class="form-group" style="padding-right: 1em;">
-          <label for="exampleFormControlSelect2" >Select Email</label>
-          <select style="padding-right:-1em;" class="form-control" [(ngModel)]="newInvitation.receiverEmail">
+        <div id="selectemail" class="form-group">
+          <label style="margin-left: 4.5em; margin-right: 3em;" for="exampleFormControlSelect2" >Select Email</label>
+          <select style="margin-left: 4.5em; width:30em;" class="form-control" [(ngModel)]="newInvitation.receiverEmail">
             <option *ngFor="let r of accounts" [ngValue]="r.email">{{ r.lastName }} {{r.email}}</option>
           </select>
         </div>
       </div>
 
-      <div class="form-group ml-3">
+      <div style="padding-left: 4em;" class="form-group ml-3">
         <label id="selectemail" for="Use search">
           <input type="checkbox"
           [(ngModel)]="check"/> Search By Name
         </label>
       </div>
 
-      <div style="padding-left: 1em;" id="selectreg" class="form-group">
+      <div style="padding-left: 4.5em; margin-right: 3em;" id="selectreg" class="form-group">
         <label for="exampleFormControlSelect1">Select Registry</label>
         <select class="form-control" [(ngModel)]="registryId" id="selectRegistry">
           <option value="" selected></option>
