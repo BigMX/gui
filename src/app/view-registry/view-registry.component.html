@@ -1,42 +1,89 @@
-<br>
-<div class="container">
-  <div class="registryComponent row">
-    <div class="col-2">
-      <h2 id="menutitle">Menu</h2>
-      <div class="myNav">
-        <div class="nav flex-column nav-pills" style="background-color: #e5d4ee;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a routerLink='/dashboard/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-              <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon"><span>Dashboard</span>
+<div class="topbuttons" *ngIf="account">
+    <div class="row">
+      <div class="userName">
+        <span class="name">
+          {{account[0].lastname}}
+        </span>
+      </div>
+      
+      <div class="giftReg">
+        <span class="title">
+          Gift Registry
+        </span>
+      </div>
+      
+      <div class="cart">
+        <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn mt-2">
+          <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">({{itemCount}})
+        </button>
+      </div>
+        
+      <div class="dr">
+        <span class="dropdown">
+          <button class="btn dropdown-toggle dropd" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/profile/{{id}}">Profile</a>
+            <a class="dropdown-item" href="/notifications/{{id}}">Notifications
+              <span class="badge badge-danger" style="color: white;">{{notifCount}}</span>
             </a>
-            <a class="nav-link" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create" aria-selected="false">
-              <button type="button" class="btn activebtn" data-toggle="modal" data-target="#createModal">
-                <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon"><span>Create</span>
-              </button>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/login">Logout</a>
+          </div>
+        </span>
+      </div>
+    </div>
+</div>
+
+<div>
+    <div class="border-right border-light float-left">
+      <div class="menu">
+        <div class="text-center" id="menutitle">
+          Menu
+        </div>
+        <div class="myNav">
+          <div class="nav flex-column nav-pills" style="background-color: #b3ccff;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a routerLink='/dashboard/{{id}}' class="nav-link border border-light" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+              aria-controls="v-pills-dashboard" aria-selected="true">
+              <img src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-18-512.png" alt="" id="navIcon">
+              <span>Dashboard</span>
             </a>
-            <a class="nav-link" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" routerLink='/invite/{{id}}'  role="tab" aria-controls="v-pills-invite" aria-selected="false">
-              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon"><span>Invite</span>
+            <a routerLink='/create/{{id}}' class="nav-link border-bottom border-light" id="v-pills-create-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-create"
+              aria-selected="false">
+              <img src="https://cdn2.iconfinder.com/data/icons/arrows-and-universal-actions-icon-set/256/plus_circle-512.png" id="navIcon">
+              <span>Create</span>
             </a>
-            <a routerLink='/archive/{{id}}' class="nav-link" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-archive" aria-selected="false">
-              <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon"><span>Archive</span>
+            <a class="nav-link border-bottom border-light" id="v-pills-invite-tab" data-toggle="pill" href="#v-pills-messages" routerLink='/invite/{{id}}' role="tab"
+              aria-controls="v-pills-invite" aria-selected="false">
+              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/message-512.png" id="navIcon">
+              <span>Invite</span>
             </a>
-            <a class="nav-link" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-join" aria-selected="false">
-              <button type="button" class="btn activebtn2" data-toggle="modal" data-target="#joinModal">
-                <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon"><span>Join</span>
-              </button>
+            <a routerLink='/archive/{{id}}' class="nav-link border-bottom border-light" id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+              aria-controls="v-pills-archive" aria-selected="false">
+              <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/10.Folder-512.png" id="navIcon">
+              <span>Archive</span>
+            </a>
+            <a routerLink='/join/{{id}}' class="nav-link border-bottom border-light" id="v-pills-join-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+              aria-controls="v-pills-join" aria-selected="false">
+              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/group-512.png" id="navIcon">
+              <span>Join</span>
             </a>
             <a routerLink='/purchaseHistory/{{id}}' class="nav-link" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-            aria-controls="v-pills-dashboard" aria-selected="true">
-            <img src="https://cdn4.iconfinder.com/data/icons/linecon/512/time-512.png" alt="" id="navIcon">
-            <span>History</span>
+              aria-controls="v-pills-dashboard" aria-selected="true">
+              <img src="https://cdn4.iconfinder.com/data/icons/linecon/512/time-512.png" alt="" id="navIcon">
+              <span>History</span>
             </a>
           </div>
         </div>
+        <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br> <br>
     </div>
-    <div class="col-8">
+
+    <div class="das">
         <div class="dash">
             <h2 id="dashboard">{{name}}</h2>
         </div>
-        <div>
+        <div style="margin-left:24em;">
             <br>
           <table class="table table-striped">
               <thead>
@@ -60,22 +107,3 @@
             </table>
         </div>
     </div>
-    <div class="col-2">
-        <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn">
-          <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">(# items)
-        </button>
-        <div class="dropdown">
-          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/gift-512.png" id="userIcon">
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">My Account</a>
-              <a class="dropdown-item" href="/notifications/{{id}}">Notifications <span class="badge badge-danger" style="color: white;">{{notifCount}}</span></a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Logout</a>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-

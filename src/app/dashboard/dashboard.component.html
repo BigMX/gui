@@ -36,15 +36,12 @@
         <h4 class="alert noInvReg" style="width: 93%; background: #e5d4ee">You have not been invited to any registries yet </h4>
       </div>
       <div class="list-group" *ngIf=invLength>
-        <a *ngFor="let r of inviteReg" routerLink='/viewRegistry/{{id}}/{{r.registry_id}}' class="list-group-item">
-          <h5 class="mb-1">{{r.name}}</h5>
-          <small class="mb-1">{{r.description}}</small>
+        <a *ngFor="let reg of inviteReg" routerLink='/viewRegistry/{{id}}/{{r.registry_id}}' class="list-group-item">
+          <h5 class="mb-1">{{reg.name}}</h5>
+          <small class="mb-1">{{reg.description}}</small>
         </a>
       </div>
     </div>
-  </div>
-  <div class="image">
-
   </div>
 </div>
 <!--end div for the row class-->

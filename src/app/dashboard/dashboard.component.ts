@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
 
             }
             this.invLength = this.inviteReg.length;
+            console.log(this.inviteReg);
           });
         });
         this.registries.getRegistries(this.id).subscribe((registry) => {
