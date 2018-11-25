@@ -4,5 +4,4 @@ export class Invitation {
   receiverEmail: string;
   Code: string;
   id?: number;
-  updated?: string;
 }

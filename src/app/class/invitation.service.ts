@@ -31,15 +31,15 @@ export class Invitations {
       .pipe(catchError(this.handleException));
   }
 
-    getByEmail(invitation: Invitation): Observable<Invitation> {
+    getByEmail(invitation: Invitation): Observable<boolean> {
     return this.httpClient
-    .put<Invitation>(`${this.endPoint}/acceptinvitation`,invitation, this.httpOptions)
+    .put<boolean>(`${this.endPoint}/acceptinvitation`,invitation, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
-  getAll(invitation: Invitation): Observable<Invitation[]> {
+  getAll(invitation: Invitation): Observable<Registry[]> {
     return this.httpClient
-    .put<Invitation[]>(`${this.endPoint}/getinvitation`,invitation, this.httpOptions)
+    .put<Registry[]>(`${this.endPoint}/getinvitation`,invitation, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 

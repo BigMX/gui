@@ -49,12 +49,14 @@ export class DashboardComponent implements OnInit {
           this.invitation = new Invitation;
           this.invitation.receiverEmail = this.account.email;
           this.invitations.getAll(this.invitation).subscribe((x) => {
-            for (const y of x) {
-              this.registries.getRegById(y.registry_id).subscribe((registry) => {
-                this.inviteReg.push(registry[0]);
-              });
+            console.log(x);
+            this.inviteReg = x; 
+            // for (const y of x) {
+            //   this.registries.getRegById(y.registry_id).subscribe((registry) => {
+            //     this.inviteReg.push(registry[0]);
+            //   });
 
-            }
+            // }
             this.invLength = this.inviteReg.length;
             console.log(this.inviteReg);
           });

@@ -55,8 +55,8 @@ export class JoinComponent implements OnInit {
     this.invitation.Code=this.code;
     this.invitation.receiverEmail=this.account.email;
     this.invitations.getByEmail(this.invitation).subscribe((x)=> {
-      console.log(this.invitation);
-      if(x.updated){
+      console.log(x);
+      if(x){
         this.message='You are in';
       }else{
         this.message='wrong code or no invitation';

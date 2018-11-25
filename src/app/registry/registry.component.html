@@ -91,7 +91,7 @@
       <br>
       <hr style="background-color:purple; margin-left: 12em; width: 85%;">
     </div>
-      <div *ngIf='!assignedItems' style="margin-left: 21em;">
+      <div *ngIf='!assignedItems' style="margin-left: 5em;">
         <br>
         <h6 class="text-center" style="font-family: Helvetica;">Items in your registry: </h6>
         <table class="table table-striped">
@@ -117,7 +117,7 @@
         <br>
         <hr style="background-color:purple;">
       </div>
-      <div style="margin-left:20em;">
+      <div style="margin-left:6em;">
         <br>
         <h6 class="text-center" style="font-family: Helvetica;"> Currently in your cart...</h6>
         <table class="table table-striped">
@@ -159,12 +159,12 @@
         <div *ngIf="views">
           <ul class="list-group" *ngFor="let viewer of viewers; let i = index">
             <li class="list-group-item">
-              <button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button> {{ viewer.email }}</li>
+              <button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button>   {{ viewer.email }}</li>
           </ul>
         </div>
       </div>
       <br>
-      <hr style="margin-left: 4em; width: 130%;">
+      <hr style="margin-left: 4em; width: 94%;">
       <br>
       <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186); margin-left: 24em;" id="deleteButton" data-toggle="modal"
         data-target="#deleteModal">

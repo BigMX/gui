@@ -139,3 +139,8 @@
   margin-left: 2em;
   padding-left: 17em;
 }
+
+.list-group {
+  margin-left: 4em;
+  width: 65em;
+}
