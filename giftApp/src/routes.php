@@ -206,7 +206,6 @@ $app->get('/item/{registry_id}', function ($request, $response, $args) {
     $sth->execute();
     $users = $sth->fetchAll();
     return $this->response->withJson($users);
-
 });
 
 //CONNECTED
@@ -407,7 +406,7 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
 //get the invitation 
 $app->put('/getinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail";
+    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail AND i.status = 'true'";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $res = $sth->execute();
@@ -429,7 +428,7 @@ $app->put('/deleteinvitation', function ($request, $response) {
 
 //fix this
 
-//CONNECTED
+//
 //display invitation  //idk if we need this 
 $app->post('/invitations/{status}', function ($request, $response) { 
     $input = $request->getParsedBody();
@@ -510,31 +509,3 @@ $app->delete('/deletenotification/{notification_id}', function ($request, $respo
     $sth->execute();  
     return $this->response->withJson(["success" => $sth->rowCount() == 1]);
 });
-
-// ---------- needs to be fixed or dont need----------
-
-// //changing the status of the item to bought or not bought
-// $app->put('/items/{status}', function ($request, $response, $args) {
-// 	$input = $request->getParsedBody();
-// 	$sql = "Update items SET status = :status WHERE item_id = :item_id";
-// 	$sth = $this->dbConn->prepare($sql);
-// 	$sth->bindParam("item_id", $input['item_id']);
-// 	$sth->bindParam("status", $args['status']);
-// 	$res = $sth->execute();
-// 	return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
-// });
-
-// //display the user id of the person that bought the item from the registry 
-// $app->get('/items/{item_id}', function ($request, $response, $args) { 
-// 	$sth = $this->dbConn->prepare(
-// 		"SELECT *
-//          FROM Registries r  
-//          LEFT JOIN Users u
-//          ON u.user_id = r.user_id
-//          LEFT JOIN Items i 
-//          ON u.user_id = i.user_id; );
-// 	$sth->bindParam("item_id", $args['item_id']);
-// 	$sth->execute();
-// 	$users = $sth->fetchAll();
-// 	return $this->response->withJson($users);
-// });
