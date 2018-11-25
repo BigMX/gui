@@ -406,7 +406,7 @@ $app->put('/acceptinvitation', function ($request, $response, $args) {
 //get the invitation 
 $app->put('/getinvitation', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail AND i.status = 'true'";
+    $sql = "SELECT r.* FROM Registries r INNER JOIN Invitation i ON r.registry_id=i.registry_id WHERE i.receiverEmail =:receiverEmail AND i.status = 'true' and r.status= 'active'";
     $sth = $this->dbConn->prepare($sql);
     $sth->bindParam("receiverEmail", $input['receiverEmail']);
     $res = $sth->execute();
