@@ -256,13 +256,13 @@ $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) {
 //gets all the registries assositated with the user
 $app->put('/getregistries', function ($request, $response, $args) {
     $input = $request->getParsedBody();
-    $sql = "SELECT u.user_id, u.lastname,u.firstname,i.name, i.item_id FROM Registries r INNER JOIN Items i ON r.registry_id=i.registry_id INNER JOIN Users u On u.user_id=i.user_id ";
+    $sql = "SELECT u.user_id, u.lastname,u.firstname,i.name, i.item_id FROM Registries r INNER JOIN Items i ON r.registry_id=i.registry_id INNER JOIN Users u On u.user_id=i.user_id";
     $sth = $this->dbConn->prepare($sql);
     //$sth->bindParam("staus", $input['status']);
     $res = $sth->execute();
     $user = $sth->fetchAll();
     return $this->response->withJson($user);
-
+});
 //
 //get item name
 $app->get('/getitemname/{name}', function ($request, $response, $args) { 
