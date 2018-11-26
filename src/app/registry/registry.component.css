@@ -4,7 +4,14 @@
   border: solid rgb(36, 62, 175) .09em;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  position: fixed;
+  top:3.95em;
  }
+ 
+.topbuttons{
+  position: fixed;
+  top:0;
+}
  
  #menutitle {
    font: 200%/210% Garamond, Georgia, serif;
@@ -115,7 +122,7 @@
 
 .das{
   margin-left: 16em;
-  margin-top: -48.55em;
+  margin-top: 3.95em;
 }
  
 .dash {

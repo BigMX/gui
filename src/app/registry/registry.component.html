@@ -2,7 +2,7 @@
     <div class="row">
       <div class="userName">
         <span class="name">
-          {{account[0].lastname}}
+          {{account[0].lastName}}
         </span>
       </div>
       
@@ -132,8 +132,8 @@
           </thead>
           <tbody *ngIf="cart">
               <tr *ngFor="let newItem of unassignedcart">
-                <td class="text-right" class="form-check">
-                  <input type="checkbox" class="form-check-input" [disabled]="newItem.disabled" id="checkRemove" (change)="addItem($event.target.checked, newItem);">
+                <td class="form-check">
+                  <input style="margin-left: 0.7em;" type="checkbox" class="form-check-input" [disabled]="newItem.disabled" id="checkRemove" (change)="addItem($event.target.checked, newItem);">
                 </td>
                 <td class="text-center">{{newItem.name}}</td>
                 <td class="text-center">{{newItem.price | currency: 'USD'}}</td>
@@ -151,10 +151,8 @@
       <hr style="margin-left: 4em; width: 94%;">
       <br>
       <br>
-      <br>
-      <br>
       <div>
-        <h3 id="dashboard">Invited Users</h3>
+        <h3 id="dashboard" style="margin-left: 2em;">Invited Users</h3>
         <br>
         <div *ngIf="!viewers">
           <p>No invited users!</p>
@@ -167,7 +165,7 @@
         </div>
       </div>
       <br>
-      <hr>
+      <hr style="margin-left: 4em;">
       <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186); margin-left: 24em;" id="deleteButton" data-toggle="modal"
         data-target="#deleteModal">
         DELETE REGISTRY

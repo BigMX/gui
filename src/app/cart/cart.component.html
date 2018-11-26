@@ -9,7 +9,7 @@
   <div class="das">
 
       <div class="dash">
-        <h2 id="dashboard">Dashboard</h2>
+        <h2 id="dashboard">Cart</h2>
       </div>
       <br>
       <h3 class="text-center" style="font-family: Helvetica;" [hidden]="cart[0]!=undefined">You don't have anything in your cart now :( </h3>
@@ -40,38 +40,42 @@
         </table>
       </div>
   
-      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 16em;"
+      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#addModal" style="background-color: #a7c1e0a2; margin-left: 28em;"
         id="addItem"> Add Item</button>
   
       <br>
       <br>
       <br>
       <br>
-      <div>
-        <h3 id="dashboard">Claimed Items</h3>
+      <div *ngIf="!length">
+          <h3 class="alert alert-success" style="margin-left:2.5em; padding-left: 14em; width: 40em;">
+            You have no claimed items!!</h3>
       </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th class='text-center'>Name of Item</th>
-            <th class='text-center'>Price</th>
-            <th class='text-center'>Location</th>
-            <th class='text-center'>Buy</th>
-          </tr>
-        </thead>
-        <p *ngIf="!claimed">
-          <br>You have no claimed items!!</p>
-        <tbody *ngIf="claimed">
-          <tr *ngFor="let item of claimed; let i = index;">
-            <td class='text-center'>{{item.name}}</td>
-            <td class='text-center'>{{item.price}}</td>
-            <td class='text-center'>{{item.location}}</td>
-            <td class="text-center">
-              <button class="btn btn-sm btn-success" (click)="markAsBought(i)" [disabled]="item.status=='bought'">Buy</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div  *ngIf="length">
+        <div>
+          <h3 id="dashboard" style="margin-left: 3em;">Claimed Items</h3>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class='text-center'>Name of Item</th>
+              <th class='text-center'>Price</th>
+              <th class='text-center'>Location</th>
+              <th class='text-center'>Buy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of claimed; let i = index;">
+              <td class='text-center'>{{item.name}}</td>
+              <td class='text-center'>{{item.price}}</td>
+              <td class='text-center'>{{item.location}}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-success" (click)="markAsBought(i)" [disabled]="item.status=='bought'">Buy</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   
   </div>

@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../class/user.service';
 import { Registry } from '../class/registry';
 import { Notif } from '../class/notifications';
+import { Cart } from '../class/cart.service';
+import { Item } from '../class/item';
 
 class NotificationsParams {
   id: string;
@@ -29,7 +31,8 @@ export class NotificationsComponent implements OnInit {
     private route: ActivatedRoute,
     private users: User,
     private registries: Registries,
-    private notifs: Notifs
+    private notifs: Notifs,
+    private carts: Cart
   ) { }
 
   // important variables initialized
@@ -40,8 +43,8 @@ export class NotificationsComponent implements OnInit {
         this.id = +params.id;
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
+          this.check();
           console.log(this.id)
-          // this.check();
         });
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;
@@ -86,46 +89,31 @@ export class NotificationsComponent implements OnInit {
         console.log(this.registryList);
         // tslint:disable-next-line:forin
         for(i = 0; i < this.registryList.length; i++) {
-          const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
-          this.notifs.getNotifs(this.id).subscribe((n) => {
-            this.notifications = n;
-          });
-          if (this.registryList[i].items === null && this.arrayObjectIndexOf(this.notifications, message) === -1) {
-             this.notif.notifications = message;
-             this.notif.user_id = this.id;
-             this.notifs.addNotifs(this.notif).subscribe((n) => {
-              });
-            this.notif = new Notif;
-          } 
-          if (this.registryList[i].items !== null && this.arrayObjectIndexOf(this.notifications, message) === -1) {
-            for (j = 0; j < this.registryList[i].items.length; j++) {
-              const item = this.registryList[i].items[j];
-              const message = item.name + ', has been bought!!!';
-              this.notifs.getNotifs(this.id).subscribe((n) => {
-                this.notifications = n;
-              });
-              if (item.status === 'bought' && this.arrayObjectIndexOf(this.notifications, message) === -1) {
-                counter+=1;
+          const message = 'all items have been bought for: ' + this.registryList[i].name + ' registry!!!!';
+          var regItems;
+          this.carts.getItemsByReg(this.registryList[i].registry_id).subscribe((items) => {
+            regItems = items;
+          
+            if (regItems !== 0) {
+              for (j = 0; j < regItems.length; j++) {
+                const item = regItems[j];
+                if (item.status === 'Bought') {
+                  counter+=1;
+                  console.log(counter);
+                }
+              }
+              if (counter === regItems.length && this.arrayObjectIndexOf(this.notifications, message) === -1) {
                 this.notif.notifications = message;
                 this.notif.user_id = this.id;
-                  console.log(this.notif);
-                  this.notifs.addNotifs(this.notif).subscribe((n) => {
-                 });
+                this.notifications.push(this.notif);
+                this.length += 1;
+                this.notifs.addNotifs(this.notif).subscribe((n) => {
+                  
+                });
                 this.notif = new Notif;
               }
             }
-            const message = 'all items have been bought for: ' + this.registryList[i].name + '!!!!';
-            this.notifs.getNotifs(this.id).subscribe((n) => {
-              this.notifications = n;
-            });
-            if (counter === this.registryList[i].items.length && this.arrayObjectIndexOf(this.notifications, message) === -1) {
-              this.notif.notifications = message;
-              this.notif.user_id = this.id;
-              this.notifs.addNotifs(this.notif).subscribe((n) => {
-               });
-              this.notif = new Notif;
-            }
-          }
+        });
         }
   }
 

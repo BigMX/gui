@@ -22,3 +22,8 @@
   padding-bottom: 0.4em;
   padding-left: 2em;
 }
+
+.alert {
+  margin-left: 4em;
+  width: 70em;
+}

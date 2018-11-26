@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   account: Account;
   id: number;
   claimed: Item[]=[];
+  length: number;
   bought: Item[];
   notifObj: Notif;
 
@@ -54,6 +55,7 @@ export class CartComponent implements OnInit {
           });
           this.carts.getClaimedItem(this.id).subscribe((items)=> {
             this.claimed=items;
+            this.length = items.length;
             console.log(this.claimed);
           });
         //   if (account.boughtItems === undefined) {
@@ -77,6 +79,7 @@ export class CartComponent implements OnInit {
   addItem() {
     this.newItem.status = 'Unclaimed';
     this.newItem.user_id=this.id;
+    // this.newItem.lastName=""
     this.cart.push(this.newItem);
     this.carts.addItemToCart(this.newItem).subscribe((account) => {
 
@@ -87,15 +90,6 @@ export class CartComponent implements OnInit {
   // used for removing items from the cart
   removeItem(id: number, index:number) {
     if (window.confirm('Are you sure?')) {
-      // this.users.getById(this.id).subscribe((acct) => {
-      //   this.account = acct;
-      //   this.account.cart.splice(index, 1);
-      //   console.log(this.account);
-      //   this.account.cart=this.account.cart;
-      //   // this.users.removeNotif(this.account).subscribe(()=> {
-      //   // });
-      //   // location.reload();
-      // });
       this.carts.getItems(this.id).subscribe((items)=> {
         this.cart=items;
         this.carts.deleteItem(this.cart[index].item_id).subscribe((x)=> {
@@ -107,24 +101,16 @@ export class CartComponent implements OnInit {
   }
 
   markAsBought(index: number) {
-    // // deleting item from claimed
-    // console.log(this.account.id);
-
-    // console.log(this.notifObj);
-    // this.notifObj.notifications.push(this.claimed[index].name + ', has been bought!!!');
-    // this.notifs.addNotif(this.account.id, this.notifObj).subscribe((x) => {
-
-    // });
-    // this.bought.push(this.claimed[index]);
-    // this.claimed.splice(index, 1);
-    // this.account.boughtItems = this.bought;
-    // this.account.claimed = this.claimed;
-    // this.users.updateAccount(this.account).subscribe((x) => {
-
-    // });
     this.carts.buyItem(this.claimed[index].item_id).subscribe((x)=> {
       console.log(x);
       this.claimed.splice(index,1);
+    });
+    var n = new Notif;
+    const message = this.claimed[index].name + ', has been bought';
+    n.notifications = message;
+    n.user_id = this.claimed[index].user_id;
+    this.notifs.addNotifs(n).subscribe((n) => {
+
     });
   }
 }

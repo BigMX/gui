@@ -28,6 +28,7 @@ export class RegistryComponent implements OnInit {
   unassignedcart: Item[] = [];
   assigneditems: Item[]=[];
   name: string;
+  itemCount: number;
   item: Item;
   length: number;
   itemList: Item[] = [];
@@ -68,6 +69,7 @@ export class RegistryComponent implements OnInit {
             this.carts.getItems(this.id).subscribe((items)=> {
               console.log(items);
               this.cart=items;
+              this.itemCount = items.length;
               for( const c of this.cart) {
                 if(!c.registry_id) {
                   this.unassignedcart.push(c);
