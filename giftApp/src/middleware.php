@@ -14,6 +14,6 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				],
 	"header" => "X-Token",
 	"algorithm" => ["HS256", "HS384"],
-    	"secret" => "secretcode",
+    	"secret" => "supersecretkeyyoushouldnotcommittogithub",
 	"secure" => false
 ]));
