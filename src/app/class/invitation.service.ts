@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Registry } from './registry';
 import { Account } from './account';
 import { Invitation } from './invitation';
+import { Update } from '../class/update';
 
 @Injectable()
 export class Invitations {
@@ -31,9 +32,9 @@ export class Invitations {
       .pipe(catchError(this.handleException));
   }
 
-    getByEmail(invitation: Invitation): Observable<boolean> {
+    getByEmail(invitation: Invitation): Observable<Update> {
     return this.httpClient
-    .put<boolean>(`${this.endPoint}/acceptinvitation`,invitation, this.httpOptions)
+    .put<Update>(`${this.endPoint}/acceptinvitation`,invitation, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
