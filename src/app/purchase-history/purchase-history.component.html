@@ -8,32 +8,29 @@
   </div>
     
   <div class="das">
-    <div class="dash">
-      <h2 id="purchaseHistory">Purchase History</h2>
-    </div>
-    <br>
-    <br>
-    <div *ngIf=!length>
-      <h4 class="alert noPurchases" style="width: 88%; background: #e5d4ee">You haven't bought anything yet ~ </h4>
-    </div>
-    <div *ngIf=length>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th class="text-center">Name of Item</th>
-            <th class="text-center">Price</th>
-            <th class="text-center">Location</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="boughtItems">
-          <tr *ngFor="let item of boughtItems">
-            <td class="text-center">{{item.name}}</td>
-            <td class="text-center">{{item.price}}</td>
-            <td class="text-center">{{item.location}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <br>
-  </div>
+      <div class="dash">
+          <h2 id="purchaseHistory">Purchase History</h2>
+        </div>
+        <br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Name of Item</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Location</th>
+            </tr>
+          </thead>
+          <div *ngIf="!boughtItems">
+            <h3 class="text-center" style="font-family: Helvetica;">You have not purchased any items! </h3>
+          </div>
+          <tbody *ngIf="boughtItems">
+              <tr *ngFor="let item of boughtItems">
+                <td class="text-center">{{item.name}}</td>
+                <td class="text-center">{{item.price}}</td>
+                <td class="text-center">{{item.location}}</td>
+              </tr>
+            </tbody>
+        </table>
+        <br>
+      </div>
 </div>

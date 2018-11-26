@@ -84,14 +84,14 @@
       <h2 id="dashboard">{{name}}</h2>
     </div>
     <br> 
-    <div *ngIf='assignedItems'>
+    <div *ngIf='!assigneditems'>
       <br>
       <h3 style="font-family: Helvetica; margin-left: 9em;">You don't have anything in your registry :( add items!! </h3>
       <br>
       <br>
-      <hr style="background-color:purple; margin-left: 12em; width: 85%;">
+      <hr style="background-color:purple; margin-left: 8em; width: 85%;">
     </div>
-      <div *ngIf='!assignedItems' style="margin-left: 5em;">
+      <div *ngIf='assigneditems' style="margin-left: 5em;">
         <br>
         <h6 class="text-center" style="font-family: Helvetica;">Items in your registry: </h6>
         <table class="table table-striped">
@@ -107,10 +107,10 @@
           <tbody>
             <tr *ngFor="let newItem of assigneditems">
               <td class="text-center">{{newItem.name}}</td>
-              <td class="text-center">{{newItem.price}}</td>
+              <td class="text-center">{{newItem.price | currency: 'USD'}}</td>
               <td class="text-center">{{newItem.location}}</td>
               <td class="text-center">{{newItem.status}}</td>
-              <td class="text-center"> </td>
+              <td class="text-center"> {{newItem.lastName}}</td>
             </tr>
           </tbody>
         </table>
@@ -131,12 +131,12 @@
             </tr>
           </thead>
           <tbody *ngIf="cart">
-              <tr *ngFor="let newItem of cart">
-                <td class="text-center" class="form-check">
+              <tr *ngFor="let newItem of unassignedcart">
+                <td class="text-right" class="form-check">
                   <input type="checkbox" class="form-check-input" [disabled]="newItem.disabled" id="checkRemove" (change)="addItem($event.target.checked, newItem);">
                 </td>
                 <td class="text-center">{{newItem.name}}</td>
-                <td class="text-center">{{newItem.price}}</td>
+                <td class="text-center">{{newItem.price | currency: 'USD'}}</td>
                 <td class="text-center">{{newItem.location}}</td>
                 <td class="text-center">{{newItem.status}}</td>
               </tr>
@@ -144,28 +144,30 @@
         </table>
       </div>
       <br>
-      <button type="button" class="btn btn-lg" style="background-color: #cdb4db; margin-left: 25em;" id="archiveButton" (click)="addItems()">
+      <button type="button" class="btn btn-lg" style="background-color: #cdb4db; margin-left: 26em;" id="archiveButton" (click)="addItems()">
         Add Item(s)
       </button>
+      
+      <hr style="margin-left: 4em; width: 94%;">
+      <br>
       <br>
       <br>
       <br>
       <div>
-        <h3 id="dashboard" style="margin-left:2em; text-decoration: underline;">Invited Users</h3>
+        <h3 id="dashboard">Invited Users</h3>
         <br>
-        <div *ngIf="!views">
-            <h4 class="alert noInv" style="width: 135%; background: #e5d4ee">No invited users at this point </h4>
+        <div *ngIf="!viewers">
+          <p>No invited users!</p>
         </div>
-        <div *ngIf="views">
+        <div *ngIf="viewers">
           <ul class="list-group" *ngFor="let viewer of viewers; let i = index">
             <li class="list-group-item">
-              <button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button>   {{ viewer.email }}</li>
+              <button class="btn btn-danger" (click)="removeUserFromReg(i)">X</button> {{ viewer.email }}</li>
           </ul>
         </div>
       </div>
       <br>
-      <hr style="margin-left: 4em; width: 94%;">
-      <br>
+      <hr>
       <button type="button" class="btn btn-lg" style="background-color: rgb(190, 186, 186); margin-left: 24em;" id="deleteButton" data-toggle="modal"
         data-target="#deleteModal">
         DELETE REGISTRY

@@ -23,7 +23,6 @@ export class PurchaseHistoryComponent implements OnInit {
   regPurchaseHistory: InvitedRegistry;
   id: number;
   boughtItems: Item[]=[];
-  length: number;
   currentUser: Account;
 
   constructor(
@@ -43,7 +42,6 @@ export class PurchaseHistoryComponent implements OnInit {
         });
         this.carts.getBoughtItem(this.id).subscribe((x)=> {
           this.boughtItems=x;
-          this.length = x.length;
           console.log(x);
         });
       }

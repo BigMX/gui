@@ -8,6 +8,9 @@
 }
 
 .das{
+  position: absolute;
+  left:4em;
+  top:4em;
   margin-left: 14em;
   width:84.4%;
 }

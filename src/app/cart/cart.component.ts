@@ -22,71 +22,89 @@ export class CartComponent implements OnInit {
 
   registry: Registry[];
   cart: Item[];
-  length: number;
   newItem: Item;
   newRegistry: Registry;
   account: Account;
   id: number;
   claimed: Item[]=[];
   bought: Item[];
-  notif: Notif;
+  notifObj: Notif;
 
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,
     private users: User,
     private notifs: Notifs,
-    private cartItems: Cart,
-    protected router: Router
+    private carts: Cart
   ) { }
 
-    // important variables initialized
-    ngOnInit() {
-      this.newRegistry = new Registry;
-      this.newItem = new Item;
-      this.route.params.subscribe((params: CartParams) => {
-        if (params.id) {
-          this.id = +params.id;
-          console.log(this.id);
-          this.users.getById(this.id).subscribe((account) => {
-            this.account = account;
+  // important variables initialized
+  ngOnInit() {
+    this.newRegistry = new Registry;
+    this.newItem = new Item;
+    this.cart= [];
+    this.route.params.subscribe((params: CartParams) => {
+      if (params.id) {
+        this.id = +params.id;
+        this.users.getById(this.id).subscribe((account) => {
+          this.account = account;
+          this.carts.getItems(this.id).subscribe((items)=> {
+            console.log(items);
+            this.cart=items;
           });
-          this.cartItems.getItems(this.id).subscribe((c) => {
-            console.log(c);
-            this.cart = c;
-            this.length = c.length;
+          this.carts.getClaimedItem(this.id).subscribe((items)=> {
+            this.claimed=items;
+            console.log(this.claimed);
           });
-        }
-      });
-    }
-
-  // this method is for adding an item to the cart - the status is set to need
-  addItem() {
-    this.newItem.status = 'unclaimed';
-    this.newItem.user_id = this.id;
-    this.newItem.disabled = 'false';
-    console.log(this.newItem);
-    this.cartItems.addItemToCart(this.newItem).subscribe((itemS) => {
-      console.log(itemS);
+        //   if (account.boughtItems === undefined) {
+        //     account.boughtItems = [];
+        //   }
+        //   if (account.claimed === undefined) {
+        //     account.claimed = [];
+        //   }
+        //   this.cart = account.cart;
+        //   this.claimed = account.claimed;
+        //   this.bought = account.boughtItems;
+        });
+      }
     });
-    this.newItem = {};
-    this.cartItems.getItems(this.id).subscribe((c) => {
-      this.cart = c;
-      let url='cart/';
-      url+=this.id;
-      this.router.navigateByUrl(url);
-      location.reload();
+    this.notifs.getNotifs(this.id).subscribe((notifications) => {
+      this.notifObj = notifications[0];
     });
   }
 
-    // used for removing items from the cart
-    removeItem (item_id: number) {
-      if (window.confirm('Are you sure?')) {
-        this.cartItems.deleteItem(item_id).subscribe((item) => {
-          location.reload();
+  // this method is for adding an item to the cart - the status is set to need
+  addItem() {
+    this.newItem.status = 'Unclaimed';
+    this.newItem.user_id=this.id;
+    this.cart.push(this.newItem);
+    this.carts.addItemToCart(this.newItem).subscribe((account) => {
+
+    });
+    this.newItem = {};
+  }
+
+  // used for removing items from the cart
+  removeItem(id: number, index:number) {
+    if (window.confirm('Are you sure?')) {
+      // this.users.getById(this.id).subscribe((acct) => {
+      //   this.account = acct;
+      //   this.account.cart.splice(index, 1);
+      //   console.log(this.account);
+      //   this.account.cart=this.account.cart;
+      //   // this.users.removeNotif(this.account).subscribe(()=> {
+      //   // });
+      //   // location.reload();
+      // });
+      this.carts.getItems(this.id).subscribe((items)=> {
+        this.cart=items;
+        this.carts.deleteItem(this.cart[index].item_id).subscribe((x)=> {
+          console.log(x);
+          this.cart.splice(index,1);
         });
-      }
+      });
     }
+  }
 
   markAsBought(index: number) {
     // // deleting item from claimed
@@ -104,7 +122,7 @@ export class CartComponent implements OnInit {
     // this.users.updateAccount(this.account).subscribe((x) => {
 
     // });
-    this.cartItems.buyItem(this.claimed[index].item_id).subscribe((x)=> {
+    this.carts.buyItem(this.claimed[index].item_id).subscribe((x)=> {
       console.log(x);
       this.claimed.splice(index,1);
     });

@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   registry: Registry[];
   length: number;
-  inviteReg: Registry[];
+  inviteReg: Registry[] = [];
   invLength: number;
   account: Account;
   newRegistry: Registry;
@@ -50,7 +50,10 @@ export class DashboardComponent implements OnInit {
           this.invitation.receiverEmail = this.account.email;
           this.invitations.getAll(this.invitation).subscribe((x) => {
             console.log(x);
-            this.inviteReg = x; 
+            for(const y of x){
+                this.inviteReg.push(y);
+            }
+            // this.inviteReg = x; 
             // for (const y of x) {
             //   this.registries.getRegById(y.registry_id).subscribe((registry) => {
             //     this.inviteReg.push(registry[0]);

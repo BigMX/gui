@@ -25,7 +25,6 @@ export class RegistryComponent implements OnInit {
 
   currentReg: Registry;
   cart: Item[] = [];
-  itemCount: number;
   unassignedcart: Item[] = [];
   assigneditems: Item[]=[];
   name: string;
@@ -38,13 +37,12 @@ export class RegistryComponent implements OnInit {
   id: number;
   notifCount: number;
   viewers: Account[];
-  views: number;
   invites: Invitation[];
-  isDisable = false;
   deleteInv: Invitation;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private registries: Registries,
     private users: User,
     private invitations: Invitations,
@@ -70,7 +68,6 @@ export class RegistryComponent implements OnInit {
             this.carts.getItems(this.id).subscribe((items)=> {
               console.log(items);
               this.cart=items;
-              this.itemCount = items.length;
               for( const c of this.cart) {
                 if(!c.registry_id) {
                   this.unassignedcart.push(c);
@@ -79,10 +76,6 @@ export class RegistryComponent implements OnInit {
               }
             });
         });
-        this.carts.getItems(this.id).subscribe((items) => {
-          this.cart = items;
-          console.log(this.cart);
-        })
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
@@ -102,28 +95,26 @@ export class RegistryComponent implements OnInit {
       const rid= +params.regid;
       this.users.getViewer(rid).subscribe((viewers) => {
         this.viewers=viewers;
-        this.views = viewers.length;
         console.log(this.viewers);
       });
     });
   }
 
-  onDisableUser() {
-    this.isDisable = true;
-  }
 
   // this method deletes a registry
   deleteRegistry() {
     this.route.params.subscribe((params: RegistryParams) => {
       if (params.regid) {
         this.registries.deleteReg(+params.regid).subscribe((registry) => {
+          // let url="dashboard/";
+          // url+=this.id;
+          // this.router.navigateByUrl(url);
           location.reload();
         });
       }
     });
   }
 
-  // this method makes sure that no duplicate items are added to a registry
   arrayObjectIndexOf(myArray, searchTerm) {
     let i;
     for(i = 0; i < myArray.length; i++) {
@@ -139,9 +130,8 @@ export class RegistryComponent implements OnInit {
     if(event) {
       if(this.itemList !== undefined) {
         if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
-          const index = this.arrayObjectIndexOf(this.cart, item);
-          item.disabled = 'true';
           this.itemList.push(item);
+          console.log(this.itemList);
         }
       }
     } else {
@@ -154,14 +144,29 @@ export class RegistryComponent implements OnInit {
   addItems() {
     // this.currentReg.items = this.itemList;
     console.log(this.itemList);
+    let newUnassigned=this.unassignedcart;
+    for( const it of this.itemList){
 
+      const index= newUnassigned.indexOf(it);
+      newUnassigned.splice(index,1);
+
+      console.log(newUnassigned);
+    }
+    this.unassignedcart=newUnassigned;
     for( const it of this.itemList) {
       const index= this.itemList.indexOf(it);
-      this.unassignedcart.splice(index,1);
       it.registry_id=this.currentReg.registry_id;
       this.assigneditems.push(it);
       this.carts.addItemToRegisty(it).subscribe((x)=> {
+
+      // this.unassignedcart.splice(index,1);
         console.log(x);
+        this.cart=[];
+        this.carts.getItems(this.id).subscribe((items)=> {
+          console.log(items);
+          this.cart=items;
+
+        });
       });
     }
     // this.registries.updateReg(this.currentReg).subscribe((reg) => {

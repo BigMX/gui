@@ -113,3 +113,8 @@ th {
   font-size:145%;
   text-align: center;
 }
+
+table {
+  margin-left: 4em;
+  width: 70em;
+}

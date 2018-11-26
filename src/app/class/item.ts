@@ -8,4 +8,5 @@ export class Item {
   item_id?: number;
   disabled?: string;
   boughtBy?: string;
+  lastName?: string;
 }
