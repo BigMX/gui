@@ -197,7 +197,7 @@ $app->put('/itembought', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//
+//CONNECTED
 //get all the items in the registry
 $app->get('/item/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
