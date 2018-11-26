@@ -197,11 +197,11 @@ $app->put('/itembought', function ($request, $response, $args) {
     return $this->response->withJson(["updated" => $sth->rowCount() == 1]);
 });
 
-//CONNECTED
+//
 //get all the items in the registry
 $app->get('/item/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * FROM Items WHERE registry_id = :registry_id");
+        "SELECT * ,u.lastName FROM Items i INNER JOIN Users u ON i.boughtBy=u.user_id WHERE registry_id = :registry_id");
     $sth->bindParam("registry_id", $args['registry_id']);   
     $sth->execute();
     $users = $sth->fetchAll();
@@ -252,17 +252,6 @@ $app->get('/getboughtitem/{user_id}', function ($request, $response, $args) {
     return $this->response->withJson($users);
 });
 
-//
-//gets all the registries assositated with the user
-$app->put('/getregistries', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
-    $sql = "SELECT u.user_id, u.lastname,u.firstname,i.name, i.item_id FROM Registries r INNER JOIN Items i ON r.registry_id=i.registry_id INNER JOIN Users u On u.user_id=i.user_id WHERE registry_id=:registry_id";
-    $sth = $this->dbConn->prepare($sql);
-    $sth->bindParam("registry_id", $input['registry_id']);
-    $res = $sth->execute();
-    $user = $sth->fetchAll();
-    return $this->response->withJson($user);
-});
 
 //
 //get item name
