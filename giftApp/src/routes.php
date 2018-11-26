@@ -201,7 +201,7 @@ $app->put('/itembought', function ($request, $response, $args) {
 //get all the items in the registry
 $app->get('/item/{registry_id}', function ($request, $response, $args) { 
     $sth = $this->dbConn->prepare(
-        "SELECT * ,u.lastName FROM Items i INNER JOIN Users u ON i.boughtBy=u.user_id WHERE registry_id = :registry_id");
+        "SELECT * ,u.lastName FROM Items i INNER JOIN Users u ON i.boughtBy=u.user_id WHERE registry_id =:registry_id");
     $sth->bindParam("registry_id", $args['registry_id']);   
     $sth->execute();
     $users = $sth->fetchAll();
