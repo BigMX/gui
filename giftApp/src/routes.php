@@ -428,10 +428,9 @@ $app->put('/deleteinvitation', function ($request, $response) {
 });
 
 
-//fix this
 
 //
-//display invitation  //idk if we need this 
+//display invitation
 $app->post('/invitations/{status}', function ($request, $response) { 
     $input = $request->getParsedBody();
     $sql = "SELECT * FROM Invitation WHERE receiverEmail = :receiverEmail AND status = :status" ;
