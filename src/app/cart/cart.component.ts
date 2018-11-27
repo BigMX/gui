@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
 
   registry: Registry[];
   cart: Item[];
+  cartLen: number;
   newItem: Item;
   newRegistry: Registry;
   account: Account;
@@ -52,6 +53,7 @@ export class CartComponent implements OnInit {
           this.carts.getItems(this.id).subscribe((items)=> {
             console.log(items);
             this.cart=items;
+            this.cartLen = items.length;
           });
           this.carts.getClaimedItem(this.id).subscribe((items)=> {
             this.claimed=items;
@@ -82,7 +84,7 @@ export class CartComponent implements OnInit {
     // this.newItem.lastName=""
     this.cart.push(this.newItem);
     this.carts.addItemToCart(this.newItem).subscribe((account) => {
-
+      this.cartLen += 1;
     });
     this.newItem = {};
   }
@@ -94,6 +96,7 @@ export class CartComponent implements OnInit {
         this.cart=items;
         this.carts.deleteItem(this.cart[index].item_id).subscribe((x)=> {
           console.log(x);
+          this.cartLen -=1;
           this.cart.splice(index,1);
         });
       });

@@ -12,9 +12,13 @@
         <h2 id="dashboard">Cart</h2>
       </div>
       <br>
-      <h3 class="text-center" style="font-family: Helvetica;" [hidden]="cart[0]!=undefined">You don't have anything in your cart now :( </h3>
-
       <div>
+        <br>
+        <h3 class="alert alert-warning text-center" style="font-family: Helvetica; margin-left: 2.5em; width: 40em;" *ngIf=!cartLen>You don't have anything in your cart now :( </h3>
+        <br>
+      </div>
+
+      <div *ngIf=cartLen>
         <br>
         <table class="table table-striped">
           <thead>
@@ -26,7 +30,7 @@
               <th class='text-center'>Status</th>
             </tr>
           </thead>
-          <tbody *ngIf="cart">
+          <tbody>
             <tr *ngFor="let item of cart; let i = index;">
               <td class='text-center'>
                 <button style="color: white;" class='btn btn-sm btn-danger' (click)='removeItem(account.id, i)'>X</button>
