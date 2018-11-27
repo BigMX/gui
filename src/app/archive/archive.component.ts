@@ -53,8 +53,8 @@ export class ArchiveComponent implements OnInit {
       this.newRegistry.status = 'archived';
       console.log(this.newRegistry);
       this.registries.updateReg(this.newRegistry).subscribe(() => {
-
         this.archived.push(this.newRegistry);
+        location.reload();
       });
       this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
         this.archived = registry_;
