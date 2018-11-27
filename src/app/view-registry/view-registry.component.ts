@@ -23,6 +23,7 @@ export class ViewRegistryComponent implements OnInit {
   currentReg: Registry;
   item: Item;
   itemList: Item[] = [];
+  itemCount: number;
   account: Account;
   registry: Registry[];
   newRegistry: Registry;
@@ -65,6 +66,7 @@ export class ViewRegistryComponent implements OnInit {
           this.name = this.currentReg.name;
           this.carts.getItemsByReg(+params.regid).subscribe((x)=> {
             this.itemList=x;
+            this.itemCount = x.length;
             console.log(this.itemList);
           });
         });
