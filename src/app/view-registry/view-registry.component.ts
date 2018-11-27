@@ -57,6 +57,9 @@ export class ViewRegistryComponent implements OnInit {
             } else {
               this.notifCount = 0;
             }
+            this.carts.getItems(this.id).subscribe((items) => {
+              this.itemCount = items.length;
+            });
         });
       }
       if (params.regid) {
@@ -66,7 +69,6 @@ export class ViewRegistryComponent implements OnInit {
           this.name = this.currentReg.name;
           this.carts.getItemsByReg(+params.regid).subscribe((x)=> {
             this.itemList=x;
-            this.itemCount = x.length;
             console.log(this.itemList);
           });
         });

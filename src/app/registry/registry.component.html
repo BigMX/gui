@@ -5,19 +5,19 @@
           {{account[0].lastName}}
         </span>
       </div>
-      
+
       <div class="giftReg">
         <span class="title">
           Gift Registry
         </span>
       </div>
-      
+
       <div class="cart">
         <button routerLink='/cart/{{id}}' npmtype="button" class="btn cartbtn mt-2">
           <img src="https://cdn0.iconfinder.com/data/icons/typicons-2/24/shopping-cart-512.png" id="navIcon">({{itemCount}})
         </button>
       </div>
-        
+
       <div class="dr">
         <span class="dropdown">
           <button class="btn dropdown-toggle dropd" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +83,7 @@
     <div class="dash">
       <h2 id="dashboard">{{name}}</h2>
     </div>
-    <br> 
+    <br>
     <div *ngIf='!assigneditems'>
       <br>
       <h3 style="font-family: Helvetica; margin-left: 9em;">You don't have anything in your registry :( add items!! </h3>
@@ -101,7 +101,7 @@
               <th class="text-center">Price</th>
               <th class="text-center">Location</th>
               <th class="text-center">Status</th>
-              <th class="text-center">Bought By</th>
+              <th class="text-center" >Bought By</th>
             </tr>
           </thead>
           <tbody>
@@ -110,7 +110,7 @@
               <td class="text-center">{{newItem.price | currency: 'USD'}}</td>
               <td class="text-center">{{newItem.location}}</td>
               <td class="text-center">{{newItem.status}}</td>
-              <td class="text-center"> {{newItem.lastName}}</td>
+              <td class="text-center" *ngIf='newItem.boughtBy&& newItem.status=="Bought"'> {{newItem.lastName}}</td>
             </tr>
           </tbody>
         </table>
@@ -147,7 +147,7 @@
       <button type="button" class="btn btn-lg" style="background-color: #cdb4db; margin-left: 26em;" id="archiveButton" (click)="addItems()">
         Add Item(s)
       </button>
-      
+
       <hr style="margin-left: 4em; width: 94%;">
       <br>
       <br>
@@ -171,7 +171,7 @@
         DELETE REGISTRY
       </button>
       <br> <br> <br>
-    </div> 
+    </div>
   </div>
 </div>
 
