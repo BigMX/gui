@@ -6,31 +6,33 @@
   <div class="menu border-right border-light float-left">
     <app-sidebar></app-sidebar>
   </div>
-    
+
   <div class="das">
       <div class="dash">
           <h2 id="purchaseHistory">Purchase History</h2>
         </div>
         <br>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="text-center">Name of Item</th>
-              <th class="text-center">Price</th>
-              <th class="text-center">Location</th>
-            </tr>
-          </thead>
-          <div *ngIf="!boughtItems">
-            <h3 class="text-center" style="font-family: Helvetica;">You have not purchased any items! </h3>
-          </div>
-          <tbody *ngIf="boughtItems">
-              <tr *ngFor="let item of boughtItems">
-                <td class="text-center">{{item.name}}</td>
-                <td class="text-center">{{item.price}}</td>
-                <td class="text-center">{{item.location}}</td>
+        <div *ngIf="!length">
+          <h3 class="alert alert-success text-center" style="font-family: Helvetica; margin-left: 3em; width: 37em;">You have not purchased any items! </h3>
+        </div>
+        <div *ngIf="length">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th class="text-center">Name of Item</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Location</th>
               </tr>
-            </tbody>
-        </table>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of boughtItems">
+                  <td class="text-center">{{item.name}}</td>
+                  <td class="text-center">{{item.price}}</td>
+                  <td class="text-center">{{item.location}}</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
         <br>
       </div>
 </div>
