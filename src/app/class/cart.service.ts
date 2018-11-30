@@ -12,8 +12,6 @@ import { Item } from './item';
 export class Cart {
 
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-//  protected endPoint = 'http://localhost:3004/users';
-
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -35,6 +33,8 @@ export class Cart {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is for adding items to a particular registry
   addItemToRegisty(item: Item): Observable<Item> {
     return this.httpClient
     .put<Item>(`${this.endPoint}/itemregistry`, item, this.httpOptions)
@@ -49,6 +49,8 @@ export class Cart {
       .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is for getting the items within a certain registry
   getItemsByReg(reg_id: number): Observable<Item[]> {
     return this.httpClient
       .get<Item[]>(`${this.endPoint}/item/${reg_id}`, this.httpOptions)
@@ -63,24 +65,32 @@ export class Cart {
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is used for changing the status to claimed - when an invited user claims an item
   claimItem(item_id: number, user_id: number):Observable<Item> {
     return this.httpClient
     .put<Item>(`${this.endPoint}/changeitem/${item_id}/${user_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is used for getting a user's claimed items and display them on the cart page
   getClaimedItem(user_id: number):Observable<Item[]> {
     return this.httpClient
     .get<Item[]>(`${this.endPoint}/getclaimeditem/${user_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is used to change an item's status to bought - when an invited user buys an item
   buyItem(item_id: number):Observable<Item> {
     return this.httpClient
     .put<Item>(`${this.endPoint}/buyitem/${item_id}`, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
 
+  // CONNECTED
+  // this is used for getting a user's bought items and display that information in the purchase history page
   getBoughtItem(user_id: number):Observable<Item[]> {
     return this.httpClient
     .get<Item[]>(`${this.endPoint}/getboughtitem/${user_id}`, this.httpOptions)

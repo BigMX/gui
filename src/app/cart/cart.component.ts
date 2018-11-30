@@ -60,15 +60,6 @@ export class CartComponent implements OnInit {
             this.length = items.length;
             console.log(this.claimed);
           });
-        //   if (account.boughtItems === undefined) {
-        //     account.boughtItems = [];
-        //   }
-        //   if (account.claimed === undefined) {
-        //     account.claimed = [];
-        //   }
-        //   this.cart = account.cart;
-        //   this.claimed = account.claimed;
-        //   this.bought = account.boughtItems;
         });
       }
     });
@@ -103,17 +94,17 @@ export class CartComponent implements OnInit {
     }
   }
 
+  // when an item is bought, the registry owner will be notified
   markAsBought(index: number) {
     this.carts.buyItem(this.claimed[index].item_id).subscribe((x)=> {
       console.log(x);
       this.claimed.splice(index,1);
     });
-    var n = new Notif;
+    const n = new Notif;
     const message = this.claimed[index].name + ', has been bought';
     n.notifications = message;
     n.user_id = this.claimed[index].user_id;
-    this.notifs.addNotifs(n).subscribe((n) => {
-
+    this.notifs.addNotifs(n).subscribe((n2) => {
     });
   }
 }
