@@ -8,7 +8,6 @@ import { catchError } from 'rxjs/operators';
 export class Notifs {
 
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
-  // protected endPoint = 'http://localhost:3004/notifications';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -21,9 +20,9 @@ export class Notifs {
   constructor(
     protected httpClient: HttpClient
   ) { }
-  
+
   // CONNECTED
-  // this is for removing a notification when the user clicks on the x
+  // this is for removing a notification when the user clicks on the x in the notification
   removeNotif(notification_id: number): Observable<Notif> {
     return this.httpClient
     .delete<Notif>(`${this.endPoint}/deletenotification/${notification_id}`, this.httpOptions)

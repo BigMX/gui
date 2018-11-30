@@ -7,9 +7,8 @@ import { Account } from './account';
 
 @Injectable()
 export class Registries {
-  
+
   protected endPoint = 'http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com';
- // protected endPoint = 'http://localhost:3004/registries';
 
   protected httpOptions = {
     headers: new HttpHeaders({
@@ -36,7 +35,7 @@ export class Registries {
       .get<Registry[]>(`${this.endPoint}/registry/${user_id}`, this.httpOptions)
       .pipe(catchError(this.handleException));
   }
-  
+
   // CONNECTED
   // this is for getting a registry
   getRegById(regId: number): Observable<Registry> {
@@ -75,7 +74,6 @@ export class Registries {
     .put<Registry>(`${this.endPoint}/changeregistrystatus/${reg.registry_id}`, reg, this.httpOptions)
     .pipe(catchError(this.handleException));
   }
-
 
   protected handleException(exception: any) {
     const message = `${exception.status} : ${exception.statusText}\r\n${exception.message}`;
