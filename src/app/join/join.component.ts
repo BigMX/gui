@@ -45,7 +45,6 @@ export class JoinComponent implements OnInit {
       if (params.id) {
         this.id = +params.id;
         this.users.getById(this.id).subscribe((acct) => {
-          console.log(acct);
           this.account = acct[0];
         });
       }
@@ -58,7 +57,6 @@ export class JoinComponent implements OnInit {
     this.invitation.Code=this.code;
     this.invitation.receiverEmail=this.account.email;
     this.invitations.getByEmail(this.invitation).subscribe((x)=> {
-      console.log(x);
       if(x.updated ===  true) {
         this.message='You are in';
       } else {

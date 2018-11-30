@@ -51,14 +51,12 @@ export class CartComponent implements OnInit {
         this.users.getById(this.id).subscribe((account) => {
           this.account = account;
           this.carts.getItems(this.id).subscribe((items)=> {
-            console.log(items);
             this.cart=items;
             this.cartLen = items.length;
           });
           this.carts.getClaimedItem(this.id).subscribe((items)=> {
             this.claimed=items;
             this.length = items.length;
-            console.log(this.claimed);
           });
         });
       }
@@ -72,7 +70,6 @@ export class CartComponent implements OnInit {
   addItem() {
     this.newItem.status = 'Unclaimed';
     this.newItem.user_id=this.id;
-    // this.newItem.lastName=""
     this.cart.push(this.newItem);
     this.carts.addItemToCart(this.newItem).subscribe((account) => {
       this.cartLen += 1;
@@ -86,7 +83,6 @@ export class CartComponent implements OnInit {
       this.carts.getItems(this.id).subscribe((items)=> {
         this.cart=items;
         this.carts.deleteItem(this.cart[index].item_id).subscribe((x)=> {
-          console.log(x);
           this.cartLen -=1;
           this.cart.splice(index,1);
         });
@@ -97,7 +93,6 @@ export class CartComponent implements OnInit {
   // when an item is bought, the registry owner will be notified
   markAsBought(index: number) {
     this.carts.buyItem(this.claimed[index].item_id).subscribe((x)=> {
-      console.log(x);
       this.claimed.splice(index,1);
     });
     const n = new Notif;

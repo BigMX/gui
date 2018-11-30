@@ -45,7 +45,6 @@ ngOnInit() {
      this.alert='Not a valid email';
     this.state=2;
    }
-   console.log(this.validateEmail(searchValue));
   }
 
   // this method is used to check whether an email is valid or not

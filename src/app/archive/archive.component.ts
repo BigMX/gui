@@ -34,9 +34,7 @@ export class ArchiveComponent implements OnInit {
         this.id = +params.id;
         this.registries.getRegistries(this.id).subscribe((registry_) => {
           this.registry = registry_;
-          console.log(registry_);
         });
-        console.log(this.id);
         this.registries.getArchivedRegs(this.id).subscribe((registry_) => {
           this.archived = registry_;
           this.length = registry_.length;
@@ -47,11 +45,9 @@ export class ArchiveComponent implements OnInit {
 
   // this method archives a registry - changed it's status to archived
   archive() {
-    console.log(this.regId);
     this.registries.getRegById(this.regId).subscribe((registry) => {
       this.newRegistry = registry[0];
       this.newRegistry.status = 'archived';
-      console.log(this.newRegistry);
       this.registries.updateReg(this.newRegistry).subscribe(() => {
         this.archived.push(this.newRegistry);
         location.reload();

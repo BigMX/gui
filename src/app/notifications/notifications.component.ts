@@ -48,7 +48,6 @@ export class NotificationsComponent implements OnInit {
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;
           this.length = n.length;
-          console.log(this.notifications);
           this.users.getById(this.id).subscribe((account) => {
             this.account = account;
           });
@@ -61,7 +60,6 @@ export class NotificationsComponent implements OnInit {
   removeAlert(n: Notif) {
     this.notifs.removeNotif(n.notification_id).subscribe((n2) => {
     });
-    console.log(this.notifications);
   }
 
   // this method makes sure that no duplicate items are added to a registry
@@ -82,7 +80,6 @@ export class NotificationsComponent implements OnInit {
         let i;
         let j;
         let counter = 0;
-        console.log(this.registryList);
         // tslint:disable-next-line:forin
         for(i = 0; i < this.registryList.length; i++) {
           const message = 'all items have been bought for: ' + this.registryList[i].name + ' registry!!!!';
@@ -95,7 +92,6 @@ export class NotificationsComponent implements OnInit {
                 const item = regItems[j];
                 if (item.status === 'Bought') {
                   counter+=1;
-                  console.log(counter);
                 }
               }
               if (counter === regItems.length && this.arrayObjectIndexOf(this.notifications, message) === -1) {

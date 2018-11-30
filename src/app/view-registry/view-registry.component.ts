@@ -64,12 +64,10 @@ export class ViewRegistryComponent implements OnInit {
       }
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
-          console.log(registry);
           this.currentReg = registry[0];
           this.name = this.currentReg.name;
           this.carts.getItemsByReg(+params.regid).subscribe((x)=> {
             this.itemList=x;
-            console.log(this.itemList);
           });
         });
       }

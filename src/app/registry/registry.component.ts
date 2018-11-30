@@ -67,7 +67,6 @@ export class RegistryComponent implements OnInit {
               this.notifCount = 0;
             }
             this.carts.getItems(this.id).subscribe((items)=> {
-              console.log(items);
               this.cart=items;
               this.itemCount = items.length;
               for( const c of this.cart) {
@@ -85,15 +84,12 @@ export class RegistryComponent implements OnInit {
           this.name = this.currentReg.name;
           this.carts.getItemsByReg(this.currentReg.registry_id).subscribe((its)=> {
             this.assigneditems=its;
-            console.log(its);
           });
         });
       }
-      console.log(+params.regid);
       const rid= +params.regid;
       this.users.getViewer(rid).subscribe((viewers) => {
         this.viewers=viewers;
-        console.log(this.viewers);
       });
     });
   }
@@ -139,13 +135,10 @@ export class RegistryComponent implements OnInit {
 
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
-    console.log(this.itemList);
     let newUnassigned=this.unassignedcart;
     for( const it of this.itemList) {
       const index= newUnassigned.indexOf(it);
       newUnassigned.splice(index,1);
-
-      console.log(newUnassigned);
     }
     this.unassignedcart=newUnassigned;
     for( const it of this.itemList) {
@@ -153,11 +146,8 @@ export class RegistryComponent implements OnInit {
       it.registry_id=this.currentReg.registry_id;
       this.assigneditems.push(it);
       this.carts.addItemToRegisty(it).subscribe((x)=> {
-
-        console.log(x);
         this.cart=[];
         this.carts.getItems(this.id).subscribe((items)=> {
-          console.log(items);
           this.cart=items;
 
         });
@@ -170,7 +160,7 @@ export class RegistryComponent implements OnInit {
     this.deleteInv=new Invitation;
     this.deleteInv.receiverEmail=this.viewers[index].email;
     this.invitations.deleteByEmail(this.deleteInv).subscribe((x) => {
-      console.log(x);
+
     });
     this.viewers.splice(index, 1);
   }
