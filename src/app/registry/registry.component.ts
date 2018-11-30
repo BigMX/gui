@@ -82,10 +82,6 @@ export class RegistryComponent implements OnInit {
       if (params.regid) {
         this.registries.getRegById(+params.regid).subscribe((registry) => {
           this.currentReg = registry[0];
-          // if (this.currentReg.items !== undefined && this.currentReg.items.length > 0) {
-            // this.length = this.currentReg.items.length;
-            // this.itemList = this.currentReg.items;
-          // }
           this.name = this.currentReg.name;
           this.carts.getItemsByReg(this.currentReg.registry_id).subscribe((its)=> {
             this.assigneditems=its;
@@ -102,7 +98,6 @@ export class RegistryComponent implements OnInit {
     });
   }
 
-
   // this method deletes a registry
   deleteRegistry() {
     this.route.params.subscribe((params: RegistryParams) => {
@@ -117,6 +112,7 @@ export class RegistryComponent implements OnInit {
     });
   }
 
+  // method used to find a particular object within an object array
   arrayObjectIndexOf(myArray, searchTerm) {
     let i;
     for(i = 0; i < myArray.length; i++) {
@@ -133,7 +129,6 @@ export class RegistryComponent implements OnInit {
       if(this.itemList !== undefined) {
         if (this.arrayObjectIndexOf(this.itemList, item) === -1) {
           this.itemList.push(item);
-          console.log(this.itemList);
         }
       }
     } else {
@@ -144,11 +139,9 @@ export class RegistryComponent implements OnInit {
 
   // this method is for when the user clicks on the 'add item(s) button' - data binding actually occurs
   addItems() {
-    // this.currentReg.items = this.itemList;
     console.log(this.itemList);
     let newUnassigned=this.unassignedcart;
-    for( const it of this.itemList){
-
+    for( const it of this.itemList) {
       const index= newUnassigned.indexOf(it);
       newUnassigned.splice(index,1);
 
@@ -161,7 +154,6 @@ export class RegistryComponent implements OnInit {
       this.assigneditems.push(it);
       this.carts.addItemToRegisty(it).subscribe((x)=> {
 
-      // this.unassignedcart.splice(index,1);
         console.log(x);
         this.cart=[];
         this.carts.getItems(this.id).subscribe((items)=> {
@@ -171,12 +163,9 @@ export class RegistryComponent implements OnInit {
         });
       });
     }
-    // this.registries.updateReg(this.currentReg).subscribe((reg) => {
-    //   this.itemList = reg.items;
-    // });
-    // location.reload();
   }
 
+  // this is used for removing a specific user from a registry
   removeUserFromReg(index: number) {
     this.deleteInv=new Invitation;
     this.deleteInv.receiverEmail=this.viewers[index].email;
@@ -184,6 +173,5 @@ export class RegistryComponent implements OnInit {
       console.log(x);
     });
     this.viewers.splice(index, 1);
-    // this.currentReg.viewers = this.viewers;
   }
 }

@@ -76,22 +76,11 @@ export class ViewRegistryComponent implements OnInit {
     });
   }
 
+  // this is used for claiming an item
   claim(index: number) {
-    // this.currentReg.items[index].status = 'Claimed' + this.account.email;
     this.carts.claimItem(this.itemList[index].item_id,this.id).subscribe((x)=> {
-      console.log(x);
+
     });
     this.itemList[index].status='Claimed';
-    // this.registries.updateReg(this.currentReg).subscribe((x) => {
-    //   this.currentReg = x;
-    // });
-    // if(this.account.claimed===undefined) {
-    //   this.account.claimed=[];
-    // }
-    // this.account.claimed.push(this.currentReg.items[index]);
-    // this.users.updateAccount(this.account).subscribe((x) => {
-
-    // });
   }
-
 }

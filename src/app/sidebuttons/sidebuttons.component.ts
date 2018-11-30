@@ -26,23 +26,6 @@ export class SidebuttonsComponent implements OnInit {
   newPassword2: string;
   itemCount: number;
 
-  update() {
-    if(this.newPassword1!==this.newPassword2) {
-      window.confirm('two new Passwords are not same');
-    } else {
-      if(this.account.password!==this.password) {
-        window.confirm('wrong old password');
-      } else {
-        this.users.updatePassword(this.account).subscribe((x)=> {
-
-        });
-      }
-    }
-    this.newPassword1='';
-    this.newPassword2='';
-    this.password='';
-  }
-
   constructor(
     private route: ActivatedRoute,
     private registries: Registries,

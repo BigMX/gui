@@ -48,7 +48,6 @@ ngOnInit() {
    console.log(this.validateEmail(searchValue));
   }
 
-
   // this method is used to check whether an email is valid or not
   validateEmail(email) {
    // tslint:disable-next-line:max-line-length
@@ -56,7 +55,7 @@ ngOnInit() {
    return re.test(String(email).toLowerCase());
  }
 
- // this method is used for making a new account - a new user - registration
+  // this method is used for making a new account - a new user - registration
   signUp() {
    this.users.addUser(this.account).subscribe((account) => {
      this.id = account.user_id;
