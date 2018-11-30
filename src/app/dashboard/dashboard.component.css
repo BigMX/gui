@@ -4,7 +4,6 @@
 }
 
 .menu{
- /* position:fixed; */
  z-index:0;
 }
 
@@ -14,7 +13,6 @@
 }
 
 .topbuttons{
-  /* position:fixed; */
   top:0;
   z-index:0;
  }

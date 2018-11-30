@@ -37,6 +37,7 @@ export class JoinComponent implements OnInit {
   currentReg: Registry;
   invitation: Invitation;
 
+  // important variables initialized
   ngOnInit() {
     this.in=true;
     this.viewer=new Viewer;
@@ -51,21 +52,23 @@ export class JoinComponent implements OnInit {
     });
   }
 
+  // this is used for joining a registry that you were invited to
   join() {
     this.invitation=new Invitation;
     this.invitation.Code=this.code;
     this.invitation.receiverEmail=this.account.email;
     this.invitations.getByEmail(this.invitation).subscribe((x)=> {
       console.log(x);
-      if(x.updated ===  true){
+      if(x.updated ===  true) {
         this.message='You are in';
-      }else{
+      } else {
         this.message='wrong code or no invitation';
       }
       this.code='';
     });
   }
 
+  // this is used to navigate to the user's dashboard - where the registry they just joined, will be
   lead() {
     const url='dashboard/'+this.account.user_id;
     this.router.navigateByUrl(url);

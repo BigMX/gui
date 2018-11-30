@@ -44,7 +44,6 @@ export class NotificationsComponent implements OnInit {
         this.registries.getRegistries(this.id).subscribe((registries) => {
           this.registryList = registries;
           this.check();
-          console.log(this.id)
         });
         this.notifs.getNotifs(this.id).subscribe((n) => {
           this.notifications = n;
@@ -52,7 +51,7 @@ export class NotificationsComponent implements OnInit {
           console.log(this.notifications);
           this.users.getById(this.id).subscribe((account) => {
             this.account = account;
-          })
+          });
         });
       }
     });
@@ -60,8 +59,7 @@ export class NotificationsComponent implements OnInit {
 
   // this method removes a notification when the 'x' on it is clicked - user notifications are updated to reflect the change
   removeAlert(n: Notif) {
-    console.log(n);
-    this.notifs.removeNotif(n.notification_id).subscribe((n) => {
+    this.notifs.removeNotif(n.notification_id).subscribe((n2) => {
     });
     console.log(this.notifications);
   }
@@ -74,13 +72,11 @@ export class NotificationsComponent implements OnInit {
           return i;
         }
     }
-    console.log(i)
     return -1;
   }
 
   // this method checks for newer notifications
-  // checks to see what items have been bought to alert the user of such purchases, and avoids duplicate alerts
-  // it also checks to see if all of the items in a given registry have been purchased and alerts accordingly
+  // checks to see if all items for each registry have been bought, and avoids duplicate alerts
   // this is done for all of the user's /active/ registries
   check() {
         let i;
@@ -90,10 +86,10 @@ export class NotificationsComponent implements OnInit {
         // tslint:disable-next-line:forin
         for(i = 0; i < this.registryList.length; i++) {
           const message = 'all items have been bought for: ' + this.registryList[i].name + ' registry!!!!';
-          var regItems;
+          let regItems;
           this.carts.getItemsByReg(this.registryList[i].registry_id).subscribe((items) => {
             regItems = items;
-          
+
             if (regItems !== 0) {
               for (j = 0; j < regItems.length; j++) {
                 const item = regItems[j];
@@ -108,7 +104,7 @@ export class NotificationsComponent implements OnInit {
                 this.notifications.push(this.notif);
                 this.length += 1;
                 this.notifs.addNotifs(this.notif).subscribe((n) => {
-                  
+
                 });
                 this.notif = new Notif;
               }

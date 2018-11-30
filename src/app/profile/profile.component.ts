@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   success: boolean;
   message: string;
 
+  // important variables initialized
   ngOnInit() {
     this.success=true;
     this.route.params.subscribe((params: ProfileParams) => {
@@ -44,6 +45,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // this is used for checking to see the correct password is provided AND that 2 matching new passwords are provided
+  // from there the password is changed or the correct alerts are provided
   update() {
     if(this.newPassword1!==this.newPassword2) {
       window.confirm('two new passwords are not same');

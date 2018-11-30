@@ -51,16 +51,19 @@ export class InviteComponent implements OnInit {
     });
   }
 
+  // this is set the registry id once a registry is selected from the input
   change(id: number) {
     this.registryId=id;
   }
 
+  // this is used to search for a user by last name when the user inputs a last name
   search(lastName: string) {
     this.users.getByName(lastName).subscribe(accountss=> {
       this.accounts=accountss;
     });
   }
 
+  // this is for inviting a user - after an email has been selected and when a registry is chosen
   invite() {
     this.newInvitation.status=false;
     this.newInvitation.registry_id=this.registryId;

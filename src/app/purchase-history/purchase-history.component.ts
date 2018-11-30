@@ -1,10 +1,7 @@
 import { Account } from './../class/account';
-import { InvitedRegistryService } from './../class/invited-registry.service';
 import { InvitedRegistry } from './../class/invitedRegistry';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Invitations } from '../class/invitation.service';
-import { Registries } from '../class/registries.service';
 import { Item } from '../class/item';
 import { User } from '../class/user.service';
 import { Cart } from '../class/cart.service';
@@ -28,12 +25,12 @@ export class PurchaseHistoryComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private inReg: InvitedRegistryService,
     protected router: Router,
     private users: User,
     private carts: Cart,
   ) { }
 
+  // important variables initialized
   ngOnInit() {
     this.route.params.subscribe((params: PurchaseHistoryParams) => {
       if (params.id) {
