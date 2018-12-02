@@ -1,7 +1,7 @@
 # GIFT REGISTRY
 
 ## Folder setup and code overview
-`backend` folder - contains the backend code for gift registry. By: Haya Alhumaid, Harry Holcomb.
+`backend` folder - contains the backend code for gift registry. By: Haya Alhumaid, Harry Holcomb. The database can be found at: http://ec2-18-222-252-86.us-east-2.compute.amazonaws.com 
 
 `gui` folder - contains the frontend code for gift registry. By: Arely Alcantara, Emily Fashenpour, Shenxiao (Travis) Mei.
 
